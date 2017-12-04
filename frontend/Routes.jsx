@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/LandingPage/LandingPageIndex';
 import UserProfilePage from './components/UserProfilePage';
 
 class Routes extends React.Component {
