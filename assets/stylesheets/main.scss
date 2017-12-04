@@ -1,0 +1,10 @@
+$font-stack:    'Helvetica Neue', Helvetica, Arial, sans-serif;;
+$primary-color: #E6ECF0;
+$secondary-color: #1DA1F2;
+$tertiary-color: #FFF;
+
+body {
+  font: 100% $font-stack;
+  background-color: $primary-color;
+  color: $secondary-color;
+}
