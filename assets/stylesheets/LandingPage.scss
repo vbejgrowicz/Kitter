@@ -1,0 +1,100 @@
+@import "main";
+$header-color: #f45d22;
+
+.btn {
+  height: 30px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
+.header {
+  background-color: $header-color;
+  color: $tertiary-color;
+  height: 210px;
+  div {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    .brand-icon {
+      height: 30px;
+      width: 30px;
+    }
+    button {
+      width: 75px;
+      background-color: transparent;
+      color: $tertiary-color;
+      border: 1px solid $tertiary-color;
+      margin: 0 5px;
+    }
+  }
+  .page-title {
+    font-size: 48px;
+    font-weight: bold;
+    justify-content: center;
+  }
+}
+
+.content {
+  padding: 30px 15px 15px;
+  .title {
+    color: #000;
+    padding: 10px;
+    font-weight: bold;
+  }
+  .loginForm {
+    display: inline-block;
+    background-color: $header-color;
+    color: $tertiary-color;
+    text-align: center;
+    justify-content: center;
+    width: 24%;
+    min-width: 250px;
+    box-sizing: border-box;
+    padding: 100px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 21px;
+    font-weight: bold;
+    form  {
+      input {
+        line-height: 20px;
+        font-size: 14px;
+        display: block;
+        margin-top: 12px;
+        width: 100%;
+        background-color: transparent;
+        border: 0;
+        border-bottom: 1px solid $primary-color;
+        box-sizing: border-box;
+        outline: none;
+        color: $tertiary-color;
+      }
+      ::placeholder {
+        color: $primary-color;
+      }
+      button {
+        background-color: $tertiary-color;
+        color: $header-color;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 12px;
+      }
+    }
+  }
+}
+
+.bottom-data {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  height: 65px;
+  line-height: 65px;
+  background-color: $tertiary-color;
+  border-top: 1px solid $primary-color;
+  color: #AAB8C2;
+  font-size: 12px;
+}
