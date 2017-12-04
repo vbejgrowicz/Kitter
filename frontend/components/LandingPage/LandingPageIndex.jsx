@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../../assets/stylesheets/LandingPage.scss';
+import LoginTile from './LoginTile';
 
 class LandingPage extends React.Component {
 
@@ -22,6 +23,7 @@ class LandingPage extends React.Component {
       <div className="content">
         <div className="title"></div>
 
+        <LoginTile />
       </div>
       <div className="bottom-data">
         <div>2017 Kitter</div>
