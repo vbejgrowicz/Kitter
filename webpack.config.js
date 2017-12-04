@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const VENDOR_LIBS = ["react", "react-dom"];
+const VENDOR_LIBS = ["react", "react-dom", "react-redux", "react-router-dom", "redux"];
 
 const extractSass = new ExtractTextPlugin({
     filename: "[name].[contenthash].css"
