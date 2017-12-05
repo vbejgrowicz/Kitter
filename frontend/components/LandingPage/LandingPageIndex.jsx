@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/LandingPage.scss';
 import LoginTile from './LoginTile';
 import PostTile from './PostTile';
@@ -32,7 +33,7 @@ class LandingPage extends React.Component {
         <div>
           <span className="brand-icon"></span>
           <span>
-            <button className="btn">Sign up</button>
+            <Link to="/signup"><button className="btn">Sign up</button></Link>
             <button className="btn">Log in</button>
           </span>
         </div>
