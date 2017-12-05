@@ -9,15 +9,12 @@ class LandingPage extends React.Component {
       <div>
       <div className="header">
         <div>
-          <span className="brand-icon">
-            CAT LOGO
-          </span>
+          <span className="brand-icon"></span>
           <span>
             <button className="btn">Sign up</button>
             <button className="btn">Log in</button>
           </span>
         </div>
-
         <div className="page-title">What's happening?</div>
       </div>
       <div className="content">

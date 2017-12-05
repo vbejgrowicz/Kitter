@@ -1,5 +1,4 @@
 @import "main";
-$header-color: #f45d22;
 
 .btn {
   height: 30px;
@@ -11,7 +10,11 @@ $header-color: #f45d22;
 }
 
 .header {
-  background-color: $header-color;
+  background-color: $secondary-color;
+  background-image: url('../images/cat-blue.png');
+  background-repeat: no-repeat;
+  background-position-x: 55vw;
+  background-size: 512px;
   color: $tertiary-color;
   height: 210px;
   div {
@@ -19,8 +22,12 @@ $header-color: #f45d22;
     display: flex;
     justify-content: space-between;
     .brand-icon {
-      height: 30px;
-      width: 30px;
+      height: 40px;
+      width: 40px;
+      margin: 10px;
+      background-image: url('../images/cat-white.png');
+      background-repeat: no-repeat;
+      background-size: cover;
     }
     button {
       width: 75px;
@@ -46,7 +53,7 @@ $header-color: #f45d22;
   }
   .loginForm {
     display: inline-block;
-    background-color: $header-color;
+    background-color: $secondary-color;
     color: $tertiary-color;
     text-align: center;
     justify-content: center;
@@ -77,7 +84,7 @@ $header-color: #f45d22;
       }
       button {
         background-color: $tertiary-color;
-        color: $header-color;
+        color: $secondary-color;
         font-weight: bold;
         width: 100%;
         margin-top: 12px;
