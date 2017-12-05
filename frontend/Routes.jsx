@@ -4,7 +4,6 @@ import LandingPage from './components/LandingPage/LandingPageIndex';
 import UserProfilePage from './components/UserProfilePage';
 import SignUpPage from './components/AuthPages/SignUpPage';
 
-
 class Routes extends React.Component {
 
   render() {

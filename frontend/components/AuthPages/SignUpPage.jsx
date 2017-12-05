@@ -1,8 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages.scss';
+import { signUp } from '../../Requests/API';
 
 class SignUpPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      username: '',
+      password: ''
+    }
+    this.handleSignup = this.handleSignup.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+  }
+
+  handleInput(event) {
+    const input = event.target.name;
+    this.setState({
+      [input]: event.target.value
+    });
+  }
+
+  handleSignup(event) {
+    event.preventDefault();
+    const newUser = {name: this.state.name , username: this.state.username, password: this.state.password};
+    signUp(newUser);
+  }
+
   render() {
     return (
       <div className="signup-page">
@@ -12,11 +37,26 @@ class SignUpPage extends React.Component {
         </div>
         <div className="signup">
           <div>Join Kitter today.</div>
-          <form>
-            <input type="text" name="name" placeholder="Full name"/>
-            <input type="text" name="username" placeholder="Username"/>
-            <input type="password" name="password" placeholder="Password"/>
-            <button>Sign up</button>
+          <form onSubmit={this.handleSignup}>
+            <input type="text"
+              placeholder="Full name"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleInput}
+            />
+            <input type="text"
+              placeholder="Username"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleInput}
+            />
+            <input type="password"
+              placeholder="Password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleInput}
+            />
+            <button>Sign Up</button>
           </form>
         </div>
       </div>
