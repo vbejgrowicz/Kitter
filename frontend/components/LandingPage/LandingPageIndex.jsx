@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../assets/stylesheets/LandingPage.scss';
 import LoginTile from './LoginTile';
+import PostTile from './PostTile';
 
 const featuredPosts = [
   {
@@ -38,9 +39,11 @@ class LandingPage extends React.Component {
         <div className="page-title">What's happening?</div>
       </div>
       <div className="content">
-        <div className="title"></div>
-
-        <LoginTile />
+        <div className="title">Featured Posts</div>
+        <div>
+          {featuredPosts.map(post => <PostTile key={post.text} post={post} />)}
+          <LoginTile />
+        </div>
       </div>
       <div className="bottom-data">
         <div>2017 Kitter</div>
