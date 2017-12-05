@@ -44,67 +44,78 @@
   }
 }
 
-.content {
-  padding: 30px 15px 15px;
-  .title {
-    color: #000;
-    padding: 10px;
-    font-weight: bold;
-  }
-  div {
-    display: inline-flex;
-    flex-wrap: wrap;
-    .tile {
-      display: block;
-      position: relative;
-      overflow: hidden;
-      background-color: $secondary-color;
-      color: $tertiary-color;
-      text-align: center;
-      width: 24%;
-      min-width: 250px;
-      height: 364px;
-      box-sizing: border-box;
-      margin: 5px;
-      border-radius: 5px;
-      .image {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 275px;
-        width: 100%;
-        background-position-x: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-    }
-    .login {
-      padding: 100px 20px;
-      font-size: 21px;
+.page-content {
+  padding: 30px 15px 70px;
+  .container {
+    margin: auto;
+    width: 90%;
+    .title {
+      color: #000;
+      padding: 10px;
       font-weight: bold;
-      form  {
-        input {
-          line-height: 20px;
-          font-size: 14px;
-          display: block;
-          margin-top: 12px;
-          width: 100%;
-          background-color: transparent;
-          border: 0;
-          border-bottom: 1px solid $primary-color;
-          box-sizing: border-box;
-          outline: none;
-          color: $tertiary-color;
+    }
+    .tiles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .tile {
+        background-color: $tertiary-color;
+        width: 280px;
+        height: 338px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin: 5px;
+        overflow: hidden;
+        .post-data {
+          padding: 10px;
+          .post {
+            color: black;
+            font-weight: bold;
+            font-size: 14px;
+          }
+          .author {
+            font-size: 12px;
+            color: #66757F;
+          }
         }
-        ::placeholder {
-          color: $primary-color;
-        }
-        button {
-          background-color: $tertiary-color;
-          color: $secondary-color;
-          font-weight: bold;
+        .image {
+          height: 285px;
           width: 100%;
-          margin-top: 12px;
+          background-position-x: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+      .login {
+        background-color: $secondary-color;
+        color: $tertiary-color;
+        padding: 100px 20px;
+        font-size: 21px;
+        font-weight: bold;
+        form  {
+          input {
+            line-height: 20px;
+            font-size: 14px;
+            display: block;
+            margin-top: 12px;
+            width: 100%;
+            background-color: transparent;
+            border: 0;
+            border-bottom: 1px solid $primary-color;
+            box-sizing: border-box;
+            outline: none;
+            color: $tertiary-color;
+          }
+          ::placeholder {
+            color: $primary-color;
+          }
+          button {
+            background-color: $tertiary-color;
+            color: $secondary-color;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 12px;
+          }
         }
       }
     }
@@ -112,7 +123,7 @@
 }
 
 .bottom-data {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   text-align: center;
   width: 100%;

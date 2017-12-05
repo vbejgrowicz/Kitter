@@ -38,13 +38,15 @@ class LandingPage extends React.Component {
         </div>
         <div className="page-title">What's happening?</div>
       </div>
-      <div className="content">
-        <div className="title">Featured Posts</div>
-        <div>
-          {featuredPosts.map(post => <PostTile key={post.text} post={post} />)}
-          <LoginTile />
+      <div className="page-content">
+        <div className="container">
+          <div className="title">Featured Posts</div>
+          <div className="tiles">
+            {featuredPosts.map(post => <PostTile key={post.text} post={post} />)}
+            <LoginTile />
+          </div>
         </div>
-      </div>
+        </div>
       <div className="bottom-data">
         <div>2017 Kitter</div>
       </div>
