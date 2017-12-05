@@ -5,7 +5,7 @@ import '../../../assets/stylesheets/AuthPages.scss';
 class SignUpPage extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="signup-page">
         <div className="top-bar">
           <Link to="/"><span className="brand-icon"></span></Link>
           <span>Have an Account? <span>Log in</span></span>

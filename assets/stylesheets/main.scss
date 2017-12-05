@@ -9,3 +9,10 @@ body {
   color: $secondary-color;
   margin: 0;
 }
+
+.brand-icon {
+  margin: 10px;
+  background-image: url('../images/cat-white.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
