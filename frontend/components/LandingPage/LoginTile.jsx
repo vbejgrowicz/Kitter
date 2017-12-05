@@ -4,7 +4,7 @@ class LoginTile extends React.Component {
 
   render() {
     return (
-      <div className="loginForm">
+      <div className="tile login">
         <div>Log in to your account</div>
         <form>
           <input type="text" placeholder="Username" name="username" />

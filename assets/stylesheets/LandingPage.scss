@@ -51,43 +51,61 @@
     padding: 10px;
     font-weight: bold;
   }
-  .loginForm {
-    display: inline-block;
-    background-color: $secondary-color;
-    color: $tertiary-color;
-    text-align: center;
-    justify-content: center;
-    width: 24%;
-    min-width: 250px;
-    box-sizing: border-box;
-    padding: 100px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    font-size: 21px;
-    font-weight: bold;
-    form  {
-      input {
-        line-height: 20px;
-        font-size: 14px;
-        display: block;
-        margin-top: 12px;
+  div {
+    display: inline-flex;
+    flex-wrap: wrap;
+    .tile {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      background-color: $secondary-color;
+      color: $tertiary-color;
+      text-align: center;
+      width: 24%;
+      min-width: 250px;
+      height: 364px;
+      box-sizing: border-box;
+      margin: 5px;
+      border-radius: 5px;
+      .image {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 275px;
         width: 100%;
-        background-color: transparent;
-        border: 0;
-        border-bottom: 1px solid $primary-color;
-        box-sizing: border-box;
-        outline: none;
-        color: $tertiary-color;
+        background-position-x: center;
+        background-size: cover;
+        background-repeat: no-repeat;
       }
-      ::placeholder {
-        color: $primary-color;
-      }
-      button {
-        background-color: $tertiary-color;
-        color: $secondary-color;
-        font-weight: bold;
-        width: 100%;
-        margin-top: 12px;
+    }
+    .login {
+      padding: 100px 20px;
+      font-size: 21px;
+      font-weight: bold;
+      form  {
+        input {
+          line-height: 20px;
+          font-size: 14px;
+          display: block;
+          margin-top: 12px;
+          width: 100%;
+          background-color: transparent;
+          border: 0;
+          border-bottom: 1px solid $primary-color;
+          box-sizing: border-box;
+          outline: none;
+          color: $tertiary-color;
+        }
+        ::placeholder {
+          color: $primary-color;
+        }
+        button {
+          background-color: $tertiary-color;
+          color: $secondary-color;
+          font-weight: bold;
+          width: 100%;
+          margin-top: 12px;
+        }
       }
     }
   }
