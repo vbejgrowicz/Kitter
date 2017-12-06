@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages.scss';
@@ -31,6 +32,7 @@ class SignUpPage extends React.Component {
     signUp(newUser).then(response => {
       if (response.username) {
         this.props.updateUser(response);
+        this.context.router.history.push('/');
       } else {
         console.log(response);
       }
@@ -72,6 +74,10 @@ class SignUpPage extends React.Component {
     );
   }
 }
+
+SignUpPage.contextTypes = {
+  router: PropTypes.object.isRequired
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
