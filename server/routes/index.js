@@ -9,10 +9,10 @@ router.post('/signup', (req, res) => {
   const newUser = new User({username: req.body.username});
   User.register(newUser, req.body.password, (err, user) => {
     if (err) {
-      res.send({ success: false, message: `${err.message}`});
+      res.json({ success: false, message: `${err.message}`});
     } else {
       passport.authenticate('local')(req, res, () => {
-        res.send({ success: true, message: `${user.username} was created!`});
+        res.json({ success: true, message: `${user.username} was created!`});
       });
     }
   });

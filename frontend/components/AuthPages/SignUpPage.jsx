@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages.scss';
-import { signUp } from '../../Requests/API';
+import { signUp } from '../../utils/apiUtils';
 
 class SignUpPage extends React.Component {
   constructor(props) {
@@ -25,7 +25,9 @@ class SignUpPage extends React.Component {
   handleSignup(event) {
     event.preventDefault();
     const newUser = {name: this.state.name , username: this.state.username, password: this.state.password};
-    signUp(newUser);
+    signUp(newUser).then(resp => {
+      console.log(resp);
+    });
   }
 
   render() {
