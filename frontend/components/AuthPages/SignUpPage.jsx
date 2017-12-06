@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages.scss';
 import { signUp } from '../../utils/apiUtils';
+import { activeUser } from '../../actions/UserActions';
 
 class SignUpPage extends React.Component {
   constructor(props) {
@@ -9,7 +11,8 @@ class SignUpPage extends React.Component {
     this.state = {
       name: '',
       username: '',
-      password: ''
+      password: '',
+      error: ''
     }
     this.handleSignup = this.handleSignup.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -25,8 +28,12 @@ class SignUpPage extends React.Component {
   handleSignup(event) {
     event.preventDefault();
     const newUser = {name: this.state.name , username: this.state.username, password: this.state.password};
-    signUp(newUser).then(resp => {
-      console.log(resp);
+    signUp(newUser).then(response => {
+      if (response.username) {
+        this.props.updateUser(response);
+      } else {
+        console.log(response);
+      }
     });
   }
 
@@ -66,4 +73,12 @@ class SignUpPage extends React.Component {
   }
 }
 
-export default SignUpPage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateUser: (user) => {
+      dispatch(activeUser(user));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignUpPage);

@@ -9,7 +9,6 @@ const initialState = {
 export function UserReducer (state = initialState, action) {
   switch (action.type) {
     case ACTIVE_USER:
-      console.log(action);
       return Object.assign({}, state,
         {
           username: action.user.username,
