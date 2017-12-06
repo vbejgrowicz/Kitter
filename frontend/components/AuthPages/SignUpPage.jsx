@@ -20,6 +20,9 @@ class SignUpPage extends React.Component {
   }
 
   handleInput(event) {
+    if (this.state.error) {
+      this.setState({error: ""});
+    };
     const input = event.target.name;
     this.setState({
       [input]: event.target.value
@@ -34,7 +37,7 @@ class SignUpPage extends React.Component {
         this.props.updateUser(response);
         this.context.router.history.push('/');
       } else {
-        console.log(response);
+        this.setState({error: response.message});
       }
     });
   }
@@ -48,6 +51,7 @@ class SignUpPage extends React.Component {
         </div>
         <div className="signup">
           <div>Join Kitter today.</div>
+          {this.state.error}
           <form onSubmit={this.handleSignup}>
             <input type="text"
               placeholder="Full name"
