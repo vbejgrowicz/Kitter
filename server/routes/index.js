@@ -6,19 +6,20 @@ const User = require('../models/user');
 
 // SIGN UP ROUTE
 router.post('/signup', (req, res) => {
-  const newUser = new User({username: req.body.username});
+  console.log(req.body);
+  const newUser = new User({username: req.body.username, name: req.body.name});
   User.register(newUser, req.body.password, (err, user) => {
     if (err) {
-      res.json({ success: false, message: `${err.message}`});
+      res.json(err);
     } else {
       passport.authenticate('local')(req, res, () => {
-        res.json({ success: true, message: `${user.username} was created!`});
+        res.json(user);
       });
     }
   });
 });
 
-// login logic
+// LOGIN ROUTE
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login'
