@@ -18,3 +18,8 @@ export const logIn = (user) => {
     }
   });
 }
+
+export const logOut = () => {
+  return fetch('/api/logout', { method: 'GET', credentials: 'same-origin'})
+  .then(resp => resp.json());
+}

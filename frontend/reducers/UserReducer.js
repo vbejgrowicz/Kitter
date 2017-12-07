@@ -13,7 +13,7 @@ export function UserReducer (state = initialState, action) {
         {
           username: action.user.username,
           name: action.user.name,
-          id: action.user._id
+          id: action.user.id
         });
     default :
     return state;
