@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class HomePage extends React.Component {
+class UserPageIndex extends React.Component {
 
   render() {
     return (
       <div>
-        Home
+        Welcome {this.props.UserReducer.name}!
       </div>
     );
   }
@@ -16,4 +16,4 @@ function mapStateToProps({ UserReducer }) {
   return { UserReducer };
 }
 
-export default connect(mapStateToProps, null)(HomePage);
+export default connect(mapStateToProps, null)(UserPageIndex);

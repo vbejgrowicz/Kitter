@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPageIndex';
-import HomePage from './components/LandingPage/HomePage';
+import UserPageIndex from './components/UserPage/UserPageIndex';
 import UserProfilePage from './components/UserProfilePage';
 import SignUpPage from './components/AuthPages/SignUpPage';
 import LoginPage from './components/AuthPages/LoginPage';
@@ -42,9 +42,9 @@ class Routes extends React.Component {
     const AuthRoutes = () => {
       return (
         <Switch>
-          <Route exact path="/" component={HomePage} />
           <Redirect from="/signup" to="/" />
           <Redirect from="/login" to="/" />
+          <Route exact path="/" component={UserPageIndex} />
           <Route exact path="/:userName" component={UserProfilePage} />
         </Switch>
       )
