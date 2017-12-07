@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages.scss';
 import { signUp } from '../../utils/apiUtils';
 import { activeUser } from '../../actions/UserActions';
+import LoginModal from './LoginModal';
 
 class SignUpPage extends React.Component {
   constructor(props) {
@@ -13,10 +14,12 @@ class SignUpPage extends React.Component {
       name: '',
       username: '',
       password: '',
-      error: ''
+      error: '',
+      isOpen: false
     }
     this.handleSignup = this.handleSignup.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.toggleLoginModal = this.toggleLoginModal.bind(this);
   }
 
   handleInput(event) {
@@ -42,12 +45,19 @@ class SignUpPage extends React.Component {
     });
   }
 
+  toggleLoginModal() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   render() {
     return (
       <div className="signup-page">
         <div className="top-bar">
           <Link to="/"><span className="brand-icon"></span></Link>
-          <span>Have an Account? <span>Log in</span></span>
+          <div className="modal-btn" onClick={this.toggleLoginModal}>Have an Account? <span>Log in</span></div>
+          <LoginModal show={this.state.isOpen} onClose={this.toggleModal} />
         </div>
         <div className="signup">
           <div>Join Kitter today.</div>
