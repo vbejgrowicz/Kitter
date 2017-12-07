@@ -8,36 +8,25 @@ import SignUpPage from './components/AuthPages/SignUpPage';
 import LoginPage from './components/AuthPages/LoginPage';
 import { checkUser } from './utils/apiUtils';
 import { activeUser } from './actions/UserActions';
+import { isLoading } from './actions/ViewActions';
 
 class Routes extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: true
-    }
-  }
+
   componentDidMount() {
     checkUser().then(res => {
       this.props.updateUser(res);
-      this.setState({ isLoading: false });
     });
   }
 
   requireLoggedIn() {
-    console.log('check');
-    console.log(this.state);
-    if (!this.state.isLoading || this.props.UserReducer.username) {
-      console.log('isnt isLoading');
-      const currentUser = this.props.UserReducer.username;
-      console.log(currentUser);
-      if (currentUser) {
-        return true;
-      } else {
-        return false;
-      }
+    const currentUser = this.props.UserReducer.username;
+    if (currentUser) {
+      return true;
+    } else {
+      return false;
     }
-  }
 
+  }
   render() {
     const AuthRoutes = () => {
       return (
@@ -60,7 +49,10 @@ class Routes extends React.Component {
       )
     }
 
-    return (
+    const status = this.props.ViewReducer.isLoading;
+    return status ? (
+      <div>Loading...</div>
+    ) : (
       <Router>
         {this.requireLoggedIn() ? (
             <AuthRoutes />
@@ -72,14 +64,15 @@ class Routes extends React.Component {
   }
 }
 
-function mapStateToProps({ UserReducer }) {
-  return { UserReducer };
+function mapStateToProps({ UserReducer, ViewReducer }) {
+  return { UserReducer, ViewReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     updateUser: (user) => {
       dispatch(activeUser(user));
+      dispatch(isLoading(false));
     },
   };
 };
