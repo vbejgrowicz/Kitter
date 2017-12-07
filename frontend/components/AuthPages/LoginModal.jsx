@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
+import { handleInput, handleLogin } from './utils';
 
 class LoginModal extends React.Component {
   constructor(props) {
@@ -10,26 +11,9 @@ class LoginModal extends React.Component {
     this.state = {
       username: '',
       password: '',
-      error: ''
     }
-    this.handleSignup = this.handleLogin.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-  }
-
-  handleInput(event) {
-    if (this.state.error) {
-      this.setState({error: ""});
-    };
-    const input = event.target.name;
-    this.setState({
-      [input]: event.target.value
-    });
-  }
-
-  handleLogin(event) {
-    event.preventDefault();
-    const userData = {username: this.state.username, password: this.state.password};
-    console.log(userData);
+    this.handleLogin = handleLogin.bind(this);
+    this.handleInput = handleInput.bind(this);
   }
 
   render() {
@@ -53,7 +37,7 @@ class LoginModal extends React.Component {
               value={this.state.password}
               onChange={this.handleInput}
             />
-            <button>Sign Up</button>
+            <button>Log in</button>
           </form>
         </div>
       </div>

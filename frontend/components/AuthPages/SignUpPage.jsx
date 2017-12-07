@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
-import { signUp } from '../../utils/apiUtils';
+import { handleInput, handleSignup } from './utils';
 import { activeUser } from '../../actions/UserActions';
 import LoginModal from './LoginModal';
 
@@ -17,32 +17,9 @@ class SignUpPage extends React.Component {
       error: '',
       isOpen: false
     }
-    this.handleSignup = this.handleSignup.bind(this);
-    this.handleInput = this.handleInput.bind(this);
+    this.handleSignup = handleSignup.bind(this);
+    this.handleInput = handleInput.bind(this);
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
-  }
-
-  handleInput(event) {
-    if (this.state.error) {
-      this.setState({error: ""});
-    };
-    const input = event.target.name;
-    this.setState({
-      [input]: event.target.value
-    });
-  }
-
-  handleSignup(event) {
-    event.preventDefault();
-    const newUser = {name: this.state.name , username: this.state.username, password: this.state.password};
-    signUp(newUser).then(response => {
-      if (response.username) {
-        this.props.updateUser(response);
-        this.context.router.history.push('/');
-      } else {
-        this.setState({error: response.message});
-      }
-    });
   }
 
   toggleLoginModal() {
