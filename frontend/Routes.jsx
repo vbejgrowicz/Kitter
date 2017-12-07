@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPageIndex';
 import HomePage from './components/LandingPage/HomePage';
 import UserProfilePage from './components/UserProfilePage';
@@ -43,6 +43,8 @@ class Routes extends React.Component {
       return (
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Redirect from="/signup" to="/" />
+          <Redirect from="/login" to="/" />
           <Route exact path="/:userName" component={UserProfilePage} />
         </Switch>
       )
