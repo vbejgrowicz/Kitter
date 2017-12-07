@@ -4,10 +4,12 @@ const passport = require('passport');
 
 const User = require('../models/user');
 
-
 router.get('/user', (req, res) => {
+  console.log(req);
   if (req.isAuthenticated()) {
     res.json(req.user);
+  } else {
+    res.json('No User Logged In');
   }
 });
 
