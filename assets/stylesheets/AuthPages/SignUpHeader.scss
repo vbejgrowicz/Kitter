@@ -1,0 +1,59 @@
+$header-height: 47px;
+
+#auth {
+  .signup-header {
+    height: $header-height;
+    background-color: $secondary-color;
+    background-image: linear-gradient(to right, #39AEF1, #00D38D);
+    border-bottom: 1px solid #1794a2;
+    color: $tertiary-color;
+    display: flex;
+    line-height: $header-height;
+    font-size: 14px;
+    position: relative;
+
+    .brand-icon {
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      left: 50%;
+      margin: 10px;
+      background-image: url('../../images/cat-white.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .modal-btn {
+      position: absolute;
+      right: 0%;
+      padding-right: 20px;
+      line-height: $header-height;
+    }
+
+    .modal {
+      width: 260px;
+      height: 300px;
+      position: absolute;
+      top: $header-height;
+      right: 40px;
+      background: $tertiary-color;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+      box-sizing: border-box;
+      padding: 15px;
+
+      :after {
+        bottom: 100%;
+        right: 5%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: $tertiary-color;
+        border-width: 10px;
+        margin-left: -10px;
+      }
+    }
+  }
+}

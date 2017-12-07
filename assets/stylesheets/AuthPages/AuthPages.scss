@@ -1,0 +1,57 @@
+@import "../main";
+@import "SignUpHeader";
+
+#auth {
+  background-color: $tertiary-color;
+  height: 100vh;
+  width: 100vw;
+  min-width: 390px;
+
+  input {
+    width: 100%;
+    display: block;
+    border: 1px solid $primary-color;
+    border-radius: 3px;
+    box-sizing: border-box;
+    outline: none;
+  }
+    .signup-form {
+      padding: 100px 0;
+      height: 490px;
+      width: 390px;
+      margin: auto;
+      color: black;
+
+      div {
+        font-size: 27px;
+        font-weight: bold;
+        margin-bottom: 27px;
+      }
+
+      input {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px;
+        margin-bottom: 26px;
+      }
+
+      ::placeholder {
+        color: #C3C3C3;
+      }
+
+      button {
+        cursor: pointer;
+        text-align: center;
+        outline: none;
+        border: none;
+        background-color: $secondary-color;
+        color: $tertiary-color;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 24px;
+        padding: 12px;
+        width: 100%;
+        border-radius: 100px;
+      }
+  }
+}

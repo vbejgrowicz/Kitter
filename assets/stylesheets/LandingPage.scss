@@ -1,94 +1,112 @@
 @import "main";
 
-.btn {
-  height: 30px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-}
-
-.header {
-  background-color: $secondary-color;
-  background-image: url('../images/cat-blue.png');
-  background-repeat: no-repeat;
-  background-position-x: 55vw;
-  background-size: 512px;
-  color: $tertiary-color;
-  height: 210px;
-  div {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    .brand-icon {
-      height: 40px;
-      width: 40px;
-    }
-    button {
-      width: 75px;
-      background-color: transparent;
-      color: $tertiary-color;
-      border: 1px solid $tertiary-color;
-      margin: 0 5px;
-    }
-  }
-  .page-title {
-    font-size: 48px;
+#landingPage {
+  .btn {
+    height: 30px;
+    border-radius: 100px;
+    font-size: 14px;
     font-weight: bold;
-    justify-content: center;
+    cursor: pointer;
+    text-align: center;
   }
-}
 
-.page-content {
-  padding: 30px 15px 70px;
-  .container {
-    margin: auto;
-    width: 90%;
-    .title {
-      color: #000;
+  .header {
+    background-color: $secondary-color;
+    background-image: url('../images/cat-blue.png');
+    background-repeat: no-repeat;
+    background-position-x: 55vw;
+    background-size: 512px;
+    color: $tertiary-color;
+    height: 210px;
+
+    div {
       padding: 10px;
-      font-weight: bold;
-    }
-    .tiles {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      .tile {
-        background-color: $tertiary-color;
-        width: 280px;
-        height: 338px;
-        box-sizing: border-box;
-        border-radius: 5px;
-        margin: 5px;
-        overflow: hidden;
-        .post-data {
-          padding: 10px;
-          .post {
-            color: black;
-            font-weight: bold;
-            font-size: 14px;
-          }
-          .author {
-            font-size: 12px;
-            color: #66757F;
-          }
-        }
-        .image {
-          height: 285px;
-          width: 100%;
-          background-position-x: center;
-          background-size: cover;
-          background-repeat: no-repeat;
-        }
+      justify-content: space-between;
+
+      .brand-icon {
+        height: 40px;
+        width: 40px;
+        margin: 10px;
+        background-image: url('../images/cat-white.png');
+        background-repeat: no-repeat;
+        background-size: cover;
       }
-      .login {
-        background-color: $secondary-color;
+
+      button {
+        width: 75px;
+        background-color: transparent;
         color: $tertiary-color;
-        padding: 60px 20px;
-        font-size: 21px;
+        border: 1px solid $tertiary-color;
+        margin: 0 5px;
+      }
+    }
+
+    .page-title {
+      font-size: 48px;
+      font-weight: bold;
+      justify-content: center;
+    }
+  }
+
+  .page-content {
+    padding: 30px 15px 70px;
+
+    .container {
+      margin: auto;
+      width: 90%;
+
+      .title {
+        color: #000;
+        padding: 10px;
         font-weight: bold;
-        form  {
+      }
+
+      .tiles {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .tile {
+          background-color: $tertiary-color;
+          width: 280px;
+          height: 338px;
+          box-sizing: border-box;
+          border-radius: 5px;
+          margin: 5px;
+          overflow: hidden;
+
+          .post-data {
+            padding: 10px;
+
+            .post {
+              color: black;
+              font-weight: bold;
+              font-size: 14px;
+            }
+
+            .author {
+              font-size: 12px;
+              color: #66757F;
+            }
+          }
+
+          .image {
+            height: 285px;
+            width: 100%;
+            background-position-x: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+        }
+
+        .login {
+          background-color: $secondary-color;
+          color: $tertiary-color;
+          padding: 60px 20px;
+          font-size: 21px;
+          font-weight: bold;
+
           input {
             line-height: 20px;
             font-size: 14px;
@@ -102,9 +120,11 @@
             outline: none;
             color: $tertiary-color;
           }
+
           ::placeholder {
             color: $primary-color;
           }
+
           button {
             background-color: $tertiary-color;
             color: $secondary-color;
@@ -116,17 +136,17 @@
       }
     }
   }
-}
 
-.bottom-data {
-  position: fixed;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
-  height: 65px;
-  line-height: 65px;
-  background-color: $tertiary-color;
-  border-top: 1px solid $primary-color;
-  color: #AAB8C2;
-  font-size: 12px;
+  .bottom-data {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    height: 65px;
+    line-height: 65px;
+    background-color: $tertiary-color;
+    border-top: 1px solid $primary-color;
+    color: #AAB8C2;
+    font-size: 12px;
+  }
 }

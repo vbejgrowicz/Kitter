@@ -3,16 +3,15 @@ $primary-color: #E6ECF0;
 $secondary-color: #1DA1F2;
 $tertiary-color: #FFF;
 
-body {
-  font: 100% $font-stack;
-  background-color: $primary-color;
-  color: $secondary-color;
+html, body, div, span, a, button {
   margin: 0;
+  padding: 0;
+  border: 0;
+  font: 100% $font-stack;
+  vertical-align: baseline;
 }
 
-.brand-icon {
-  margin: 10px;
-  background-image: url('../images/cat-white.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+body {
+  background-color: $primary-color;
+  color: $secondary-color;
 }

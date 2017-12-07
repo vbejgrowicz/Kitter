@@ -28,7 +28,7 @@ class LandingPage extends React.Component {
   // }
   render() {
     return (
-      <div>
+      <div id="landingPage">
       <div className="header">
         <div>
           <span className="brand-icon"></span>

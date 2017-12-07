@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../../assets/stylesheets/AuthPages.scss';
+import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
 import { signUp } from '../../utils/apiUtils';
 import { activeUser } from '../../actions/UserActions';
 import LoginModal from './LoginModal';
@@ -53,13 +53,13 @@ class SignUpPage extends React.Component {
 
   render() {
     return (
-      <div className="signup-page">
-        <div className="top-bar">
+      <div id="auth">
+        <div className="signup-header">
           <Link to="/"><span className="brand-icon"></span></Link>
           <div className="modal-btn" onClick={this.toggleLoginModal}>Have an Account? <span>Log in</span></div>
           <LoginModal show={this.state.isOpen} onClose={this.toggleModal} />
         </div>
-        <div className="signup">
+        <div className="signup-form">
           <div>Join Kitter today.</div>
           {this.state.error}
           <form onSubmit={this.handleSignup}>

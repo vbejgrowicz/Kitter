@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../../assets/stylesheets/AuthPages.scss';
+import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
 
 class LoginModal extends React.Component {
   constructor(props) {
