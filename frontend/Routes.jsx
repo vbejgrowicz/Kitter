@@ -3,6 +3,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPageIndex';
 import UserProfilePage from './components/UserProfilePage';
 import SignUpPage from './components/AuthPages/SignUpPage';
+import LoginPage from './components/AuthPages/LoginPage';
 import { checkUser } from './utils/apiUtils';
 
 class Routes extends React.Component {
@@ -18,6 +19,7 @@ class Routes extends React.Component {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/login" component={LoginPage} />
           <Route exact path="/:userName" component={UserProfilePage} />
         </Switch>
       </Router>

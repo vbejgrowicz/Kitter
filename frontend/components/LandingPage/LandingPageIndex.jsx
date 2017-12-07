@@ -34,7 +34,7 @@ class LandingPage extends React.Component {
           <span className="brand-icon"></span>
           <span>
             <Link to="/signup"><button className="btn">Sign up</button></Link>
-            <button className="btn">Log in</button>
+            <Link to="/login"><button className="btn">Log in</button></Link>
           </span>
         </div>
         <div className="page-title">What's happening?</div>
