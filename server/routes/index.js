@@ -6,8 +6,9 @@ const User = require('../models/user');
 
 
 router.get('/user', (req, res) => {
-  res.json(req.user);
-  // TODO Check session token with user token
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  }
 });
 
 // SIGN UP ROUTE
