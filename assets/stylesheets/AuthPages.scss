@@ -1,4 +1,15 @@
 @import "main";
+@import "modal";
+
+input {
+  width: 100%;
+  display: block;
+  border: 1px solid $primary-color;
+  border-radius: 3px;
+  box-sizing: border-box;
+  outline: none;
+}
+
 
 .signup-page {
   background-color: $tertiary-color;
@@ -12,16 +23,23 @@
     border-bottom: 1px solid #1794a2;
     color: $tertiary-color;
     display: flex;
-    justify-content: flex-end;
     line-height: 47px;
     font-size: 14px;
-    padding: 0 20px;
+    position: relative;
     .brand-icon {
       height: 30px;
       width: 30px;
       position: absolute;
-      top: 0;
       left: 50%;
+    }
+    .modal-btn {
+      position: absolute;
+      right: 0%;
+      padding-right: 20px;
+    }
+    .modal {
+      width: 260px;
+      height: 300px;
     }
   }
   .signup {
@@ -37,16 +55,10 @@
     }
     form {
       input {
-        width: 100%;
         font-size: 18px;
         font-weight: bold;
         padding: 12px;
-        display: block;
-        border: 1px solid $primary-color;
-        border-radius: 3px;
         margin-bottom: 26px;
-        box-sizing: border-box;
-        outline: none;
       }
       ::placeholder {
         color: #C3C3C3;
