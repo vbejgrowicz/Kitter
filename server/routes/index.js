@@ -32,4 +32,10 @@ router.post('/login', (req, res) => {
   });
 });
 
+// LOGOUT ROUTE
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
 module.exports = router;
