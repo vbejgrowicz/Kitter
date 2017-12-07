@@ -25,10 +25,10 @@ router.post('/signup', (req, res) => {
 });
 
 // LOGIN ROUTE
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login'
-}), (req, res) => {
+router.post('/login', (req, res) => {
+  passport.authenticate('local')(req, res, () => {
+    res.json(req.user);
+  });
 });
 
 module.exports = router;
