@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const session = require('express-session');
 const app = express();
 const User = require('./models/user');
 mongoose.Promise = global.Promise;
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 // PASSPORT CONFIG
-app.use(require('express-session')({
+app.use(session({
   secret: 'Kitter is fun!',
   resave: false,
   saveUninitialized: false

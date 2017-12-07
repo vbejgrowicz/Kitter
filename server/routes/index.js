@@ -4,6 +4,12 @@ const passport = require('passport');
 
 const User = require('../models/user');
 
+
+router.get('/user', (req, res) => {
+  res.json(req.user);
+  // TODO Check session token with user token
+});
+
 // SIGN UP ROUTE
 router.post('/signup', (req, res) => {
   const newUser = new User({username: req.body.username, name: req.body.name});

@@ -3,8 +3,14 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPageIndex';
 import UserProfilePage from './components/UserProfilePage';
 import SignUpPage from './components/AuthPages/SignUpPage';
+import { checkUser } from './utils/apiUtils';
 
 class Routes extends React.Component {
+  componentDidMount() {
+    checkUser().then(res => {
+      console.log('this is user', res)
+    });
+  }
 
   render() {
     return (
