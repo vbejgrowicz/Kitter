@@ -2,22 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
-import { handleInput, handleSignup } from './utils';
-import { signUpUser } from '../../actions/AuthActions';
+import UserForm from './UserForm';
 import LoginModal from './LoginModal';
 
 class SignUpPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      username: '',
-      password: '',
-      error: '',
       isOpen: false
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleInput = handleInput.bind(this);
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
   }
 
@@ -26,11 +19,6 @@ class SignUpPage extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.updateUser(this.state.name, this.state.username, this.state.password);
-  };
 
   render() {
     return (
@@ -42,40 +30,11 @@ class SignUpPage extends React.Component {
         </div>
         <div className="signup-form">
           <div>Join Kitter today.</div>
-          {this.state.error}
-          <form onSubmit={this.handleSubmit}>
-            <input type="text"
-              placeholder="Full name"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleInput}
-            />
-            <input type="text"
-              placeholder="Username"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleInput}
-            />
-            <input type="password"
-              placeholder="Password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleInput}
-            />
-            <button>Sign Up</button>
-          </form>
+          <UserForm formType="Sign up"/>
         </div>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateUser: (name, username, password) => {
-      dispatch(signUpUser(name, username, password));
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(SignUpPage);
+export default SignUpPage;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/LandingPage.scss';
-import LoginTile from './LoginTile';
+import LoginTile from '../AuthPages/LoginTile';
 import PostTile from './PostTile';
 
 const featuredPosts = [
@@ -23,7 +23,7 @@ const featuredPosts = [
 ];
 
 class LandingPage extends React.Component {
-  
+
   render() {
     return (
       <div id="landingPage">
