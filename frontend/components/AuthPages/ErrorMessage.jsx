@@ -20,12 +20,10 @@ class ErrorMessage extends React.Component {
     const currentPage = this.context.router.history.location.pathname;
     const { page, message } = this.props.AuthReducer.error
 
-    return currentPage === page ? (
-      <div className="error-message">
-        {message}
+    return(
+      <div className="message-space">
+        {currentPage === page ? <div className="message">{message}</div> : null}
       </div>
-    ) : (
-      null
     );
   }
 }

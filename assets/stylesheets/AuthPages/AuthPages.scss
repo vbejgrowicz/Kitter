@@ -16,4 +16,21 @@
     box-sizing: border-box;
     outline: none;
   }
+
+  .message-space {
+    height: 80px;
+    width: 500px;
+    height: 80px;
+    margin: 10px auto;
+    box-sizing: border-box;
+
+    .message {
+      text-align: center;
+      background-color: $tertiary-color;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+      z-index: 1;
+      padding: 20px;
+      color: #7F7F7F;
+    }
+  }
 }
