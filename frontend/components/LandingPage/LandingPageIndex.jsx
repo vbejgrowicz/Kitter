@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/LandingPage.scss';
 import LoginTile from '../AuthPages/LoginTile';
 import PostTile from './PostTile';
+import { clearError } from '../../actions/AuthActions';
 
 const featuredPosts = [
   {
@@ -22,7 +25,16 @@ const featuredPosts = [
   }
 ];
 
-class LandingPage extends React.Component {
+class LandingPageIndex extends React.Component {
+  componentDidMount() {
+    const errorPage = this.props.AuthReducer.error.page;
+    const currentPage = this.context.router.history.location.pathname;
+    if (errorPage) {
+      if (currentPage !== errorPage) {
+        this.props.updateError();
+      }
+    }
+  }
 
   render() {
     return (
@@ -54,4 +66,20 @@ class LandingPage extends React.Component {
   }
 }
 
-export default LandingPage;
+LandingPageIndex.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
+function mapStateToProps({ AuthReducer }) {
+  return { AuthReducer };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateError: () => {
+      dispatch(clearError());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPageIndex);

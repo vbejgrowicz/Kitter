@@ -6,6 +6,16 @@ import { clearError } from '../../actions/AuthActions';
 
 class ErrorMessage extends React.Component {
 
+  componentDidMount() {
+    const errorPage = this.props.AuthReducer.error.page;
+    const currentPage = this.context.router.history.location.pathname;
+    if (errorPage) {
+      if (currentPage !== errorPage) {
+        this.props.updateError();
+      }
+    }
+  }
+
   render() {
     const currentPage = this.context.router.history.location.pathname;
     const { page, message } = this.props.AuthReducer.error
@@ -31,6 +41,7 @@ function mapStateToProps({ AuthReducer }) {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateError: () => {
+      dispatch(clearError());
     },
   };
 };

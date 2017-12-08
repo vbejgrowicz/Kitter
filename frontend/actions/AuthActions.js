@@ -1,6 +1,14 @@
 import { checkUser, logIn, signUp, logOut } from '../utils/apiUtils';
 import { isLoading } from './ViewActions';
 
+export const clearError = () => {
+  return {
+    type: 'SET_ERROR',
+    page: null,
+    message: null
+  };
+};
+
 export function getUser() {
   return function getUserThunk(dispatch) {
     checkUser().then(response => {
