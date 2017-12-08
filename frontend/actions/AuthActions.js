@@ -19,6 +19,7 @@ export function logInUser(username, password, redirectFailure) {
         dispatch({type: 'SET_USER', user: response});
       } else {
         redirectFailure();
+        dispatch({type: 'SET_ERROR', page: '/login', message: response});
       }
     });
   };
@@ -31,7 +32,7 @@ export function signUpUser(name, username, password) {
       if (response.username) {
         dispatch({type: 'SET_USER', user: response});
       } else {
-        dispatch({type: 'SET_ERROR', message: response.message});
+        dispatch({type: 'SET_ERROR', page: '/signup',  message: response.message});
       }
     });
   };

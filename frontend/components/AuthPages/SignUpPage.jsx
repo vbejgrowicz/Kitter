@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
 import UserForm from './UserForm';
 import Header from './Header';
+import ErrorMessage from './ErrorMessage';
 
 class SignUpPage extends React.Component {
   constructor(props) {
@@ -24,9 +25,9 @@ class SignUpPage extends React.Component {
     return (
       <div id="auth">
         <Header type="Sign up" />
+        <ErrorMessage />
         <div className="form">
           <div>Join Kitter today.</div>
-          {this.props.AuthReducer.error}
           <UserForm formType="Sign up"/>
         </div>
       </div>

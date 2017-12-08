@@ -4,7 +4,10 @@ const initialState = {
   username: null,
   name: null,
   id: null,
-  error: null,
+  error: {
+    message: null,
+    page: null
+  },
 }
 
 export function AuthReducer (state = initialState, action) {
@@ -17,10 +20,12 @@ export function AuthReducer (state = initialState, action) {
           id: action.user.id
         });
     case SET_ERROR:
-      return Object.assign({}, state,
-        {
-          error: action.message
-        });
+      return Object.assign({}, state, {
+        error: {
+          message: action.message,
+          page: action.page
+        }
+      });
     default :
     return state;
   }

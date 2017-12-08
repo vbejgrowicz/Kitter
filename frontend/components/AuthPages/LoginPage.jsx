@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
 import UserForm from './UserForm';
 import Header from './Header';
+import ErrorMessage from './ErrorMessage';
 
 class LoginPage extends React.Component {
 
@@ -10,6 +11,7 @@ class LoginPage extends React.Component {
     return (
       <div id="auth">
         <Header type="Log in" />
+        <ErrorMessage />
         <div className="form">
           <div>Log in to Kitter</div>
           <UserForm formType='Log in' />
