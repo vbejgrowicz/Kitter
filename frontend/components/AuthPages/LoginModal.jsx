@@ -24,12 +24,4 @@ class LoginModal extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateUser: (username, password) => {
-      dispatch(logInUser(username, password));
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(LoginModal);
+export default LoginModal;

@@ -26,6 +26,7 @@ class SignUpPage extends React.Component {
         <Header type="Sign up" />
         <div className="form">
           <div>Join Kitter today.</div>
+          {this.props.AuthReducer.error}
           <UserForm formType="Sign up"/>
         </div>
       </div>
@@ -33,4 +34,8 @@ class SignUpPage extends React.Component {
   }
 }
 
-export default SignUpPage;
+function mapStateToProps({ AuthReducer }) {
+  return { AuthReducer };
+}
+
+export default connect(mapStateToProps, null)(SignUpPage);
