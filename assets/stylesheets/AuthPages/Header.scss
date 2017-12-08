@@ -1,7 +1,7 @@
 $header-height: 47px;
 
 #auth {
-  .signup-header {
+  .header {
     height: $header-height;
     background-color: $secondary-color;
     background-image: linear-gradient(to right, #39AEF1, #00D38D);
@@ -23,11 +23,12 @@ $header-height: 47px;
       background-size: cover;
     }
 
-    .modal-btn {
+    .btn {
       position: absolute;
       right: 0%;
       padding-right: 20px;
       line-height: $header-height;
+      cursor: pointer;
     }
 
     .modal {

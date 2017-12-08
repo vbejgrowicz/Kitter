@@ -3,12 +3,14 @@ $primary-color: #E6ECF0;
 $secondary-color: #1DA1F2;
 $tertiary-color: #FFF;
 
-html, body, div, span, a, button {
+html, body, div, span, a, button, link {
   margin: 0;
   padding: 0;
   border: 0;
   font: 100% $font-stack;
   vertical-align: baseline;
+  color: inherit;
+  text-decoration: none;
 }
 
 body {
