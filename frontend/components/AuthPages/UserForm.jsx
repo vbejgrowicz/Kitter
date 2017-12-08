@@ -53,7 +53,7 @@ class UserForm extends React.Component {
           value={this.state.password}
           onChange={this.handleChange.bind(this)}
         />
-        <button>{this.props.formType}</button>
+        <button className="blue-btn">{this.props.formType}</button>
       </form>
     );
   }

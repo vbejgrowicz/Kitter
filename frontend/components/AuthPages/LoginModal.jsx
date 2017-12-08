@@ -12,9 +12,12 @@ class LoginModal extends React.Component {
     }
     return (
       <div className="modal">
-        <div className="login">
+        <div className="modal-form">
           <div>Have an Account?</div>
           <UserForm formType="Log in" />
+          <hr />
+          <div>New to Kitter?</div>
+          <button className="white-btn" onClick={this.props.onClose}>Sign up</button>
         </div>
       </div>
     );

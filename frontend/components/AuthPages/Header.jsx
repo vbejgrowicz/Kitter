@@ -25,9 +25,9 @@ class Header extends React.Component {
         {this.props.type === 'Sign up' ? (
           <div>
             <div className="btn" onClick={this.toggleLoginModal}>
-              Have an Account? <span>Log in <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+              Have an Account? <span>Log in <i className="fa fa-caret-down" aria-hidden="true"></i></span>
               </div>
-            <LoginModal show={this.state.isOpen} onClose={this.toggleModal} />
+            <LoginModal show={this.state.isOpen} onClose={this.toggleLoginModal} />
           </div>
         ) : (
           <div>

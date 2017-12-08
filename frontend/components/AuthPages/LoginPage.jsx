@@ -11,6 +11,7 @@ class LoginPage extends React.Component {
       <div id="auth">
         <Header type="Log in" />
         <div className="form">
+          <div>Log in to Kitter</div>
           <UserForm formType='Log in' />
         </div>
       </div>

@@ -46,7 +46,15 @@ $header-height: 47px;
       background: $tertiary-color;
       box-shadow: 0 1px 4px rgba(0,0,0,0.25);
       box-sizing: border-box;
-      padding: 15px;
+      padding: 20px;
+
+      hr {
+        border: 0;
+        height: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        margin: 17px 0;
+      }
 
       :after {
         bottom: 100%;
