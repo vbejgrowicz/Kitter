@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { UserReducer } from './UserReducer';
 import { ViewReducer } from './ViewReducer';
+import { AuthReducer } from './AuthReducer';
 
 export default combineReducers({
   ViewReducer,
-  UserReducer
+  AuthReducer
 });

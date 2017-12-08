@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
-import { activeUser } from '../../actions/UserActions';
-import { handleInput, handleLogin } from './utils';
+import { handleInput } from './utils';
+import { logInUser } from '../../actions/AuthActions';
 
 class LoginModal extends React.Component {
   constructor(props) {
@@ -13,9 +12,14 @@ class LoginModal extends React.Component {
       username: '',
       password: '',
     }
-    this.handleLogin = handleLogin.bind(this);
     this.handleInput = handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.updateUser(this.state.username, this.state.password);
+  };
 
   render() {
     if (!this.props.show) {
@@ -25,7 +29,7 @@ class LoginModal extends React.Component {
       <div className="modal">
         <div className="login">
           <div>Have an Account?</div>
-          <form onSubmit={this.handleLogin}>
+          <form onSubmit={this.handleSubmit}>
             <input type="text"
               placeholder="Username"
               name="username"
@@ -46,14 +50,10 @@ class LoginModal extends React.Component {
   }
 }
 
-LoginModal.contextTypes = {
-  router: PropTypes.object.isRequired
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUser: (user) => {
-      dispatch(activeUser(user));
+    updateUser: (username, password) => {
+      dispatch(logInUser(username, password));
     },
   };
 };

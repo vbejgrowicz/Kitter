@@ -1,23 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
-import { activeUser } from '../../actions/UserActions';
-import { handleInput, handleLogin } from './utils';
+import { logInUser } from '../../actions/AuthActions';
+import { handleInput } from './utils';
 
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
       username: '',
       password: '',
       error: ''
     }
-    this.handleLogin = handleLogin.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = handleInput.bind(this);
   }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.updateUser(this.state.username, this.state.password);
+  };
+
 
   render() {
     return (
@@ -27,7 +31,7 @@ class LoginPage extends React.Component {
         </div>
         <div className="login-form">
           {this.state.error}
-          <form onSubmit={this.handleLogin}>
+          <form onSubmit={this.handleSubmit}>
             <input type="text"
               placeholder="Username"
               name="username"
@@ -48,14 +52,10 @@ class LoginPage extends React.Component {
   }
 }
 
-LoginPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUser: (user) => {
-      dispatch(activeUser(user));
+    updateUser: (username, password) => {
+      dispatch(logInUser(username, password));
     },
   };
 };

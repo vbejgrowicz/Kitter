@@ -1,4 +1,4 @@
-import { ACTIVE_USER } from '../actions/types';
+import { SET_USER } from '../actions/types';
 
 const initialState = {
   username: null,
@@ -6,9 +6,9 @@ const initialState = {
   id: null,
 }
 
-export function UserReducer (state = initialState, action) {
+export function AuthReducer (state = initialState, action) {
   switch (action.type) {
-    case ACTIVE_USER:
+    case SET_USER:
       return Object.assign({}, state,
         {
           username: action.user.username,

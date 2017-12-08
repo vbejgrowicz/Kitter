@@ -6,20 +6,16 @@ import UserPageIndex from './components/UserPage/UserPageIndex';
 import UserProfilePage from './components/UserProfilePage';
 import SignUpPage from './components/AuthPages/SignUpPage';
 import LoginPage from './components/AuthPages/LoginPage';
-import { checkUser } from './utils/apiUtils';
-import { activeUser } from './actions/UserActions';
-import { isLoading } from './actions/ViewActions';
+import { getUser } from './actions/AuthActions';
 
 class Routes extends React.Component {
 
   componentDidMount() {
-    checkUser().then(res => {
-      this.props.updateUser(res);
-    });
+    this.props.updateUser();
   }
 
   requireLoggedIn() {
-    const currentUser = this.props.UserReducer.username;
+    const currentUser = this.props.AuthReducer.username;
     if (currentUser) {
       return true;
     } else {
@@ -64,15 +60,14 @@ class Routes extends React.Component {
   }
 }
 
-function mapStateToProps({ UserReducer, ViewReducer }) {
-  return { UserReducer, ViewReducer };
+function mapStateToProps({ ViewReducer, AuthReducer }) {
+  return { ViewReducer, AuthReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     updateUser: (user) => {
-      dispatch(activeUser(user));
-      dispatch(isLoading(false));
+      dispatch(getUser());
     },
   };
 };

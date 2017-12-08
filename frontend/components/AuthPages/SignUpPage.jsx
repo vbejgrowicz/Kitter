@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
 import { handleInput, handleSignup } from './utils';
-import { activeUser } from '../../actions/UserActions';
+import { signUpUser } from '../../actions/AuthActions';
 import LoginModal from './LoginModal';
 
 class SignUpPage extends React.Component {
@@ -17,7 +16,7 @@ class SignUpPage extends React.Component {
       error: '',
       isOpen: false
     }
-    this.handleSignup = handleSignup.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = handleInput.bind(this);
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
   }
@@ -27,6 +26,11 @@ class SignUpPage extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.updateUser(this.state.name, this.state.username, this.state.password);
+  };
 
   render() {
     return (
@@ -39,7 +43,7 @@ class SignUpPage extends React.Component {
         <div className="signup-form">
           <div>Join Kitter today.</div>
           {this.state.error}
-          <form onSubmit={this.handleSignup}>
+          <form onSubmit={this.handleSubmit}>
             <input type="text"
               placeholder="Full name"
               name="name"
@@ -66,14 +70,10 @@ class SignUpPage extends React.Component {
   }
 }
 
-SignUpPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUser: (user) => {
-      dispatch(activeUser(user));
+    updateUser: (name, username, password) => {
+      dispatch(signUpUser(name, username, password));
     },
   };
 };

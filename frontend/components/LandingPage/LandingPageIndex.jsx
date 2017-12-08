@@ -23,9 +23,7 @@ const featuredPosts = [
 ];
 
 class LandingPage extends React.Component {
-  // componentDidMount() {
-  //   console.log('fetch default post data');
-  // }
+  
   render() {
     return (
       <div id="landingPage">
