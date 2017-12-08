@@ -5,8 +5,9 @@ export function getUser() {
   return function getUserThunk(dispatch) {
     checkUser().then(response => {
       dispatch({type: 'SET_USER', user: response});
+    }).then(() => {
+      dispatch(isLoading(false));
     });
-    dispatch(isLoading(false));
   };
 };
 
@@ -14,11 +15,7 @@ export function logInUser(username, password) {
   return function logInUserThunk(dispatch) {
     const userData = { username: username, password: password };
     logIn(userData).then(response => {
-      if (response.username) {
-        dispatch({type: 'SET_USER', user: response});
-      } else {
-        console.log(response);
-      }
+      dispatch({type: 'SET_USER', user: response});
     });
   };
 };
@@ -30,7 +27,7 @@ export function signUpUser(name, username, password) {
       if (response.username) {
         dispatch({type: 'SET_USER', user: response});
       } else {
-        console.log(response);
+        dispatch({type: 'SET_ERROR', message: response.message});
       }
     });
   };
