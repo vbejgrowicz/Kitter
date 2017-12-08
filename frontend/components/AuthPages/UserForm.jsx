@@ -8,51 +8,92 @@ class UserForm extends React.Component {
     this.state = {
       name: '',
       username: '',
-      password: ''
+      password: '',
+      errors: {}
+    };
+  }
+
+  validate(name, username, password) {
+    return {
+      name: name.length === 0,
+      username: username.length === 0,
+      password: password.length <= 6
     };
   }
 
   handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
     this.setState({
-      [event.target.name]: event.target.value
+      [name]: value
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.props.formType);
+    const { name, username, password } = this.state;
     if(this.props.formType === 'Sign up') {
-      this.props.createUser(this.state.name, this.state.username, this.state.password);
+      if (this.checkErrors()) {
+        this.props.createUser(name, username, password);
+      }
     } else {
-      this.props.updateUser(this.state.username, this.state.password);
+      this.props.updateUser(username, password);
     }
   };
+
+  checkErrors() {
+    const { name, username, password } = this.state;
+    const errors = this.validate(name, username, password);
+    this.setState({ errors: errors });
+    return !Object.keys(errors).some(x => errors[x]);
+  }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         {this.props.formType === 'Sign up' ? (
-          <input type="text"
-            placeholder="Full Name"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange.bind(this)}
-          />
+          <div>
+            <p className="error">{this.state.errors.name ?(
+              <span><i className="fa fa-times" aria-hidden="true"></i> Enter a Name</span>
+              ) : (
+                null
+            )}</p>
+            <input type="text"
+              placeholder="Full Name"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange.bind(this)}
+            />
+          </div>
         ) : (
           null
         )}
-        <input type="text"
-          placeholder="Username"
-          name="username"
-          value={this.state.username}
-          onChange={this.handleChange.bind(this)}
-        />
-        <input type="password"
-          placeholder="Password"
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange.bind(this)}
-        />
+        <div>
+          <p className="error">{this.state.errors.username ?(
+            <span><i className="fa fa-times" aria-hidden="true"></i> Enter a Username</span>
+            ) : (
+              null
+          )}</p>
+          <input type="text"
+            placeholder="Username"
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChange.bind(this)}
+          />
+        </div>
+        <div>
+          <p className="error">{this.state.errors.password ?(
+            <span><i className="fa fa-times" aria-hidden="true"></i> Password must be at least 6 characters</span>
+            ) : (
+              null
+          )}</p>
+          <input type="password"
+            placeholder="Password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange.bind(this)}
+          />
+        </div>
         <button className="blue-btn">{this.props.formType}</button>
       </form>
     );
