@@ -21,8 +21,8 @@ class Routes extends React.Component {
     } else {
       return false;
     }
-
   }
+
   render() {
     const AuthRoutes = () => {
       return (

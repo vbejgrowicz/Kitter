@@ -11,11 +11,15 @@ export function getUser() {
   };
 };
 
-export function logInUser(username, password) {
+export function logInUser(username, password, redirectFailure) {
   return function logInUserThunk(dispatch) {
     const userData = { username: username, password: password };
     logIn(userData).then(response => {
-      dispatch({type: 'SET_USER', user: response});
+      if (response.username) {
+        dispatch({type: 'SET_USER', user: response});
+      } else {
+        redirectFailure();
+      }
     });
   };
 };

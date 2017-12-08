@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logInUser, signUpUser } from '../../actions/AuthActions';
 
@@ -11,6 +12,10 @@ class UserForm extends React.Component {
       password: '',
       errors: {}
     };
+  }
+
+  redirectFailure() {
+    this.context.router.history.push('/login');
   }
 
   validate(name, username, password) {
@@ -37,7 +42,7 @@ class UserForm extends React.Component {
         this.props.createUser(name, username, password);
       }
     } else {
-      this.props.updateUser(username, password);
+      this.props.updateUser(username, password, this.redirectFailure.bind(this));
     }
   };
 
@@ -100,10 +105,14 @@ class UserForm extends React.Component {
   }
 }
 
+UserForm.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUser: (username, password) => {
-      dispatch(logInUser(username, password));
+    updateUser: (username, password, redirectFailure) => {
+      dispatch(logInUser(username, password, redirectFailure));
     },
     createUser: (name, username, password) => {
       dispatch(signUpUser(name, username, password));
