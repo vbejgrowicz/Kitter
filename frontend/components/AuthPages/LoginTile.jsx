@@ -6,6 +6,7 @@ import { logInUser } from '../../actions/AuthActions';
 class LoginTile extends React.Component {
 
   handleClick() {
+    console.log(this.props);
     this.props.guestLogin('Guest', 'Password');
   }
 
@@ -14,7 +15,7 @@ class LoginTile extends React.Component {
       <div className="tile login">
         <div>Log in to your account</div>
         <UserForm formType="Log in" />
-        <button className="btn" onClick={this.handleClick}>Log in as Guest</button>
+        <button className="btn" onClick={this.handleClick.bind(this)}>Log in as Guest</button>
       </div>
     );
   }
