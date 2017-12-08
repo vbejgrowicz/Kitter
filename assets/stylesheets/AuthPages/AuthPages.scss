@@ -1,5 +1,5 @@
 @import "../main";
-@import "SignUpHeader";
+@import "Header";
 
 #auth {
   background-color: $tertiary-color;
@@ -15,7 +15,7 @@
     box-sizing: border-box;
     outline: none;
   }
-    .signup-form {
+    .form {
       padding: 100px 0;
       height: 490px;
       width: 390px;
