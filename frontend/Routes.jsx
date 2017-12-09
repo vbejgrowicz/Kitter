@@ -7,6 +7,7 @@ import UserProfilePage from './components/UserProfilePage';
 import SignUpPage from './components/AuthPages/SignUpPage';
 import LoginPage from './components/AuthPages/LoginPage';
 import { getUser } from './actions/AuthActions';
+import NavBar from './components/Header/NavBar';
 
 class Routes extends React.Component {
 
@@ -51,7 +52,10 @@ class Routes extends React.Component {
     ) : (
       <Router>
         {this.requireLoggedIn() ? (
-            <AuthRoutes />
+            <div>
+              <NavBar />
+              <AuthRoutes />
+            </div>
         ) : (
           <NonAuthRoutes />
         )}
