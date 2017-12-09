@@ -1,0 +1,63 @@
+@import "main";
+$nav-height: 47px;
+
+#nav {
+  height: $nav-height;
+  color: $secondary-color;
+  background-color: $tertiary-color;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  min-width: 500px;
+
+  .link-container {
+    display: flex;
+    width: 100%
+  }
+
+  div {
+    width: 33.33%;
+    line-height: 47px;
+
+    i {
+      font-size: 30px;
+      vertical-align: middle;
+    }
+  }
+
+  .left {
+    text-align: left;
+    margin-left: 40px;
+  }
+
+  .center {
+    text-align: center;
+    .brand-icon {
+      height: 22px;
+      width: 22px;
+      margin: 13px auto;
+      background-image: url('../images/cat-blue.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  .right {
+    text-align: right;
+    margin-right: 40px;
+    i {
+      margin-right: 20px;
+      cursor: pointer;
+    }
+    button {
+      font-size: 14px;
+      width: 80px;
+      height: 35px;
+      background-color: $secondary-color;
+      color: $tertiary-color;
+      border-radius: 20px;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+}

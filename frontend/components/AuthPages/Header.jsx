@@ -26,7 +26,7 @@ class Header extends React.Component {
           <div>
             <div className="btn" onClick={this.toggleLoginModal}>
               Have an Account? <span>Log in <i className="fa fa-caret-down" aria-hidden="true"></i></span>
-              </div>
+            </div>
             <LoginModal show={this.state.isOpen} onClose={this.toggleLoginModal} />
           </div>
         ) : (
