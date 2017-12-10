@@ -1,0 +1,14 @@
+@import "../main";
+
+#meow-modal {
+  top: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  #modal {
+    width: 100px;
+    height: 100px;
+    background-color: $tertiary-color;
+  }
+}
