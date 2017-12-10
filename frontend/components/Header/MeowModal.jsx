@@ -1,14 +1,15 @@
 import React from 'react';
+import '../../../assets/stylesheets/NavBar/MeowModal.scss';
+
 
 class MeowModal extends React.Component {
 
   render() {
-    if (!this.props.show) {
-      return null;
-    }
     return (
-      <div>
-        Meow
+      <div id="meow-modal" onClick={this.props.onClose}>
+        <div id="modal" onClick={this.props.ignoreClose}>
+          Meow
+        </div>
       </div>
     );
   }
