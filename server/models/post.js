@@ -8,7 +8,8 @@ const postSchema = new mongoose.Schema({
       ref: 'User'
     },
     username: String
-  }
+  },
+  timePosted: String
 });
 
 module.exports = mongoose.model('Post', postSchema);
