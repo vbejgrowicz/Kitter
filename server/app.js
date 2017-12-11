@@ -7,6 +7,7 @@ const LocalStrategy = require('passport-local');
 const session = require('express-session');
 const app = express();
 const User = require('./models/user');
+const Post = require('./models/post');
 mongoose.Promise = global.Promise;
 
 // Require Routes
