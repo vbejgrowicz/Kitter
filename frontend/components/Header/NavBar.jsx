@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../../assets/stylesheets/NavBar/NavBar.scss';
 import UserDropdown from './UserDropdown';
-import MeowModal from './MeowModal';
+import PostModal from './PostModal';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class NavBar extends React.Component {
           <UserDropdown onClose={this.handleClick.bind(this, 'User')} ignoreClose={this.ignoreClose.bind(this)} />
         )}
         {this.state.Meow && (
-          <MeowModal onClose={this.handleClick.bind(this, 'Meow')} ignoreClose={this.ignoreClose.bind(this)} />
+          <PostModal onClose={this.handleClick.bind(this, 'Meow')} ignoreClose={this.ignoreClose.bind(this)} />
         )}
       </div>
     );
