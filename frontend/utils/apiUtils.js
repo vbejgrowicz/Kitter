@@ -23,3 +23,20 @@ export const logOut = () => {
   return fetch('/api/logout', { method: 'GET', credentials: 'same-origin'})
   .then(resp => resp.json());
 }
+
+export const getAllPosts = () => {
+  return fetch('/api/posts', { method: 'GET', credentials: 'same-origin'})
+  .then(resp => resp.json());
+}
+
+export const addPost = (post) => {
+  return fetch('/api/posts', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      text: post,
+    })
+  })
+  .then(resp => resp.json());
+}
