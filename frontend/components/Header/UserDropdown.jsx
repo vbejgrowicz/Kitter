@@ -27,7 +27,7 @@ class UserDropdown extends React.Component {
             </Link>
             </li>
             <hr />
-            <li className="logout link">
+            <li className="logout link" onClick={() => this.props.updateUser()}>
               <div>Log Out</div>
             </li>
           </ul>
@@ -43,7 +43,7 @@ function mapStateToProps({ AuthReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUser: (user) => {
+    updateUser: () => {
       dispatch(logOutUser());
     },
   };
