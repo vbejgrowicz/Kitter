@@ -21,8 +21,12 @@ class MeowModal extends React.Component {
     return (
       <div id="meow-modal" onClick={this.props.onClose}>
         <div id="modal" onClick={this.props.ignoreClose}>
-          MEOW Modal
-          <button onClick={this.handleSubmit.bind(this)}>Meow</button>
+          <div className="title">Compose new Meow</div>
+          <div className="close" onClick={this.props.onClose}>&times;</div>
+          <div className="post-container">
+            <textarea maxLength="140"/>
+            <button onClick={this.handleSubmit.bind(this)}>Meow</button>
+          </div>
         </div>
       </div>
     );
