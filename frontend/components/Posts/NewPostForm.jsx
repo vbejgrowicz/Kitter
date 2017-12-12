@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import TextareaAutosize from 'react-autosize-textarea';
 import '../../../assets/stylesheets/Posts/PostForm.scss';
 import { newPost } from '../../actions/PostActions';
 
@@ -26,7 +27,7 @@ class NewPostForm extends React.Component {
   render() {
     return (
       <div id="post-form">
-        <textarea maxLength="140" placeholder="What's happening?" onChange={this.handleInput.bind(this)} />
+        <TextareaAutosize maxRows={14} rows={3} maxLength="140" placeholder="What's happening?" onChange={this.handleInput.bind(this)}  />
         <button disabled={!this.state.post} onClick={this.handleSubmit.bind(this)}>Meow</button>
       </div>
     );
