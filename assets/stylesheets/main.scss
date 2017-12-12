@@ -19,3 +19,9 @@ body {
   background-color: $primary-color;
   color: $secondary-color;
 }
+
+// import all component stylesheets
+@import "./LandingPage";
+@import "./AuthPages/AuthPages";
+@import "./NavBar/NavBar";
+@import "./Posts/PostForm";

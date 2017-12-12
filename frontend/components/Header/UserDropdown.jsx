@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOutUser } from '../../actions/AuthActions';
-import '../../../assets/stylesheets/NavBar/UserDropdown.scss';
 
 class UserDropdown extends React.Component {
 

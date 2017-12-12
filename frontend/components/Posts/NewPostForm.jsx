@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import TextareaAutosize from 'react-autosize-textarea';
-import '../../../assets/stylesheets/Posts/PostForm.scss';
 import { newPost } from '../../actions/PostActions';
 
 

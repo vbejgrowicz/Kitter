@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
 import UserForm from './UserForm';
 import Header from './Header';
 import ErrorMessage from './ErrorMessage';

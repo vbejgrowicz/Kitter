@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
 import LoginModal from './LoginModal';
 
 class Header extends React.Component {

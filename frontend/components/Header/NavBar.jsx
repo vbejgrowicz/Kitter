@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../../assets/stylesheets/NavBar/NavBar.scss';
 import UserDropdown from './UserDropdown';
 import PostModal from './PostModal';
 

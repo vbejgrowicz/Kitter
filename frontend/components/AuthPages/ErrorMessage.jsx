@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
 import { clearError } from '../../actions/AuthActions';
 
 class ErrorMessage extends React.Component {

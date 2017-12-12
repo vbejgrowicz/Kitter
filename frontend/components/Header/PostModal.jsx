@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import '../../../assets/stylesheets/NavBar/PostModal.scss';
 import NewPostForm from '../Posts/NewPostForm';
 
 class PostModal extends React.Component {

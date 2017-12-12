@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../../assets/stylesheets/AuthPages/AuthPages.scss';
 import UserForm from './UserForm';
 
 class LoginModal extends React.Component {
