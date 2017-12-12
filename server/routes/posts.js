@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:username', (req, res) => {
-  Post.find({ author_username: req.params.username }, (err, userPosts) => {
+  Post.find({ "author.username": req.params.username }, (err, userPosts) => {
     if (err){
       console.log(err);
     } else {
@@ -25,10 +25,12 @@ router.get('/:username', (req, res) => {
 // CREATE - create new post
 router.post('/', (req, res) => {
   const text = req.body.text;
-  const author_id = req.user._id;
-  const author_username = req.user.username;
+  const author = {
+    id: req.user._id,
+    username: req.user.username
+  };
   const timePosted = new Date();
-  const newPost = { text: text, author_id: author_id, author_username: author_username, timePosted: timePosted};
+  const newPost = { text: text, author: author, timePosted: timePosted};
   Post.create(newPost, (err, createdPost) => {
     if (err) {
       console.log(err);
