@@ -12,8 +12,8 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:username', (req, res) => {
-  Post.find({ "author.username": req.params.username }, (err, userPosts) => {
+router.get('/:id', (req, res) => {
+  Post.find({ "author.id": req.params.id }, (err, userPosts) => {
     if (err){
       console.log(err);
     } else {

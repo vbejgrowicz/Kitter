@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCurrentPosts } from '../actions/PostActions';
+import { findUserPosts } from '../actions/PostActions';
 
 class UserProfilePage extends React.Component {
 
   componentDidMount() {
-    this.props.getPosts(this.props.match.params.username);
+    this.props.fetchPosts(this.props.match.params.username);
   }
 
   render() {
@@ -17,12 +17,16 @@ class UserProfilePage extends React.Component {
   }
 }
 
+function mapStateToProps({ PostReducer }) {
+  return { PostReducer };
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPosts: (username) => {
-      dispatch(getCurrentPosts(username));
+    fetchPosts: (username) => {
+      dispatch(findUserPosts(username));
     }
   };
 };
 
-export default connect(null, mapDispatchToProps)(UserProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfilePage);

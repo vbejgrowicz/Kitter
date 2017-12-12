@@ -11,10 +11,21 @@ export function getPosts() {
   };
 };
 
-export function getCurrentPosts(username) {
-  return function getCurrentPostsThunk(dispatch) {
-    getUserPosts(username).then(response => {
-      dispatch({type: 'FETCH_POSTS', posts: response.userPosts});
+export function findUserPosts(username) {
+  return function findUserPosts(dispatch) {
+    dispatch(requestPosts());
+    findUser(username).then(userResponse => {
+      let err;
+      if (userResponse.user !== null) {
+        err = false;
+        getUserPosts(userResponse.user._id).then(response => {
+          dispatch({type: 'FETCH_POSTS', posts: response.userPosts});
+          dispatch(receivedPosts(err));
+        });
+      } else {
+        err = true;
+        dispatch(receivedPosts(err));
+      }
     });
   };
 };

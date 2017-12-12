@@ -5,7 +5,7 @@ import { getPosts } from '../../actions/PostActions';
 class UserPageIndex extends React.Component {
 
   componentDidMount() {
-    this.props.getPosts();
+    this.props.fetchPosts();
   }
 
   render() {
@@ -23,7 +23,7 @@ function mapStateToProps({ AuthReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPosts: () => {
+    fetchPosts: () => {
       dispatch(getPosts());
     }
   };
