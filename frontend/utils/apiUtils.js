@@ -29,6 +29,11 @@ export const getAllPosts = () => {
   .then(resp => resp.json());
 }
 
+export const getUserPosts = (username) => {
+  return fetch(`/api/posts/${username}`, { method: 'GET', credentials: 'same-origin' })
+  .then(resp => resp.json());
+}
+
 export const addPost = (post) => {
   return fetch('/api/posts', {
     method: 'POST',

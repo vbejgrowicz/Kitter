@@ -12,6 +12,16 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:username', (req, res) => {
+  Post.find({ author_username: req.params.username }, (err, userPosts) => {
+    if (err){
+      console.log(err);
+    } else {
+      res.json({ userPosts: userPosts });
+    }
+  });
+});
+
 // CREATE - create new post
 router.post('/', (req, res) => {
   const text = req.body.text;
