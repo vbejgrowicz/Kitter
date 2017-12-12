@@ -1,5 +1,4 @@
 import { checkUser, logIn, signUp, logOut } from '../utils/apiUtils';
-import { isLoading } from './ViewActions';
 
 export const clearError = () => {
   return {
@@ -9,10 +8,20 @@ export const clearError = () => {
   };
 };
 
+export const isLoading = status => {
+  return {
+    type: 'UPDATE_AUTH_STATUS',
+    status
+  };
+};
+
+
 export function getUser() {
   return function getUserThunk(dispatch) {
     checkUser().then(response => {
-      dispatch({type: 'SET_USER', user: response});
+      if (response.id !== null) {
+        dispatch({type: 'SET_USER', user: response});
+      }
     }).then(() => {
       dispatch(isLoading(false));
     });

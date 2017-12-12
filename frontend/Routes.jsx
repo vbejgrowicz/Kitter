@@ -47,7 +47,7 @@ class Routes extends React.Component {
       )
     }
 
-    const status = this.props.ViewReducer.isLoading;
+    const status = this.props.AuthReducer.isLoading;
     return status ? (
       <div>Loading...</div>
     ) : (
@@ -65,8 +65,8 @@ class Routes extends React.Component {
   }
 }
 
-function mapStateToProps({ ViewReducer, AuthReducer }) {
-  return { ViewReducer, AuthReducer };
+function mapStateToProps({ AuthReducer }) {
+  return { AuthReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {

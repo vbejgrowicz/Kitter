@@ -1,5 +1,5 @@
-// UserActions
-export const UPDATE_STATUS = "UPDATE_STATUS";
+// AuthActions
+export const UPDATE_AUTH_STATUS = "UPDATE_AUTH_STATUS";
 export const SET_USER = "SET_USER";
 export const SET_ERROR = "SET_ERROR";
 
