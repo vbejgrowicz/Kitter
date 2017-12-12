@@ -17,8 +17,8 @@ class UserPageIndex extends React.Component {
   }
 }
 
-function mapStateToProps({ AuthReducer }) {
-  return { AuthReducer };
+function mapStateToProps({ PostReducer, AuthReducer }) {
+  return { PostReducer, AuthReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {

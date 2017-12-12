@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPageIndex';
-import UserPageIndex from './components/UserPage/UserPageIndex';
-import UserProfilePage from './components/UserProfilePage';
+import UserHomePage from './components/UserPage/UserHomePage';
+import UserPage from './components/UserPage/UserPage';
 import SignUpPage from './components/AuthPages/SignUpPage';
 import LoginPage from './components/AuthPages/LoginPage';
 import { getUser } from './actions/AuthActions';
@@ -30,8 +30,8 @@ class Routes extends React.Component {
         <Switch>
           <Redirect from="/signup" to="/" />
           <Redirect from="/login" to="/" />
-          <Route exact path="/" component={UserPageIndex} />
-          <Route exact path="/:username" component={UserProfilePage} />
+          <Route exact path="/" component={UserHomePage} />
+          <Route exact path="/:username" component={UserPage} />
         </Switch>
       )
     }
@@ -42,7 +42,7 @@ class Routes extends React.Component {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignUpPage} />
-          <Route exact path="/:username" component={UserProfilePage} />
+          <Route exact path="/:username" component={UserPage} />
         </Switch>
       )
     }
