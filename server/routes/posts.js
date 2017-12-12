@@ -15,12 +15,10 @@ router.get('/', (req, res) => {
 // CREATE - create new post
 router.post('/', (req, res) => {
   const text = req.body.text;
-  const author = {
-    id: req.user._id,
-    username: req.user.username
-  };
+  const author_id = req.user._id;
+  const author_username = req.user.username;
   const timePosted = new Date();
-  const newPost = { text: text, author: author, timePosted: timePosted};
+  const newPost = { text: text, author_id: author_id, author_username: author_username, timePosted: timePosted};
   Post.create(newPost, (err, createdPost) => {
     if (err) {
       console.log(err);
