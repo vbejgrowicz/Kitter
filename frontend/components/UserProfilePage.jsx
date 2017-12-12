@@ -1,15 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getCurrentPosts } from '../actions/PostActions';
 
 class UserProfilePage extends React.Component {
 
+  componentDidMount() {
+    this.props.getPosts(this.props.match.params.username);
+  }
+
   render() {
-    console.log(this.props.match.params.userName);
     return (
       <div>
-        <h1>{this.props.match.params.userName}'s Page </h1>
+        <h1>{this.props.match.params.username}'s Page </h1>
       </div>
     );
   }
 }
 
-export default UserProfilePage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getPosts: (username) => {
+      dispatch(getCurrentPosts(username));
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(UserProfilePage);
