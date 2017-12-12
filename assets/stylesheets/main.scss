@@ -21,6 +21,7 @@ body {
 }
 
 // import all component stylesheets
+@import "./UserPages/UserHomepage";
 @import "./LandingPage";
 @import "./AuthPages/AuthPages";
 @import "./NavBar/NavBar";
