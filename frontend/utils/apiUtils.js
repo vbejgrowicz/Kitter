@@ -24,6 +24,11 @@ export const logOut = () => {
   .then(resp => resp.json());
 }
 
+export const findUser = (username) => {
+  return fetch(`/api/users/${username}`, { method: 'GET', credentials: 'same-origin'})
+  .then(resp => resp.json());
+}
+
 export const getAllPosts = () => {
   return fetch('/api/posts', { method: 'GET', credentials: 'same-origin'})
   .then(resp => resp.json());

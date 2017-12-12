@@ -12,6 +12,16 @@ router.get('/user', (req, res) => {
   }
 });
 
+router.get('/users/:username', (req, res) => {
+  User.findOne({ username: req.params.username }, (err, user) => {
+    if (err){
+      console.log(err);
+    } else {
+      res.json({ user: user });
+    }
+  });
+});
+
 // SIGN UP ROUTE
 router.post('/signup', (req, res) => {
   const newUser = new User({username: req.body.username, name: req.body.name});
