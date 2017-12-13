@@ -1,16 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getPosts } from '../../actions/PostActions';
 import UserProfileCard from './UserProfileCard';
 import UserProfilePostBox from './UserProfilePostBox';
 import PostList from '../Posts/PostList';
 
 class UserHomepage extends React.Component {
-
-  componentDidMount() {
-    this.props.fetchPosts();
-  }
 
   render() {
     return (
@@ -25,16 +18,4 @@ class UserHomepage extends React.Component {
   }
 }
 
-function mapStateToProps({ PostReducer }) {
-  return { PostReducer };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPosts: () => {
-      dispatch(getPosts());
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserHomepage);
+export default UserHomepage;
