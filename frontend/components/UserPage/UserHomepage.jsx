@@ -5,24 +5,10 @@ import { getPosts } from '../../actions/PostActions';
 import UserProfileCard from './UserProfileCard';
 import NewPostForm from '../Posts/NewPostForm';
 
-class UserPageIndex extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      focus: false
-    }
-  }
+class UserHomepage extends React.Component {
 
   componentDidMount() {
     this.props.fetchPosts();
-  }
-
-  handleFocus() {
-    this.setState({ focus: true });
-  }
-
-  handleBlur() {
-    this.setState({ focus: false });
   }
 
   render() {
@@ -30,8 +16,10 @@ class UserPageIndex extends React.Component {
       <div id="user-home-page">
         <UserProfileCard />
         <div id="profile-feed">
-          <div onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}>
-            <NewPostForm isFocused={this.state.focus} />
+          <div id="homepage-post-box">
+            <div>
+            </div>
+            <NewPostForm initialFocus={false} />
           </div>
 
         </div>
@@ -52,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPageIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(UserHomepage);

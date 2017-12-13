@@ -9,6 +9,7 @@ class NewPostForm extends React.Component {
     super(props);
     this.state = {
       post: '',
+      focus: this.props.initialFocus,
     };
   }
 
@@ -23,8 +24,17 @@ class NewPostForm extends React.Component {
     });
   }
 
+  handleFocus() {
+    this.setState({ focus: true });
+  }
+
+  handleBlur() {
+    this.setState({ focus: false });
+  }
+
+
   render() {
-    const focus = this.props.isFocused ? 'open' : 'closed';
+    const focus = this.state.focus ? 'open' : 'closed';
     return (
       <div id="post-form">
         <TextareaAutosize
@@ -33,6 +43,8 @@ class NewPostForm extends React.Component {
           maxLength="140"
           placeholder="What's happening?"
           onChange={this.handleInput.bind(this)}
+          onFocus={this.props.initialFocus ? null : this.handleFocus.bind(this)}
+          onBlur={this.props.initialFocus ? null : this.handleBlur.bind(this)}
         />
         <button className={focus} disabled={!this.state.post} onClick={this.handleSubmit.bind(this)}>Meow</button>
       </div>
