@@ -17,9 +17,12 @@ class UserHomepage extends React.Component {
         <UserProfileCard />
         <div id="profile-feed">
           <div id="homepage-post-box">
-            <div>
+            <div className="image">
+              <i className="fa fa-user-circle" aria-hidden="true"></i>
             </div>
-            <NewPostForm initialFocus={false} />
+            <div className="post">
+              <NewPostForm initialFocus={false} />
+            </div>
           </div>
 
         </div>
