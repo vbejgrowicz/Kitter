@@ -1,17 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { findUserPosts } from '../../actions/PostActions';
+import { checkUser } from '../../actions/UserProfileActions';
 import UserProfileCard from './UserProfileCard';
 import PostList from '../Posts/PostList';
 
-class UserProfilePage extends React.Component {
+class UserPage extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPosts(this.props.match.params.username);
+    this.props.fetchUser(this.props.match.params.username);
   }
 
   render() {
-    // console.log(this.props.PostReducer.isFetching);
     return (
       <div id="user-home-page">
         <div style={{display: "inline-block", width: 230}}>
@@ -31,10 +30,10 @@ function mapStateToProps({ PostReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPosts: (username) => {
-      dispatch(findUserPosts(username));
+    fetchUser: (username) => {
+      dispatch(checkUser(username));
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
