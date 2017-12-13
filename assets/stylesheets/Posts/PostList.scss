@@ -1,0 +1,19 @@
+#post-list {
+  .post-item {
+    text-align: left;
+    color: #000;
+    border-bottom: 1px solid #E3E3E3;
+    white-space: pre-wrap;
+    padding: 10px;
+
+    &:first-child {
+      border-top: 1px solid #E3E3E3;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      background-color: #F1F1F1;
+    }
+  }
+}

@@ -14,9 +14,9 @@ class PostList extends React.Component {
       return <PostItem post={post} key={post._id} />
     });
     return (
-      <div id="post-list">
+      <ul id="post-list">
         {posts}
-      </div>
+      </ul>
     );
   }
 }
