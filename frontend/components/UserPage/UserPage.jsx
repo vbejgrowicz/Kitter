@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { findUserPosts } from '../../actions/PostActions';
+import UserProfileCard from './UserProfileCard';
+import PostList from '../Posts/PostList';
 
 class UserProfilePage extends React.Component {
 
@@ -11,8 +13,13 @@ class UserProfilePage extends React.Component {
   render() {
     // console.log(this.props.PostReducer.isFetching);
     return (
-      <div>
-        <h1>{this.props.match.params.username}'s Page </h1>
+      <div id="user-home-page">
+        <div style={{display: "inline-block", width: 230}}>
+        {this.props.match.params.username}'s Page
+        </div>
+        <div id="profile-feed">
+          <PostList />
+        </div>
       </div>
     );
   }
