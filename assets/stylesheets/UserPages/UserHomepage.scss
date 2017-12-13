@@ -1,14 +1,66 @@
 #user-home-page {
-  $break-width: 680px;
+  $break-width: 710px;
   margin: 10px;
   text-align: center;
 
   #profile-card {
     display: inline-block;
     margin-right: 10px;
-    width: 200px;
-    height: 200px;
-    background-color: $tertiary-color;
+    width: 230px;
+    height: 180px;
+    background-color: $secondary-color;
+    position: relative;
+    text-align: left;
+    .content {
+      height: 100px;
+      margin-top: 80px;
+      background-color: $tertiary-color;
+      .image {
+        background-color: $tertiary-color;
+        border-radius: 50%;
+        height: 55px;
+        width: 55px;
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        text-align: center;
+        font-size: 46px;
+      }
+      .account {
+        position: absolute;
+        left: 70px;
+        margin-top: 5px;
+        .name {
+          font-size: 18px;
+          font-weight: bold;
+          color: #000;
+        }
+        .username {
+          font-size: 14px;
+          color: #969696;
+        }
+      }
+      .user-data {
+        position: absolute;
+        bottom: 0;
+        width: 230px;
+        padding: 15px;
+        box-sizing: border-box;
+
+        .data {
+          width: 50%;
+          display: inline-block;
+          .title {
+            font-size: 12px;
+            color: #969696;
+            font-weight: bold;
+          }
+          .count {
+            font-weight: bold;
+          }
+        }
+      }
+    }
   }
 
   #profile-feed {
@@ -16,6 +68,7 @@
     width: 60%;
     min-width: 450px;
     background-color: $tertiary-color;
+    vertical-align: top;
   }
 
   @media (max-width: $break-width) {
