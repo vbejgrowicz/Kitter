@@ -1,2 +1,33 @@
 #user-home-page {
+  $break-width: 680px;
+  margin: 10px;
+  text-align: center;
+
+  #profile-card {
+    display: inline-block;
+    margin-right: 10px;
+    width: 200px;
+    height: 200px;
+    background-color: $tertiary-color;
+  }
+
+  #profile-feed {
+    display: inline-block;
+    width: 60%;
+    min-width: 450px;
+    background-color: $tertiary-color;
+  }
+
+  @media (max-width: $break-width) {
+    #profile-card {
+      width: 100%;
+      min-width: 480px;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    #profile-feed {
+      width: 100%;
+      min-width: 480px;
+    }
+  }
 }

@@ -11,7 +11,10 @@ class UserPageIndex extends React.Component {
   render() {
     return (
       <div id="user-home-page">
-        Welcome {this.props.AuthReducer.name}!
+        <div id="profile-card">
+          Welcome {this.props.AuthReducer.name}!
+        </div>
+        <div id="profile-feed">Profile Feed</div>
       </div>
     );
   }
