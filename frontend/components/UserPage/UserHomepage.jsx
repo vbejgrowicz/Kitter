@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getPosts } from '../../actions/PostActions';
 import UserProfileCard from './UserProfileCard';
 import UserProfilePostBox from './UserProfilePostBox';
+import PostList from '../Posts/PostList';
 
 class UserHomepage extends React.Component {
 
@@ -17,6 +18,7 @@ class UserHomepage extends React.Component {
         <UserProfileCard />
         <div id="profile-feed">
           <UserProfilePostBox />
+          <PostList />
         </div>
       </div>
     );
