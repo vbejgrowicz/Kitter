@@ -27,7 +27,8 @@ router.post('/', (req, res) => {
   const text = req.body.text;
   const author = {
     id: req.user._id,
-    username: req.user.username
+    username: req.user.username,
+    name: req.user.name
   };
   const timePosted = new Date();
   const newPost = { text: text, author: author, timePosted: timePosted};

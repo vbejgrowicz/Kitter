@@ -9,7 +9,8 @@ const postSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     },
-    username: String
+    username: String,
+    name: String
   },
   timePosted: String
 }, { versionKey: false });
