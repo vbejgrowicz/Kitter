@@ -1,8 +1,9 @@
+
 #post-form {
   textarea {
     resize: none;
     box-sizing: border-box;
-    height: 80px;
+    min-height: 80px;
     width: 100%;
     padding: 10px;
     border: 1px solid #99DAFD;
@@ -14,7 +15,11 @@
     &:focus {
       border: 2px solid #99DAFD;
     }
+    &.closed {
+      min-height: 40px;
+    }
   }
+
   ::placeholder {
     color: #C3C3C3;
   }
@@ -33,6 +38,9 @@
     &:disabled {
       opacity: 0.4;
       cursor: not-allowed;
+    }
+    &.closed {
+      display: none;
     }
   }
 }

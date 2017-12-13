@@ -11,7 +11,7 @@ class PostModal extends React.Component {
           <div className="title">Compose new Meow</div>
           <div className="close" onClick={this.props.onClose}>&times;</div>
           <div className="post-container">
-            <NewPostForm onClose={this.props.onClose}/>
+            <NewPostForm onClose={this.props.onClose} isFocused={true} />
           </div>
         </div>
       </div>

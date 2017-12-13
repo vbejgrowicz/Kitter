@@ -24,10 +24,17 @@ class NewPostForm extends React.Component {
   }
 
   render() {
+    const focus = this.props.isFocused ? 'open' : 'closed';
     return (
       <div id="post-form">
-        <TextareaAutosize maxRows={14} rows={3} maxLength="140" placeholder="What's happening?" onChange={this.handleInput.bind(this)}  />
-        <button disabled={!this.state.post} onClick={this.handleSubmit.bind(this)}>Meow</button>
+        <TextareaAutosize
+          className={focus}
+          maxRows={14}
+          maxLength="140"
+          placeholder="What's happening?"
+          onChange={this.handleInput.bind(this)}
+        />
+        <button className={focus} disabled={!this.state.post} onClick={this.handleSubmit.bind(this)}>Meow</button>
       </div>
     );
   }
