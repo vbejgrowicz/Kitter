@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getPosts } from '../../actions/PostActions';
 import UserProfileCard from './UserProfileCard';
-import NewPostForm from '../Posts/NewPostForm';
+import UserProfilePostBox from './UserProfilePostBox';
 
 class UserHomepage extends React.Component {
 
@@ -16,15 +16,7 @@ class UserHomepage extends React.Component {
       <div id="user-home-page">
         <UserProfileCard />
         <div id="profile-feed">
-          <div id="homepage-post-box">
-            <div className="image">
-              <i className="fa fa-user-circle" aria-hidden="true"></i>
-            </div>
-            <div className="post">
-              <NewPostForm initialFocus={false} />
-            </div>
-          </div>
-
+          <UserProfilePostBox />
         </div>
       </div>
     );
