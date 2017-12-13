@@ -1,0 +1,31 @@
+#profile-feed {
+  display: inline-block;
+  width: 60%;
+  min-width: 450px;
+  background-color: $tertiary-color;
+  vertical-align: top;
+
+  #homepage-post-box {
+    display: flex;
+    padding: 10px;
+    background-color: #E6F5FF;
+
+    .image {
+      display: inline-block;
+      width: 10%;
+      height: 40px;
+      line-height: 40px;
+      font-size: 30px;
+      i {
+        background-color: white;
+        border-radius: 50%;
+      }
+    }
+
+    .post {
+      display: inline-block;
+      width: 90%;
+      text-align: right;
+    }
+  }
+}
