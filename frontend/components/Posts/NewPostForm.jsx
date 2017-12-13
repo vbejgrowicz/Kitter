@@ -11,17 +11,32 @@ class NewPostForm extends React.Component {
       post: '',
       focus: this.props.initialFocus,
     };
+    this.handleClear = this.handleClear.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
   }
 
   handleSubmit() {
     this.props.createPost(this.state.post);
-    this.props.onClose();
+    if (this.props.onClose) {
+      this.props.onClose();
+    } else {
+      this.handleClear();
+    }
   }
 
   handleInput(e) {
     this.setState({
       post: e.target.value
+    });
+  }
+
+  handleClear() {
+    this.setState({
+      post: '',
+      focus: false
     });
   }
 
@@ -41,15 +56,16 @@ class NewPostForm extends React.Component {
     return (
       <div id="post-form">
         <TextareaAutosize
+          value={this.state.post}
           className={focus}
           maxRows={14}
           maxLength="140"
           placeholder="What's happening?"
-          onChange={this.handleInput.bind(this)}
-          onFocus={this.props.initialFocus ? null : this.handleFocus.bind(this)}
-          onBlur={this.props.initialFocus ? null : this.handleBlur.bind(this)}
+          onChange={this.handleInput}
+          onFocus={this.props.initialFocus ? null : this.handleFocus}
+          onBlur={this.props.initialFocus ? null : this.handleBlur}
         />
-        <button className={focus} disabled={!this.state.post} onClick={this.handleSubmit.bind(this)}>Meow</button>
+        <button className={focus} disabled={!this.state.post} onClick={this.handleSubmit}>Meow</button>
       </div>
     );
   }
