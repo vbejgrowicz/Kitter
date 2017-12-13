@@ -11,6 +11,7 @@ class NewPostForm extends React.Component {
       post: '',
       focus: this.props.initialFocus,
     };
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   handleSubmit() {
@@ -29,7 +30,9 @@ class NewPostForm extends React.Component {
   }
 
   handleBlur() {
-    this.setState({ focus: false });
+    if (this.state.post === '') {
+      this.setState({ focus: false });
+    }
   }
 
 
