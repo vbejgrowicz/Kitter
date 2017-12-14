@@ -1,3 +1,5 @@
+// User
+
 export const checkUser = () => {
   return fetch('/api/user', { method: 'GET', credentials: 'same-origin'})
   .then(resp => resp.json());
@@ -29,6 +31,8 @@ export const findUser = (username) => {
   .then(resp => resp.json());
 }
 
+// Posts
+
 export const getAllPosts = () => {
   return fetch('/api/posts', { method: 'GET', credentials: 'same-origin'})
   .then(resp => resp.json());
@@ -48,5 +52,10 @@ export const addPost = (post) => {
       text: post,
     })
   })
+  .then(resp => resp.json());
+}
+
+export const removePost = (id) => {
+  return fetch(`/api/posts/${id}`, { method: 'DELETE', credentials: 'same-origin' })
   .then(resp => resp.json());
 }

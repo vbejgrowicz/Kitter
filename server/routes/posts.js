@@ -40,4 +40,18 @@ router.post('/', (req, res) => {
   });
 });
 
+// DELETE - delete post
+router.delete('/:id', (req, res) => {
+  Post.findByIdAndRemove(req.params.id, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const response = { message: 'Your Meow has been deleted'}
+      res.status(200).send(response);
+    }
+  });
+});
+
+
+
 module.exports = router;
