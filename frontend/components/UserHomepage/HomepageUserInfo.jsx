@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-class UserProfileCard extends React.Component {
+class HomepageUserInfo extends React.Component {
 
   render() {
     const user = this.props.AuthReducer;
@@ -36,4 +36,4 @@ function mapStateToProps({ AuthReducer }) {
   return { AuthReducer };
 }
 
-export default connect(mapStateToProps, null)(UserProfileCard);
+export default connect(mapStateToProps, null)(HomepageUserInfo);

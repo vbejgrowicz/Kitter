@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { findPosts } from '../../actions/UserProfileActions';
 import PostList from '../Posts/PostList';
 
-class UserProfileFeed extends React.Component {
+class ProfileFeed extends React.Component {
 
   componentDidMount() {
     const userId = this.props.UserProfileReducer.user.id;
@@ -32,4 +32,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfileFeed);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileFeed);

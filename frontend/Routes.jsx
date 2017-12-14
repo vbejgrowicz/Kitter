@@ -1,13 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { getUser } from './actions/AuthActions';
 import LandingPage from './components/LandingPage/LandingPageIndex';
-import UserHomePage from './components/UserPage/UserHomePage';
-import UserPage from './components/UserPage/UserPage';
 import SignUpPage from './components/AuthPages/SignUpPage';
 import LoginPage from './components/AuthPages/LoginPage';
-import { getUser } from './actions/AuthActions';
+
+import ProfilePage from './components/UserProfile/ProfilePage';
+
 import NavBar from './components/Header/NavBar';
+import Homepage from './components/UserHomePage/Homepage';
+
+
 
 class Routes extends React.Component {
 
@@ -25,24 +29,24 @@ class Routes extends React.Component {
   }
 
   render() {
-    const AuthRoutes = () => {
+    const UserRoutes = () => {
       return (
         <Switch>
           <Redirect from="/signup" to="/" />
           <Redirect from="/login" to="/" />
-          <Route exact path="/" component={UserHomePage} />
-          <Route exact path="/:username" component={UserPage} />
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/:username" component={ProfilePage} />
         </Switch>
       )
     }
 
-    const NonAuthRoutes = () => {
+    const NoUserRoutes = () => {
       return (
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignUpPage} />
-          <Route exact path="/:username" component={UserPage} />
+          <Route exact path="/:username" component={ProfilePage} />
         </Switch>
       )
     }
@@ -55,10 +59,10 @@ class Routes extends React.Component {
         {this.requireLoggedIn() ? (
             <div>
               <NavBar />
-              <AuthRoutes />
+              <UserRoutes />
             </div>
         ) : (
-          <NonAuthRoutes />
+          <NoUserRoutes />
         )}
       </Router>
     );

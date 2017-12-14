@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { checkUser } from '../../actions/UserProfileActions';
-import UserProfileCard from './UserProfileCard';
-import UserProfileFeed from './UserProfileFeed';
+import ProfileFeed from './ProfileFeed';
 
-class UserPage extends React.Component {
+class ProfilePage extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.username);
@@ -24,7 +23,7 @@ class UserPage extends React.Component {
         <div style={{display: "inline-block", width: 230}}>
         {this.props.match.params.username}'s Page
         </div>
-        <UserProfileFeed />
+        <ProfileFeed />
       </div>
     ) : (
       <div>User not found</div>
@@ -44,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

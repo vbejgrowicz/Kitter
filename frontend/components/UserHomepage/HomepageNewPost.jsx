@@ -1,7 +1,7 @@
 import React from 'react';
 import NewPostForm from '../Posts/NewPostForm';
 
-class UserProfilePostBox extends React.Component {
+class HomepageNewPost extends React.Component {
 
   render() {
     return (
@@ -17,4 +17,4 @@ class UserProfilePostBox extends React.Component {
   }
 }
 
-export default UserProfilePostBox;
+export default HomepageNewPost;
