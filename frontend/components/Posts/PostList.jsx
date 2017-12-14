@@ -5,12 +5,8 @@ import PostItem from './PostItem';
 
 class PostList extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchPosts();
-  }
-
   render() {
-    const posts = this.props.PostReducer.Posts.map((post) => {
+    const posts = this.props.posts.map((post) => {
       return <PostItem post={post} key={post._id} />
     });
     return (
@@ -21,16 +17,4 @@ class PostList extends React.Component {
   }
 }
 
-function mapStateToProps({ PostReducer }) {
-  return { PostReducer };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPosts: () => {
-      dispatch(getPosts());
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default PostList;
