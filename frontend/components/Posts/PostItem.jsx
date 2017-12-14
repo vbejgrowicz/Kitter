@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deletePost } from '../../actions/HomepageActions';
+import postedTime from '../../utils/postedTime';
 
 class PostItem extends React.Component {
 
@@ -18,15 +19,8 @@ class PostItem extends React.Component {
   }
 
   render() {
-
-
     const { _id, text, name, username, author, date } = this.props.post;
-    const dateString = new Date(date);
-    const currentTime = new Date();
-    //Time Diff in ms
-    console.log(currentTime.getTime() - dateString.getTime());
-    //Date of post
-    console.log(dateString.toDateString());
+    const time = postedTime(date);
     return (
       <li className="post-item">
         <div>{author.name}</div>
