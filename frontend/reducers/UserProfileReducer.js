@@ -1,14 +1,15 @@
-import { GET_USER_PROFILE, SET_USER_PROFILE, SET_PROFILE_POSTS } from '../actions/types';
+import { GET_USER_PROFILE, SET_USER_PROFILE, SET_USER_ERROR, SET_PROFILE_POSTS } from '../actions/types';
 
 const initialState = {
   user: {
     id: null,
     username: null,
     name: null,
-    isLoading: false
+    isLoading: false,
+    error: false
   },
   posts: {
-    posts: [],
+    list: [],
     isLoading: false
   }
 }
@@ -23,7 +24,18 @@ export function UserProfileReducer (state = initialState, action) {
               id: action.user._id,
               username: action.user.username,
               name: action.user.name,
-              isLoading: false
+              isLoading: false,
+              error: false
+            })
+        }
+      );
+    case SET_USER_ERROR:
+      return Object.assign({}, state,
+        {
+          user: Object.assign({}, state.user,
+            {
+              isLoading: false,
+              error: action.error
             })
         }
       );
@@ -32,7 +44,11 @@ export function UserProfileReducer (state = initialState, action) {
         {
           user: Object.assign({}, state.user,
             {
-              isLoading: true
+              id: null,
+              username: null,
+              name: null,
+              isLoading: true,
+              error: false
             })
         }
       );
@@ -41,7 +57,7 @@ export function UserProfileReducer (state = initialState, action) {
         {
           posts: Object.assign({}, state.posts,
             {
-              posts: action.posts,
+              list: action.posts,
               isLoading: false
             })
         }
