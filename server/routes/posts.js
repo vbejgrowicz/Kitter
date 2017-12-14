@@ -3,7 +3,7 @@ const router = express.Router();
 const Post = require('../models/post');
 
 router.get('/', (req, res) => {
-  Post.find({}, (err, allPosts) => {
+  Post.find({}, null, {sort: {date: -1}}, (err, allPosts) => {
     if (err){
       console.log(err);
     } else {
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Post.find({ "author.id": req.params.id }, (err, userPosts) => {
+  Post.find({ "author.id": req.params.id }, null, {sort: {date: -1}}, (err, userPosts) => {
     if (err){
       console.log(err);
     } else {
