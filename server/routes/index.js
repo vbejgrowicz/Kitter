@@ -6,9 +6,9 @@ const User = require('../models/user');
 
 router.get('/user', (req, res) => {
   if (req.isAuthenticated()) {
-    res.json({username: req.user.username, id: req.user._id, name: req.user.name});
+    res.status(200).send({ username: req.user.username, id: req.user._id, name: req.user.name });
   } else {
-    res.json({username: null, id: null, name: null});
+    res.status(200).send({ username: null, id: null, name: null });
   }
 });
 
@@ -17,7 +17,7 @@ router.get('/users/:username', (req, res) => {
     if (err){
       console.log(err);
     } else {
-      res.json({ user: user });
+      res.status(200).send({ user: user });
     }
   });
 });
@@ -27,10 +27,10 @@ router.post('/signup', (req, res) => {
   const newUser = new User({username: req.body.username, name: req.body.name});
   User.register(newUser, req.body.password, (err, user) => {
     if (err) {
-      res.json(err);
+      res.status(400).send(err);
     } else {
       passport.authenticate('local')(req, res, () => {
-        res.json({username: user.username, id: user._id, name: user.name});
+        res.status(200).send({ username: user.username, id: user._id, name: user.name });
       });
     }
   });
@@ -39,14 +39,14 @@ router.post('/signup', (req, res) => {
 // LOGIN ROUTE
 router.post('/login', (req, res) => {
   passport.authenticate('local')(req, res, () => {
-    res.json({username: req.user.username, id: req.user._id, name: req.user.name});
+    res.status(200).send({ username: req.user.username, id: req.user._id, name: req.user.name });
   });
 });
 
 // LOGOUT ROUTE
 router.get('/logout', (req, res) => {
   req.logout();
-  res.json({username: null, id: null, name: null});
+  res.status(200).send({ username: null, id: null, name: null });
 });
 
 module.exports = router;
