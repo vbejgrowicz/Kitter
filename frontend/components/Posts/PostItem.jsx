@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deletePost } from '../../actions/HomepageActions';
 import postedTime from '../../utils/postedTime';
@@ -23,9 +24,12 @@ class PostItem extends React.Component {
     const time = postedTime(date);
     return (
       <li className="post-item">
-        <div>{author.name}</div>
-        <div>@{author.username}</div>
-        <div>{text}</div>
+        <Link to={`/${author.username}`}>
+          <span className="name">{author.name}</span>
+          <span className="username">@{author.username}</span>
+        </Link>
+        <span className="time">&middot; {time}</span>
+        <div className="text">{text}</div>
         {this.reqAuth(author.id) ? (
           <button onClick={() => this.handleRemove(_id)}>Delete Post</button>
         ) : (
