@@ -1,4 +1,4 @@
-import { GET_HOMEPAGE_POSTS, SET_HOMEPAGE_POSTS, ADD_POST } from '../actions/types';
+import { GET_HOMEPAGE_POSTS, SET_HOMEPAGE_POSTS, ADD_POST, REMOVE_POST } from '../actions/types';
 
 const initialState = {
   posts: {
@@ -33,8 +33,16 @@ export function HomepageReducer (state = initialState, action) {
         {
           posts: Object.assign({}, state.posts,
             {
-              list: [action.post,...state.posts.list],
-              isLoading: false
+              list: [action.post,...state.posts.list]
+            })
+        }
+      );
+    case REMOVE_POST:
+      return Object.assign({}, state,
+        {
+          posts: Object.assign({}, state.posts,
+            {
+              list: state.posts.list.filter(post => post._id !== action.id)
             })
         }
       );

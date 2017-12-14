@@ -8,6 +8,7 @@ export const AUTH_FAIL = "AUTH_FAIL";
 export const GET_HOMEPAGE_POSTS = "GET_HOMEPAGE_POSTS";
 export const SET_HOMEPAGE_POSTS = "SET_HOMEPAGE_POSTS";
 export const ADD_POST = "ADD_POST";
+export const REMOVE_POST = "REMOVE_POST";
 
 // UserProfileActions
 export const GET_USER_PROFILE = "GET_USER_PROFILE";

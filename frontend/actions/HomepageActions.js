@@ -1,4 +1,4 @@
-import { getAllPosts, addPost } from '../utils/apiUtils';
+import { getAllPosts, addPost, removePost } from '../utils/apiUtils';
 
 export function findAllPosts(id) {
   return function findAllPosts(dispatch) {
@@ -13,6 +13,14 @@ export function newPost(post) {
   return function newPostThunk(dispatch) {
     addPost(post).then(response => {
       dispatch({type: 'ADD_POST', post: response.post});
+    });
+  };
+};
+
+export function deletePost(id) {
+  return function deletePostThunk(dispatch) {
+    removePost(id).then(response => {
+      dispatch({type: 'REMOVE_POST', id: id});
     });
   };
 };
