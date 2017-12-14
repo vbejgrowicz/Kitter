@@ -1,10 +1,12 @@
-import { SET_USER, SET_ERROR, UPDATE_AUTH_STATUS } from '../actions/types';
+import { SET_AUTH_USER, AUTH_FAIL, SET_ERROR } from '../actions/types';
 
 const initialState = {
-  isLoading: true,
-  username: null,
-  name: null,
-  id: null,
+  user: {
+    id: null,
+    username: null,
+    name: null,
+    isLoading: true
+  },
   error: {
     message: null,
     page: null
@@ -13,22 +15,33 @@ const initialState = {
 
 export function AuthReducer (state = initialState, action) {
   switch (action.type) {
-    case SET_USER:
-      return Object.assign({}, state,{
-        username: action.user.username,
-        name: action.user.name,
-        id: action.user.id
-      });
+    case SET_AUTH_USER:
+      return Object.assign({}, state,
+        {
+          user: Object.assign({}, state.user,
+            {
+              id: action.user.id,
+              username: action.user.username,
+              name: action.user.name,
+              isLoading: false,
+            })
+        }
+      );
+    case AUTH_FAIL:
+      return Object.assign({}, state,
+        {
+          user: Object.assign({}, state.user,
+            {
+              isLoading: false,
+            })
+        }
+      );
     case SET_ERROR:
       return Object.assign({}, state, {
         error: {
           message: action.message,
           page: action.page
         }
-      });
-    case UPDATE_AUTH_STATUS:
-      return Object.assign({}, state, {
-        isLoading: action.status
       });
     default :
     return state;

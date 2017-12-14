@@ -5,9 +5,7 @@ import { getUser } from './actions/AuthActions';
 import LandingPage from './components/LandingPage/LandingPageIndex';
 import SignUpPage from './components/AuthPages/SignUpPage';
 import LoginPage from './components/AuthPages/LoginPage';
-
 import ProfilePage from './components/UserProfile/ProfilePage';
-
 import NavBar from './components/Header/NavBar';
 import Homepage from './components/UserHomePage/Homepage';
 
@@ -16,11 +14,11 @@ import Homepage from './components/UserHomePage/Homepage';
 class Routes extends React.Component {
 
   componentDidMount() {
-    this.props.updateUser();
+    this.props.getAuthorizedUser();
   }
 
   requireLoggedIn() {
-    const currentUser = this.props.AuthReducer.username;
+    const currentUser = this.props.AuthReducer.user.username;
     if (currentUser) {
       return true;
     } else {
@@ -51,7 +49,7 @@ class Routes extends React.Component {
       )
     }
 
-    const status = this.props.AuthReducer.isLoading;
+    const status = this.props.AuthReducer.user.isLoading;
     return status ? (
       <div>Loading...</div>
     ) : (
@@ -75,7 +73,7 @@ function mapStateToProps({ AuthReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUser: (user) => {
+    getAuthorizedUser: (user) => {
       dispatch(getUser());
     },
   };
