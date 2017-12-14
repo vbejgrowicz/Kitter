@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { checkUser } from '../../actions/UserProfileActions';
 import UserProfileCard from './UserProfileCard';
-import PostList from '../Posts/PostList';
+import UserProfileFeed from './UserProfileFeed';
 
 class UserPage extends React.Component {
 
@@ -16,9 +16,7 @@ class UserPage extends React.Component {
         <div style={{display: "inline-block", width: 230}}>
         {this.props.match.params.username}'s Page
         </div>
-        <div id="profile-feed">
-          <PostList />
-        </div>
+        <UserProfileFeed />
       </div>
     );
   }
