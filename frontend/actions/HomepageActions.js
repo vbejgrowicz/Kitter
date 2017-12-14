@@ -1,4 +1,4 @@
-import { getAllPosts } from '../utils/apiUtils';
+import { getAllPosts, addPost } from '../utils/apiUtils';
 
 export function findAllPosts(id) {
   return function findAllPosts(dispatch) {
@@ -9,3 +9,10 @@ export function findAllPosts(id) {
   };
 };
 
+export function newPost(post) {
+  return function newPostThunk(dispatch) {
+    addPost(post).then(response => {
+      dispatch({type: 'ADD_POST', post: response.post});
+    });
+  };
+};

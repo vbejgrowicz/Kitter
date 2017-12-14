@@ -16,7 +16,6 @@ export function checkUser(username) {
 export function findPosts(id) {
   return function findPosts(dispatch) {
     getUserPosts(id).then(response => {
-      console.log(response);
       dispatch({type: 'SET_PROFILE_POSTS', posts: response.userPosts});
     });
   }

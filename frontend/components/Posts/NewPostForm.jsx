@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import TextareaAutosize from 'react-autosize-textarea';
-// import { newPost } from '../../actions/PostActions';
+import { newPost } from '../../actions/HomepageActions';
 
 
 class NewPostForm extends React.Component {
