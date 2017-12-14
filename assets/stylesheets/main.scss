@@ -1,8 +1,8 @@
+@import "colors";
+@import "images";
+//set defaults
 $font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$primary-color: #E6ECF0;
-$secondary-color: #1DA1F2;
-$tertiary-color: #FFF;
-$error-color: #CA2525;
+$header-height: 47px;
 
 html, body, div, span, p, a, i, ul, li button, link, hr {
   margin: 0;
@@ -19,7 +19,6 @@ body {
   background-color: $primary-color;
   color: $secondary-color;
 }
-
 // import all component stylesheets
 @import "./UserPages/UserHomepage";
 @import "./LandingPage";

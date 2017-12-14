@@ -1,11 +1,10 @@
 #auth {
-  $header-height: 47px;
   .header {
     height: $header-height;
     background-color: $secondary-color;
     background-image: linear-gradient(to right, #39AEF1, #00D38D);
     border-bottom: 1px solid #1794a2;
-    color: $tertiary-color;
+    color: $white;
     display: flex;
     line-height: $header-height;
     font-size: 14px;
@@ -17,7 +16,7 @@
       position: absolute;
       left: 50%;
       margin: 10px;
-      background-image: url('../images/cat-white.png');
+      background-image: $logo-white;
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -42,7 +41,7 @@
       position: absolute;
       top: $header-height;
       right: 40px;
-      background: $tertiary-color;
+      background: $white;
       box-shadow: 0 1px 4px rgba(0,0,0,0.25);
       box-sizing: border-box;
       padding: 20px;
@@ -65,7 +64,7 @@
         width: 0;
         position: absolute;
         pointer-events: none;
-        border-bottom-color: $tertiary-color;
+        border-bottom-color: $white;
         border-width: 10px;
         margin-left: -10px;
       }

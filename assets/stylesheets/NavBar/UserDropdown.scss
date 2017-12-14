@@ -11,7 +11,7 @@
     width: 200px;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: $tertiary-color;
+    background-color: $white;
     box-shadow: 0 1px 4px rgba(0,0,0,0.25);
     box-sizing: border-box;
     z-index: 1;
@@ -52,7 +52,7 @@
       width: 0;
       position: absolute;
       pointer-events: none;
-      border-bottom-color: $tertiary-color;
+      border-bottom-color: $white;
       border-width: 10px;
       margin-left: -10px;
     }

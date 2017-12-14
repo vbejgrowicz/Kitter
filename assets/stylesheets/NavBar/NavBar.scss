@@ -1,11 +1,9 @@
 @import "PostModal";
 @import "UserDropdown";
-$nav-height: 47px;
-
 #nav {
-  height: $nav-height;
+  height: $header-height;
   color: $secondary-color;
-  background-color: $tertiary-color;
+  background-color: $white;
   position: sticky;
   top: 0;
   width: 100%;
@@ -37,7 +35,7 @@ $nav-height: 47px;
       height: 22px;
       width: 22px;
       margin: 13px auto;
-      background-image: url('../images/cat-blue.png');
+      background-image: $logo-blue;
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -57,7 +55,7 @@ $nav-height: 47px;
       width: 70px;
       height: 35px;
       background-color: $secondary-color;
-      color: $tertiary-color;
+      color: $white;
       border-radius: 20px;
       cursor: pointer;
       outline: none;

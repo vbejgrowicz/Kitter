@@ -9,9 +9,9 @@
   .content {
     height: 100px;
     margin-top: 80px;
-    background-color: $tertiary-color;
+    background-color: $white;
     .image {
-      background-color: $tertiary-color;
+      background-color: $white;
       border-radius: 50%;
       height: 55px;
       width: 55px;
@@ -28,7 +28,7 @@
       .name {
         font-size: 18px;
         font-weight: bold;
-        color: #000;
+        color: $black;
       }
       .username {
         font-size: 14px;
