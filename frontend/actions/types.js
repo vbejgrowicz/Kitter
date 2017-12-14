@@ -1,5 +1,6 @@
 // AuthActions
 export const SET_ERROR = "SET_ERROR";
+export const REMOVE_ERROR = "REMOVE_ERROR";
 export const GET_AUTH_USER = "GET_AUTH_USER";
 export const SET_AUTH_USER = "SET_AUTH_USER";
 export const AUTH_FAIL = "AUTH_FAIL";

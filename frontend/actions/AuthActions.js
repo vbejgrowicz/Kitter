@@ -46,3 +46,9 @@ export function logOutUser() {
     });
   };
 };
+
+export const clearError = () => {
+  return {
+    type: 'REMOVE_ERROR'
+  }
+}

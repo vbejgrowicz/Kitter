@@ -1,4 +1,4 @@
-import { SET_AUTH_USER, AUTH_FAIL, SET_ERROR } from '../actions/types';
+import { SET_AUTH_USER, AUTH_FAIL, SET_ERROR, REMOVE_ERROR } from '../actions/types';
 
 const initialState = {
   user: {
@@ -41,6 +41,13 @@ export function AuthReducer (state = initialState, action) {
         error: {
           message: action.message,
           page: action.page
+        }
+      });
+    case REMOVE_ERROR:
+      return Object.assign({}, state, {
+        error: {
+          message: null,
+          page: null
         }
       });
     default :
