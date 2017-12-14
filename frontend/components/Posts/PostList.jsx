@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getPosts } from '../../actions/PostActions';
 import PostItem from './PostItem';
 
 class PostList extends React.Component {
