@@ -9,7 +9,7 @@ Kitter allows users to:
 - [X] Sign up for an account
 - [X] Log in and log out of their accounts
 - [X] Create posts
-- [ ] Delete posts
+- [X] Delete posts
 - [ ] Follow and unfollow users
 - [X] View user profiles
 - [ ] View timeline of posts of all followed users
@@ -68,10 +68,10 @@ Kitter allows users to:
 **Objective:** Posts can be created
 
 - [X] Create `Post` model 
-- [ ] Create Post API for index, create, show, destroy
+- [X] Create Post API for index, create, show, destroy
 - [X] Create Redux Post Store
-- [ ] Create all Post actions
-- [ ] Create the associated functions within the reducer to handle the created actions
+- [X] Create all Post actions
+- [X] Create the associated functions within the reducer to handle the created actions
 - [X] Create React components PostList, PostItem, PostNewForm
 - [ ] Set up Post seed data
 
