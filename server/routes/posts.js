@@ -30,8 +30,7 @@ router.post('/', (req, res) => {
     username: req.user.username,
     name: req.user.name
   };
-  const timePosted = new Date();
-  const newPost = { text: text, author: author, timePosted: timePosted};
+  const newPost = { text: text, author: author};
   Post.create(newPost, (err, createdPost) => {
     if (err) {
       console.log(err);

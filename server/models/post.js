@@ -12,7 +12,10 @@ const postSchema = new mongoose.Schema({
     username: String,
     name: String
   },
-  timePosted: String
+  date: {
+    type: Date,
+    default: Date.now
+  }
 }, { versionKey: false });
 
 module.exports = mongoose.model('Post', postSchema);
