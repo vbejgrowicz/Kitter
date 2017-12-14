@@ -1,9 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deletePost } from '../../actions/HomepageActions';
 
 class PostItem extends React.Component {
 
+  handleRemove(id) {
+    this.props.removePost(id);
+  }
+
   render() {
-    const { text, name, username, author, date } = this.props.post;
+    const { _id, text, name, username, author, date } = this.props.post;
     const dateString = new Date(date);
     const currentTime = new Date();
     //Time Diff in ms
@@ -15,9 +21,19 @@ class PostItem extends React.Component {
         <div>{author.name}</div>
         <div>@{author.username}</div>
         <div>{text}</div>
+        <button onClick={() => this.handleRemove(_id)}>Delete Post</button>
       </li>
     );
   }
 }
 
-export default PostItem;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removePost: (id) => {
+      dispatch(deletePost(id));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(PostItem);
