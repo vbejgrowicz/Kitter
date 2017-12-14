@@ -11,19 +11,29 @@ class UserPage extends React.Component {
   }
 
   render() {
-    return (
+    const user = this.props.UserProfileReducer.user.id;
+    const isLoading = this.props.UserProfileReducer.user.isLoading;
+
+    if (isLoading) {
+      return (
+        <p>Loading</p>
+      );
+    }
+    return user ? (
       <div id="user-home-page">
         <div style={{display: "inline-block", width: 230}}>
         {this.props.match.params.username}'s Page
         </div>
         <UserProfileFeed />
       </div>
+    ) : (
+      <div>User not found</div>
     );
   }
 }
 
-function mapStateToProps({ PostReducer }) {
-  return { PostReducer };
+function mapStateToProps({ UserProfileReducer }) {
+  return { UserProfileReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {
