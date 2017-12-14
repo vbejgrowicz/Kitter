@@ -12,4 +12,5 @@ export const ADD_POST = "ADD_POST";
 // UserProfileActions
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
 export const SET_USER_PROFILE = "SET_USER_PROFILE";
+export const SET_USER_ERROR = "SET_USER_ERROR";
 export const SET_PROFILE_POSTS = "SET_PROFILE_POSTS";
