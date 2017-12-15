@@ -7,16 +7,19 @@ import { fetchPosts } from '../../actions/PostActions';
 class HomepagePostFeed extends React.Component {
 
   componentDidMount() {
-    const userId = this.props.UserReducer.id;
-    this.props.getPosts(userId, 'All');
+    const user = this.props.UserReducer;
+    this.props.getPosts(user, 'All');
   }
 
+  // ADD function to get num of post by followers
+
   render() {
+    const user = this.props.UserReducer;
     const posts = this.props.PostReducer.posts.list;
     return (
       <div id="profile-feed">
         <HomepageNewPost />
-        <PostList posts={posts}/>
+        <PostList posts={posts} />
       </div>
     );
   }
@@ -28,7 +31,8 @@ function mapStateToProps({ UserReducer, PostReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPosts: (id, category) => {
+    getPosts: (user, category) => {
+      const id = user.id;
       dispatch(fetchPosts(id, category));
     }
   };
