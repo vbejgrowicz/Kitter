@@ -17,7 +17,7 @@ router.get('/users/:username', (req, res) => {
     if (err){
       console.log(err);
     } else {
-      res.status(200).send({ user: user });
+      res.status(200).send({ username: user.username, id: user._id, name: user.name });
     }
   });
 });

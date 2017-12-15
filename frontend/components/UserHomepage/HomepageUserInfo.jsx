@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class HomepageUserInfo extends React.Component {
 
   render() {
-    const { username, name } = this.props.AuthReducer.user;
+    const { username, name } = this.props.UserReducer;
     return (
       <div id="profile-card">
         <div className="content">
@@ -32,8 +32,8 @@ class HomepageUserInfo extends React.Component {
   }
 }
 
-function mapStateToProps({ AuthReducer }) {
-  return { AuthReducer };
+function mapStateToProps({ UserReducer }) {
+  return { UserReducer };
 }
 
 export default connect(mapStateToProps, null)(HomepageUserInfo);

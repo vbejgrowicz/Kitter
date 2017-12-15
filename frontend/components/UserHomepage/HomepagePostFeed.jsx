@@ -2,17 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PostList from '../Posts/PostList';
 import HomepageNewPost from './HomepageNewPost';
-import { findAllPosts } from '../../actions/HomepageActions';
+import { findAllPosts } from '../../actions/PostActions';
 
 class HomepagePostFeed extends React.Component {
 
   componentDidMount() {
-    const userId = this.props.AuthReducer.id;
+    const userId = this.props.UserReducer.id;
     this.props.getPosts(userId);
   }
 
   render() {
-    const posts = this.props.HomepageReducer.posts.list;
+    const posts = this.props.PostReducer.posts.list;
     return (
       <div id="profile-feed">
         <HomepageNewPost />
@@ -22,8 +22,8 @@ class HomepagePostFeed extends React.Component {
   }
 }
 
-function mapStateToProps({ AuthReducer, HomepageReducer }) {
-  return { AuthReducer, HomepageReducer };
+function mapStateToProps({ UserReducer, PostReducer }) {
+  return { UserReducer, PostReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,4 +1,4 @@
-import { GET_HOMEPAGE_POSTS, SET_HOMEPAGE_POSTS, ADD_POST, REMOVE_POST } from '../actions/types';
+import { GET_POSTS, SET_POSTS, ADD_POST, REMOVE_POST } from '../actions/types';
 
 const initialState = {
   posts: {
@@ -7,9 +7,9 @@ const initialState = {
   }
 }
 
-export function HomepageReducer (state = initialState, action) {
+export function PostReducer (state = initialState, action) {
   switch (action.type) {
-    case GET_HOMEPAGE_POSTS:
+    case GET_POSTS:
       return Object.assign({}, state,
         {
           posts: Object.assign({}, state.posts,
@@ -18,7 +18,7 @@ export function HomepageReducer (state = initialState, action) {
             })
         }
       );
-    case SET_HOMEPAGE_POSTS:
+    case SET_POSTS:
       return Object.assign({}, state,
         {
           posts: Object.assign({}, state.posts,

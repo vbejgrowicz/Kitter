@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { checkUser } from '../../actions/UserProfileActions';
+import { checkUser } from '../../actions/UserActions';
 import ProfileFeed from './ProfileFeed';
 
 class ProfilePage extends React.Component {
@@ -10,8 +10,8 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const user = this.props.UserProfileReducer.user.id;
-    const isLoading = this.props.UserProfileReducer.user.isLoading;
+    const user = this.props.UserReducer.id;
+    const isLoading = this.props.UserReducer.isLoading;
 
     if (isLoading) {
       return (
@@ -31,8 +31,8 @@ class ProfilePage extends React.Component {
   }
 }
 
-function mapStateToProps({ UserProfileReducer }) {
-  return { UserProfileReducer };
+function mapStateToProps({ UserReducer }) {
+  return { UserReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { findPosts } from '../../actions/UserProfileActions';
+import { findUserPosts } from '../../actions/PostActions';
 import PostList from '../Posts/PostList';
 
 class ProfileFeed extends React.Component {
 
   componentDidMount() {
-    const userId = this.props.UserProfileReducer.user.id;
+    const userId = this.props.UserReducer.id;
     this.props.getPosts(userId);
   }
 
   render() {
-    const posts = this.props.UserProfileReducer.posts.list;
+    const posts = this.props.PostReducer.posts.list;
     return (
       <div id="profile-feed">
         <PostList posts={posts} />
@@ -20,14 +20,14 @@ class ProfileFeed extends React.Component {
   }
 }
 
-function mapStateToProps({ UserProfileReducer }) {
-  return { UserProfileReducer };
+function mapStateToProps({ UserReducer, PostReducer }) {
+  return { UserReducer, PostReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getPosts: (id) => {
-      dispatch(findPosts(id));
+      dispatch(findUserPosts(id));
     }
   };
 };
