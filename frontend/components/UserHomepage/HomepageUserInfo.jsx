@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class HomepageUserInfo extends React.Component {
 
   render() {
-    const { username, name } = this.props.UserReducer;
+    const { username, name, data } = this.props.UserReducer;
     return (
       <div id="profile-card">
         <div className="content">
@@ -19,11 +19,11 @@ class HomepageUserInfo extends React.Component {
           <div className="user-data">
             <Link className="posts data" to={`/${username}`}>
               <div className="title">Meows</div>
-              <div className="count">0</div>
+              <div className="count">{data.posts}</div>
             </Link>
             <Link className="following data" to={`/${username}/following`}>
               <div className="title">Following</div>
-              <div className="count">0</div>
+              <div className="count">{data.followers}</div>
             </Link>
           </div>
         </div>

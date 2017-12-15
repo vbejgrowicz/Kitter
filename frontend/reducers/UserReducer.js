@@ -7,8 +7,8 @@ const initialState = {
   isLoading: false,
   error: false,
   data: {
-    posts: null,
-    followers: null,
+    posts: 0,
+    followers: 0,
   }
 }
 
