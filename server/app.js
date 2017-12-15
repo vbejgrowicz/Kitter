@@ -13,6 +13,7 @@ mongoose.Promise = global.Promise;
 // Require Routes
 const indexRoutes = require('./routes/index');
 const postRoutes = require('./routes/posts');
+const countRoutes = require('./routes/count');
 
 mongoose.connect('mongodb://localhost/Kitter', {useMongoClient: true});
 app.use(bodyParser.urlencoded({extended: true}));
@@ -34,6 +35,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use('/api', indexRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/count/:userID', countRoutes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));

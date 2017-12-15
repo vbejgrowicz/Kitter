@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post');
 
+// GET ALL POSTS
 router.get('/', (req, res) => {
   Post.find({}, null, {sort: {date: -1}}, (err, allPosts) => {
     if (err){
@@ -12,8 +13,9 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
-  Post.find({ "author.id": req.params.id }, null, {sort: {date: -1}}, (err, userPosts) => {
+// GET USER POSTS
+router.get('/:userID', (req, res) => {
+  Post.find({ "author.id": req.params.userID }, null, {sort: {date: -1}}, (err, userPosts) => {
     if (err){
       console.log(err);
     } else {
@@ -22,7 +24,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// CREATE - create new post
+// CREATE NEW POST
 router.post('/', (req, res) => {
   const text = req.body.text;
   const author = {
@@ -40,18 +42,15 @@ router.post('/', (req, res) => {
   });
 });
 
-// DELETE - delete post
-router.delete('/:id', (req, res) => {
-  Post.findByIdAndRemove(req.params.id, (err) => {
+// DELETE POST
+router.delete('/:postID', (req, res) => {
+  Post.findByIdAndRemove(req.params.postID, (err) => {
     if (err) {
       console.log(err);
     } else {
-      const response = { message: 'Your Meow has been deleted'}
-      res.status(200).send(response);
+      res.json({ message: 'Your Meow has been deleted' });
     }
   });
 });
-
-
 
 module.exports = router;
