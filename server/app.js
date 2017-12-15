@@ -35,7 +35,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use('/api', indexRoutes);
 app.use('/api/posts', postRoutes);
-app.use('/api/count/:userID', countRoutes);
+app.use('/api/count', countRoutes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));

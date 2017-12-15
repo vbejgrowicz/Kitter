@@ -28,6 +28,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchUser: (user) => {
       dispatch(setUser(user));
+      dispatch(findUserPostCount(user));
     }
   };
 };

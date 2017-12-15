@@ -41,6 +41,15 @@ export function UserReducer (state = initialState, action) {
           error: false
         }
       );
+    case SET_POST_COUNT:
+      return Object.assign({}, state,
+        {
+          data: Object.assign({}, state.data,
+            {
+              posts: action.count,
+            })
+        }
+      );
     default :
     return state;
   }

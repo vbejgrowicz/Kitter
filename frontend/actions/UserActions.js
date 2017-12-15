@@ -20,3 +20,12 @@ export const setUser = user => {
     user
   };
 };
+
+export function findUserPostCount(user) {
+  return function findUserPostCountThunk(dispatch) {
+    const id = user.id;
+    getNumPosts(id).then(response => {
+      dispatch({type: 'SET_POST_COUNT', count: response.count});
+    });
+  }
+};

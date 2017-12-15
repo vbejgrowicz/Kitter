@@ -15,3 +15,4 @@ export const REMOVE_POST = "REMOVE_POST";
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
 export const SET_USER_PROFILE = "SET_USER_PROFILE";
 export const SET_USER_ERROR = "SET_USER_ERROR";
+export const SET_POST_COUNT = "SET_POST_COUNT";
