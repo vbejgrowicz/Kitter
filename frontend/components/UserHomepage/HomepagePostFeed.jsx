@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PostList from '../Posts/PostList';
 import HomepageNewPost from './HomepageNewPost';
-import { findAllPosts } from '../../actions/PostActions';
+import { fetchPosts } from '../../actions/PostActions';
 
 class HomepagePostFeed extends React.Component {
 
   componentDidMount() {
     const userId = this.props.UserReducer.id;
-    this.props.getPosts(userId);
+    this.props.getPosts(userId, 'All');
   }
 
   render() {
@@ -28,8 +28,8 @@ function mapStateToProps({ UserReducer, PostReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPosts: (id) => {
-      dispatch(findAllPosts(id));
+    getPosts: (id, category) => {
+      dispatch(fetchPosts(id, category));
     }
   };
 };

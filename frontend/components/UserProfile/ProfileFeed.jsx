@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { findUserPosts } from '../../actions/PostActions';
+import { fetchPosts } from '../../actions/PostActions';
 import PostList from '../Posts/PostList';
 
 class ProfileFeed extends React.Component {
 
   componentDidMount() {
     const userId = this.props.UserReducer.id;
-    this.props.getPosts(userId);
+    this.props.getPosts(userId, 'User');
   }
 
   render() {
@@ -26,8 +26,8 @@ function mapStateToProps({ UserReducer, PostReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPosts: (id) => {
-      dispatch(findUserPosts(id));
+    getPosts: (id, category) => {
+      dispatch(fetchPosts(id, category));
     }
   };
 };

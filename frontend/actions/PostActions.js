@@ -1,8 +1,17 @@
 import { getAllPosts, getUserPosts, addPost, removePost } from '../utils/apiUtils';
 
+export function fetchPosts(id, category) {
+  return function fetchPostsThunk(dispatch) {
+    dispatch({type: 'GET_POSTS', category: category});
+    if (category === 'User') {
+      dispatch(findUserPosts(id));
+    } else {
+      dispatch(findAllPosts(id));
+    }
+  };
+};
 export function findAllPosts(id) {
   return function findAllPostsThunk(dispatch) {
-    dispatch({type: 'GET_POSTS'});
     getAllPosts().then(response => {
       dispatch({type: 'SET_POSTS', posts: response.allPosts});
     });
@@ -11,7 +20,6 @@ export function findAllPosts(id) {
 
 export function findUserPosts(id) {
   return function findUserPostsThunk(dispatch) {
-    dispatch({type: 'GET_POSTS'});
     getUserPosts(id).then(response => {
       dispatch({type: 'SET_POSTS', posts: response.userPosts});
     });

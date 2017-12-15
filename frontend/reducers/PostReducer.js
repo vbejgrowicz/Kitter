@@ -2,6 +2,7 @@ import { GET_POSTS, SET_POSTS, ADD_POST, REMOVE_POST } from '../actions/types';
 
 const initialState = {
   posts: {
+    category: null,
     list: [],
     isLoading: false
   }
@@ -14,6 +15,7 @@ export function PostReducer (state = initialState, action) {
         {
           posts: Object.assign({}, state.posts,
             {
+              category: action.category,
               isLoading: true
             })
         }
