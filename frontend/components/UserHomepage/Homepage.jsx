@@ -11,7 +11,10 @@ class Homepage extends React.Component {
   }
 
   render() {
-    return (
+    const { id, isLoading } = this.props.UserReducer;
+    return isLoading || !id? (
+      null
+    ):(
       <div id="user-home-page">
         <HomepageUserInfo />
         <HomepagePostFeed />
@@ -20,8 +23,8 @@ class Homepage extends React.Component {
   }
 }
 
-function mapStateToProps({ AuthReducer }) {
-  return { AuthReducer };
+function mapStateToProps({ AuthReducer, UserReducer }) {
+  return { AuthReducer, UserReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {
