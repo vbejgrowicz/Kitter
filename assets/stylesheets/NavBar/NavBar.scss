@@ -4,7 +4,8 @@
   height: $header-height;
   color: $secondary-color;
   background-color: $white;
-  position: sticky;
+  position: fixed;
+  z-index: 1;
   top: 0;
   width: 100%;
   min-width: 500px;

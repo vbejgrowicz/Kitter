@@ -2,8 +2,9 @@
 @import "ProfileFeed";
 
 #user-home-page {
+  margin-top: 47px;
   $break-width: 710px;
-  margin: 10px;
+  padding: 10px;
   text-align: center;
 
   @media (max-width: $break-width) {
