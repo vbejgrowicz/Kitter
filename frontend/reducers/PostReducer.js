@@ -8,6 +8,14 @@ const initialState = {
   }
 }
 
+function updatePosts(newPost, posts, category) {
+  if (category === 'All'){
+    return [newPost, ... posts];
+  } else {
+    return posts;
+  }
+}
+
 export function PostReducer (state = initialState, action) {
   switch (action.type) {
     case GET_POSTS:
@@ -35,7 +43,7 @@ export function PostReducer (state = initialState, action) {
         {
           posts: Object.assign({}, state.posts,
             {
-              list: [action.post,...state.posts.list]
+              list: updatePosts(action.post, state.posts.list, state.posts.category),
             })
         }
       );
