@@ -15,7 +15,7 @@ class ProfilePage extends React.Component {
 
     if (isLoading) {
       return (
-        <p>Loading</p>
+        null
       );
     }
     return user ? (

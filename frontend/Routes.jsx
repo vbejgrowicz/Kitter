@@ -51,7 +51,7 @@ class Routes extends React.Component {
 
     const status = this.props.AuthReducer.user.isLoading;
     return status ? (
-      <div>Loading...</div>
+      null
     ) : (
       <Router>
         {this.requireLoggedIn() ? (

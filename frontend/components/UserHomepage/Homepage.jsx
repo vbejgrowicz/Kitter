@@ -12,7 +12,7 @@ class Homepage extends React.Component {
 
   render() {
     const { id, isLoading } = this.props.UserReducer;
-    return isLoading || !id? (
+    return isLoading || !id ? (
       null
     ):(
       <div id="user-home-page">
