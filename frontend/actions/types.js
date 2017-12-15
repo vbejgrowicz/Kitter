@@ -13,6 +13,7 @@ export const REMOVE_POST = "REMOVE_POST";
 
 // UserActions
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
-export const SET_USER_PROFILE = "SET_USER_PROFILE";
+export const SET_USER_DATA = "SET_USER_DATA";
 export const SET_USER_ERROR = "SET_USER_ERROR";
 export const SET_POST_COUNT = "SET_POST_COUNT";
+export const USER_PROFILE_UPDATED = "USER_PROFILE_UPDATED";

@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import HomepageUserInfo from './HomepageUserInfo';
 import HomepagePostFeed from './HomepagePostFeed';
-import { setUser, findUserPostCount } from '../../actions/UserActions';
+import { getAuthUser } from '../../actions/UserActions';
 
 class Homepage extends React.Component {
 
   componentDidMount() {
-    this.props.fetchUser(this.props.AuthReducer.user);
+    this.props.fetchUserData(this.props.AuthReducer.user);
   }
 
   render() {
@@ -26,9 +26,8 @@ function mapStateToProps({ AuthReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: (user) => {
-      dispatch(setUser(user));
-      dispatch(findUserPostCount(user));
+    fetchUserData: (user) => {
+      dispatch(getAuthUser(user));
     }
   };
 };

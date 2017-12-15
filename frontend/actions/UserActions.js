@@ -5,8 +5,7 @@ export function checkUser(username) {
     dispatch({type: 'GET_USER_PROFILE'});
     findUser(username).then(user => {
       if (user.id) {
-        dispatch(findUserPostCount(user));
-        dispatch({type: 'SET_USER_PROFILE', user: user });
+        dispatch(setUser(user));
       } else {
         dispatch({type: 'SET_USER_ERROR', error: true });
       }
@@ -14,17 +13,26 @@ export function checkUser(username) {
   }
 };
 
-export const setUser = user => {
-  return {
-    type: 'SET_USER_PROFILE',
-    user
-  };
+export function getAuthUser(user) {
+  return function getAuthUserThunk(dispatch) {
+    dispatch({type: 'GET_USER_PROFILE'});
+    dispatch(setUser(user));
+  }
+};
+
+export function setUser(user) {
+  return function setUserThunk(dispatch) {
+    dispatch({type: 'SET_USER_DATA', user: user});
+    dispatch(findUserPostCount(user)).then(() => {
+      dispatch({type: 'USER_PROFILE_UPDATED'});
+    });
+  }
 };
 
 export function findUserPostCount(user) {
   return function findUserPostCountThunk(dispatch) {
     const id = user.id;
-    getNumPosts(id).then(response => {
+    return getNumPosts(id).then(response => {
       dispatch({type: 'SET_POST_COUNT', count: response.count});
     });
   }

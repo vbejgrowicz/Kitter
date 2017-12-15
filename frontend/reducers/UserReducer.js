@@ -1,4 +1,4 @@
-import { GET_USER_PROFILE, SET_USER_PROFILE, SET_USER_ERROR, SET_POST_COUNT } from '../actions/types';
+import { GET_USER_PROFILE, SET_USER_DATA, SET_USER_ERROR, SET_POST_COUNT, USER_PROFILE_UPDATED } from '../actions/types';
 
 const initialState = {
   id: null,
@@ -14,13 +14,12 @@ const initialState = {
 
 export function UserReducer (state = initialState, action) {
   switch (action.type) {
-    case SET_USER_PROFILE:
+    case SET_USER_DATA:
       return Object.assign({}, state,
         {
           id: action.user.id,
           username: action.user.username,
           name: action.user.name,
-          isLoading: false,
           error: false
         }
       );
@@ -34,10 +33,14 @@ export function UserReducer (state = initialState, action) {
     case GET_USER_PROFILE:
       return Object.assign({}, state,
         {
-          id: null,
-          username: null,
-          name: null,
           isLoading: true,
+          error: false
+        }
+      );
+    case USER_PROFILE_UPDATED:
+      return Object.assign({}, state,
+        {
+          isLoading: false,
           error: false
         }
       );
