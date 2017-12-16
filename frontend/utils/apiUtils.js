@@ -63,3 +63,9 @@ export const getNumPosts = (id) => {
   return fetch(`/api/count/${id}/posts`, { method: 'GET', credentials: 'same-origin' })
   .then(resp => resp.json());
 }
+
+// Counts
+export const getTotalNumPosts = () => {
+  return fetch(`/api/count/posts`, { method: 'GET', credentials: 'same-origin' })
+  .then(resp => resp.json());
+}
