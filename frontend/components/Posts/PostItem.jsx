@@ -6,8 +6,8 @@ import postedTime from '../../utils/postedTime';
 
 class PostItem extends React.Component {
 
-  handleRemove(id) {
-    this.props.removePost(id);
+  handleRemove(post) {
+    this.props.removePost(post);
   }
 
   reqAuth(authorId) {
@@ -31,7 +31,7 @@ class PostItem extends React.Component {
         <span className="time">&middot; {time}</span>
         <div className="text">{text}</div>
         {this.reqAuth(author.id) ? (
-          <button onClick={() => this.handleRemove(_id)}>Delete Post</button>
+          <button onClick={() => this.handleRemove(this.props.post)}>Delete Post</button>
         ) : (
           null
         )}
@@ -46,8 +46,8 @@ function mapStateToProps({ AuthReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removePost: (id) => {
-      dispatch(deletePost(id));
+    removePost: (post) => {
+      dispatch(deletePost(post));
     },
   };
 };

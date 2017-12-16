@@ -1,4 +1,5 @@
 import { getAllPosts, getUserPosts, addPost, removePost } from '../utils/apiUtils';
+import { findUserPostCount } from './UserActions';
 
 export function fetchPosts(id, category) {
   return function fetchPostsThunk(dispatch) {
@@ -34,10 +35,12 @@ export function newPost(post) {
   };
 };
 
-export function deletePost(id) {
+export function deletePost(post) {
   return function deletePostThunk(dispatch) {
-    removePost(id).then(response => {
-      dispatch({type: 'REMOVE_POST', id: id});
+    const postID = post._id;
+    removePost(postID).then(response => {
+      dispatch({type: 'REMOVE_POST', id: postID});
+      dispatch(findUserPostCount(post.author));
     });
   };
 };
