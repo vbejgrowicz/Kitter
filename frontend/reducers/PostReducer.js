@@ -1,15 +1,19 @@
-import { GET_POSTS, SET_POSTS, ADD_POST, REMOVE_POST } from '../actions/types';
+import { GET_POSTS, SET_POSTS, ADD_POST, REMOVE_POST, UPDATE_PENDING_POSTS } from '../actions/types';
 
 const initialState = {
   posts: {
     category: null,
     list: [],
-    isLoading: false
+    isLoading: false,
+    pendingPosts: {
+      status: false,
+      count: null
+    },
   }
 }
 
-function updatePosts(newPost, posts, category) {
-  if (category === 'All'){
+function updatePosts(newPost, posts, category, pendingStatus) {
+  if (category === 'All' && !pendingStatus){
     return [newPost, ... posts];
   } else {
     return posts;
@@ -43,7 +47,7 @@ export function PostReducer (state = initialState, action) {
         {
           posts: Object.assign({}, state.posts,
             {
-              list: updatePosts(action.post, state.posts.list, state.posts.category),
+              list: updatePosts(action.post, state.posts.list, state.posts.category, state.posts.pendingPosts.status),
             })
         }
       );
@@ -53,6 +57,19 @@ export function PostReducer (state = initialState, action) {
           posts: Object.assign({}, state.posts,
             {
               list: state.posts.list.filter(post => post._id !== action.id)
+            })
+        }
+      );
+    case UPDATE_PENDING_POSTS:
+      return Object.assign({}, state,
+        {
+          posts: Object.assign({}, state.posts,
+            {
+              pendingPosts: Object.assign({}, state.posts.pendingPosts,
+                {
+                  status: action.status,
+                  count: action.count
+                })
             })
         }
       );

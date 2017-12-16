@@ -1,13 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PostItem from './PostItem';
+import { setPendingPosts } from '../../actions/PostActions';
 
 class PostList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      newPosts: null,
-    };
-  }
 
   componentDidMount() {
     this.checkForUpdates = setInterval(
@@ -23,30 +19,27 @@ class PostList extends React.Component {
   countNewPosts() {
     this.props.getNumPosts().then((res) => {
       const numOfNewPosts = res.count - this.props.postCount;
-      if (numOfNewPosts > 0) {
-        this.setState({
-          newPosts: numOfNewPosts
-        });
+      const { count } = this.props.PostReducer.posts.pendingPosts;
+      if (numOfNewPosts > 0 && numOfNewPosts !== count) {
+        this.props.updatePendingPosts(true, numOfNewPosts);
       }
     });
   }
 
   handleNewPosts() {
     this.props.updatePosts();
-    this.setState({
-      newPosts: null,
-    })
+    this.props.updatePendingPosts(false, null);
   }
 
   render() {
-    const { newPosts } = this.state;
+    const { status, count } = this.props.PostReducer.posts.pendingPosts;
     const posts = this.props.posts.map((post) => {
       return <PostItem post={post} key={post._id} />
     });
     return (
       <div>
-        {newPosts ? (
-          <div onClick={this.handleNewPosts.bind(this)}>See {newPosts} new Meow</div>
+        {status ? (
+          <div onClick={this.handleNewPosts.bind(this)}>See {count} new Meow</div>
         ):(
           null
         )}
@@ -58,4 +51,16 @@ class PostList extends React.Component {
   }
 }
 
-export default PostList;
+function mapStateToProps({ PostReducer }) {
+  return { PostReducer };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updatePendingPosts: (status, count) => {
+      dispatch(setPendingPosts(status, count));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostList);

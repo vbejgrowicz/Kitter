@@ -41,3 +41,11 @@ export function deletePost(id) {
     });
   };
 };
+
+export const setPendingPosts = (status, count) => {
+  return {
+    type: 'UPDATE_PENDING_POSTS',
+    status,
+    count
+  }
+}
