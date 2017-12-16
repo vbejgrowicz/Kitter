@@ -32,9 +32,14 @@ export function findUserPosts(id) {
 };
 
 export function newPost(post) {
-  return function newPostThunk(dispatch) {
+  return function newPostThunk(dispatch, getState) {
+    const { category, pendingPosts } = getState().PostReducer.posts;
+    const user = getState().UserReducer;
     addPost(post).then(response => {
-      dispatch({type: 'ADD_POST', post: response.post});
+      if (category === 'All' && !pendingPosts.status) {
+        dispatch({type: 'ADD_POST', post: response.post});
+        dispatch(findUserPostCount(user))
+      }
     });
   };
 };

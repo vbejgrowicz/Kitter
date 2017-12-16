@@ -13,14 +13,6 @@ const initialState = {
   }
 }
 
-function updatePosts(newPost, posts, category, pendingStatus) {
-  if (category === 'All' && !pendingStatus){
-    return [newPost, ... posts];
-  } else {
-    return posts;
-  }
-}
-
 export function PostReducer (state = initialState, action) {
   switch (action.type) {
     case GET_POSTS:
@@ -49,7 +41,8 @@ export function PostReducer (state = initialState, action) {
         {
           posts: Object.assign({}, state.posts,
             {
-              list: updatePosts(action.post, state.posts.list, state.posts.category, state.posts.pendingPosts.status),
+              list: [action.post, ... state.posts.list],
+              total: state.posts.total + 1,
             })
         }
       );
@@ -58,7 +51,8 @@ export function PostReducer (state = initialState, action) {
         {
           posts: Object.assign({}, state.posts,
             {
-              list: state.posts.list.filter(post => post._id !== action.id)
+              list: state.posts.list.filter(post => post._id !== action.id),
+              total: state.posts.total - 1,
             })
         }
       );
