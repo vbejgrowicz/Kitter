@@ -17,25 +17,30 @@ class PostList extends React.Component {
   }
 
   countNewPosts() {
-    this.props.getNumPosts().then((res) => {
-      const numOfNewPosts = res.count - this.props.postCount;
-      const { count } = this.props.PostReducer.posts.pendingPosts;
-      if (numOfNewPosts > 0 && numOfNewPosts !== count) {
-        this.props.updatePendingPosts(true, numOfNewPosts);
+    const { total, pendingPosts } = this.props.PostReducer.posts;
+    const { count } = pendingPosts;
+
+    this.props.getPostCount().then((res) => {
+      const newPosts = res.count - total;
+      if (newPosts > 0 && newPosts !== count) {
+        this.props.updatePendingPosts(true, newPosts);
       }
     });
   }
 
   handleNewPosts() {
-    this.props.updatePosts();
+    this.props.fetchPosts();
     this.props.updatePendingPosts(false, null);
   }
 
   render() {
     const { status, count } = this.props.PostReducer.posts.pendingPosts;
-    const posts = this.props.posts.map((post) => {
+    const { list } = this.props.PostReducer.posts;
+
+    const posts = list.map((post) => {
       return <PostItem post={post} key={post._id} />
     });
+
     return (
       <div>
         {status ? (

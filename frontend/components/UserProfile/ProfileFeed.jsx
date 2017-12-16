@@ -17,10 +17,9 @@ class ProfileFeed extends React.Component {
     const posts = this.props.PostReducer.posts.list;
     return (
       <div id="profile-feed">
-        <PostList posts={posts}
-          postCount={user.data.posts}
-          getNumPosts={getNumPosts.bind(this, user.id)}
-          updatePosts={this.props.getPosts.bind(this, user, 'User')} />
+        <PostList
+          getPostCount={getNumPosts.bind(this, user.id)}
+          fetchPosts={this.props.getPosts.bind(this, user, 'User')} />
       </div>
     );
   }

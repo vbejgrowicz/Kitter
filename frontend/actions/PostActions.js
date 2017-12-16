@@ -1,4 +1,4 @@
-import { getAllPosts, getUserPosts, addPost, removePost } from '../utils/apiUtils';
+import { getAllPosts, getUserPosts, addPost, removePost, getNumPosts, getTotalNumPosts } from '../utils/apiUtils';
 import { findUserPostCount } from './UserActions';
 
 export function fetchPosts(id, category) {
@@ -14,7 +14,9 @@ export function fetchPosts(id, category) {
 export function findAllPosts(id) {
   return function findAllPostsThunk(dispatch) {
     getAllPosts().then(response => {
-      dispatch({type: 'SET_POSTS', posts: response.allPosts});
+      getTotalNumPosts().then(res => {
+        dispatch({type: 'SET_POSTS', posts: response.allPosts, total: res.count});
+      });
     });
   };
 };
@@ -22,7 +24,9 @@ export function findAllPosts(id) {
 export function findUserPosts(id) {
   return function findUserPostsThunk(dispatch) {
     getUserPosts(id).then(response => {
-      dispatch({type: 'SET_POSTS', posts: response.userPosts});
+      getNumPosts(id).then(res => {
+        dispatch({type: 'SET_POSTS', posts: response.userPosts, total: res.count});
+      })
     });
   }
 };

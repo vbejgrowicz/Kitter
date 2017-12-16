@@ -2,6 +2,7 @@ import { GET_POSTS, SET_POSTS, ADD_POST, REMOVE_POST, UPDATE_PENDING_POSTS } fro
 
 const initialState = {
   posts: {
+    total: null,
     category: null,
     list: [],
     isLoading: false,
@@ -38,6 +39,7 @@ export function PostReducer (state = initialState, action) {
           posts: Object.assign({}, state.posts,
             {
               list: action.posts,
+              total: action.total,
               isLoading: false
             })
         }
