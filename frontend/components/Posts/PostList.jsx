@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PostItem from './PostItem';
-import { setPendingPosts } from '../../actions/PostActions';
+import { setPendingPosts, fetchPosts } from '../../actions/PostActions';
+import { findUserPostCount } from '../../actions/UserActions';
+import { getNumPosts, getTotalNumPosts } from '../../utils/apiUtils';
 
 class PostList extends React.Component {
 
   componentDidMount() {
+    const user = this.props.UserReducer;
+    this.props.getPosts(user, this.props.category);
+
     this.checkForUpdates = setInterval(
       () => this.countNewPosts(),
       30000
@@ -17,19 +22,31 @@ class PostList extends React.Component {
   }
 
   countNewPosts() {
-    const { total, pendingPosts } = this.props.PostReducer.posts;
+    const { total, pendingPosts, category } = this.props.PostReducer.posts;
+    const { id } = this.props.UserReducer;
     const { count } = pendingPosts;
 
-    this.props.getPostCount().then((res) => {
-      const newPosts = res.count - total;
-      if (newPosts > 0 && newPosts !== count) {
-        this.props.updatePendingPosts(true, newPosts);
-      }
-    });
+    if (category === 'All') {
+      getTotalNumPosts().then((res) => {
+        const newPosts = res.count - total;
+        if (newPosts > 0 && newPosts !== count) {
+          this.props.updatePendingPosts(true, newPosts);
+        }
+      })
+    } else {
+      getNumPosts(id).then((res) => {
+        const newPosts = res.count - total;
+        if (newPosts > 0 && newPosts !== count) {
+          this.props.updatePendingPosts(true, newPosts);
+        }
+      })
+    }
   }
 
   handleNewPosts() {
-    this.props.fetchPosts();
+    const user = this.props.UserReducer;
+    this.props.getPosts(user, this.props.category);
+    this.props.updatePostCount(user);
     this.props.updatePendingPosts(false, null);
   }
 
@@ -56,8 +73,8 @@ class PostList extends React.Component {
   }
 }
 
-function mapStateToProps({ PostReducer }) {
-  return { PostReducer };
+function mapStateToProps({ UserReducer, PostReducer }) {
+  return { UserReducer, PostReducer };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -65,6 +82,12 @@ const mapDispatchToProps = (dispatch) => {
     updatePendingPosts: (status, count) => {
       dispatch(setPendingPosts(status, count));
     },
+    getPosts: (user, category) => {
+      dispatch(fetchPosts(user.id, category));
+    },
+    updatePostCount: (user) => {
+      dispatch(findUserPostCount(user));
+    }
   };
 };
 
