@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PostItem from './PostItem';
-import { findUserPostCount } from '../../actions/UserActions';
 import { setPendingPosts, fetchPosts, addPendingPosts } from '../../actions/PostActions';
+import { updateUserPostCount } from '../../actions/UserActions';
 import { getNumPosts, getTotalNumPosts } from '../../utils/apiUtils';
 
 class PostList extends React.Component {
@@ -42,7 +42,10 @@ class PostList extends React.Component {
 
   handleNewPosts() {
     const user = this.props.UserReducer;
+    const newPosts = this.props.PostReducer.posts.pendingPosts.list;
+    const userPosts = newPosts.filter((post) => post.author.id === user.id);
     this.props.getNewPosts(user);
+    this.props.updatePostCount(userPosts.length);
   }
 
   render() {
@@ -80,11 +83,11 @@ const mapDispatchToProps = (dispatch) => {
     getPosts: (id, category) => {
       dispatch(fetchPosts(id, category));
     },
-    updatePostCount: (user) => {
-      dispatch(findUserPostCount(user));
     getNewPosts: (user) => {
       dispatch(addPendingPosts());
     },
+    updatePostCount: (num) => {
+      dispatch(updateUserPostCount(num));
     }
   };
 };

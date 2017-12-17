@@ -1,4 +1,4 @@
-import { GET_USER_PROFILE, SET_USER_DATA, SET_USER_ERROR, SET_POST_COUNT, USER_PROFILE_UPDATED } from '../actions/types';
+import { GET_USER_PROFILE, SET_USER_DATA, SET_USER_ERROR, SET_POST_COUNT, UPDATE_POST_COUNT, USER_PROFILE_UPDATED } from '../actions/types';
 
 const initialState = {
   id: null,
@@ -50,6 +50,15 @@ export function UserReducer (state = initialState, action) {
           data: Object.assign({}, state.data,
             {
               posts: action.count,
+            })
+        }
+      );
+    case UPDATE_POST_COUNT:
+      return Object.assign({}, state,
+        {
+          data: Object.assign({}, state.data,
+            {
+              posts: state.data.posts + action.count,
             })
         }
       );

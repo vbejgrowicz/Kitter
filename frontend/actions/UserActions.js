@@ -37,3 +37,10 @@ export function findUserPostCount(user) {
     });
   }
 };
+
+export const updateUserPostCount = (count) => {
+  return {
+    type: 'UPDATE_POST_COUNT',
+    count
+  }
+}
