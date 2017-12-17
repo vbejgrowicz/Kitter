@@ -27,7 +27,7 @@ class PostList extends React.Component {
     this.getPostCount(this.props.category, user.id).then((res) => {
       const newPosts = res.count - total;
       if (newPosts > 0 && newPosts !== count) {
-        this.props.updatePendingPosts(true, newPosts);
+        this.props.updatePendingPosts(true, newPosts, this.props.category);
       }
     });
   }
@@ -76,8 +76,8 @@ function mapStateToProps({ UserReducer, PostReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updatePendingPosts: (status, count) => {
-      dispatch(setPendingPosts(status, count));
+    updatePendingPosts: (status, count, category) => {
+      dispatch(setPendingPosts(status, count, category));
     },
     getPosts: (id, category) => {
       dispatch(fetchPosts(id, category));

@@ -8,7 +8,8 @@ const initialState = {
     isLoading: false,
     pendingPosts: {
       status: false,
-      count: null
+      count: null,
+      list: null,
     },
   }
 }

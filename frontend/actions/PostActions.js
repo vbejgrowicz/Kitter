@@ -1,4 +1,4 @@
-import { getAllPosts, getUserPosts, addPost, removePost, getNumPosts, getTotalNumPosts } from '../utils/apiUtils';
+import { getAllPosts, getUserPosts, addPost, removePost, getNumPosts, getTotalNumPosts, getNewPosts } from '../utils/apiUtils';
 import { findUserPostCount } from './UserActions';
 
 export function fetchPosts(id, category) {
@@ -54,7 +54,16 @@ export function deletePost(post) {
   };
 };
 
-export const setPendingPosts = (status, count) => {
+export function setPendingPosts(status, count, category) {
+  return function setPendingPostsThunk(dispatch) {
+    if (category === 'All'){
+      getNewPosts(count).then(response => {
+        console.log(response);
+        dispatch({ type: 'UPDATE_PENDING_POSTS', status, count, posts: response.newPosts })
+      })
+    }
+  };
+};
   return {
     type: 'UPDATE_PENDING_POSTS',
     status,
