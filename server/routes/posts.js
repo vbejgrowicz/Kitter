@@ -13,6 +13,17 @@ router.get('/', (req, res) => {
   });
 });
 
+// GET NEW POSTS FROM ALL POSTS
+router.get('/new/:numOfPosts', (req, res) => {
+  Post.find({}, null, {sort: {date: -1}, limit: parseInt(req.params.numOfPosts)}, (err, newPosts) => {
+    if (err){
+      console.log(err);
+    } else {
+      res.json({ newPosts: newPosts });
+    }
+  });
+});
+
 // GET USER POSTS
 router.get('/:userID', (req, res) => {
   Post.find({ "author.id": req.params.userID }, null, {sort: {date: -1}}, (err, userPosts) => {

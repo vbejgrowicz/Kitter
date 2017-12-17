@@ -36,6 +36,11 @@ export const getAllPosts = () => {
   .then(resp => resp.json());
 }
 
+export const getNewPosts = (numOfPosts) => {
+  return fetch(`/api/posts/new/${numOfPosts}`, { method: 'GET', credentials: 'same-origin'})
+  .then(resp => resp.json());
+}
+
 export const getUserPosts = (id) => {
   return fetch(`/api/posts/${id}`, { method: 'GET', credentials: 'same-origin' })
   .then(resp => resp.json());
