@@ -64,9 +64,9 @@ export function setPendingPosts(status, count, category) {
     }
   };
 };
+
+export const addPendingPosts = () => {
   return {
-    type: 'UPDATE_PENDING_POSTS',
-    status,
-    count
+    type: 'ADD_PENDING_POSTS',
   }
 }
