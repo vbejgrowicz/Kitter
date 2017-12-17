@@ -25,7 +25,7 @@ export default function postedTime(date) {
     result = `${Math.round(differenceinms / hour_in_ms)}h`;
   }
   else {
-    result = timeString.toDateString();
+    result = null
   }
   return result;
 }
