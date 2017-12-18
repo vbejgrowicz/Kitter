@@ -48,12 +48,12 @@ function mapStateToProps({ AuthReducer }) {
   return { AuthReducer };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     updateUser: () => {
       dispatch(logOutUser());
     },
-  };
-};
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserDropdown);

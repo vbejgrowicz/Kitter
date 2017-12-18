@@ -24,12 +24,12 @@ LoginTile.propTypes = {
   guestLogin: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     guestLogin: (username, password) => {
       dispatch(logInUser(username, password));
     },
-  };
-};
+  }
+);
 
 export default connect(null, mapDispatchToProps)(LoginTile);

@@ -76,12 +76,12 @@ function mapStateToProps({ AuthReducer }) {
   return { AuthReducer };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     removePost: (post) => {
       dispatch(deletePost(post));
     },
-  };
-};
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostItem);

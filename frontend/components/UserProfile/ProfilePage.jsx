@@ -42,12 +42,12 @@ function mapStateToProps({ UserReducer }) {
   return { UserReducer };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     fetchUser: (username) => {
       dispatch(checkUser(username));
     },
-  };
-};
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

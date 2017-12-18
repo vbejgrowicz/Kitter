@@ -131,15 +131,15 @@ UserForm.propTypes = {
   createUser: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     updateUser: (username, password, redirectFailure) => {
       dispatch(logInUser(username, password, redirectFailure));
     },
     createUser: (name, username, password) => {
       dispatch(signUpUser(name, username, password));
     },
-  };
-};
+  }
+);
 
 export default connect(null, mapDispatchToProps)(UserForm);

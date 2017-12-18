@@ -33,12 +33,12 @@ function mapStateToProps({ AuthReducer, UserReducer }) {
   return { AuthReducer, UserReducer };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     fetchUserData: (user) => {
       dispatch(getAuthUser(user));
     },
-  };
-};
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

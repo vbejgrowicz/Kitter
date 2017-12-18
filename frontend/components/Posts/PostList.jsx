@@ -61,8 +61,8 @@ function mapStateToProps({ UserReducer, PostReducer }) {
   return { UserReducer, PostReducer };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     getPosts: (id, category) => {
       dispatch(fetchPosts(id, category));
     },
@@ -74,8 +74,8 @@ const mapDispatchToProps = (dispatch) => {
     },
     checkPosts: () => {
       dispatch(checkPendingPosts());
-    }
-  };
-};
+    },
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostList);

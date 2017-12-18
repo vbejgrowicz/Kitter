@@ -88,12 +88,12 @@ NewPostForm.defaultProps = {
   onClose: null,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     createPost: (post) => {
       dispatch(newPost(post));
     },
-  };
-};
+  }
+);
 
 export default connect(null, mapDispatchToProps)(NewPostForm);

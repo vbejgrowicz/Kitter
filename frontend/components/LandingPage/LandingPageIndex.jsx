@@ -78,12 +78,12 @@ function mapStateToProps({ AuthReducer }) {
   return { AuthReducer };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     updateError: () => {
       dispatch(clearError());
     },
-  };
-};
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPageIndex);

@@ -70,13 +70,13 @@ function mapStateToProps({ AuthReducer }) {
   return { AuthReducer };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => (
+  {
     getAuthorizedUser: () => {
       dispatch(getUser());
     },
-  };
-};
+  }
+);
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routes);
