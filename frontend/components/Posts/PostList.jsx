@@ -7,10 +7,10 @@ import { updateUserPostCount } from '../../actions/UserActions';
 
 class PostList extends React.Component {
   componentDidMount() {
-    const user = this.props.UserReducer;
-    this.props.getPosts(user.id, this.props.category);
+    const { id } = this.props.UserReducer;
+    this.props.getPosts(id, this.props.category);
     this.checkForUpdates = setInterval(
-      () => this.props.checkPosts(),
+      () => this.props.checkPosts(this.props.category, id),
       30000,
     );
   }
@@ -72,8 +72,8 @@ const mapDispatchToProps = dispatch => (
     updatePostCount: (num) => {
       dispatch(updateUserPostCount(num));
     },
-    checkPosts: () => {
-      dispatch(checkPendingPosts());
+    checkPosts: (category, userId, currentPostCount) => {
+      dispatch(checkPendingPosts(category, userId, currentPostCount));
     },
   }
 );

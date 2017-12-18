@@ -82,7 +82,7 @@ function PostReducer(state = initialState, action) {
           ),
         },
       );
-    case UPDATE_PENDING_POSTS:
+    case SET_PENDING_POSTS:
       return Object.assign(
         {}, state,
         {

@@ -69,31 +69,15 @@ export function deletePost(post) {
   };
 }
 
-export function setPendingPosts(count, category) {
-  return function setPendingPostsThunk(dispatch) {
-    if (category === 'All') {
-      getNewPosts(count).then((response) => {
-        dispatch({ type: 'UPDATE_PENDING_POSTS', status: true, count, posts: response.newPosts });
-      });
-    }
-  };
-}
-
-function getPostCount(category, userId) {
-  if (category === 'All') {
-    return getTotalNumPosts();
-  }
-  return getNumPosts(userId);
-}
-
-export function checkPendingPosts() {
+export function checkPendingPosts(category, userId) {
   return function checkPendingPostsThunk(dispatch, getState) {
-    const { category, pendingPosts, total } = getState().PostReducer.posts;
-    const user = getState().UserReducer;
-    getPostCount(category, user.id).then((res) => {
-      const newCount = res.count - total;
-      if (newCount > 0 && newCount !== pendingPosts.count) {
-        dispatch(setPendingPosts(newCount, category));
+    const { total } = getState().PostReducer.posts;
+    getPostCount(category, userId).then((response) => {
+      const newPostCount = response.count - total;
+      if (newPostCount > 0) {
+        getNewPosts(newPostCount).then((res) => {
+          dispatch({ type: 'SET_PENDING_POSTS', count: newPostCount, posts: res.newPosts });
+        });
       }
     });
   };
