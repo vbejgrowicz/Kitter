@@ -1,14 +1,17 @@
 @import "PostModal";
 @import "UserDropdown";
+@import "Message";
 #nav {
   height: $header-height;
   color: $secondary-color;
   background-color: $white;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   width: 100%;
   min-width: 500px;
+  box-shadow: 0 1px 2px -2px #494949;
+  border-bottom: 1px solid rgba(0,0,0,0.25);
 
   .link-container {
     display: flex;

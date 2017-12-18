@@ -1,0 +1,16 @@
+#message-container {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  .message-box {
+    background-color: white;
+    width: 500px;
+    height: 80px;
+    text-align: center;
+    margin: auto;
+    color: #8c8c8c;
+    box-shadow: 0px 2px 5px -2px #494949;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+}
