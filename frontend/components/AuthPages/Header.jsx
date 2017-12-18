@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 
@@ -6,14 +7,14 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
-    }
+      isOpen: false,
+    };
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
   }
 
   toggleLoginModal() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
 
@@ -24,7 +25,8 @@ class Header extends React.Component {
         {this.props.type === 'Sign up' ? (
           <div>
             <div className="btn" onClick={this.toggleLoginModal}>
-              Have an Account? <span>Log in <i className="fa fa-caret-down" aria-hidden="true"></i></span>
+              Have an Account?
+              <span>Log in <i className="fa fa-caret-down" aria-hidden="true" /></span>
             </div>
             <LoginModal show={this.state.isOpen} onClose={this.toggleLoginModal} />
           </div>
@@ -37,5 +39,9 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  type: PropTypes.string.isRequired,
+};
 
 export default Header;

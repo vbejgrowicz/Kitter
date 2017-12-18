@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { clearError } from '../../actions/AuthActions';
 
 class ErrorMessage extends React.Component {
-
   componentDidMount() {
     const errorPage = this.props.AuthReducer.error.page;
     const currentPage = this.context.router.history.location.pathname;
@@ -17,9 +16,9 @@ class ErrorMessage extends React.Component {
 
   render() {
     const currentPage = this.context.router.history.location.pathname;
-    const { page, message } = this.props.AuthReducer.error
+    const { page, message } = this.props.AuthReducer.error;
 
-    return(
+    return (
       <div className="message-space">
         {currentPage === page ? <div className="message">{message}</div> : null}
       </div>
@@ -28,8 +27,13 @@ class ErrorMessage extends React.Component {
 }
 
 ErrorMessage.contextTypes = {
-  router: PropTypes.object.isRequired
-}
+  router: PropTypes.object.isRequired,
+};
+
+ErrorMessage.propTypes = {
+  updateError: PropTypes.func.isRequired,
+  AuthReducer: PropTypes.object.isRequired,
+};
 
 function mapStateToProps({ AuthReducer }) {
   return { AuthReducer };

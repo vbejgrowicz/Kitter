@@ -1,18 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class PostTile extends React.Component {
-
-  render() {
-    return (
-      <div className="tile">
-        <div className="post-data">
-          <div className="post">{this.props.post.text}</div>
-          <div className="author">{this.props.post.author}</div>
-        </div>
-        <div className="image" style={{backgroundImage: 'url(' + this.props.post.image + ')'}}></div>
+function PostTile({ post }) {
+  return (
+    <div className="tile">
+      <div className="post-data">
+        <div className="post">{post.text}</div>
+        <div className="author">{post.author}</div>
       </div>
-    );
-  }
+      <div className="image" style={{ backgroundImage: `url(${post.image})` }} />
+    </div>
+  );
 }
+
+PostTile.propTypes = {
+  post: PropTypes.object.isRequired,
+};
 
 export default PostTile;

@@ -1,23 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 import NewPostForm from '../Posts/NewPostForm';
 
-class PostModal extends React.Component {
-
-  render() {
-    return (
-      <div id="post-modal" onClick={this.props.onClose}>
-        <div id="modal" onClick={this.props.ignoreClose}>
-          <div className="title">Compose new Meow</div>
-          <div className="close" onClick={this.props.onClose}>&times;</div>
-          <div className="post-container">
-            <NewPostForm onClose={this.props.onClose} initialFocus={true} />
-          </div>
+function PostModal({ onClose, ignoreClose }) {
+  return (
+    <div id="post-modal" onClick={onClose}>
+      <div id="modal" onClick={ignoreClose}>
+        <div className="title">Compose new Meow</div>
+        <div className="close" onClick={onClose}>&times;</div>
+        <div className="post-container">
+          <NewPostForm onClose={onClose} initialFocus />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
+PostModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  ignoreClose: PropTypes.func.isRequired,
+};
 
 export default PostModal;

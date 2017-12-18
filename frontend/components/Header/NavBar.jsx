@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom';
 import UserDropdown from './UserDropdown';
 import PostModal from './PostModal';
 
+function ignoreClose(event) {
+  event.stopPropagation();
+}
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       User: false,
-      Meow: false
-    }
+      Meow: false,
+    };
   }
 
   handleClick(selected) {
@@ -20,12 +24,8 @@ class NavBar extends React.Component {
       });
     }
     this.setState({
-      [selected]: !this.state[selected]
+      [selected]: !this.state[selected],
     });
-  }
-
-  ignoreClose(event) {
-    event.stopPropagation();
   }
 
   render() {
@@ -34,22 +34,22 @@ class NavBar extends React.Component {
         <div id="nav">
           <div className="link-container">
             <div className="left">
-              <Link to="/"><i className="fa fa-home" aria-hidden="true"></i></Link>
+              <Link to="/"><i className="fa fa-home" aria-hidden="true" /></Link>
             </div>
             <div className="center">
-              <Link to="/"><div className="brand-icon"></div></Link>
+              <Link to="/"><div className="brand-icon" /></Link>
             </div>
             <div className="right">
-              <i className="fa fa-user-circle" aria-hidden="true" onClick={this.handleClick.bind(this, 'User')}></i>
-              <button onClick={this.handleClick.bind(this, 'Meow')}>Meow</button>
+              <i className="fa fa-user-circle" aria-hidden="true" onClick={() => this.handleClick('User')} />
+              <button onClick={() => this.handleClick('Meow')}>Meow</button>
             </div>
           </div>
         </div>
         {this.state.User && (
-          <UserDropdown onClose={this.handleClick.bind(this, 'User')} ignoreClose={this.ignoreClose.bind(this)} />
+          <UserDropdown onClose={() => this.handleClick('User')} ignoreClose={ignoreClose} />
         )}
         {this.state.Meow && (
-          <PostModal onClose={this.handleClick.bind(this, 'Meow')} ignoreClose={this.ignoreClose.bind(this)} />
+          <PostModal onClose={() => this.handleClick('Meow')} ignoreClose={ignoreClose} />
         )}
       </div>
     );

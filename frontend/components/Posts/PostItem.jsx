@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deletePost } from '../../actions/PostActions';
@@ -16,7 +17,8 @@ class PostItem extends React.Component {
     if (this.state.time) {
       this.interval = setInterval(
         () => this.updateTime()
-      , 30000);
+        , 30000,
+      );
     }
   }
   componentWillUnmount() {
@@ -35,14 +37,17 @@ class PostItem extends React.Component {
     const currentUserId = this.props.AuthReducer.user.id;
     if (currentUserId === authorId) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   render() {
-    const { _id, text, name, username, author, date } = this.props.post;
-    const dateString = new Date(this.props.post.date).toDateString();
+    const {
+      text,
+      author,
+      date,
+    } = this.props.post;
+    const dateString = new Date(date).toDateString();
     return (
       <li className="post-item">
         <Link to={`/${author.username}`}>
@@ -60,6 +65,12 @@ class PostItem extends React.Component {
     );
   }
 }
+
+PostItem.propTypes = {
+  post: PropTypes.object.isRequired,
+  removePost: PropTypes.func.isRequired,
+  AuthReducer: PropTypes.object.isRequired,
+};
 
 function mapStateToProps({ AuthReducer }) {
   return { AuthReducer };

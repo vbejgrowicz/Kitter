@@ -12,12 +12,12 @@ const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
 // FOR DEV ONLY
 store.subscribe(() => {
-  console.log("store updated", store.getState());
+  console.log('store updated', store.getState());
 });
 
 ReactDOM.render(
   <Provider store={store}>
     <Routes />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

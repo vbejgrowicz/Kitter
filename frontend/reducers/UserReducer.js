@@ -9,60 +9,72 @@ const initialState = {
   data: {
     posts: 0,
     followers: 0,
-  }
-}
+  },
+};
 
-export function UserReducer (state = initialState, action) {
+function UserReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER_DATA:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
           id: action.user.id,
           username: action.user.username,
           name: action.user.name,
-          error: false
-        }
+          error: false,
+        },
       );
     case SET_USER_ERROR:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
           isLoading: false,
-          error: action.error
-        }
+          error: action.error,
+        },
       );
     case GET_USER_PROFILE:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
           isLoading: true,
-          error: false
-        }
+          error: false,
+        },
       );
     case USER_PROFILE_UPDATED:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
           isLoading: false,
-          error: false
-        }
+          error: false,
+        },
       );
     case SET_POST_COUNT:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          data: Object.assign({}, state.data,
+          data: Object.assign(
+            {}, state.data,
             {
               posts: action.count,
-            })
-        }
+            },
+          ),
+        },
       );
     case UPDATE_POST_COUNT:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          data: Object.assign({}, state.data,
+          data: Object.assign(
+            {}, state.data,
             {
               posts: state.data.posts + action.count,
-            })
-        }
+            },
+          ),
+        },
       );
-    default :
-    return state;
+    default:
+      return state;
   }
 }
+
+export default UserReducer;

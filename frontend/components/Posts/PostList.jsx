@@ -1,18 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostItem from './PostItem';
 import { fetchPosts, addPendingPosts, checkPendingPosts } from '../../actions/PostActions';
 import { updateUserPostCount } from '../../actions/UserActions';
-import { getNumPosts, getTotalNumPosts } from '../../utils/apiUtils';
 
 class PostList extends React.Component {
-
   componentDidMount() {
     const user = this.props.UserReducer;
     this.props.getPosts(user.id, this.props.category);
     this.checkForUpdates = setInterval(
       () => this.props.checkPosts(),
-      30000
+      30000,
     );
   }
 
@@ -23,23 +22,20 @@ class PostList extends React.Component {
   handleNewPosts() {
     const user = this.props.UserReducer;
     const newPosts = this.props.PostReducer.posts.pendingPosts.list;
-    const userPosts = newPosts.filter((post) => post.author.id === user.id);
-    this.props.getNewPosts(user);
+    const userPosts = newPosts.filter(post => post.author.id === user.id);
+    this.props.getNewPosts();
     this.props.updatePostCount(userPosts.length);
   }
 
   render() {
     const { pendingPosts, list } = this.props.PostReducer.posts;
     const { status, count } = pendingPosts;
-
-    const posts = list.map((post) => {
-      return <PostItem post={post} key={post._id} />
-    });
+    const posts = list.map(post => <PostItem post={post} key={post._id} />);
 
     return (
       <div>
         {status ? (
-          <div onClick={this.handleNewPosts.bind(this)}>See {count} new Meow</div>
+          <div onClick={() => this.handleNewPosts()}>See {count} new Meow</div>
         ):(
           null
         )}
@@ -51,6 +47,16 @@ class PostList extends React.Component {
   }
 }
 
+PostList.propTypes = {
+  category: PropTypes.string.isRequired,
+  getPosts: PropTypes.func.isRequired,
+  getNewPosts: PropTypes.func.isRequired,
+  updatePostCount: PropTypes.func.isRequired,
+  checkPosts: PropTypes.func.isRequired,
+  UserReducer: PropTypes.object.isRequired,
+  PostReducer: PropTypes.object.isRequired,
+};
+
 function mapStateToProps({ UserReducer, PostReducer }) {
   return { UserReducer, PostReducer };
 }
@@ -60,7 +66,7 @@ const mapDispatchToProps = (dispatch) => {
     getPosts: (id, category) => {
       dispatch(fetchPosts(id, category));
     },
-    getNewPosts: (user) => {
+    getNewPosts: () => {
       dispatch(addPendingPosts());
     },
     updatePostCount: (num) => {

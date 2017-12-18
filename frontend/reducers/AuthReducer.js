@@ -5,52 +5,60 @@ const initialState = {
     id: null,
     username: null,
     name: null,
-    isLoading: true
+    isLoading: true,
   },
   error: {
     message: null,
-    page: null
+    page: null,
   },
-}
+};
 
-export function AuthReducer (state = initialState, action) {
+function AuthReducer(state = initialState, action) {
   switch (action.type) {
     case SET_AUTH_USER:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          user: Object.assign({}, state.user,
+          user: Object.assign(
+            {}, state.user,
             {
               id: action.user.id,
               username: action.user.username,
               name: action.user.name,
               isLoading: false,
-            })
-        }
+            },
+          ),
+        },
       );
     case AUTH_FAIL:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          user: Object.assign({}, state.user,
+          user: Object.assign(
+            {}, state.user,
             {
               isLoading: false,
-            })
-        }
+            },
+          ),
+        },
       );
     case SET_ERROR:
       return Object.assign({}, state, {
         error: {
           message: action.message,
-          page: action.page
-        }
+          page: action.page,
+        },
       });
     case REMOVE_ERROR:
       return Object.assign({}, state, {
         error: {
           message: null,
-          page: null
-        }
+          page: null,
+        },
       });
-    default :
-    return state;
+    default:
+      return state;
   }
 }
+
+export default AuthReducer;

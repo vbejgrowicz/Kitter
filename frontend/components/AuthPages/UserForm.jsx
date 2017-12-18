@@ -10,93 +10,109 @@ class UserForm extends React.Component {
       name: '',
       username: '',
       password: '',
-      errors: {}
+      errors: {},
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   redirectFailure() {
     this.context.router.history.push('/login');
   }
 
-  validate(name, username, password) {
+  validate() {
+    const { name, username, password } = this.state;
     return {
       name: name.length === 0,
       username: username.length === 0,
-      password: password.length <= 6
+      password: password.length <= 6,
     };
   }
 
   handleChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
+    const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const { name, username, password } = this.state;
-    if(this.props.formType === 'Sign up') {
+    if (this.props.formType === 'Sign up') {
       if (this.checkErrors()) {
         this.props.createUser(name, username, password);
       }
     } else {
       this.props.updateUser(username, password, this.redirectFailure.bind(this));
     }
-  };
+  }
 
   checkErrors() {
-    const { name, username, password } = this.state;
-    const errors = this.validate(name, username, password);
-    this.setState({ errors: errors });
+    const errors = this.validate();
+    this.setState({ errors });
     return !Object.keys(errors).some(x => errors[x]);
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit}>
         {this.props.formType === 'Sign up' ? (
           <div>
-            <p className="error">{this.state.errors.name ?(
-              <span><i className="fa fa-times" aria-hidden="true"></i> Enter a Name</span>
+            <p className="error">{this.state.errors.name ? (
+              <span>
+                <i className="fa fa-times" aria-hidden="true" />
+                Enter a Name
+              </span>
               ) : (
                 null
-            )}</p>
-            <input type="text"
+              )}
+            </p>
+            <input
+              type="text"
               placeholder="Full Name"
               name="name"
               value={this.state.name}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.handleChange}
             />
           </div>
         ) : (
           null
         )}
         <div>
-          <p className="error">{this.state.errors.username ?(
-            <span><i className="fa fa-times" aria-hidden="true"></i> Enter a Username</span>
+          <p className="error">{this.state.errors.username ? (
+            <span>
+              <i className="fa fa-times" aria-hidden="true" />
+              Enter a Username
+            </span>
             ) : (
               null
-          )}</p>
-          <input type="text"
+            )}
+          </p>
+          <input
+            type="text"
             placeholder="Username"
             name="username"
             value={this.state.username}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChange}
           />
         </div>
         <div>
-          <p className="error">{this.state.errors.password ?(
-            <span><i className="fa fa-times" aria-hidden="true"></i> Password must be at least 6 characters</span>
+          <p className="error">{this.state.errors.password ? (
+            <span>
+              <i className="fa fa-times" aria-hidden="true" />
+              Password must be at least 6 characters
+            </span>
             ) : (
               null
-          )}</p>
-          <input type="password"
+            )}
+          </p>
+          <input
+            type="password"
             placeholder="Password"
             name="password"
             value={this.state.password}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChange}
           />
         </div>
         <button className="blue-btn">{this.props.formType}</button>
@@ -106,8 +122,14 @@ class UserForm extends React.Component {
 }
 
 UserForm.contextTypes = {
-  router: PropTypes.object.isRequired
-}
+  router: PropTypes.object.isRequired,
+};
+
+UserForm.propTypes = {
+  formType: PropTypes.string.isRequired,
+  updateUser: PropTypes.func.isRequired,
+  createUser: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

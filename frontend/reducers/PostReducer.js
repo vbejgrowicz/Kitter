@@ -11,83 +11,107 @@ const initialState = {
       count: null,
       list: null,
     },
-  }
-}
+  },
+};
 
-export function PostReducer (state = initialState, action) {
+function PostReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POSTS:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          posts: Object.assign({}, state.posts,
+          posts: Object.assign(
+            {}, state.posts,
             {
               category: action.category,
-              isLoading: true
-            })
-        }
+              isLoading: true,
+            },
+          ),
+        },
       );
     case SET_POSTS:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          posts: Object.assign({}, state.posts,
+          posts: Object.assign(
+            {}, state.posts,
             {
               list: action.posts,
               total: action.total,
-              isLoading: false
-            })
-        }
+              isLoading: false,
+            },
+          ),
+        },
       );
     case ADD_POST:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          posts: Object.assign({}, state.posts,
+          posts: Object.assign(
+            {}, state.posts,
             {
-              list: [action.post, ... state.posts.list],
+              list: [action.post, ...state.posts.list],
               total: state.posts.total + 1,
-            })
-        }
+            },
+          ),
+        },
       );
     case REMOVE_POST:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          posts: Object.assign({}, state.posts,
+          posts: Object.assign(
+            {}, state.posts,
             {
               list: state.posts.list.filter(post => post._id !== action.id),
               total: state.posts.total - 1,
-            })
-        }
+            },
+          ),
+        },
       );
     case UPDATE_PENDING_POSTS:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          posts: Object.assign({}, state.posts,
+          posts: Object.assign(
+            {}, state.posts,
             {
-              pendingPosts: Object.assign({}, state.posts.pendingPosts,
+              pendingPosts: Object.assign(
+                {}, state.posts.pendingPosts,
                 {
                   status: action.status,
                   count: action.count,
-                  list: action.posts
-                })
-            })
-        }
+                  list: action.posts,
+                },
+              ),
+            },
+          ),
+        },
       );
     case ADD_PENDING_POSTS:
-      return Object.assign({}, state,
+      return Object.assign(
+        {}, state,
         {
-          posts: Object.assign({}, state.posts,
+          posts: Object.assign(
+            {}, state.posts,
             {
-              list: [...state.posts.pendingPosts.list, ... state.posts.list],
+              list: [...state.posts.pendingPosts.list, ...state.posts.list],
               total: state.posts.total + state.posts.pendingPosts.count,
-              pendingPosts: Object.assign({}, state.posts.pendingPosts,
+              pendingPosts: Object.assign(
+                {}, state.posts.pendingPosts,
                 {
                   status: false,
                   count: null,
-                  list: null
-                })
-            })
-        }
+                  list: null,
+                },
+              ),
+            },
+          ),
+        },
       );
-    default :
-    return state;
+    default:
+      return state;
   }
 }
+
+export default PostReducer;

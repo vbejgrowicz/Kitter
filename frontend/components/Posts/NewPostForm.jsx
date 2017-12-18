@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import TextareaAutosize from 'react-autosize-textarea';
 import { newPost } from '../../actions/PostActions';
 
@@ -29,14 +30,14 @@ class NewPostForm extends React.Component {
 
   handleInput(e) {
     this.setState({
-      post: e.target.value
+      post: e.target.value,
     });
   }
 
   handleClear() {
     this.setState({
       post: '',
-      focus: false
+      focus: false,
     });
   }
 
@@ -65,11 +66,27 @@ class NewPostForm extends React.Component {
           onFocus={this.props.initialFocus ? null : this.handleFocus}
           onBlur={this.props.initialFocus ? null : this.handleBlur}
         />
-        <button className={focus} disabled={!this.state.post} onClick={this.handleSubmit}>Meow</button>
+        <button
+          className={focus}
+          disabled={!this.state.post}
+          onClick={this.handleSubmit}
+        >
+          Meow
+        </button>
       </div>
     );
   }
 }
+
+NewPostForm.propTypes = {
+  createPost: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
+  initialFocus: PropTypes.bool.isRequired,
+};
+
+NewPostForm.defaultProps = {
+  onClose: null,
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
