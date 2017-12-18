@@ -12,6 +12,10 @@ const initialState = {
       list: null,
     },
   },
+  message: {
+    status: true,
+    text: 'Default',
+  },
 };
 
 function PostReducer(state = initialState, action) {

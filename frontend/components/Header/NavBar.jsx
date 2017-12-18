@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import UserDropdown from './UserDropdown';
 import PostModal from './PostModal';
+import Message from './Message';
 
 function ignoreClose(event) {
   event.stopPropagation();
@@ -51,9 +53,18 @@ class NavBar extends React.Component {
         {this.state.Meow && (
           <PostModal onClose={() => this.handleClick('Meow')} ignoreClose={ignoreClose} />
         )}
+        {this.props.PostReducer.message.status && (
+          <Message text="Message" />
+        )}
       </div>
     );
   }
 }
 
-export default NavBar;
+
+function mapStateToProps({ PostReducer }) {
+  return { PostReducer };
+}
+
+
+export default connect(mapStateToProps, null)(NavBar);
