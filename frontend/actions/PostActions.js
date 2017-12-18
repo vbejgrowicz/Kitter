@@ -54,14 +54,35 @@ export function deletePost(post) {
   };
 };
 
-export function setPendingPosts(status, count, category) {
+export function setPendingPosts(count, category) {
   return function setPendingPostsThunk(dispatch) {
     if (category === 'All'){
       getNewPosts(count).then(response => {
         console.log(response);
-        dispatch({ type: 'UPDATE_PENDING_POSTS', status, count, posts: response.newPosts })
+        dispatch({ type: 'UPDATE_PENDING_POSTS', status: true, count, posts: response.newPosts })
       })
     }
+  };
+};
+
+function getPostCount(category, userId) {
+  if (category === 'All') {
+    return getTotalNumPosts();
+  } else {
+    return getNumPosts(userId);
+  }
+}
+
+export function checkPendingPosts() {
+  return function checkPendingPostsThunk(dispatch, getState) {
+    const { category, pendingPosts, total } = getState().PostReducer.posts;
+    const user = getState().UserReducer;
+    getPostCount(category, user.id).then((res) => {
+      const newCount = res.count - total;
+      if (newCount > 0 && newCount !== pendingPosts.count) {
+        dispatch(setPendingPosts(newCount, category));
+      }
+    })
   };
 };
 

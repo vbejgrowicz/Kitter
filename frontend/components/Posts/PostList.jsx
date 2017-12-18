@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PostItem from './PostItem';
-import { setPendingPosts, fetchPosts, addPendingPosts } from '../../actions/PostActions';
+import { fetchPosts, addPendingPosts, checkPendingPosts } from '../../actions/PostActions';
 import { updateUserPostCount } from '../../actions/UserActions';
 import { getNumPosts, getTotalNumPosts } from '../../utils/apiUtils';
 
@@ -11,33 +11,13 @@ class PostList extends React.Component {
     const user = this.props.UserReducer;
     this.props.getPosts(user.id, this.props.category);
     this.checkForUpdates = setInterval(
-      () => this.updatePosts(),
+      () => this.props.checkPosts(),
       30000
     );
   }
 
   componentWillUnmount() {
     clearInterval(this.checkForUpdates);
-  }
-
-  updatePosts() {
-    const { total, pendingPosts } = this.props.PostReducer.posts;
-    const { count } = pendingPosts;
-    const user = this.props.UserReducer;
-    this.getPostCount(this.props.category, user.id).then((res) => {
-      const newPosts = res.count - total;
-      if (newPosts > 0 && newPosts !== count) {
-        this.props.updatePendingPosts(true, newPosts, this.props.category);
-      }
-    });
-  }
-
-  getPostCount(category, userId) {
-    if (category === 'All') {
-      return getTotalNumPosts();
-    } else {
-      return getNumPosts(userId);
-    }
   }
 
   handleNewPosts() {
@@ -77,9 +57,6 @@ function mapStateToProps({ UserReducer, PostReducer }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updatePendingPosts: (status, count, category) => {
-      dispatch(setPendingPosts(status, count, category));
-    },
     getPosts: (id, category) => {
       dispatch(fetchPosts(id, category));
     },
@@ -88,6 +65,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     updatePostCount: (num) => {
       dispatch(updateUserPostCount(num));
+    },
+    checkPosts: () => {
+      dispatch(checkPendingPosts());
     }
   };
 };
