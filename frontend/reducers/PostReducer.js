@@ -65,6 +65,14 @@ function PostReducer(state = initialState, action) {
             {
               list: [...action.posts, ...state.posts.list],
               total: state.posts.total + action.count,
+              pendingPosts: Object.assign(
+                {}, state.posts.pendingPosts,
+                {
+                  status: false,
+                  count: null,
+                  list: null,
+                },
+              ),
             },
           ),
         },
