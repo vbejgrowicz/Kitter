@@ -5,9 +5,10 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const session = require('express-session');
-const app = express();
 const User = require('./models/user');
-const Post = require('./models/post');
+
+const app = express();
+
 mongoose.Promise = global.Promise;
 
 // Require Routes
@@ -15,8 +16,8 @@ const indexRoutes = require('./routes/index');
 const postRoutes = require('./routes/posts');
 const countRoutes = require('./routes/count');
 
-mongoose.connect('mongodb://localhost/Kitter', {useMongoClient: true});
-app.use(bodyParser.urlencoded({extended: true}));
+mongoose.connect('mongodb://localhost/Kitter', { useMongoClient: true });
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
@@ -24,7 +25,7 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.use(session({
   secret: 'Kitter is fun!',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
 }));
 
 app.use(passport.initialize());
