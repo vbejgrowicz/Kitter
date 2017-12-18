@@ -20,7 +20,10 @@ class NewPostForm extends React.Component {
   }
 
   handleSubmit() {
-    this.props.createPost(this.state.post);
+    const { total, category } = this.props.PostReducer.posts;
+    const user = this.props.UserReducer;
+
+    this.props.createPost(this.state.post, category, user, total);
     if (this.props.onClose) {
       this.props.onClose();
     } else {
@@ -82,18 +85,24 @@ NewPostForm.propTypes = {
   createPost: PropTypes.func.isRequired,
   onClose: PropTypes.func,
   initialFocus: PropTypes.bool.isRequired,
+  UserReducer: PropTypes.object.isRequired,
+  PostReducer: PropTypes.object.isRequired,
 };
 
 NewPostForm.defaultProps = {
   onClose: null,
 };
 
+function mapStateToProps({ PostReducer, UserReducer }) {
+  return { PostReducer, UserReducer };
+}
+
 const mapDispatchToProps = dispatch => (
   {
-    createPost: (post) => {
-      dispatch(newPost(post));
+    createPost: (post, category, user, postCount) => {
+      dispatch(newPost(post, category, user, postCount));
     },
   }
 );
 
-export default connect(null, mapDispatchToProps)(NewPostForm);
+export default connect(mapStateToProps, mapDispatchToProps)(NewPostForm);

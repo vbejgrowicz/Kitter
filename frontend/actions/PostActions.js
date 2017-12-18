@@ -32,15 +32,29 @@ export function fetchPosts(id, category) {
   };
 }
 
-export function newPost(post) {
-  return function newPostThunk(dispatch, getState) {
-    const { category, pendingPosts } = getState().PostReducer.posts;
-    const user = getState().UserReducer;
-    addPost(post).then((response) => {
-      if (category === 'All' && !pendingPosts.status) {
-        dispatch({ type: 'ADD_POST', post: response.post });
-        dispatch(findUserPostCount(user));
+function resolvePendingPosts(category, userId, currentPostCount) {
+  return function resolvePendingPostsThunk(dispatch) {
+    return getPostCount(category, userId).then((response) => {
+      const newPostCount = response.count - currentPostCount;
+      if (newPostCount > 0) {
+        return getNewPosts(newPostCount).then((res) => {
+          dispatch({ type: 'ADD_NEW_POSTS', count: newPostCount, posts: res.newPosts });
+        });
       }
+      return null;
+    });
+  };
+}
+
+export function newPost(post, category, user, currentPostCount) {
+  return function newPostThunk(dispatch) {
+    dispatch(resolvePendingPosts(category, user.id, currentPostCount)).then(() => {
+      addPost(post).then((response) => {
+        if (category === 'All') {
+          dispatch({ type: 'ADD_POST', post: response.post });
+          dispatch(findUserPostCount(user));
+        }
+      });
     });
   };
 }

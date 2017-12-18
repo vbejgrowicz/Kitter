@@ -1,4 +1,4 @@
-import { GET_POSTS, SET_POSTS, ADD_POST, REMOVE_POST, UPDATE_PENDING_POSTS, ADD_PENDING_POSTS } from '../actions/types';
+import { GET_POSTS, SET_POSTS, ADD_POST, REMOVE_POST, SET_PENDING_POSTS, ADD_PENDING_POSTS, ADD_NEW_POSTS } from '../actions/types';
 
 const initialState = {
   posts: {
@@ -56,6 +56,19 @@ function PostReducer(state = initialState, action) {
           ),
         },
       );
+    case ADD_NEW_POSTS:
+      return Object.assign(
+        {}, state,
+        {
+          posts: Object.assign(
+            {}, state.posts,
+            {
+              list: [...action.posts, ...state.posts.list],
+              total: state.posts.total + action.count,
+            },
+          ),
+        },
+      );
     case REMOVE_POST:
       return Object.assign(
         {}, state,
@@ -79,7 +92,7 @@ function PostReducer(state = initialState, action) {
               pendingPosts: Object.assign(
                 {}, state.posts.pendingPosts,
                 {
-                  status: action.status,
+                  status: true,
                   count: action.count,
                   list: action.posts,
                 },
