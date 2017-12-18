@@ -13,6 +13,7 @@ export const REMOVE_POST = 'REMOVE_POST';
 export const ADD_NEW_POSTS = 'ADD_NEW_POSTS';
 export const SET_PENDING_POSTS = 'SET_PENDING_POSTS';
 export const ADD_PENDING_POSTS = 'ADD_PENDING_POSTS';
+export const UPDATE_POST_MESSAGE = 'UPDATE_POST_MESSAGE';
 
 // UserActions
 export const GET_USER_PROFILE = 'GET_USER_PROFILE';

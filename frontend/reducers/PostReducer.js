@@ -1,4 +1,4 @@
-import { GET_POSTS, SET_POSTS, ADD_POST, REMOVE_POST, SET_PENDING_POSTS, ADD_PENDING_POSTS, ADD_NEW_POSTS } from '../actions/types';
+import { GET_POSTS, SET_POSTS, ADD_POST, REMOVE_POST, SET_PENDING_POSTS, ADD_PENDING_POSTS, ADD_NEW_POSTS, UPDATE_POST_MESSAGE } from '../actions/types';
 
 const initialState = {
   posts: {
@@ -13,8 +13,8 @@ const initialState = {
     },
   },
   message: {
-    status: true,
-    text: 'Default',
+    status: false,
+    text: null,
   },
 };
 
@@ -130,6 +130,19 @@ function PostReducer(state = initialState, action) {
                   list: null,
                 },
               ),
+            },
+          ),
+        },
+      );
+    case UPDATE_POST_MESSAGE:
+      return Object.assign(
+        {}, state,
+        {
+          message: Object.assign(
+            {}, state.message,
+            {
+              status: action.status,
+              text: action.text,
             },
           ),
         },

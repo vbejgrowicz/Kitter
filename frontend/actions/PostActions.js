@@ -40,6 +40,19 @@ function resolvePendingPosts(category, userId, currentPostCount) {
   };
 }
 
+const updateMessage = (status, text) => (
+  { type: 'UPDATE_POST_MESSAGE', status, text }
+);
+
+function showMessageWithTimeout(text) {
+  return function showMessageWithTimeoutThunk(dispatch) {
+    dispatch(updateMessage(true, text));
+    setTimeout(() => {
+      dispatch(updateMessage(false, null));
+    }, 3000);
+  };
+}
+
 export function newPost(post, category, user, currentPostCount) {
   return function newPostThunk(dispatch) {
     dispatch(resolvePendingPosts(category, user.id, currentPostCount)).then(() => {
@@ -47,6 +60,8 @@ export function newPost(post, category, user, currentPostCount) {
         if (category === 'All') {
           dispatch({ type: 'ADD_POST', post: response.post });
           dispatch(findUserPostCount(user));
+        } else {
+          dispatch(showMessageWithTimeout('Your Meow was sent'));
         }
       });
     });
@@ -59,6 +74,7 @@ export function deletePost(post) {
     removePost(postID).then(() => {
       dispatch({ type: 'REMOVE_POST', id: postID });
       dispatch(findUserPostCount(post.author));
+      dispatch(showMessageWithTimeout('Your Meow has been deleted'));
     });
   };
 }

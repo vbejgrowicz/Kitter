@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserDropdown from './UserDropdown';
@@ -31,6 +32,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const { status, text } = this.props.PostReducer.message;
     return (
       <div>
         <div id="nav">
@@ -53,18 +55,21 @@ class NavBar extends React.Component {
         {this.state.Meow && (
           <PostModal onClose={() => this.handleClick('Meow')} ignoreClose={ignoreClose} />
         )}
-        {this.props.PostReducer.message.status && (
-          <Message text="Message" />
+        {status && (
+          <Message text={text} />
         )}
       </div>
     );
   }
 }
 
+NavBar.propTypes = {
+  PostReducer: PropTypes.object.isRequired,
+};
+
 
 function mapStateToProps({ PostReducer }) {
   return { PostReducer };
 }
-
 
 export default connect(mapStateToProps, null)(NavBar);
