@@ -1,34 +1,28 @@
 import { getAllPosts, getUserPosts, addPost, removePost, getNumPosts, getTotalNumPosts, getNewPosts } from '../utils/apiUtils';
 import { findUserPostCount } from './UserActions';
 
-export function findAllPosts(id) {
-  return function findAllPostsThunk(dispatch) {
-    getAllPosts().then((response) => {
-      getTotalNumPosts().then((res) => {
-        dispatch({ type: 'SET_POSTS', posts: response.allPosts, total: res.count });
-      });
-    });
-  };
+function getPosts(category, userId) {
+  if (category === 'All') {
+    return getAllPosts();
+  }
+  return getUserPosts(userId);
 }
 
-export function findUserPosts(id) {
-  return function findUserPostsThunk(dispatch) {
-    getUserPosts(id).then((response) => {
-      getNumPosts(id).then((res) => {
-        dispatch({ type: 'SET_POSTS', posts: response.userPosts, total: res.count });
-      });
-    });
-  };
+function getPostCount(category, userId) {
+  if (category === 'All') {
+    return getTotalNumPosts();
+  }
+  return getNumPosts(userId);
 }
 
 export function fetchPosts(id, category) {
   return function fetchPostsThunk(dispatch) {
     dispatch({ type: 'GET_POSTS', category });
-    if (category === 'User') {
-      dispatch(findUserPosts(id));
-    } else {
-      dispatch(findAllPosts(id));
-    }
+    return getPosts(category, id).then(response => (
+      getPostCount(category, id).then((res) => {
+        dispatch({ type: 'SET_POSTS', posts: response.posts, total: res.count });
+      })
+    ));
   };
 }
 

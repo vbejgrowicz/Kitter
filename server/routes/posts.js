@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      res.json({ allPosts });
+      res.json({ posts: allPosts });
     }
   });
 });
@@ -31,7 +31,7 @@ router.get('/:userID', (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      res.json({ userPosts });
+      res.json({ posts: userPosts });
     }
   });
 });
