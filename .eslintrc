@@ -7,5 +7,8 @@
   "rules": {
     "react/forbid-prop-types": [0],
     "no-underscore-dangle": [2, { "allow": ["_id"] }],
+    "jsx-a11y/anchor-is-valid": [ "allow", {
+      "components": [ "Link" ],
+      }],
   }
 }
