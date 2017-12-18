@@ -3,7 +3,6 @@
   textarea {
     resize: none;
     box-sizing: border-box;
-    min-height: 80px;
     width: 100%;
     padding: 10px;
     border: 1px solid #99DAFD;
@@ -11,12 +10,16 @@
     outline: none;
     font-size: 14px;
     margin-bottom: 6px;
+    transition: 2s !important;
 
     &:focus {
       border: 2px solid #99DAFD;
     }
+    &.open {
+      height: 80px !important;
+    }
     &.closed {
-      min-height: 40px;
+      height: 40px !important;
     }
   }
 
