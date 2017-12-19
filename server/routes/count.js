@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/posts', (req, res) => {
   Post.count({}).exec((err, count) => {
     if (err) {
-      console.log(err);
+      res.status(400).send(err);
     } else {
       res.json({ count });
     }
@@ -18,7 +18,7 @@ router.get('/posts', (req, res) => {
 router.get('/:userID/posts', (req, res) => {
   Post.count({ 'author.id': req.params.userID }).exec((err, count) => {
     if (err) {
-      console.log(err);
+      res.status(400).send(err);
     } else {
       res.json({ count });
     }
