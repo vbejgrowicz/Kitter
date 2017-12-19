@@ -27,12 +27,20 @@ function ProfileUserInfo({
     );
   };
 
+  const getButton = () => {
+    const authUser = AuthReducer.user;
+    if (authUser.id === user.id) {
+      return null;
+    }
+    return getFollowButton();
+  };
+
   return (
     <div id="profile-user-data">
       <div>{name}</div>
       <div>{username}</div>
       <div>Posts {data.posts}</div>
-      {getFollowButton()}
+      {getButton()}
     </div>
   );
 }
