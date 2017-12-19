@@ -10,6 +10,12 @@ class ProfilePage extends React.Component {
     this.props.fetchUser(this.props.match.params.username);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match !== nextProps.match) {
+      this.props.fetchUser(nextProps.match.params.username);
+    }
+  }
+
   render() {
     const { id, isLoading } = this.props.UserReducer;
 
