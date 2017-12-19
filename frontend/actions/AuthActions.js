@@ -1,4 +1,4 @@
-import { checkUser, logIn, signUp, logOut } from '../utils/apiUtils';
+import { checkUser, logIn, signUp, logOut, follow } from '../utils/apiUtils';
 
 export function getUser() {
   return function getUserThunk(dispatch) {
@@ -50,3 +50,12 @@ export function logOutUser() {
 export const clearError = () => (
   { type: 'REMOVE_ERROR' }
 );
+
+export function followUser(user) {
+  return function followUserThunk(dispatch) {
+    follow(user).then((response) => {
+      const followedUser = response.follow.following;
+      dispatch({ type: 'FOLLOW_USER', user: followedUser });
+    });
+  };
+}

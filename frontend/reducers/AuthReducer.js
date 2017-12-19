@@ -3,6 +3,7 @@ import {
   AUTH_FAIL,
   SET_ERROR,
   REMOVE_ERROR,
+  FOLLOW_USER,
 } from '../actions/types';
 
 const initialState = {
@@ -11,6 +12,9 @@ const initialState = {
     username: null,
     name: null,
     isLoading: true,
+    following: {
+      list: [],
+    },
   },
   error: {
     message: null,
@@ -53,6 +57,17 @@ function AuthReducer(state = initialState, action) {
         error: {
           message: null,
           page: null,
+        },
+      };
+    case FOLLOW_USER:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          following: {
+            ...state.user.following,
+            list: [action.user, ...state.user.following.list],
+          },
         },
       };
     default:
