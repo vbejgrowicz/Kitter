@@ -40,6 +40,14 @@ export const findUser = username => (
 );
 
 // Follow
+export const getFollowers = () => (
+  fetch('/api/followers', {
+    method: 'GET',
+    credentials: 'same-origin',
+  })
+    .then(resp => resp.json())
+);
+
 export const follow = user => (
   fetch('api/followers/follow', {
     method: 'POST',

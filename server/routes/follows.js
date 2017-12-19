@@ -3,6 +3,19 @@ const Follow = require('../models/follow');
 
 const router = express.Router();
 
+// GET FOLLOWERS
+router.get('/', (req, res) => {
+  const userID = req.user._id;
+  Follow.find({ 'user.id': userID }, { _id: 0, following: 1 }, (err, followers) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      const formattedFollowers = followers.map(follow => follow.following);
+      res.json({ followers: formattedFollowers });
+    }
+  });
+});
+
 // CREATE NEW FOLLOWER
 router.post('/follow', (req, res) => {
   const { id, username, name } = req.body;
