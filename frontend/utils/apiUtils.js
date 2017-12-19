@@ -41,13 +41,20 @@ export const findUser = username => (
 
 // Follow
 export const follow = user => (
-  fetch('api/follow', {
+  fetch('api/followers/follow', {
     method: 'POST',
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
   })
     .then(resp => resp.json())
+);
+
+export const unfollow = user => (
+  fetch(`/api/followers/unfollow/${user.id}`, {
+    method: 'DELETE',
+    credentials: 'same-origin',
+  })
 );
 
 // Posts
