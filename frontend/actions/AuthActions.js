@@ -1,4 +1,4 @@
-import { checkUser, logIn, signUp, logOut, follow } from '../utils/apiUtils';
+import { checkUser, logIn, signUp, logOut, follow, unfollow } from '../utils/apiUtils';
 
 export function getUser() {
   return function getUserThunk(dispatch) {
@@ -56,6 +56,14 @@ export function followUser(user) {
     follow(user).then((response) => {
       const followedUser = response.follow.following;
       dispatch({ type: 'FOLLOW_USER', user: followedUser });
+    });
+  };
+}
+
+export function unfollowUser(user) {
+  return function unfollowUserThunk(dispatch) {
+    unfollow(user).then(() => {
+      dispatch({ type: 'UNFOLLOW_USER', user });
     });
   };
 }

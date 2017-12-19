@@ -4,6 +4,7 @@ import {
   SET_ERROR,
   REMOVE_ERROR,
   FOLLOW_USER,
+  UNFOLLOW_USER,
 } from '../actions/types';
 
 const initialState = {
@@ -67,6 +68,17 @@ function AuthReducer(state = initialState, action) {
           following: {
             ...state.user.following,
             list: [action.user, ...state.user.following.list],
+          },
+        },
+      };
+    case UNFOLLOW_USER:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          following: {
+            ...state.user.following,
+            list: state.user.following.list.filter(follower => follower.id !== action.user.id),
           },
         },
       };

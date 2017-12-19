@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { followUser } from '../../actions/AuthActions';
+import { followUser, unfollowUser } from '../../actions/AuthActions';
 
-function ProfileUserInfo({ UserReducer, AuthReducer, follow }) {
+function ProfileUserInfo({
+  UserReducer,
+  AuthReducer,
+  follow,
+  unfollow,
+}) {
   const {
     id,
     username,
@@ -18,7 +23,7 @@ function ProfileUserInfo({ UserReducer, AuthReducer, follow }) {
     return !isFollowing ? (
       <button onClick={() => follow(user)}>Follow</button>
     ) : (
-      <button>Unfollow</button>
+      <button onClick={() => unfollow(user)}>Unfollow</button>
     );
   };
 
@@ -36,6 +41,7 @@ ProfileUserInfo.propTypes = {
   UserReducer: PropTypes.object.isRequired,
   AuthReducer: PropTypes.object.isRequired,
   follow: PropTypes.func.isRequired,
+  unfollow: PropTypes.func.isRequired,
 };
 
 
@@ -47,6 +53,9 @@ const mapDispatchToProps = dispatch => (
   {
     follow: (user) => {
       dispatch(followUser(user));
+    },
+    unfollow: (user) => {
+      dispatch(unfollowUser(user));
     },
   }
 );
