@@ -1,4 +1,9 @@
-import { SET_AUTH_USER, AUTH_FAIL, SET_ERROR, REMOVE_ERROR } from '../actions/types';
+import {
+  SET_AUTH_USER,
+  AUTH_FAIL,
+  SET_ERROR,
+  REMOVE_ERROR,
+} from '../actions/types';
 
 const initialState = {
   user: {
@@ -16,46 +21,40 @@ const initialState = {
 function AuthReducer(state = initialState, action) {
   switch (action.type) {
     case SET_AUTH_USER:
-      return Object.assign(
-        {}, state,
-        {
-          user: Object.assign(
-            {}, state.user,
-            {
-              id: action.user.id,
-              username: action.user.username,
-              name: action.user.name,
-              isLoading: false,
-            },
-          ),
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          id: action.user.id,
+          username: action.user.username,
+          name: action.user.name,
+          isLoading: false,
         },
-      );
+      };
     case AUTH_FAIL:
-      return Object.assign(
-        {}, state,
-        {
-          user: Object.assign(
-            {}, state.user,
-            {
-              isLoading: false,
-            },
-          ),
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          isLoading: false,
         },
-      );
+      };
     case SET_ERROR:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         error: {
           message: action.message,
           page: action.page,
         },
-      });
+      };
     case REMOVE_ERROR:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         error: {
           message: null,
           page: null,
         },
-      });
+      };
     default:
       return state;
   }
