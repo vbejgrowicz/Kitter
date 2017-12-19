@@ -1,5 +1,6 @@
 const express = require('express');
 const Follow = require('../models/follow');
+const middleware = require('../middleware');
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ router.get('/', (req, res) => {
 });
 
 // CREATE NEW FOLLOWER
-router.post('/follow', (req, res) => {
+router.post('/follow', middleware.isLoggedin, (req, res) => {
   const { id, username, name } = req.body;
   const user = {
     id: req.user._id,
@@ -40,7 +41,7 @@ router.post('/follow', (req, res) => {
 });
 
 // DELETE FOLLOWER
-router.delete('/unfollow/:followingID', (req, res) => {
+router.delete('/unfollow/:followingID', middleware.isLoggedin, (req, res) => {
   const userID = req.user._id;
   Follow.remove({ 'user.id': userID, 'following.id': req.params.followingID }, (err) => {
     if (err) {

@@ -1,5 +1,6 @@
 const express = require('express');
 const Post = require('../models/post');
+const middleware = require('../middleware');
 
 const router = express.Router();
 
@@ -37,7 +38,7 @@ router.get('/:userID', (req, res) => {
 });
 
 // CREATE NEW POST
-router.post('/', (req, res) => {
+router.post('/', middleware.isLoggedin, (req, res) => {
   const { text } = req.body;
   const author = {
     id: req.user._id,
@@ -55,7 +56,7 @@ router.post('/', (req, res) => {
 });
 
 // DELETE POST
-router.delete('/:postID', (req, res) => {
+router.delete('/:postID', middleware.checkPostAuthor, (req, res) => {
   Post.findByIdAndRemove(req.params.postID, (err) => {
     if (err) {
       res.status(400).send(err);
