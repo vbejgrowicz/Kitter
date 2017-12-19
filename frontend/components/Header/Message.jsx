@@ -5,7 +5,7 @@ function Message({ text }) {
   return (
     <div id="message-container">
       <div className="message-box">
-        <div>{text}</div>
+        {text}
       </div>
     </div>
   );
