@@ -1,10 +1,12 @@
-import { checkUser, logIn, signUp, logOut, follow, unfollow } from '../utils/apiUtils';
+import { checkUser, logIn, signUp, logOut, follow, unfollow, getFollowers } from '../utils/apiUtils';
 
 export function getUser() {
   return function getUserThunk(dispatch) {
     checkUser().then((response) => {
       if (response.id !== null) {
-        dispatch({ type: 'SET_AUTH_USER', user: response });
+        getFollowers().then((res) => {
+          dispatch({ type: 'SET_AUTH_USER', user: response, followers: res.followers });
+        });
       } else {
         dispatch({ type: 'AUTH_FAIL' });
       }
@@ -17,7 +19,9 @@ export function logInUser(username, password, redirectFailure) {
     const userData = { username, password };
     logIn(userData).then((response) => {
       if (response.username) {
-        dispatch({ type: 'SET_AUTH_USER', user: response });
+        getFollowers().then((res) => {
+          dispatch({ type: 'SET_AUTH_USER', user: response, followers: res.followers });
+        });
       } else {
         redirectFailure();
         dispatch({ type: 'SET_ERROR', page: '/login', message: response });
@@ -31,7 +35,7 @@ export function signUpUser(name, username, password) {
     const userData = { name, username, password };
     signUp(userData).then((response) => {
       if (response.username) {
-        dispatch({ type: 'SET_AUTH_USER', user: response });
+        dispatch({ type: 'SET_AUTH_USER', user: response, followers: [] });
       } else {
         dispatch({ type: 'SET_ERROR', page: '/signup', message: response.message });
       }
@@ -42,7 +46,7 @@ export function signUpUser(name, username, password) {
 export function logOutUser() {
   return function logOutUserThunk(dispatch) {
     logOut().then((response) => {
-      dispatch({ type: 'SET_AUTH_USER', user: response });
+      dispatch({ type: 'SET_AUTH_USER', user: response, followers: [] });
     });
   };
 }

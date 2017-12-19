@@ -34,6 +34,10 @@ function AuthReducer(state = initialState, action) {
           username: action.user.username,
           name: action.user.name,
           isLoading: false,
+          following: {
+            ...state.user.following,
+            list: action.followers,
+          },
         },
       };
     case AUTH_FAIL:
