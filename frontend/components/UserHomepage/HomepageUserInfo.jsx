@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 function HomepageUserInfo({ UserReducer }) {
   const { username, name, data } = UserReducer;
   return (
-    <div id="profile-card">
+    <div id="homepage-user-data">
       <div className="content">
         <div className="image">
           <i className="fa fa-user-circle" aria-hidden="true" />
@@ -29,8 +29,6 @@ function HomepageUserInfo({ UserReducer }) {
     </div>
   );
 }
-
-
 
 HomepageUserInfo.propTypes = {
   UserReducer: PropTypes.object.isRequired,

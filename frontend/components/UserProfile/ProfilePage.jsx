@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { checkUser } from '../../actions/UserActions';
 import ProfileFeed from './ProfileFeed';
+import ProfileUserInfo from './ProfileUserInfo';
 
 class ProfilePage extends React.Component {
   componentDidMount() {
@@ -10,8 +11,7 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { id, username } = this.props.UserReducer;
-    const { isLoading } = this.props.UserReducer.isLoading;
+    const { id, isLoading } = this.props.UserReducer;
 
     if (isLoading) {
       return (
@@ -20,9 +20,7 @@ class ProfilePage extends React.Component {
     }
     return id ? (
       <div id="user-home-page">
-        <div style={{ display: 'inline-block', width: 230 }}>
-          {username}&apos;s Page
-        </div>
+        <ProfileUserInfo />
         <ProfileFeed />
       </div>
     ) : (
