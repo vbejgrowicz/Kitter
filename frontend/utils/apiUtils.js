@@ -39,6 +39,17 @@ export const findUser = username => (
     .then(resp => resp.json())
 );
 
+// Follow
+export const follow = user => (
+  fetch('api/follow', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(user),
+  })
+    .then(resp => resp.json())
+);
+
 // Posts
 export const getAllPosts = () => (
   fetch('/api/posts', { method: 'GET', credentials: 'same-origin' })
