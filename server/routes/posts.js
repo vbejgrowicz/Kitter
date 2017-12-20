@@ -4,11 +4,11 @@ const middleware = require('../middleware');
 
 const router = express.Router();
 
-// GET ALL POSTS
-router.get('/', (req, res) => {
-  Post.find({}, null, { sort: { date: -1 } }, (err, allPosts) => {
-    if (err) {
-      res.status(400).send(err);
+// GET ALL HOMEPAGE POSTS (FOLLOWING AND USER)
+router.get('/', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
+  Post.find({ 'author.id': { $in: res.following } }, null, { sort: { date: -1 } }, (error, allPosts) => {
+    if (error) {
+      res.status(400).send(error);
     } else {
       res.json({ posts: allPosts });
     }
