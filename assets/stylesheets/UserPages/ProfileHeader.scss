@@ -1,0 +1,53 @@
+#profile-header {
+  height: 250px;
+  background-color: $secondary-color;
+  position: relative;
+
+  .profile-image {
+    position: absolute;
+    z-index: 1;
+    top: 60px;
+    left: 30px;
+    box-sizing: border-box;
+    background-color: $secondary-color;
+    border: 6px solid $white;
+    border-radius: 110px;
+    height: 210px;
+    width: 210px;
+    background-image: $logo-white;
+    background-size: 135px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .header-info {
+    background-color: $white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 1px 2px -2px #494949;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    border-top: 1px solid rgba(0,0,0,0.25);
+
+    .links {
+      display: flex;
+      height: 60px;
+      justify-content: center;
+      margin: auto;
+
+      a {
+        margin: auto 0;
+        color: #5D5D5D;
+        width: 80px;
+
+        .title {
+          font-size: 12px;
+        }
+        .count {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

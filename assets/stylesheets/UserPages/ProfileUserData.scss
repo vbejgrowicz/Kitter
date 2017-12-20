@@ -1,8 +1,19 @@
 #profile-user-data {
   display: inline-block;
+  margin-top: 20px;
   margin-right: 10px;
   width: 230px;
-  height: 180px;
+  height: auto;
   position: relative;
   text-align: left;
+
+  .profile-user-name {
+    font-size: 24px;
+    color: $black;
+    font-weight: bold;
+  }
+  .profile-user-username {
+    color: #868686;
+    font-size: 14px;
+  }
 }

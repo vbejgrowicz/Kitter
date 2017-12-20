@@ -16,8 +16,10 @@ class Homepage extends React.Component {
       null
     ) : (
       <div id="user-home-page">
-        <HomepageUserInfo />
-        <HomepagePostFeed />
+        <div className="user-content">
+          <HomepageUserInfo />
+          <HomepagePostFeed />
+        </div>
       </div>
     );
   }

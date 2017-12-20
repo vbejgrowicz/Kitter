@@ -1,23 +1,40 @@
 @import "HomepageUserData";
 @import "ProfileUserData";
 @import "ProfileFeed";
+@import "ProfileHeader";
 
 #user-home-page {
   margin-top: 47px;
   $break-width: 710px;
-  padding: 10px;
   text-align: center;
+  min-width: 480px;
+
+  .user-content {
+    margin-top: 10px;
+    margin: 0 10px;
+  }
 
   @media (max-width: $break-width) {
-    #profile-card {
+    #profile-user-data {
       width: 100%;
-      min-width: 480px;
+      min-width: 460px;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    #homepage-user-data {
+      width: 100%;
+      min-width: 460px;
       margin-right: 0;
       margin-bottom: 10px;
     }
     #profile-feed {
       width: 100%;
-      min-width: 480px;
+      min-width: 460px;
+    }
+    #profile-header {
+      .links {
+        justify-content: flex-end;
+      }
     }
   }
 }
