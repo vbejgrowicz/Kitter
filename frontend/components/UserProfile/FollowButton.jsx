@@ -18,7 +18,14 @@ function FollowButton({ UserReducer, AuthReducer, follow, unfollow }) {
   );
 
   return (
-    <button onClick={() => handleClick()}>{isFollowing ? 'Unfollow' : 'Follow'}</button>
+    <div className="button-container">
+      <button
+        className={isFollowing ? 'unfollow' : 'follow'}
+        onClick={() => handleClick()}
+      >
+        {isFollowing ? 'Unfollow' : 'Follow'}
+      </button>
+    </div>
   );
 }
 
