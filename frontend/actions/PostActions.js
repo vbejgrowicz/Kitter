@@ -6,6 +6,7 @@ import {
   getNumPosts,
   getTotalNumPosts,
   getNewHomepagePosts,
+  getNewUserPosts,
 } from '../utils/apiUtils';
 import { updateUserPostCount } from './UserActions';
 
@@ -21,6 +22,13 @@ function getPostCount(category, userId) {
     return getTotalNumPosts();
   }
   return getNumPosts(userId);
+}
+
+function getNewPosts(category, userId, count) {
+  if (category === 'All') {
+    return getNewHomepagePosts(count);
+  }
+  return getNewUserPosts(userId, count);
 }
 
 export function fetchPosts(id, category) {
@@ -39,7 +47,7 @@ function resolvePendingPosts(category, userId, currentPostCount) {
     return getPostCount(category, userId).then((response) => {
       const newPostCount = response.count - currentPostCount;
       if (newPostCount > 0) {
-        return getNewPosts(newPostCount).then((res) => {
+        return getNewPosts(category, userId, newPostCount).then((res) => {
           dispatch({ type: 'ADD_NEW_POSTS', count: newPostCount, posts: res.newPosts });
         });
       }
@@ -58,7 +66,7 @@ export function newPost(post, category, user, currentPostCount) {
       addPost(post).then((response) => {
         if (category === 'All') {
           dispatch({ type: 'ADD_POST', post: response.post });
-          dispatch(updateUserPostCount(user));
+          dispatch(updateUserPostCount(user.id));
         } else {
           dispatch(updateMessage(true, 'Your Meow was sent'));
         }
@@ -72,7 +80,7 @@ export function deletePost(post) {
     const postID = post._id;
     removePost(postID).then(() => {
       dispatch({ type: 'REMOVE_POST', id: postID });
-      dispatch(updateUserPostCount(post.author));
+      dispatch(updateUserPostCount(post.author.id));
       dispatch(updateMessage(true, 'Your Meow has been deleted'));
     });
   };
@@ -84,7 +92,7 @@ export function checkPendingPosts(category, userId) {
     getPostCount(category, userId).then((response) => {
       const newPostCount = response.count - total;
       if (newPostCount > 0) {
-        getNewPosts(newPostCount).then((res) => {
+        getNewHomepagePosts(newPostCount).then((res) => {
           dispatch({ type: 'SET_PENDING_POSTS', count: newPostCount, posts: res.newPosts });
         });
       }

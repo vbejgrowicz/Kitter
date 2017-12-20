@@ -1,8 +1,7 @@
 import { findUser, getNumPosts, getFollowerCount, getFollowingCount } from '../utils/apiUtils';
 
-export function updateUserPostCount(user) {
+export function updateUserPostCount(id) {
   return function updateUserPostCountThunk(dispatch) {
-    const { id } = user;
     return getNumPosts(id).then((response) => {
       dispatch({ type: 'SET_POST_COUNT', count: response.count });
     });

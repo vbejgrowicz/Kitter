@@ -22,11 +22,8 @@ class PostList extends React.Component {
   }
 
   handleNewPosts() {
-    const user = this.props.UserReducer;
-    const newPosts = this.props.PostReducer.posts.pendingPosts.list;
-    const userPosts = newPosts.filter(post => post.author.id === user.id);
-    this.props.getNewPosts();
-    this.props.updatePostCount(userPosts.length);
+    const { id } = this.props.UserReducer;
+    this.props.getPendingPosts(id);
   }
 
   render() {
@@ -56,8 +53,7 @@ class PostList extends React.Component {
 PostList.propTypes = {
   category: PropTypes.string.isRequired,
   getPosts: PropTypes.func.isRequired,
-  getNewPosts: PropTypes.func.isRequired,
-  updatePostCount: PropTypes.func.isRequired,
+  getPendingPosts: PropTypes.func.isRequired,
   checkPosts: PropTypes.func.isRequired,
   UserReducer: PropTypes.object.isRequired,
   PostReducer: PropTypes.object.isRequired,
@@ -72,11 +68,9 @@ const mapDispatchToProps = dispatch => (
     getPosts: (id, category) => {
       dispatch(fetchPosts(id, category));
     },
-    getNewPosts: () => {
+    getPendingPosts: (userId) => {
       dispatch(addPendingPosts());
-    },
-    updatePostCount: (num) => {
-      dispatch(updateUserPostCount(num));
+      dispatch(updateUserPostCount(userId));
     },
     checkPosts: (category, userId, currentPostCount) => {
       dispatch(checkPendingPosts(category, userId, currentPostCount));
