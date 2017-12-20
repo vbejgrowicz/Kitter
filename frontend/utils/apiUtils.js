@@ -70,24 +70,19 @@ export const unfollow = user => (
   })
 );
 
-// Posts
-export const getHomepagePosts = () => (
-  fetch('/api/posts', { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
-
-export const getNewHomepagePosts = numOfPosts => (
-  fetch(`/api/posts/new/${numOfPosts}`, { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
-
+// User Post Routes
 export const getUserPosts = id => (
-  fetch(`/api/posts/${id}`, { method: 'GET', credentials: 'same-origin' })
+  fetch(`/api/user/posts/${id}`, { method: 'GET', credentials: 'same-origin' })
+    .then(resp => resp.json())
+);
+
+export const getNewUserPosts = (id, numOfPosts) => (
+  fetch(`/api/user/posts/new/${id}/${numOfPosts}`, { method: 'GET', credentials: 'same-origin' })
     .then(resp => resp.json())
 );
 
 export const addPost = post => (
-  fetch('/api/posts', {
+  fetch('/api/user/posts', {
     method: 'POST',
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },
@@ -99,9 +94,22 @@ export const addPost = post => (
 );
 
 export const removePost = id => (
-  fetch(`/api/posts/${id}`, { method: 'DELETE', credentials: 'same-origin' })
+  fetch(`/api/user/posts/${id}`, { method: 'DELETE', credentials: 'same-origin' })
     .then(resp => resp.json())
 );
+
+
+// Homepage Post Routes
+export const getHomepagePosts = () => (
+  fetch('/api/following/posts', { method: 'GET', credentials: 'same-origin' })
+    .then(resp => resp.json())
+);
+
+export const getNewHomepagePosts = numOfPosts => (
+  fetch(`/api/following/posts/new/${numOfPosts}`, { method: 'GET', credentials: 'same-origin' })
+    .then(resp => resp.json())
+);
+
 
 // Counts
 export const getNumPosts = id => (
