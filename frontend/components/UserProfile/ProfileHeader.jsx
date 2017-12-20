@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import FollowButton from './FollowButton';
+
 function ProfileHeader({ UserReducer, AuthReducer }) {
+  const user = UserReducer;
+  const authUser = AuthReducer.user;
 
   return (
     <div id="profile-header">
@@ -21,6 +25,11 @@ function ProfileHeader({ UserReducer, AuthReducer }) {
             <div className="title">Followers</div>
             <div className="count">{user.data.followers}</div>
           </Link>
+          {authUser.id === user.id ? (
+            null
+          ) : (
+            <FollowButton />
+          )}
         </div>
       </div>
     </div>
