@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import UserDropdown from './UserDropdown';
 import PostModal from './PostModal';
 
@@ -34,10 +34,14 @@ class NavBar extends React.Component {
         <div id="nav">
           <div className="link-container">
             <div className="left">
-              <Link to="/"><i className="fa fa-home" aria-hidden="true" /></Link>
+              <NavLink activeClassName="active" exact to="/">
+                <div className="home">
+                  <i className="fa fa-home" aria-hidden="true" />
+                </div>
+              </NavLink>
             </div>
             <div className="center">
-              <Link to="/"><div className="brand-icon" /></Link>
+              <div className="brand-icon" />
             </div>
             <div className="right">
               <i className="fa fa-user-circle" aria-hidden="true" onClick={() => this.handleClick('User')} />

@@ -30,6 +30,20 @@
   .left {
     text-align: left;
     margin-left: 40px;
+
+    a {
+      .home {
+        width: 47px;
+        height: 45px;
+        border-bottom: 2px solid transparent;
+        text-align: center;
+      }
+      &.active {
+        .home {
+          border-bottom: 2px solid $secondary-color;
+        }
+      }
+    }
   }
 
   .center {
@@ -57,12 +71,16 @@
       font-size: 14px;
       width: 70px;
       height: 35px;
-      background-color: $secondary-color;
       color: $white;
+      background-color: #4AB3F4;
       border-radius: 20px;
       cursor: pointer;
       outline: none;
       border: none;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
     }
   }
 }
