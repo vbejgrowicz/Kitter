@@ -104,6 +104,16 @@ export const getNumPosts = id => (
     .then(resp => resp.json())
 );
 
+export const getFollowingCount = id => (
+  fetch(`/api/count/${id}/following`, { method: 'GET', credentials: 'same-origin' })
+    .then(resp => resp.json())
+);
+
+export const getFollowerCount = id => (
+  fetch(`/api/count/${id}/follower`, { method: 'GET', credentials: 'same-origin' })
+    .then(resp => resp.json())
+);
+
 // Counts
 export const getTotalNumPosts = () => (
   fetch('/api/count/posts', { method: 'GET', credentials: 'same-origin' })
