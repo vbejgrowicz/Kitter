@@ -92,7 +92,7 @@ export function checkPendingPosts(category, userId) {
     getPostCount(category, userId).then((response) => {
       const newPostCount = response.count - total;
       if (newPostCount > 0) {
-        getNewHomepagePosts(newPostCount).then((res) => {
+        getNewPosts(category, userId, newPostCount).then((res) => {
           dispatch({ type: 'SET_PENDING_POSTS', count: newPostCount, posts: res.newPosts });
         });
       }

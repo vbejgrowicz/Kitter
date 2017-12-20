@@ -72,8 +72,8 @@ const mapDispatchToProps = dispatch => (
       dispatch(addPendingPosts());
       dispatch(updateUserPostCount(userId));
     },
-    checkPosts: (category, userId, currentPostCount) => {
-      dispatch(checkPendingPosts(category, userId, currentPostCount));
+    checkPosts: (category, userId) => {
+      dispatch(checkPendingPosts(category, userId));
     },
   }
 );
