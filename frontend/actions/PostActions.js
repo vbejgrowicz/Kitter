@@ -1,9 +1,17 @@
-import { getAllPosts, getUserPosts, addPost, removePost, getNumPosts, getTotalNumPosts, getNewPosts } from '../utils/apiUtils';
+import {
+  getHomepagePosts,
+  getUserPosts,
+  addPost,
+  removePost,
+  getNumPosts,
+  getTotalNumPosts,
+  getNewHomepagePosts,
+} from '../utils/apiUtils';
 import { updateUserPostCount } from './UserActions';
 
 function getPosts(category, userId) {
   if (category === 'All') {
-    return getAllPosts();
+    return getHomepagePosts();
   }
   return getUserPosts(userId);
 }

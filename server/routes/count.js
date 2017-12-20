@@ -1,12 +1,13 @@
 const express = require('express');
 const Post = require('../models/post');
 const Follow = require('../models/follow');
+const middleware = require('../middleware');
 
 const router = express.Router();
 
-// GET ALL POST COUNT
-router.get('/posts', (req, res) => {
-  Post.count({}).exec((err, count) => {
+// GET ALL HOMEPAGE POST COUNT
+router.get('/posts', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
+  Post.count({ 'author.id': { $in: res.following } }).exec((err, count) => {
     if (err) {
       res.status(400).send(err);
     } else {

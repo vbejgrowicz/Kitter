@@ -71,12 +71,12 @@ export const unfollow = user => (
 );
 
 // Posts
-export const getAllPosts = () => (
+export const getHomepagePosts = () => (
   fetch('/api/posts', { method: 'GET', credentials: 'same-origin' })
     .then(resp => resp.json())
 );
 
-export const getNewPosts = numOfPosts => (
+export const getNewHomepagePosts = numOfPosts => (
   fetch(`/api/posts/new/${numOfPosts}`, { method: 'GET', credentials: 'same-origin' })
     .then(resp => resp.json())
 );

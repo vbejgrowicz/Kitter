@@ -15,9 +15,10 @@ router.get('/', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
   });
 });
 
-// GET NEW POSTS FROM ALL POSTS
-router.get('/new/:numOfPosts', (req, res) => {
-  Post.find({}, null, { sort: { date: -1 }, limit: parseInt(req.params.numOfPosts) }, (err, newPosts) => {
+
+// GET NEW HOMEPAGE POSTS (FOLLOWING AND USER)
+router.get('/new/:numOfPosts', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
+  Post.find({ 'author.id': { $in: res.following } }, null, { sort: { date: -1 }, limit: parseInt(req.params.numOfPosts, 10) }, (err, newPosts) => {
     if (err) {
       res.status(400).send(err);
     } else {
