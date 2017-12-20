@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { checkUser } from '../../actions/UserActions';
+import { getUser } from '../../actions/UserActions';
 import ProfileFeed from './ProfileFeed';
 import ProfileUserInfo from './ProfileUserInfo';
 
@@ -49,7 +49,7 @@ function mapStateToProps({ UserReducer }) {
 const mapDispatchToProps = dispatch => (
   {
     fetchUser: (username) => {
-      dispatch(checkUser(username));
+      dispatch(getUser(username));
     },
   }
 );

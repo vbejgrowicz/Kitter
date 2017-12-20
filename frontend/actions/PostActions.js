@@ -1,5 +1,5 @@
 import { getAllPosts, getUserPosts, addPost, removePost, getNumPosts, getTotalNumPosts, getNewPosts } from '../utils/apiUtils';
-import { findUserPostCount } from './UserActions';
+import { updateUserPostCount } from './UserActions';
 
 function getPosts(category, userId) {
   if (category === 'All') {
@@ -50,7 +50,7 @@ export function newPost(post, category, user, currentPostCount) {
       addPost(post).then((response) => {
         if (category === 'All') {
           dispatch({ type: 'ADD_POST', post: response.post });
-          dispatch(findUserPostCount(user));
+          dispatch(updateUserPostCount(user));
         } else {
           dispatch(updateMessage(true, 'Your Meow was sent'));
         }
@@ -64,7 +64,7 @@ export function deletePost(post) {
     const postID = post._id;
     removePost(postID).then(() => {
       dispatch({ type: 'REMOVE_POST', id: postID });
-      dispatch(findUserPostCount(post.author));
+      dispatch(updateUserPostCount(post.author));
       dispatch(updateMessage(true, 'Your Meow has been deleted'));
     });
   };

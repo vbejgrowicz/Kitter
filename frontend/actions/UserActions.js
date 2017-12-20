@@ -1,7 +1,7 @@
-import { findUser, getNumPosts } from '../utils/apiUtils';
+import { findUser, getNumPosts, getFollowerCount, getFollowingCount } from '../utils/apiUtils';
 
-export function findUserPostCount(user) {
-  return function findUserPostCountThunk(dispatch) {
+export function updateUserPostCount(user) {
+  return function updateUserPostCountThunk(dispatch) {
     const { id } = user;
     return getNumPosts(id).then((response) => {
       dispatch({ type: 'SET_POST_COUNT', count: response.count });
@@ -9,24 +9,20 @@ export function findUserPostCount(user) {
   };
 }
 
-export function setUser(user) {
-  return function setUserThunk(dispatch) {
-    dispatch({ type: 'SET_USER_DATA', user });
-    dispatch(findUserPostCount(user)).then(() => {
-      dispatch({ type: 'USER_PROFILE_UPDATED' });
-    });
-  };
-}
-
-export function checkUser(username) {
-  return function checkUserThunk(dispatch) {
-    dispatch({ type: 'GET_USER_PROFILE' });
-    findUser(username).then((user) => {
-      if (user.id) {
-        dispatch(setUser(user));
-      } else {
-        dispatch({ type: 'SET_USER_ERROR', error: true });
-      }
+function setUserData(user) {
+  return function setUserDataThunk(dispatch) {
+    getNumPosts(user.id).then((postRes) => {
+      getFollowerCount(user.id).then((followerRes) => {
+        getFollowingCount(user.id).then((followingRes) => {
+          dispatch({
+            type: 'SET_USER_PROFILE',
+            user,
+            postCount: postRes.count,
+            followerCount: followerRes.count,
+            followingCount: followingRes.count,
+          });
+        });
+      });
     });
   };
 }
@@ -34,10 +30,19 @@ export function checkUser(username) {
 export function getAuthUser(user) {
   return function getAuthUserThunk(dispatch) {
     dispatch({ type: 'GET_USER_PROFILE' });
-    dispatch(setUser(user));
+    dispatch(setUserData(user));
   };
 }
 
-export const updateUserPostCount = count => (
-  { type: 'UPDATE_POST_COUNT', count }
-);
+export function getUser(username) {
+  return function getUserThunk(dispatch) {
+    dispatch({ type: 'GET_USER_PROFILE' });
+    findUser(username).then((userRes) => {
+      if (userRes.id) {
+        dispatch(setUserData(userRes));
+      } else {
+        dispatch({ type: 'SET_USER_ERROR', error: true });
+      }
+    });
+  };
+}

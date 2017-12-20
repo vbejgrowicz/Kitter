@@ -1,10 +1,8 @@
 import {
   GET_USER_PROFILE,
-  SET_USER_DATA,
+  SET_USER_PROFILE,
   SET_USER_ERROR,
   SET_POST_COUNT,
-  UPDATE_POST_COUNT,
-  USER_PROFILE_UPDATED,
 } from '../actions/types';
 
 const initialState = {
@@ -16,18 +14,26 @@ const initialState = {
   data: {
     posts: 0,
     followers: 0,
+    following: 0,
   },
 };
 
 function UserReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_USER_DATA:
+    case SET_USER_PROFILE:
       return {
         ...state,
         id: action.user.id,
         username: action.user.username,
         name: action.user.name,
         error: false,
+        isLoading: false,
+        data: {
+          ...state.data,
+          posts: action.postCount,
+          followers: action.followerCount,
+          following: action.followingCount,
+        },
       };
     case SET_USER_ERROR:
       return {
@@ -41,26 +47,12 @@ function UserReducer(state = initialState, action) {
         isLoading: true,
         error: false,
       };
-    case USER_PROFILE_UPDATED:
-      return {
-        ...state,
-        isLoading: false,
-        error: false,
-      };
     case SET_POST_COUNT:
       return {
         ...state,
         data: {
           ...state.data,
           posts: action.count,
-        },
-      };
-    case UPDATE_POST_COUNT:
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          posts: state.data.posts + action.count,
         },
       };
     default:
