@@ -12,16 +12,16 @@ class Homepage extends React.Component {
 
   render() {
     const { id, isLoading } = this.props.UserReducer;
-    const authId = this.props.AuthReducer.user;
-    return id === authId && !isLoading ? (
-      null
-    ) : (
+    const authId = this.props.AuthReducer.user.id;
+    return authId === id && !isLoading ? (
       <div id="user-home-page">
         <div className="user-content">
           <HomepageUserInfo />
           <HomepagePostFeed />
         </div>
       </div>
+    ) : (
+      null
     );
   }
 }
