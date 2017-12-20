@@ -25,13 +25,15 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { id, isLoading } = this.props.UserReducer;
+    const { username, isLoading } = this.props.UserReducer;
+    const { params } = this.props.match;
+
     if (isLoading) {
       return (
         null
       );
     }
-    return id ? (
+    return username === params.username ? (
       <div id="user-home-page">
         <ProfileHeader />
         <div className="user-content">
@@ -40,7 +42,10 @@ class ProfilePage extends React.Component {
         </div>
       </div>
     ) : (
-      <div>User not found</div>
+      <div id="user-home-page">
+        <div>User not found</div>
+      </div>
+
     );
   }
 }
