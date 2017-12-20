@@ -17,9 +17,15 @@ class ProfilePage extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (this.props.UserReducer.id === nextProps.UserReducer.id) {
+      return false;
+    }
+    return true;
+  }
+
   render() {
     const { id, isLoading } = this.props.UserReducer;
-
     if (isLoading) {
       return (
         null
@@ -27,7 +33,7 @@ class ProfilePage extends React.Component {
     }
     return id ? (
       <div id="user-home-page">
-        <ProfileHeader user={this.props.UserReducer} />
+        <ProfileHeader />
         <div className="user-content">
           <ProfileUserInfo />
           <ProfileFeed />

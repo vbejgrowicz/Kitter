@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+function ProfileHeader({ UserReducer, AuthReducer }) {
 
-function ProfileHeader({ user }) {
   return (
     <div id="profile-header">
       <div className="profile-image" />
@@ -26,9 +27,13 @@ function ProfileHeader({ user }) {
   );
 }
 
-
 ProfileHeader.propTypes = {
-  user: PropTypes.object.isRequired,
+  UserReducer: PropTypes.object.isRequired,
+  AuthReducer: PropTypes.object.isRequired,
 };
 
-export default ProfileHeader;
+function mapStateToProps({ UserReducer, AuthReducer }) {
+  return { UserReducer, AuthReducer };
+}
+
+export default connect(mapStateToProps, null)(ProfileHeader);
