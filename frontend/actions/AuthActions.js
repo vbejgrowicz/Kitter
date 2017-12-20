@@ -58,8 +58,12 @@ export const clearError = () => (
 export function followUser(user) {
   return function followUserThunk(dispatch) {
     follow(user).then((response) => {
-      const followedUser = response.follow.following;
-      dispatch({ type: 'FOLLOW_USER', user: followedUser });
+      if (response.follow) {
+        const followedUser = response.follow.following;
+        dispatch({ type: 'FOLLOW_USER', user: followedUser });
+      } else {
+        // Handle Req Log In
+      }
     });
   };
 }

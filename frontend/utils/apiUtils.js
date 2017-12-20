@@ -55,7 +55,12 @@ export const follow = user => (
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
   })
-    .then(resp => resp.json())
+    .then((resp) => {
+      if (!resp.ok) {
+        return 'You need to be logged in to do this.';
+      }
+      return resp.json();
+    })
 );
 
 export const unfollow = user => (
