@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/UserActions';
+import ProfileHeader from './ProfileHeader';
 import ProfileFeed from './ProfileFeed';
 import ProfileUserInfo from './ProfileUserInfo';
 
@@ -26,8 +27,11 @@ class ProfilePage extends React.Component {
     }
     return id ? (
       <div id="user-home-page">
-        <ProfileUserInfo />
-        <ProfileFeed />
+        <ProfileHeader user={this.props.UserReducer} />
+        <div className="user-content">
+          <ProfileUserInfo />
+          <ProfileFeed />
+        </div>
       </div>
     ) : (
       <div>User not found</div>

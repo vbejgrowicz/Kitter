@@ -37,9 +37,8 @@ function ProfileUserInfo({
 
   return (
     <div id="profile-user-data">
-      <div>{name}</div>
-      <div>{username}</div>
-      <div>Posts {data.posts}</div>
+      <div className="profile-user-name">{name}</div>
+      <div className="profile-user-username">@{username}</div>
       {getButton()}
     </div>
   );
