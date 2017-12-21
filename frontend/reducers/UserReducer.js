@@ -3,6 +3,8 @@ import {
   SET_USER_PROFILE,
   SET_USER_ERROR,
   SET_POST_COUNT,
+  GET_FOLLOWS,
+  SET_FOLLOWS,
 } from '../actions/types';
 
 const initialState = {
@@ -13,8 +15,11 @@ const initialState = {
   error: false,
   data: {
     posts: 0,
-    followers: 0,
-    following: 0,
+    follows: {
+      followers: 0,
+      following: 0,
+      list: [],
+    },
   },
 };
 
@@ -31,8 +36,11 @@ function UserReducer(state = initialState, action) {
         data: {
           ...state.data,
           posts: action.postCount,
-          followers: action.followerCount,
-          following: action.followingCount,
+          follows: {
+            ...state.data.follows,
+            followers: action.followerCount,
+            following: action.followingCount,
+          },
         },
       };
     case SET_USER_ERROR:
@@ -53,6 +61,18 @@ function UserReducer(state = initialState, action) {
         data: {
           ...state.data,
           posts: action.count,
+        },
+      };
+    case SET_FOLLOWS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          follows: {
+            ...state.data.follows,
+            list: action.followList,
+            isLoading: false,
+          },
         },
       };
     default:

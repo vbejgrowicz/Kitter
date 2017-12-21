@@ -1,4 +1,4 @@
-import { findUser, getNumPosts, getFollowerCount, getFollowingCount } from '../utils/apiUtils';
+import { findUser, getNumPosts, getFollowerCount, getFollowingCount, getFollowers, getFollowing } from '../utils/apiUtils';
 
 export function updateUserPostCount(id) {
   return function updateUserPostCountThunk(dispatch) {
@@ -42,6 +42,21 @@ export function getUser(username) {
       } else {
         dispatch({ type: 'SET_USER_ERROR', error: true });
       }
+    });
+  };
+}
+
+function getUserList(category, id) {
+  if (category === 'followers') {
+    return getFollowers(id);
+  }
+  return getFollowing(id);
+}
+
+export function getFollows(category, id) {
+  return function getFollowsThunk(dispatch) {
+    getUserList(category, id).then((response) => {
+      dispatch({ type: 'SET_FOLLOWS', followList: response.list });
     });
   };
 }

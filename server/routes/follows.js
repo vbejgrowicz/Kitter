@@ -11,8 +11,7 @@ router.get('/following/:userID', (req, res) => {
       res.status(400).send(err);
     } else {
       const formattedFollowing = following.map(follow => follow.following);
-      console.log(formattedFollowing);
-      res.json({ following: formattedFollowing });
+      res.json({ list: formattedFollowing });
     }
   });
 });
@@ -24,7 +23,7 @@ router.get('/followers/:userID', (req, res) => {
       res.status(400).send(err);
     } else {
       const formattedFollowers = followers.map(follow => follow.user);
-      res.json({ followers: formattedFollowers });
+      res.json({ list: formattedFollowers });
     }
   });
 });

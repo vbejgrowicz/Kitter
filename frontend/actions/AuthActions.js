@@ -5,7 +5,7 @@ export function getUser() {
     checkUser().then((response) => {
       if (response.id !== null) {
         getFollowing(response.id).then((res) => {
-          dispatch({ type: 'SET_AUTH_USER', user: response, following: res.following });
+          dispatch({ type: 'SET_AUTH_USER', user: response, following: res.list });
         });
       } else {
         dispatch({ type: 'AUTH_FAIL' });
@@ -20,7 +20,7 @@ export function logInUser(username, password, redirectFailure) {
     logIn(userData).then((response) => {
       if (response.username) {
         getFollowing(response.id).then((res) => {
-          dispatch({ type: 'SET_AUTH_USER', user: response, following: res.following });
+          dispatch({ type: 'SET_AUTH_USER', user: response, following: res.list });
         });
       } else {
         redirectFailure();

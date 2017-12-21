@@ -21,13 +21,13 @@ function HomepageUserInfo({ UserReducer }) {
           {data.following > 0 && (
             <Link className="following data" to={`/${username}/following`}>
               <div className="title">Following</div>
-              <div className="count">{data.following}</div>
+              <div className="count">{data.follows.following}</div>
             </Link>
           )}
           {data.followers > 0 && (
             <Link className="followers data" to={`/${username}/followers`}>
               <div className="title">Followers</div>
-              <div className="count">{data.followers}</div>
+              <div className="count">{data.follows.followers}</div>
             </Link>
           )}
         </div>
