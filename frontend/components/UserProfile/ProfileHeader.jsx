@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import FollowButton from './FollowButton';
 
 function ProfileHeader({ UserReducer, AuthReducer }) {
@@ -13,18 +13,18 @@ function ProfileHeader({ UserReducer, AuthReducer }) {
       <div className="profile-image" />
       <div className="header-info">
         <div className="links">
-          <Link className="posts data" to={`/${user.username}`}>
+          <NavLink activeClassName="active" className="posts data" exact to={`/${user.username}`}>
             <div className="title">Meows</div>
             <div className="count">{user.data.posts}</div>
-          </Link>
-          <Link className="following data" to={`/${user.username}/following`}>
+          </NavLink>
+          <NavLink activeClassName="active" className="following data" to={`/${user.username}/following`}>
             <div className="title">Following</div>
             <div className="count">{user.data.following}</div>
-          </Link>
-          <Link className="following data" to={`/${user.username}/following`}>
+          </NavLink>
+          <NavLink activeClassName="active" className="following data" to={`/${user.username}/followers`}>
             <div className="title">Followers</div>
             <div className="count">{user.data.followers}</div>
-          </Link>
+          </NavLink>
           {authUser.id === user.id ? (
             null
           ) : (
