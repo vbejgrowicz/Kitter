@@ -30,7 +30,7 @@ function ProfileHeader({ UserReducer, AuthReducer }) {
             </NavLink>
           )}
           {authUser.id !== user.id && (
-            <FollowButton />
+            <FollowButton user={user} />
           )}
         </div>
       </div>

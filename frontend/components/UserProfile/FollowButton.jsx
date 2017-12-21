@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { followUser, unfollowUser } from '../../actions/AuthActions';
 
-function FollowButton({ UserReducer, AuthReducer, follow, unfollow }) {
-  const user = UserReducer;
+function FollowButton({ user, AuthReducer, follow, unfollow }) {
   const authUser = AuthReducer.user;
   const { list } = authUser.following;
   const isFollowing = list.find(follower => follower.id === user.id);
@@ -18,7 +17,7 @@ function FollowButton({ UserReducer, AuthReducer, follow, unfollow }) {
   );
 
   return (
-    <div className="button-container">
+    <div className="follow-button-container">
       <button
         className={isFollowing ? 'unfollow' : 'follow'}
         onClick={() => handleClick()}
@@ -30,14 +29,14 @@ function FollowButton({ UserReducer, AuthReducer, follow, unfollow }) {
 }
 
 FollowButton.propTypes = {
-  UserReducer: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
   AuthReducer: PropTypes.object.isRequired,
   follow: PropTypes.func.isRequired,
   unfollow: PropTypes.func.isRequired,
 };
 
-function mapStateToProps({ UserReducer, AuthReducer }) {
-  return { UserReducer, AuthReducer };
+function mapStateToProps({ AuthReducer }) {
+  return { AuthReducer };
 }
 
 const mapDispatchToProps = dispatch => (
