@@ -1,17 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getFollows } from '../../actions/UserActions';
 import UserItem from './UserItem';
 
 class UserList extends React.Component {
   componentWillMount() {
-    console.log(this.props.category);
+    const { category, UserReducer } = this.props;
+    this.props.fetchUsers(category, UserReducer.id);
   }
 
   render() {
+    const { list } = this.props.UserReducer.data.follows;
+    const users = list.map(item => <UserItem user={item} key={item.id} />);
+
     return (
       <div>
         <ul id="user-list">
-          USER ITEMS
+          {users}
         </ul>
       </div>
     );
@@ -20,6 +26,20 @@ class UserList extends React.Component {
 
 UserList.propTypes = {
   category: PropTypes.string.isRequired,
+  UserReducer: PropTypes.object.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
 };
 
-export default UserList;
+function mapStateToProps({ UserReducer }) {
+  return { UserReducer };
+}
+
+const mapDispatchToProps = dispatch => (
+  {
+    fetchUsers: (category, userID) => {
+      dispatch(getFollows(category, userID));
+    },
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);

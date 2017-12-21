@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function UserItem({ user }) {
   return (
     <li className="user-item">
-      USER ITEM
+      {user.name}
     </li>
   );
 }
