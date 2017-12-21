@@ -17,24 +17,19 @@
   @media (max-width: $break-width) {
     #profile-user-data {
       width: 100%;
-      min-width: 460px;
+      min-width: 560px;
       margin-right: 0;
       margin-bottom: 10px;
     }
     #homepage-user-data {
       width: 100%;
-      min-width: 460px;
+      min-width: 560px;
       margin-right: 0;
       margin-bottom: 10px;
     }
     #profile-feed {
       width: 100%;
-      min-width: 460px;
-    }
-    #profile-header {
-      .links {
-        justify-content: flex-end;
-      }
+      min-width: 560px;
     }
   }
 }

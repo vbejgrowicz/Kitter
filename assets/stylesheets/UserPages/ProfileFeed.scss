@@ -1,7 +1,7 @@
 #profile-feed {
   display: inline-block;
   width: 60%;
-  min-width: 450px;
+  min-width: 400px;
   background-color: $white;
   vertical-align: top;
 
@@ -9,7 +9,7 @@
     display: flex;
     padding: 10px;
     background-color: #E6F5FF;
-    
+
     .post {
       display: inline-block;
       width: 90%;

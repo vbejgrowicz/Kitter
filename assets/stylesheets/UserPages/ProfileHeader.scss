@@ -2,6 +2,7 @@
   height: 250px;
   background-color: $secondary-color;
   position: relative;
+  min-width: 600px;
 
   .user-image {
     position: absolute;
@@ -29,8 +30,7 @@
     .links {
       display: flex;
       height: 60px;
-      justify-content: center;
-      margin: auto;
+      margin-left: 240px;
 
       a {
         margin-top: 15px;
