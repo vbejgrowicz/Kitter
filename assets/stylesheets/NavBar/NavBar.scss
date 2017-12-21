@@ -64,6 +64,10 @@
     display: flex;
     margin: auto;
 
+    .user-image {
+      cursor: pointer;
+    }
+
     button {
       font-size: 14px;
       width: 70px;
