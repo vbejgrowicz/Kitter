@@ -17,17 +17,19 @@ function ProfileHeader({ UserReducer, AuthReducer }) {
             <div className="title">Meows</div>
             <div className="count">{user.data.posts}</div>
           </NavLink>
-          <NavLink activeClassName="active" className="following data" to={`/${user.username}/following`}>
-            <div className="title">Following</div>
-            <div className="count">{user.data.following}</div>
-          </NavLink>
-          <NavLink activeClassName="active" className="following data" to={`/${user.username}/followers`}>
-            <div className="title">Followers</div>
-            <div className="count">{user.data.followers}</div>
-          </NavLink>
-          {authUser.id === user.id ? (
-            null
-          ) : (
+          {user.data.following > 0 && (
+            <NavLink activeClassName="active" className="following data" to={`/${user.username}/following`}>
+              <div className="title">Following</div>
+              <div className="count">{user.data.following}</div>
+            </NavLink>
+          )}
+          {user.data.followers > 0 && (
+            <NavLink activeClassName="active" className="following data" to={`/${user.username}/followers`}>
+              <div className="title">Followers</div>
+              <div className="count">{user.data.followers}</div>
+            </NavLink>
+          )}
+          {authUser.id !== user.id && (
             <FollowButton />
           )}
         </div>
