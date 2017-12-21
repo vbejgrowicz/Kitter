@@ -18,12 +18,11 @@ class PostList extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (this.props.PostReducer === nextProps.PostReducer) {
+    if ((this.props.PostReducer === nextProps.PostReducer) && (this.props.UserReducer.id === nextProps.UserReducer.id)) {
       return false;
     }
     return true;
   }
-
 
   componentWillUnmount() {
     clearInterval(this.checkForUpdates);
@@ -40,7 +39,7 @@ class PostList extends React.Component {
     const { status, count } = pendingPosts;
     const postItems = list.map(post => <PostItem post={post} key={post._id} />);
 
-    return (
+    return !posts.isLoading && (
       <div>
         {message.status && (
           <PostMessage text={message.text} />
