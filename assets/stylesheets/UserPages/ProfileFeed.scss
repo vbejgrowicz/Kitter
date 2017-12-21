@@ -2,14 +2,16 @@
   display: inline-block;
   width: 60%;
   min-width: 400px;
-  background-color: $white;
   vertical-align: top;
+
+  .post-item, .user-item {
+    background-color: $white;
+  }
 
   #homepage-post-box {
     display: flex;
     padding: 10px;
     background-color: #E6F5FF;
-
     .post {
       display: inline-block;
       width: 90%;
