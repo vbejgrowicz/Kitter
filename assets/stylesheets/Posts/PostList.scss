@@ -7,6 +7,9 @@
     border-bottom: 1px solid #E3E3E3;
     white-space: pre-wrap;
     padding: 10px;
+    display: inline-flex;
+    width: 100%;
+    box-sizing: border-box;
 
     &:first-child {
       border-top: 1px solid #E3E3E3;

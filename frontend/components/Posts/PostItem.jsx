@@ -51,16 +51,22 @@ class PostItem extends React.Component {
     return (
       <li className="post-item">
         <Link to={`/${author.username}`}>
-          <span className="name">{author.name}</span>
-          <span className="username">@{author.username}</span>
+          <div className="user-image" />
         </Link>
-        <span className="time">&middot; {this.state.time ? this.state.time : dateString }</span>
-        <div className="text">{text}</div>
-        {this.reqAuth(author.id) ? (
-          <button onClick={() => this.handleRemove(this.props.post)}>Delete Post</button>
-        ) : (
-          null
-        )}
+        <div className="post-content">
+          <Link to={`/${author.username}`}>
+            <span className="name">{author.name}</span>
+            <span className="username">@{author.username}</span>
+          </Link>
+          <span className="time">&middot; {this.state.time ? this.state.time : dateString }</span>
+          <div className="text">{text}</div>
+          {this.reqAuth(author.id) ? (
+            <button onClick={() => this.handleRemove(this.props.post)}>Delete Post</button>
+          ) : (
+            null
+          )}
+        </div>
+
       </li>
     );
   }
