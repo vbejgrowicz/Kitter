@@ -11,15 +11,19 @@
     margin-top: 80px;
     background-color: $white;
     .image {
-      background-color: $white;
       border-radius: 50%;
+      border: 5px solid $white;
       height: 55px;
       width: 55px;
       position: absolute;
       top: 50px;
       left: 10px;
       text-align: center;
-      font-size: 46px;
+      background-color: #C9C8C8;
+      background-image: $logo-grey;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 35px;
     }
     .account {
       position: absolute;

@@ -44,7 +44,7 @@ class NavBar extends React.Component {
               <div className="brand-icon" />
             </div>
             <div className="right">
-              <i className="fa fa-user-circle" aria-hidden="true" onClick={() => this.handleClick('User')} />
+              <div className="user-image" onClick={() => this.handleClick('User')} />
               <button onClick={() => this.handleClick('Meow')}>Meow</button>
             </div>
           </div>

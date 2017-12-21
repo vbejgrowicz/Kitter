@@ -5,7 +5,7 @@ function HomepageNewPost() {
   return (
     <div id="homepage-post-box">
       <div className="image">
-        <i className="fa fa-user-circle" aria-hidden="true" />
+        <div className="default-image" />
       </div>
       <div className="post">
         <NewPostForm initialFocus={false} />
