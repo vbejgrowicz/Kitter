@@ -29,7 +29,7 @@ class Routes extends React.Component {
         <Redirect from="/signup" to="/" />
         <Redirect from="/login" to="/" />
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/:username" component={ProfilePage} />
+        <Route path="/:username" component={ProfilePage} />
       </Switch>
     );
 
@@ -38,7 +38,7 @@ class Routes extends React.Component {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/signup" component={SignUpPage} />
-        <Route exact path="/:username" component={ProfilePage} />
+        <Route path="/:username" component={ProfilePage} />
       </Switch>
     );
 

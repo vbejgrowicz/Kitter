@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/UserActions';
 import ProfileHeader from './ProfileHeader';
-import ProfileFeed from './ProfileFeed';
+import ProfileRoutes from './ProfileRoutes';
 import ProfileUserInfo from './ProfileUserInfo';
 
 class ProfilePage extends React.Component {
@@ -18,7 +18,8 @@ class ProfilePage extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (this.props.UserReducer.username === nextProps.match.params.username) {
+    const { username } = this.props.UserReducer;
+    if ((username === nextProps.match.params.username) && (this.props.match === nextProps.match)) {
       return false;
     }
     return true;
@@ -38,7 +39,7 @@ class ProfilePage extends React.Component {
         <ProfileHeader />
         <div className="user-content">
           <ProfileUserInfo />
-          <ProfileFeed />
+          <ProfileRoutes />
         </div>
       </div>
     ) : (
