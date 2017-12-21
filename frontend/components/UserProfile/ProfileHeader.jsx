@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import FollowButton from './FollowButton';
 
-function ProfileHeader({ UserReducer, AuthReducer }) {
+function ProfileHeader({ UserReducer }) {
   const user = UserReducer;
-  const authUser = AuthReducer.user;
 
   return (
     <div id="profile-header">
@@ -29,9 +28,7 @@ function ProfileHeader({ UserReducer, AuthReducer }) {
               <div className="count">{user.data.follows.followers}</div>
             </NavLink>
           )}
-          {authUser.id !== user.id && (
-            <FollowButton user={user} />
-          )}
+          <FollowButton user={user} />
         </div>
       </div>
     </div>
@@ -40,11 +37,10 @@ function ProfileHeader({ UserReducer, AuthReducer }) {
 
 ProfileHeader.propTypes = {
   UserReducer: PropTypes.object.isRequired,
-  AuthReducer: PropTypes.object.isRequired,
 };
 
-function mapStateToProps({ UserReducer, AuthReducer }) {
-  return { UserReducer, AuthReducer };
+function mapStateToProps({ UserReducer }) {
+  return { UserReducer };
 }
 
 export default connect(mapStateToProps, null)(ProfileHeader);

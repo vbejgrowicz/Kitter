@@ -3,7 +3,6 @@ import {
   SET_USER_PROFILE,
   SET_USER_ERROR,
   SET_POST_COUNT,
-  GET_FOLLOWS,
   SET_FOLLOWS,
 } from '../actions/types';
 

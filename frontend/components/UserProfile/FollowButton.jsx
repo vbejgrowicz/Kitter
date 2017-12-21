@@ -16,7 +16,7 @@ function FollowButton({ user, AuthReducer, follow, unfollow }) {
     )
   );
 
-  return (
+  return authUser.id !== user.id && (
     <div className="follow-button-container">
       <button
         className={isFollowing ? 'unfollow' : 'follow'}
