@@ -18,7 +18,7 @@ class ProfilePage extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (this.props.UserReducer.id === nextProps.UserReducer.id) {
+    if (this.props.UserReducer.username === nextProps.match.params.username) {
       return false;
     }
     return true;
