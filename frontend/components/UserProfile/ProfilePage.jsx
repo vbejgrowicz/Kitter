@@ -35,7 +35,7 @@ class ProfilePage extends React.Component {
       );
     }
     return username === params.username ? (
-      <div id="user-home-page">
+      <div id="user-profile-page">
         <ProfileHeader />
         <div className="user-content">
           <ProfileUserInfo />
@@ -43,7 +43,7 @@ class ProfilePage extends React.Component {
         </div>
       </div>
     ) : (
-      <div id="user-home-page">
+      <div id="user-profile-page">
         <div>User not found</div>
       </div>
 

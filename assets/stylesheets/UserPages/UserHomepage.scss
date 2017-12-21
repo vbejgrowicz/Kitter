@@ -6,8 +6,7 @@
 #user-home-page {
   margin-top: 47px;
   $break-width: 710px;
-  text-align: center;
-  min-width: 480px;
+  min-width: 420px;
 
   .user-content {
     padding-top: 10px;
@@ -15,21 +14,53 @@
   }
 
   @media (max-width: $break-width) {
-    #profile-user-data {
-      width: 100%;
-      min-width: 560px;
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
     #homepage-user-data {
       width: 100%;
-      min-width: 560px;
+      min-width: 400px;
       margin-right: 0;
       margin-bottom: 10px;
     }
+
     #profile-feed {
       width: 100%;
-      min-width: 560px;
+      min-width: 400px;
+    }
+  }
+}
+
+#user-profile-page {
+  margin-top: 47px;
+  $break-width: 710px;
+  text-align: center;
+  min-width: 520px;
+
+  .user-content {
+    padding-top: 10px;
+    margin: 0 20px;
+  }
+
+  @media (max-width: $break-width) {
+    #profile-header {
+      height: 190px;
+      .user-image {
+        height: 140px;
+        width: 140px;
+        background-size: 85px;
+      }
+      .links {
+        margin-left: 170px;
+      }
+    }
+    #profile-user-data {
+      width: 100%;
+      min-width: 400px;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
+    #profile-feed {
+      width: 100%;
+      min-width: 400px;
     }
   }
 }
