@@ -15,11 +15,9 @@ class UserList extends React.Component {
     const users = list.map(item => <UserItem user={item} key={item.id} />);
 
     return (
-      <div>
-        <ul id="user-list">
-          {users}
-        </ul>
-      </div>
+      <ul id="user-list">
+        {users}
+      </ul>
     );
   }
 }
