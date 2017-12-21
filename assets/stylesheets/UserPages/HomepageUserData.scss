@@ -10,20 +10,16 @@
     height: 100px;
     margin-top: 80px;
     background-color: $white;
-    .image {
-      border-radius: 50%;
-      border: 5px solid $white;
-      height: 55px;
-      width: 55px;
+
+    .user-image {
       position: absolute;
       top: 50px;
       left: 10px;
-      text-align: center;
-      background-color: #C9C8C8;
-      background-image: $logo-grey;
-      background-position: center;
-      background-repeat: no-repeat;
+      border: 5px solid $white;
+      height: 55px;
+      width: 55px;
       background-size: 35px;
+      border-radius: 35px;
     }
     .account {
       position: absolute;

@@ -3,21 +3,17 @@
   background-color: $secondary-color;
   position: relative;
 
-  .profile-image {
+  .user-image {
     position: absolute;
     z-index: 1;
     top: 60px;
     left: 30px;
     box-sizing: border-box;
-    background-color: #C9C8C8;
     border: 6px solid $white;
     border-radius: 110px;
     height: 210px;
     width: 210px;
-    background-image: $logo-grey;
     background-size: 135px;
-    background-position: center;
-    background-repeat: no-repeat;
   }
 
   .header-info {

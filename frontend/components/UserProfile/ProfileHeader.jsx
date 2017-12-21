@@ -10,7 +10,7 @@ function ProfileHeader({ UserReducer, AuthReducer }) {
 
   return (
     <div id="profile-header">
-      <div className="profile-image" />
+      <div className="user-image" />
       <div className="header-info">
         <div className="links">
           <NavLink activeClassName="active" className="posts data" exact to={`/${user.username}`}>

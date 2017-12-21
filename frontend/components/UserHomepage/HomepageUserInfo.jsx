@@ -8,7 +8,7 @@ function HomepageUserInfo({ UserReducer }) {
   return (
     <div id="homepage-user-data">
       <div className="content">
-        <div className="image" />
+        <div className="user-image" />
         <Link className="account" to={`/${username}`}>
           <div className="name">{name}</div>
           <div className="username">@{username}</div>

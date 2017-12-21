@@ -1,5 +1,6 @@
 @import "colors";
 @import "images";
+@import "userImage";
 //set defaults
 $font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $header-height: 47px;
@@ -13,6 +14,7 @@ html, body, div, span, p, a, i, ul, li button, link, hr {
   color: inherit;
   text-decoration: none;
   list-style: none;
+  outline: none;
 }
 
 body {
