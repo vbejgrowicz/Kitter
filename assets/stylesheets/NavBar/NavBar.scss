@@ -14,7 +14,8 @@
 
   .link-container {
     display: flex;
-    width: 100%
+    width: auto;
+    margin: 0 40px;
   }
 
   .left, .center, .right {
@@ -29,7 +30,6 @@
 
   .left {
     text-align: left;
-    margin-left: 40px;
 
     a {
       .home {
@@ -60,14 +60,12 @@
 
   .right {
     text-align: right;
-    margin-right: 40px;
     justify-content: flex-end;
     display: flex;
     margin: auto;
 
     button {
       font-size: 14px;
-      margin-right: 40px;
       width: 70px;
       height: 35px;
       color: $white;
