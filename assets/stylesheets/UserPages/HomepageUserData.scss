@@ -37,14 +37,17 @@
     }
     .user-data {
       position: absolute;
+      width: 100%;
       bottom: 0;
-      width: 230px;
       padding: 15px;
       box-sizing: border-box;
+      display: flex;
+      justify-content: flex-start;
 
       .data {
-        width: 50%;
         display: inline-block;
+        margin-right: 20px;
+        
         .title {
           font-size: 12px;
           color: #969696;
