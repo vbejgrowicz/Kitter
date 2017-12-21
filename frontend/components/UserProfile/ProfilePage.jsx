@@ -7,7 +7,7 @@ import ProfileFeed from './ProfileFeed';
 import ProfileUserInfo from './ProfileUserInfo';
 
 class ProfilePage extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchUser(this.props.match.params.username);
   }
 

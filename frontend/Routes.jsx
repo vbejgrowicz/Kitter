@@ -11,7 +11,7 @@ import NavBar from './components/Header/NavBar';
 import Homepage from './components/UserHomepage/Homepage';
 
 class Routes extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.getAuthorizedUser();
   }
 

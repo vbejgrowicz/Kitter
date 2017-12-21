@@ -6,7 +6,7 @@ import HomepagePostFeed from './HomepagePostFeed';
 import { getAuthUser } from '../../actions/UserActions';
 
 class Homepage extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchUserData(this.props.AuthReducer.user);
   }
 

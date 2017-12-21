@@ -8,7 +8,7 @@ import PostMessage from './PostMessage';
 
 
 class PostList extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     const { id } = this.props.UserReducer;
     this.props.getPosts(id, this.props.category);
     this.checkForUpdates = setInterval(
@@ -16,6 +16,14 @@ class PostList extends React.Component {
       30000,
     );
   }
+
+  shouldComponentUpdate(nextProps) {
+    if (this.props.PostReducer === nextProps.PostReducer) {
+      return false;
+    }
+    return true;
+  }
+
 
   componentWillUnmount() {
     clearInterval(this.checkForUpdates);

@@ -34,9 +34,7 @@ function PostReducer(state = initialState, action) {
         ...state,
         posts: {
           ...state.posts,
-          total: null,
           category: action.category,
-          list: [],
           isLoading: true,
         },
       };
