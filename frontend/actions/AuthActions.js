@@ -1,11 +1,11 @@
-import { checkUser, logIn, signUp, logOut, follow, unfollow, getFollowers } from '../utils/apiUtils';
+import { checkUser, logIn, signUp, logOut, follow, unfollow, getFollowing } from '../utils/apiUtils';
 
 export function getUser() {
   return function getUserThunk(dispatch) {
     checkUser().then((response) => {
       if (response.id !== null) {
-        getFollowers().then((res) => {
-          dispatch({ type: 'SET_AUTH_USER', user: response, followers: res.followers });
+        getFollowing(response.id).then((res) => {
+          dispatch({ type: 'SET_AUTH_USER', user: response, following: res.following });
         });
       } else {
         dispatch({ type: 'AUTH_FAIL' });
@@ -19,8 +19,8 @@ export function logInUser(username, password, redirectFailure) {
     const userData = { username, password };
     logIn(userData).then((response) => {
       if (response.username) {
-        getFollowers().then((res) => {
-          dispatch({ type: 'SET_AUTH_USER', user: response, followers: res.followers });
+        getFollowing(response.id).then((res) => {
+          dispatch({ type: 'SET_AUTH_USER', user: response, following: res.following });
         });
       } else {
         redirectFailure();
@@ -35,7 +35,7 @@ export function signUpUser(name, username, password) {
     const userData = { name, username, password };
     signUp(userData).then((response) => {
       if (response.username) {
-        dispatch({ type: 'SET_AUTH_USER', user: response, followers: [] });
+        dispatch({ type: 'SET_AUTH_USER', user: response, following: [] });
       } else {
         dispatch({ type: 'SET_ERROR', page: '/signup', message: response.message });
       }
@@ -46,7 +46,7 @@ export function signUpUser(name, username, password) {
 export function logOutUser() {
   return function logOutUserThunk(dispatch) {
     logOut().then((response) => {
-      dispatch({ type: 'SET_AUTH_USER', user: response, followers: [] });
+      dispatch({ type: 'SET_AUTH_USER', user: response, following: [] });
     });
   };
 }

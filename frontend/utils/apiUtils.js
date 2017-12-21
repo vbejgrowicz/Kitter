@@ -40,8 +40,16 @@ export const findUser = username => (
 );
 
 // Follow
-export const getFollowers = () => (
-  fetch('/api/followers', {
+export const getFollowers = userID => (
+  fetch(`/api/follows/followers/${userID}`, {
+    method: 'GET',
+    credentials: 'same-origin',
+  })
+    .then(resp => resp.json())
+);
+
+export const getFollowing = userID => (
+  fetch(`/api/follows/following/${userID}`, {
     method: 'GET',
     credentials: 'same-origin',
   })
@@ -49,7 +57,7 @@ export const getFollowers = () => (
 );
 
 export const follow = user => (
-  fetch('api/followers/follow', {
+  fetch('api/follows/follow', {
     method: 'POST',
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },
@@ -64,7 +72,7 @@ export const follow = user => (
 );
 
 export const unfollow = user => (
-  fetch(`/api/followers/unfollow/${user.id}`, {
+  fetch(`/api/follows/unfollow/${user.id}`, {
     method: 'DELETE',
     credentials: 'same-origin',
   })

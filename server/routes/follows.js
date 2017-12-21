@@ -4,14 +4,26 @@ const middleware = require('../middleware');
 
 const router = express.Router();
 
-// GET FOLLOWERS
-router.get('/', (req, res) => {
-  const userID = req.user._id;
-  Follow.find({ 'user.id': userID }, { _id: 0, following: 1 }, (err, followers) => {
+// GET USER FOLLOWING
+router.get('/following/:userID', (req, res) => {
+  Follow.find({ 'user.id': req.params.userID }, { _id: 0, following: 1 }, (err, following) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      const formattedFollowers = followers.map(follow => follow.following);
+      const formattedFollowing = following.map(follow => follow.following);
+      console.log(formattedFollowing);
+      res.json({ following: formattedFollowing });
+    }
+  });
+});
+
+// GET USER FOLLOWERS
+router.get('/followers/:userID', (req, res) => {
+  Follow.find({ 'following.id': req.params.userID }, { _id: 0, user: 1 }, (err, followers) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      const formattedFollowers = followers.map(follow => follow.user);
       res.json({ followers: formattedFollowers });
     }
   });

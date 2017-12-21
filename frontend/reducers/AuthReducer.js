@@ -36,7 +36,7 @@ function AuthReducer(state = initialState, action) {
           isLoading: false,
           following: {
             ...state.user.following,
-            list: action.followers,
+            list: action.following,
           },
         },
       };
@@ -82,7 +82,7 @@ function AuthReducer(state = initialState, action) {
           ...state.user,
           following: {
             ...state.user.following,
-            list: state.user.following.list.filter(follower => follower.id !== action.user.id),
+            list: state.user.following.list.filter(user => user.id !== action.user.id),
           },
         },
       };
