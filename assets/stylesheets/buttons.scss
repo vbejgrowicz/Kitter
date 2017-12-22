@@ -25,4 +25,23 @@ button {
       background-color: $secondary-color;
     }
   }
+
+  &.cancel {
+    width: 80px;
+    background-color: $white;
+    color: #6C6C6C;
+    border: 1px solid #6C6C6C;
+    &:hover {
+      background-color: #EAEAEA;
+    }
+  }
+  &.delete {
+    width: 80px;
+    background-color: #F14A4A;
+    color: $white;
+    border: none;
+    &:hover {
+      background-color: $error-color;
+    }
+  }
 }

@@ -1,0 +1,60 @@
+#post-delete-modal {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  #modal {
+    position: relative;
+    margin: auto;
+    top: 20%;
+    width: 520px;
+    background-color: $white;
+    border-radius: 6px;
+    overflow: hidden;
+
+    .title {
+      font-size: 18px;
+      padding: 12px;
+      color: black;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 27px;
+      color: #5B7182;
+      line-height: 20px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .post-container {
+      box-sizing: border-box;
+      text-align: right;
+
+      .post-item {
+        padding: 15px;
+        border-bottom: 1px solid #E3E3E3;
+        &:hover {
+          background-color: white;
+        }
+      }
+    }
+
+    .buttons-container {
+      text-align: right;
+      padding: 10px;
+
+      .delete {
+        margin-left: 10px;
+      }
+    }
+  }
+}
