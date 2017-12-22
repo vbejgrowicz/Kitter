@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PostDeleteModal from './PostDeleteModal';
 
 function ignoreClose(event) {
@@ -30,5 +31,10 @@ class PostOptions extends React.Component {
     );
   }
 }
+
+
+PostOptions.propTypes = {
+  post: PropTypes.object.isRequired,
+};
 
 export default PostOptions;
