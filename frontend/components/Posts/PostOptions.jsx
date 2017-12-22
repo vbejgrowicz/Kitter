@@ -22,8 +22,7 @@ class PostOptions extends React.Component {
   render() {
     return (
       <div id="post-options">
-        <div className="close" onClick={() => this.handleClick('deleteModal')}>&times;</div>
-
+        <div className="toggleModal" onClick={() => this.handleClick('deleteModal')}>&times;</div>
         {this.state.deleteModal && (
           <PostDeleteModal post={this.props.post} onClose={() => this.handleClick('deleteModal')} ignoreClose={ignoreClose} />
         )}

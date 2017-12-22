@@ -29,8 +29,8 @@ button {
   &.cancel {
     width: 80px;
     background-color: $white;
-    color: #6C6C6C;
-    border: 1px solid #6C6C6C;
+    color: $grey;
+    border: 1px solid $grey;
     &:hover {
       background-color: #EAEAEA;
     }

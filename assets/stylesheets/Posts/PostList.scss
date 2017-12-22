@@ -3,6 +3,7 @@
 
 #post-list {
   .post-item {
+    position: relative;
     font-size: 14px;
     text-align: left;
     color: $black;
@@ -12,7 +13,7 @@
     display: inline-flex;
     width: 100%;
     box-sizing: border-box;
-    
+
     &:first-child {
       border-top: 1px solid #E3E3E3;
     }
@@ -28,7 +29,7 @@
 
       }
       .username {
-        color: #6C6C6C;
+        color: $grey;
         padding-left: 5px;
       }
       &:hover {
@@ -39,8 +40,20 @@
       }
     }
     .time {
-      color: #6C6C6C;
+      color: $grey;
       padding-left: 5px;
+    }
+
+    #post-options {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding-right: 5px;
+      color: $grey;
+
+      .toggleModal {
+        font-size: 20px;
+      }
     }
   }
 }

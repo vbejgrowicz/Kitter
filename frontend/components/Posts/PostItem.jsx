@@ -65,7 +65,6 @@ class PostItem extends React.Component {
             <PostOptions post={this.props.post} />
           )}
         </div>
-
       </li>
     );
   }
