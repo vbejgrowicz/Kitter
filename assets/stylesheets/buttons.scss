@@ -1,0 +1,28 @@
+button {
+  height: 35px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: bold;
+  outline: none;
+
+  &.follow {
+    margin: 12px 0;
+    width: 100px;
+    background-color: $white;
+    color: $secondary-color;
+    border: 1px solid $secondary-color;
+    &:hover {
+      background-color: #EBF4FB;
+    }
+  }
+  &.unfollow {
+    margin: 12px 0;
+    width: 100px;
+    background-color: #4AB3F4;
+    color: $white;
+    border: none;
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+}
