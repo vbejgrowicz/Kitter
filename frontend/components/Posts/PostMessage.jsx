@@ -18,9 +18,11 @@ class PostMessage extends React.Component {
 
   render() {
     return (
-      <div id="message-container">
-        <div className="message-box">
-          {this.props.text}
+      <div id="full-screen" onClick={() => this.props.removePostMessage()}>
+        <div id="message-container">
+          <div className="message-box">
+            {this.props.text}
+          </div>
         </div>
       </div>
     );
