@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deletePost } from '../../actions/PostActions';
 import postedTime from '../../utils/postedTime';
+import PostOptions from './PostOptions';
 
 class PostItem extends React.Component {
   constructor(props) {
@@ -60,10 +61,8 @@ class PostItem extends React.Component {
           </Link>
           <span className="time">&middot; {this.state.time ? this.state.time : dateString }</span>
           <div className="text">{text}</div>
-          {this.reqAuth(author.id) ? (
-            <button onClick={() => this.handleRemove(this.props.post)}>Delete Post</button>
-          ) : (
-            null
+          {this.reqAuth(author.id) && (
+            <PostOptions post={this.props.post} />
           )}
         </div>
 
