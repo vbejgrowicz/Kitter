@@ -6,20 +6,29 @@ import { updateMessage } from '../../actions/PostActions';
 class PostMessage extends React.Component {
   componentDidMount() {
     this.messageTimeout = setInterval(
-      () => this.props.removePostMessage(),
+      () => this.closeMessage(),
       3000,
     );
+    setTimeout(() => this.message.classList.add('open'), 0);
   }
 
   componentWillUnmount() {
     clearInterval(this.messageTimeout);
-    this.props.removePostMessage();
+    clearInterval(this.removeMessageTimeout);
+  }
+
+  closeMessage() {
+    this.message.classList.remove('open');
+    this.removeMessageTimeout = setInterval(
+      () => this.props.removePostMessage(),
+      1500,
+    );
   }
 
   render() {
     return (
-      <div id="full-screen" onClick={() => this.props.removePostMessage()}>
-        <div id="message-container">
+      <div id="full-screen" onClick={() => this.closeMessage()}>
+        <div id="message-container" ref={(c) => { this.message = c; }}>
           <div className="message-box">
             {this.props.text}
           </div>

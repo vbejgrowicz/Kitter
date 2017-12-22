@@ -1,9 +1,11 @@
 #message-container {
   position: fixed;
-  top: 47px;
+  top: -35px;
   left: 0;
   width: 100%;
   z-index: 1;
+  transition: top 1.5s;
+
   .message-box {
     background-color: white;
     width: 500px;
@@ -15,5 +17,8 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     line-height: 80px;
+  }
+  &.open {
+    top: 47px;
   }
 }
