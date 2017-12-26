@@ -44,6 +44,7 @@ class PostItem extends React.Component {
 
   render() {
     const {
+      _id,
       text,
       author,
       date,
@@ -51,11 +52,12 @@ class PostItem extends React.Component {
     const dateString = new Date(date).toDateString();
     return (
       <li className="post-item">
-        <Link to={`/${author.username}`}>
+        <Link className="post-link" to={`/${author.username}/status/${_id}`} />
+        <Link className="user-link" to={`/${author.username}`}>
           <div className="user-image" />
         </Link>
         <div className="post-content">
-          <Link to={`/${author.username}`}>
+          <Link className="user-link" to={`/${author.username}`}>
             <span className="name">{author.name}</span>
             <span className="username">@{author.username}</span>
           </Link>
