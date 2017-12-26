@@ -7,13 +7,6 @@ function ProfileRoutes() {
     <Switch>
       <Route
         exact
-        path="/:username"
-        component={() => (
-          <ProfileFeed category="posts" />
-        )}
-      />
-      <Route
-        exact
         path="/:username/following"
         component={() => (
           <ProfileFeed category="following" />
@@ -24,6 +17,12 @@ function ProfileRoutes() {
         path="/:username/followers"
         component={() => (
           <ProfileFeed category="followers" />
+        )}
+      />
+      <Route
+        path="/:username"
+        component={() => (
+          <ProfileFeed category="posts" />
         )}
       />
     </Switch>
