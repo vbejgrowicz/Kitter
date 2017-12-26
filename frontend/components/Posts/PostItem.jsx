@@ -44,15 +44,13 @@ class PostItem extends React.Component {
 
   render() {
     const {
-      _id,
       text,
       author,
       date,
     } = this.props.post;
     const dateString = new Date(date).toDateString();
     return (
-      <li className="post-item">
-        <Link className="post-link" to={`/${author.username}/status/${_id}`} />
+      <li className="post-item" onClick={() => this.props.onItemClick(this.props.post)}>
         <Link className="user-link" to={`/${author.username}`}>
           <div className="user-image" />
         </Link>

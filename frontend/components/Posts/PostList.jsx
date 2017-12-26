@@ -37,7 +37,7 @@ class PostList extends React.Component {
     const { posts, message } = this.props.PostReducer;
     const { pendingPosts, list } = posts;
     const { status, count } = pendingPosts;
-    const postItems = list.map(post => <PostItem post={post} key={post._id} />);
+    const postItems = list.map(post => <PostItem post={post} key={post._id} onItemClick={this.props.onItemClick} />);
 
     return !posts.isLoading && (
       <div>
