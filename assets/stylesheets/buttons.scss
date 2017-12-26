@@ -4,6 +4,7 @@ button {
   font-size: 14px;
   font-weight: bold;
   outline: none;
+  cursor: pointer;
 
   &.follow {
     margin: 12px 0;
@@ -45,6 +46,23 @@ button {
     border: none;
     &:hover {
       background-color: $error-color;
+    }
+  }
+
+  &.meow {
+    width: 70px;
+    height: 35px;
+    background-color: #4AB3F4;
+    color: $white;
+    border: none;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
     }
   }
 }

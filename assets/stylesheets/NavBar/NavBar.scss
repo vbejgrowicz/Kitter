@@ -67,21 +67,5 @@
     .user-image {
       cursor: pointer;
     }
-
-    button {
-      font-size: 14px;
-      width: 70px;
-      height: 35px;
-      color: $white;
-      background-color: #4AB3F4;
-      border-radius: 20px;
-      cursor: pointer;
-      outline: none;
-      border: none;
-
-      &:hover {
-        background-color: $secondary-color;
-      }
-    }
   }
 }

@@ -45,7 +45,7 @@ class NavBar extends React.Component {
             </div>
             <div className="right">
               <div className="user-image" onClick={() => this.handleClick('User')} />
-              <button onClick={() => this.handleClick('Meow')}>Meow</button>
+              <button className="meow" onClick={() => this.handleClick('Meow')}>Meow</button>
             </div>
           </div>
         </div>

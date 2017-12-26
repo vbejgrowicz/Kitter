@@ -28,20 +28,6 @@
   }
 
   button {
-    font-size: 14px;
-    width: 70px;
-    height: 35px;
-    background-color: $secondary-color;
-    color: $white;
-    border-radius: 20px;
-    cursor: pointer;
-    outline: none;
-    border: none;
-
-    &:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
     &.closed {
       display: none;
     }

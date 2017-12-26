@@ -56,7 +56,7 @@ class NewPostForm extends React.Component {
 
 
   render() {
-    const focus = this.state.focus ? 'open' : 'closed';
+    const focus = this.state.focus ? 'open meow' : 'closed meow';
     return (
       <div id="post-form">
         <TextareaAutosize
