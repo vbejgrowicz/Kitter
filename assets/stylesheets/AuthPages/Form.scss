@@ -1,10 +1,4 @@
 #auth {
-  button {
-    cursor: pointer;
-    text-align: center;
-    outline: none;
-  }
-
   .blue-btn {
     border: none;
     background-color: $secondary-color;
@@ -56,9 +50,7 @@
     button {
       font-size: 18px;
       font-weight: bold;
-      padding: 12px;
       width: 100%;
-      border-radius: 100px;
     }
   }
   .modal-form {
@@ -82,14 +74,7 @@
     }
 
     button {
-      cursor: pointer;
-      text-align: center;
-      outline: none;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 10px;
       width: 100%;
-      border-radius: 100px;
     }
   }
 }
