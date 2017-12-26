@@ -38,7 +38,7 @@ class Routes extends React.Component {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/signup" component={SignUpPage} />
-        <Route path="/:username" component={ProfilePage} />
+        <Redirect from="/:username" to="/login" />
       </Switch>
     );
 
