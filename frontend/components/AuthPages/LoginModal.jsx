@@ -3,17 +3,22 @@ import PropTypes from 'prop-types';
 import UserForm from './UserForm';
 
 function LoginModal({ show, onClose }) {
+  const ignoreClose = (event) => {
+    event.stopPropagation();
+  };
   if (!show) {
     return null;
   }
   return (
-    <div className="modal">
-      <div className="modal-form">
-        <div>Have an Account?</div>
-        <UserForm formType="Log in" />
-        <hr />
-        <div>New to Kitter?</div>
-        <button className="white-btn" onClick={onClose}>Sign up</button>
+    <div id="full-screen" onClick={onClose}>
+      <div className="modal" onClick={ignoreClose}>
+        <div className="modal-form">
+          <div>Have an Account?</div>
+          <UserForm formType="Log in" />
+          <hr />
+          <div>New to Kitter?</div>
+          <button className="white-btn" onClick={onClose}>Sign up</button>
+        </div>
       </div>
     </div>
   );
