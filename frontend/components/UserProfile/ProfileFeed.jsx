@@ -15,7 +15,6 @@ function ProfileFeed({ category }, context) {
       {category === 'posts' ? (
         <div>
           <PostList category="User" onItemClick={handleClick} />
-          <Route exact path="/:username/status/:postID" component={PostDetailPage} />
         </div>
       ) : (
         <UserList category={category} />

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import { fetchPosts, addPendingPosts, checkPendingPosts } from '../../actions/PostActions';
 import { updateUserPostCount } from '../../actions/UserActions';
 import PostItem from './PostItem';
+import PostDetailPage from './PostDetailPage';
 import PostMessage from './PostMessage';
 
 
@@ -51,6 +53,7 @@ class PostList extends React.Component {
         )}
         <ul id="post-list">
           {postItems}
+          <Route exact path="/:username/status/:postID" component={PostDetailPage} />
         </ul>
       </div>
     );
