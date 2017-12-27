@@ -74,6 +74,7 @@ PostItem.propTypes = {
   post: PropTypes.object.isRequired,
   removePost: PropTypes.func.isRequired,
   AuthReducer: PropTypes.object.isRequired,
+  onItemClick: PropTypes.func.isRequired,
 };
 
 function mapStateToProps({ AuthReducer }) {

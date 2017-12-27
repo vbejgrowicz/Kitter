@@ -67,6 +67,7 @@ PostList.propTypes = {
   checkPosts: PropTypes.func.isRequired,
   UserReducer: PropTypes.object.isRequired,
   PostReducer: PropTypes.object.isRequired,
+  onItemClick: PropTypes.func.isRequired,
 };
 
 function mapStateToProps({ UserReducer, PostReducer }) {

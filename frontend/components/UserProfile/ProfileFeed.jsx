@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router-dom';
 import PostList from '../Posts/PostList';
 import UserList from '../Users/UserList';
-import PostDetailPage from '../Posts/PostDetailPage';
 
 function ProfileFeed({ category }, context) {
   const handleClick = (post) => {
