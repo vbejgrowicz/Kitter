@@ -107,7 +107,12 @@ export const removePost = id => (
 );
 
 export const likePost = id => (
-  fetch(`/api/user/posts/${id}`, { method: 'PUT', credentials: 'same-origin' })
+  fetch(`/api/user/posts/${id}/like`, { method: 'PUT', credentials: 'same-origin' })
+    .then(resp => resp.json())
+);
+
+export const unlikePost = id => (
+  fetch(`/api/user/posts/${id}/unlike`, { method: 'PUT', credentials: 'same-origin' })
     .then(resp => resp.json())
 );
 
