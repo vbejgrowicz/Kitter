@@ -8,6 +8,7 @@ import {
   getNewHomepagePosts,
   getNewUserPosts,
   likePost,
+  unlikePost,
 } from '../utils/apiUtils';
 import { updateUserPostCount } from './UserActions';
 
@@ -105,11 +106,17 @@ export const addPendingPosts = () => (
   { type: 'ADD_PENDING_POSTS' }
 );
 
-export function updatePost(post) {
+export function updatePost(isLiked, post) {
   return function updatePostThunk(dispatch) {
     const postID = post._id;
-    likePost(postID).then((res) => {
-      dispatch({ type: 'ADD_LIKE', user: res.user });
-    });
+    if (isLiked) {
+      unlikePost(postID).then((res) => {
+        dispatch({ type: 'UNLIKE_POST', post, user: res.user });
+      });
+    } else {
+      likePost(postID).then((res) => {
+        dispatch({ type: 'LIKE_POST', post, user: res.user });
+      });
+    }
   };
 }

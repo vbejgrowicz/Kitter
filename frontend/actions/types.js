@@ -16,6 +16,8 @@ export const ADD_NEW_POSTS = 'ADD_NEW_POSTS';
 export const SET_PENDING_POSTS = 'SET_PENDING_POSTS';
 export const ADD_PENDING_POSTS = 'ADD_PENDING_POSTS';
 export const UPDATE_POST_MESSAGE = 'UPDATE_POST_MESSAGE';
+export const LIKE_POST = 'LIKE_POST';
+export const UNLIKE_POST = 'UNLIKE_POST';
 
 // Displayed User Actions
 export const GET_USER_PROFILE = 'GET_USER_PROFILE';
