@@ -7,6 +7,7 @@ import {
   getTotalNumPosts,
   getNewHomepagePosts,
   getNewUserPosts,
+  likePost,
 } from '../utils/apiUtils';
 import { updateUserPostCount } from './UserActions';
 
@@ -103,3 +104,12 @@ export function checkPendingPosts(category, userId) {
 export const addPendingPosts = () => (
   { type: 'ADD_PENDING_POSTS' }
 );
+
+export function updatePost(post) {
+  return function updatePostThunk(dispatch) {
+    const postID = post._id;
+    likePost(postID).then((res) => {
+      dispatch({ type: 'ADD_LIKE', user: res.user });
+    });
+  };
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deletePost } from '../../actions/PostActions';
+import { deletePost, updatePost } from '../../actions/PostActions';
 import postedTime from '../../utils/postedTime';
 import PostOptions from './PostOptions';
 
@@ -64,6 +64,7 @@ class PostItem extends React.Component {
           {this.reqAuth(author.id) && (
             <PostOptions post={this.props.post} />
           )}
+          <button onClick={() => this.props.updateLikes(this.props.post)}>LIKE</button>
         </div>
       </li>
     );
@@ -85,6 +86,9 @@ const mapDispatchToProps = dispatch => (
   {
     removePost: (post) => {
       dispatch(deletePost(post));
+    },
+    updateLikes: (post) => {
+      dispatch(updatePost(post));
     },
   }
 );
