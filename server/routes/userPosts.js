@@ -55,4 +55,20 @@ router.delete('/:postID', middleware.checkPostAuthor, (req, res) => {
   });
 });
 
+// ADD LIKE
+router.put('/:postID', middleware.isLoggedin, (req, res) => {
+  const user = {
+    id: req.user._id,
+    username: req.user.username,
+    name: req.user.name,
+  };
+  Post.findByIdAndUpdate(req.params.postID, { $push: { likes: user } }, (err) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.json({ user });
+    }
+  });
+});
+
 module.exports = router;

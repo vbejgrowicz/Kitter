@@ -106,6 +106,10 @@ export const removePost = id => (
     .then(resp => resp.json())
 );
 
+export const likePost = id => (
+  fetch(`/api/user/posts/${id}`, { method: 'PUT', credentials: 'same-origin' })
+    .then(resp => resp.json())
+);
 
 // Homepage Post Routes
 export const getHomepagePosts = () => (
@@ -117,7 +121,6 @@ export const getNewHomepagePosts = numOfPosts => (
   fetch(`/api/following/posts/new/${numOfPosts}`, { method: 'GET', credentials: 'same-origin' })
     .then(resp => resp.json())
 );
-
 
 // Counts
 export const getNumPosts = id => (
