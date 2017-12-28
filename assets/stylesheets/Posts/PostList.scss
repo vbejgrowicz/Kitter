@@ -27,6 +27,18 @@
       z-index: 1;
     }
 
+    .button {
+      &.unlike {
+        color: #FB4571;
+      }
+      &.like {
+        color: #616161;
+      }
+      .like-count {
+        padding-left: 5px;
+      }
+    }
+
     &:first-child {
       border-top: 1px solid #E3E3E3;
     }

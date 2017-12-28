@@ -9,12 +9,14 @@ function PostLikeButton({ post, AuthReducer, updateLikes }) {
   const isLiked = likes.find(user => user.id === authUser.id);
 
   return (
-    <div className="like-button-container">
-      <button
-        className={isLiked ? 'unlike' : 'like'}
-        onClick={() => updateLikes(isLiked, post)}
-      >
-        {isLiked ? 'Unlike' : 'Like'}
+    <div className={isLiked ? 'unlike button' : 'like button'}>
+      <button onClick={() => updateLikes(isLiked, post)}>
+        {isLiked ?
+          <i className="fa fa-heart" aria-hidden="true" />
+        :
+          <i className="fa fa-heart-o" aria-hidden="true" />
+        }
+        <span className="like-count">{likes.length}</span>
       </button>
     </div>
   );
