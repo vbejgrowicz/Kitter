@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const likeSchema = require('./like');
 
 const postSchema = new mongoose.Schema({
   text: String,
@@ -14,6 +15,7 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  likes: [likeSchema],
 }, { versionKey: false });
 
 module.exports = mongoose.model('Post', postSchema);
