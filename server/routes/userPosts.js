@@ -6,7 +6,7 @@ const router = express.Router();
 
 // GET USER POSTS
 router.get('/:userID', (req, res) => {
-  Post.find({ 'author.id': req.params.userID }, null, { sort: { date: -1 } }, (err, userPosts) => {
+  Post.find({ 'author.id': req.params.userID }, { 'likes._id': 0 }, { sort: { date: -1 } }, (err, userPosts) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -17,7 +17,7 @@ router.get('/:userID', (req, res) => {
 
 // GET NEW USER POSTS
 router.get('/new/:userID/:numOfPosts', (req, res) => {
-  Post.find({ 'author.id': req.params.userID }, null, { sort: { date: -1 }, limit: parseInt(req.params.numOfPosts, 10) }, (err, newPosts) => {
+  Post.find({ 'author.id': req.params.userID }, { 'likes._id': 0 }, { sort: { date: -1 }, limit: parseInt(req.params.numOfPosts, 10) }, (err, newPosts) => {
     if (err) {
       res.status(400).send(err);
     } else {
