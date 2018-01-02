@@ -36,7 +36,7 @@ class ProfilePage extends React.Component {
     }
     return username === params.username ? (
       <div id="user-profile-page">
-        <ProfileHeader />
+        <ProfileHeader user={this.props.UserReducer} />
         <div className="user-content">
           <ProfileUserInfo />
           <ProfileRoutes />
