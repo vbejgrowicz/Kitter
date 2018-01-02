@@ -43,4 +43,4 @@ function mapStateToProps({ UserReducer }) {
   return { UserReducer };
 }
 
-export default connect(mapStateToProps, null)(ProfileHeader);
+export default connect(mapStateToProps, null, null, { pure: false })(ProfileHeader);
