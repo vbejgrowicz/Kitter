@@ -51,7 +51,7 @@ class PostItem extends React.Component {
     } = this.props.post;
     const dateString = new Date(date).toDateString();
     return (
-      <li className="post-item" onClick={() => this.props.onItemClick(this.props.post)}>
+      <li className="post-item">
         <Link className="user-link" to={`/${author.username}`}>
           <div className="user-image" />
         </Link>
@@ -76,7 +76,6 @@ PostItem.propTypes = {
   post: PropTypes.object.isRequired,
   removePost: PropTypes.func.isRequired,
   AuthReducer: PropTypes.object.isRequired,
-  onItemClick: PropTypes.func.isRequired,
 };
 
 function mapStateToProps({ AuthReducer }) {

@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
 import { fetchPosts, addPendingPosts, checkPendingPosts } from '../../actions/PostActions';
 import { updateUserPostCount } from '../../actions/UserActions';
 import PostItem from './PostItem';
-import PostDetailPage from './PostDetailPage';
 import PostMessage from './PostMessage';
 
 
@@ -39,7 +37,7 @@ class PostList extends React.Component {
     const { posts, message } = this.props.PostReducer;
     const { pendingPosts, list } = posts;
     const { status, count } = pendingPosts;
-    const postItems = list.map(post => <PostItem post={post} key={post._id} onItemClick={this.props.onItemClick} />);
+    const postItems = list.map(post => <PostItem post={post} key={post._id} />);
 
     return !posts.isLoading && (
       <div>
@@ -53,7 +51,6 @@ class PostList extends React.Component {
         )}
         <ul id="post-list">
           {postItems}
-          <Route exact path="/:username/status/:postID" component={PostDetailPage} />
         </ul>
       </div>
     );
@@ -67,7 +64,6 @@ PostList.propTypes = {
   checkPosts: PropTypes.func.isRequired,
   UserReducer: PropTypes.object.isRequired,
   PostReducer: PropTypes.object.isRequired,
-  onItemClick: PropTypes.func.isRequired,
 };
 
 function mapStateToProps({ UserReducer, PostReducer }) {

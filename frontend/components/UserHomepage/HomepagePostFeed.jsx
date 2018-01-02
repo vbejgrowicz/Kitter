@@ -6,7 +6,7 @@ function HomepagePostFeed() {
   return (
     <div id="profile-feed">
       <HomepageNewPost />
-      <PostList category="All" onItemClick={() => {}} />
+      <PostList category="All" />
     </div>
   );
 }
