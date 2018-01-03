@@ -24,7 +24,7 @@ class PostList extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if ((this.props.PostReducer === nextProps.PostReducer) && (this.props.UserReducer.id === nextProps.UserReducer.id)) {
+    if (this.props.PostReducer.posts.list === nextProps.PostReducer.posts.list) {
       return false;
     }
     return true;
