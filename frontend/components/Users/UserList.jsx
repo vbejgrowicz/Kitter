@@ -18,10 +18,10 @@ class UserList extends React.Component {
   }
 
   render() {
-    const { list } = this.props.UserReducer.data.follows;
+    const { list, isLoading } = this.props.UserReducer.data.follows;
     const users = list.map(item => <UserItem user={item} key={item.id} />);
 
-    return (
+    return !isLoading && (
       <ul id="user-list">
         {users}
       </ul>

@@ -55,6 +55,7 @@ function getUserList(category, id) {
 
 export function getFollows(category, id) {
   return function getFollowsThunk(dispatch) {
+    dispatch({ type: 'GET_FOLLOWS' });
     getUserList(category, id).then((response) => {
       dispatch({ type: 'SET_FOLLOWS', followList: response.list });
     });

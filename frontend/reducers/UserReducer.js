@@ -3,6 +3,7 @@ import {
   SET_USER_PROFILE,
   SET_USER_ERROR,
   SET_POST_COUNT,
+  GET_FOLLOWS,
   SET_FOLLOWS,
 } from '../actions/types';
 
@@ -18,6 +19,7 @@ const initialState = {
       followers: 0,
       following: 0,
       list: [],
+      isLoading: false,
     },
   },
 };
@@ -60,6 +62,18 @@ function UserReducer(state = initialState, action) {
         data: {
           ...state.data,
           posts: action.count,
+        },
+      };
+    case GET_FOLLOWS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          follows: {
+            ...state.data.follows,
+            list: [],
+            isLoading: true,
+          },
         },
       };
     case SET_FOLLOWS:
