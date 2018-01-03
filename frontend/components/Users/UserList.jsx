@@ -18,7 +18,7 @@ class UserList extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (this.props.UserReducer.data === nextProps.UserReducer.data) {
+    if (nextProps.UserReducer.data.follows.isLoading) {
       return false;
     }
     return true;
