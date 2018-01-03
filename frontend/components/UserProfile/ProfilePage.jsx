@@ -26,10 +26,9 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { username, isLoading } = this.props.UserReducer;
+    const { username, isLoading, error } = this.props.UserReducer;
     const { params } = this.props.match;
-
-    if (isLoading) {
+    if (isLoading || (username === null && error === false)) {
       return (
         null
       );
