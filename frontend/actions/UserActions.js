@@ -61,3 +61,17 @@ export function getFollows(category, id) {
     });
   };
 }
+
+export function updateFollowCount(id) {
+  return function updateFollowCountThunk(dispatch) {
+    return getFollowerCount(id).then((followerRes) => {
+      getFollowingCount(id).then((followingRes) => {
+        dispatch({
+          type: 'UPDATE_FOLLOW_DATA',
+          followerCount: followerRes.count,
+          followingCount: followingRes.count,
+        });
+      });
+    });
+  };
+}

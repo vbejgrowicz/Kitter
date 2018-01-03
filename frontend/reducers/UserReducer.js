@@ -5,6 +5,7 @@ import {
   SET_POST_COUNT,
   GET_FOLLOWS,
   SET_FOLLOWS,
+  UPDATE_FOLLOW_DATA,
 } from '../actions/types';
 
 const initialState = {
@@ -85,6 +86,18 @@ function UserReducer(state = initialState, action) {
             ...state.data.follows,
             list: action.followList,
             isLoading: false,
+          },
+        },
+      };
+    case UPDATE_FOLLOW_DATA:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          follows: {
+            ...state.data.follows,
+            followers: action.followerCount,
+            following: action.followingCount,
           },
         },
       };

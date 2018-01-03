@@ -27,3 +27,4 @@ export const SET_USER_ERROR = 'SET_USER_ERROR';
 export const SET_POST_COUNT = 'SET_POST_COUNT';
 export const SET_FOLLOWS = 'SET_FOLLOWS';
 export const GET_FOLLOWS = 'GET_FOLLOWS';
+export const UPDATE_FOLLOW_DATA = 'UPDATE_FOLLOW_DATA';
