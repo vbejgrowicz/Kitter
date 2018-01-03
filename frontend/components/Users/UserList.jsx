@@ -10,6 +10,13 @@ class UserList extends React.Component {
     this.props.fetchUsers(category, UserReducer.id);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { category, UserReducer } = this.props;
+    if (category !== nextProps.category) {
+      this.props.fetchUsers(nextProps.category, UserReducer.id);
+    }
+  }
+
   shouldComponentUpdate(nextProps) {
     if (this.props.UserReducer.data === nextProps.UserReducer.data) {
       return false;
