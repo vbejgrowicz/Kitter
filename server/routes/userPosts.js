@@ -4,9 +4,11 @@ const middleware = require('../middleware');
 
 const router = express.Router();
 
+const postsPerPage = 10;
+
 // GET USER POSTS
-router.get('/:userID', (req, res) => {
-  Post.find({ 'author.id': req.params.userID }, { 'likes._id': 0 }, { sort: { date: -1 } }, (err, userPosts) => {
+router.get('/:userID/:pageNum', (req, res) => {
+  Post.find({ 'author.id': req.params.userID }, { 'likes._id': 0 }, { sort: { date: -1 }, limit: postsPerPage, skip: parseInt(req.params.pageNum, 10) * postsPerPage }, (err, userPosts) => {
     if (err) {
       res.status(400).send(err);
     } else {

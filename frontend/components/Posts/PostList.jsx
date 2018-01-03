@@ -15,7 +15,7 @@ class PostList extends React.Component {
 
   componentWillMount() {
     const { id } = this.props.UserReducer;
-    this.props.getPosts(id, this.props.category, 1);
+    this.props.getPosts(id, this.props.category);
     this.checkForUpdates = setInterval(
       () => this.props.checkPosts(this.props.category, id),
       30000,
@@ -43,7 +43,7 @@ class PostList extends React.Component {
       posts.list.length &&
       !posts.isLoading
     ) {
-      this.props.getPosts(id, this.props.category, 2);
+      this.props.getPosts(id, this.props.category, posts.page);
     }
   }
 

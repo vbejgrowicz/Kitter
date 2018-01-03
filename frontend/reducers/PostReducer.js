@@ -15,6 +15,7 @@ import {
 const initialState = {
   posts: {
     total: null,
+    page: null,
     category: null,
     list: [],
     isLoading: false,
@@ -62,6 +63,7 @@ function PostReducer(state = initialState, action) {
         posts: {
           ...state.posts,
           list: [],
+          page: 1,
           total: null,
           category: action.category,
           isLoading: true,
@@ -72,6 +74,7 @@ function PostReducer(state = initialState, action) {
         ...state,
         posts: {
           ...state.posts,
+          page: state.posts.page + 1,
           isLoading: true,
         },
       };

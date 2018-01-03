@@ -12,11 +12,11 @@ import {
 } from '../utils/apiUtils';
 import { updateUserPostCount } from './UserActions';
 
-function getPosts(category, userId) {
+function getPosts(category, userId, page) {
   if (category === 'All') {
-    return getHomepagePosts();
+    return getHomepagePosts(page);
   }
-  return getUserPosts(userId);
+  return getUserPosts(userId, page);
 }
 
 function getPostCount(category, userId) {
@@ -35,12 +35,12 @@ function getNewPosts(category, userId, count) {
 
 export function fetchPosts(id, category, page) {
   return function fetchPostsThunk(dispatch) {
-    if (page === 1) {
+    if (page === undefined) {
       dispatch({ type: 'GET_POSTS', category });
     } else {
       dispatch({ type: 'LOAD_POSTS' });
     }
-    return getPosts(category, id).then(response => (
+    return getPosts(category, id, page).then(response => (
       getPostCount(category, id).then((res) => {
         dispatch({ type: 'SET_POSTS', posts: response.posts, total: res.count });
       })
