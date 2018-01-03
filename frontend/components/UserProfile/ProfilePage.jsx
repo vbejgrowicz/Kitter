@@ -12,7 +12,7 @@ class ProfilePage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match !== nextProps.match) {
+    if (this.props.match.params.username !== nextProps.match.params.username) {
       this.props.fetchUser(nextProps.match.params.username);
     }
   }
