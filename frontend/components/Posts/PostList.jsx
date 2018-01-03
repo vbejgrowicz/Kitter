@@ -24,7 +24,7 @@ class PostList extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (this.props.PostReducer.posts.list === nextProps.PostReducer.posts.list) {
+    if (nextProps.PostReducer.posts.isLoading) {
       return false;
     }
     return true;
@@ -43,9 +43,7 @@ class PostList extends React.Component {
       posts.list.length &&
       !posts.isLoading
     ) {
-      // load more posts!
       this.props.getPosts(id, this.props.category, 2);
-      console.log('loading');
     }
   }
 
