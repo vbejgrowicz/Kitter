@@ -67,7 +67,7 @@ class PostList extends React.Component {
           <PostMessage text={message.text} />
         )}
         {status ? (
-          <div onClick={() => this.handleNewPosts()}>See {count} new Meow</div>
+          <div className="new-post-notification" onClick={() => this.handleNewPosts()}>See {count} new Meow</div>
         ) : (
           null
         )}
