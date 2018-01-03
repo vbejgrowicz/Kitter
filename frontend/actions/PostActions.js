@@ -33,9 +33,13 @@ function getNewPosts(category, userId, count) {
   return getNewUserPosts(userId, count);
 }
 
-export function fetchPosts(id, category) {
+export function fetchPosts(id, category, page) {
   return function fetchPostsThunk(dispatch) {
-    dispatch({ type: 'GET_POSTS', category });
+    if (page === 1) {
+      dispatch({ type: 'GET_POSTS', category });
+    } else {
+      dispatch({ type: 'LOAD_POSTS' });
+    }
     return getPosts(category, id).then(response => (
       getPostCount(category, id).then((res) => {
         dispatch({ type: 'SET_POSTS', posts: response.posts, total: res.count });
