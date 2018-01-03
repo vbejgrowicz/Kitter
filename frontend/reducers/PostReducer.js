@@ -1,5 +1,6 @@
 import {
   GET_POSTS,
+  LOAD_POSTS,
   SET_POSTS,
   ADD_POST,
   REMOVE_POST,
@@ -60,7 +61,17 @@ function PostReducer(state = initialState, action) {
         ...state,
         posts: {
           ...state.posts,
+          list: [],
+          total: null,
           category: action.category,
+          isLoading: true,
+        },
+      };
+    case LOAD_POSTS:
+      return {
+        ...state,
+        posts: {
+          ...state.posts,
           isLoading: true,
         },
       };
