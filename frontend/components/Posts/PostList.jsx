@@ -8,6 +8,11 @@ import PostMessage from './PostMessage';
 
 
 class PostList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onScroll = this.onScroll.bind(this);
+  }
+
   componentWillMount() {
     const { id } = this.props.UserReducer;
     this.props.getPosts(id, this.props.category);
@@ -15,6 +20,7 @@ class PostList extends React.Component {
       () => this.props.checkPosts(this.props.category, id),
       30000,
     );
+    window.addEventListener('scroll', this.onScroll);
   }
 
   shouldComponentUpdate(nextProps) {
@@ -26,6 +32,20 @@ class PostList extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.checkForUpdates);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  onScroll() {
+    const { id } = this.props.UserReducer;
+    const { posts } = this.props.PostReducer;
+    if (
+      (window.innerHeight + window.scrollY) >= (document.body.offsetHeight + 47) &&
+      posts.list.length &&
+      !posts.isLoading
+    ) {
+      // load more posts!
+      console.log('loading');
+    }
   }
 
   handleNewPosts() {
