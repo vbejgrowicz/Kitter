@@ -8,21 +8,15 @@ import ProfileUserInfo from './ProfileUserInfo';
 
 class ProfilePage extends React.Component {
   componentWillMount() {
-    this.props.fetchUser(this.props.match.params.username);
+    if (this.props.UserReducer.username !== this.props.match.params.username) {
+      this.props.fetchUser(this.props.match.params.username);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.username !== nextProps.match.params.username) {
       this.props.fetchUser(nextProps.match.params.username);
     }
-  }
-
-  shouldComponentUpdate(nextProps) {
-    const { username } = this.props.UserReducer;
-    if ((username === nextProps.match.params.username) && (this.props.match === nextProps.match)) {
-      return false;
-    }
-    return true;
   }
 
   render() {
