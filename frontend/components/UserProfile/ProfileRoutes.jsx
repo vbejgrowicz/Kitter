@@ -8,21 +8,21 @@ function ProfileRoutes() {
       <Route
         exact
         path="/:username"
-        component={() => (
+        render={() => (
           <ProfileFeed category="posts" />
         )}
       />
       <Route
         exact
         path="/:username/following"
-        component={() => (
+        render={() => (
           <ProfileFeed category="following" />
         )}
       />
       <Route
         exact
         path="/:username/followers"
-        component={() => (
+        render={() => (
           <ProfileFeed category="followers" />
         )}
       />
