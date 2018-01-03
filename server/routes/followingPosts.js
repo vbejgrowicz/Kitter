@@ -4,11 +4,11 @@ const middleware = require('../middleware');
 
 const router = express.Router();
 
-const postsPerPage = 10;
+const fetchCount = 10;
 
 // GET ALL HOMEPAGE POSTS (FOLLOWING AND USER)
-router.get('/:pageNum', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
-  Post.find({ 'author.id': { $in: res.following } }, { 'likes._id': 0 }, { sort: { date: -1 }, limit: postsPerPage, skip: parseInt(req.params.pageNum, 10) * postsPerPage }, (error, allPosts) => {
+router.get('/:postCount', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
+  Post.find({ 'author.id': { $in: res.following } }, { 'likes._id': 0 }, { sort: { date: -1 }, limit: fetchCount, skip: parseInt(req.params.postCount, 10) }, (error, allPosts) => {
     if (error) {
       res.status(400).send(error);
     } else {

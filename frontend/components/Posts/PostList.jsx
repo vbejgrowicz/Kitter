@@ -46,7 +46,7 @@ class PostList extends React.Component {
       posts.list.length &&
       !posts.isLoading
     ) {
-      this.props.getPosts(id, this.props.category, posts.page);
+      this.props.getPosts(id, this.props.category, posts.currentCount + posts.pendingPosts.count);
     }
   }
 
@@ -94,8 +94,8 @@ function mapStateToProps({ UserReducer, PostReducer }) {
 
 const mapDispatchToProps = dispatch => (
   {
-    getPosts: (id, category, page) => {
-      dispatch(fetchPosts(id, category, page));
+    getPosts: (id, category, listLength) => {
+      dispatch(fetchPosts(id, category, listLength));
     },
     getPendingPosts: (userId) => {
       dispatch(addPendingPosts());
