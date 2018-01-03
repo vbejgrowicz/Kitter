@@ -24,7 +24,10 @@ class PostList extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (nextProps.PostReducer.posts.isLoading) {
+    if (
+      (this.props.PostReducer.posts.total === nextProps.PostReducer.posts.total) &&
+      (nextProps.PostReducer.posts.isLoading)
+    ) {
       return false;
     }
     return true;
