@@ -79,8 +79,8 @@ export const unfollow = user => (
 );
 
 // User Post Routes
-export const getUserPosts = (id, postCount) => (
-  fetch(`/api/user/posts/${id}/${postCount}`, { method: 'GET', credentials: 'same-origin' })
+export const getUserPosts = (id, lastPostId) => (
+  fetch(`/api/user/posts/${id}/${lastPostId}`, { method: 'GET', credentials: 'same-origin' })
     .then(resp => resp.json())
 );
 
@@ -117,8 +117,8 @@ export const unlikePost = id => (
 );
 
 // Homepage Post Routes
-export const getHomepagePosts = postCount => (
-  fetch(`/api/following/posts/${postCount}`, { method: 'GET', credentials: 'same-origin' })
+export const getHomepagePosts = lastPostId => (
+  fetch(`/api/following/posts/${lastPostId}`, { method: 'GET', credentials: 'same-origin' })
     .then(resp => resp.json())
 );
 

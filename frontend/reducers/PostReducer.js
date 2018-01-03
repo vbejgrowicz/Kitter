@@ -15,7 +15,6 @@ import {
 const initialState = {
   posts: {
     total: null,
-    currentCount: null,
     category: null,
     list: [],
     isLoading: false,
@@ -64,7 +63,6 @@ function PostReducer(state = initialState, action) {
           ...state.posts,
           list: [],
           total: null,
-          currentCount: 0,
           category: action.category,
           isLoading: true,
         },
@@ -84,7 +82,6 @@ function PostReducer(state = initialState, action) {
           ...state.posts,
           list: [...state.posts.list, ...action.posts],
           total: action.total,
-          currentCount: state.posts.currentCount + action.posts.length,
           isLoading: false,
         },
       };
@@ -95,8 +92,6 @@ function PostReducer(state = initialState, action) {
           ...state.posts,
           list: [action.post, ...state.posts.list],
           total: state.posts.total + 1,
-          currentCount: state.posts.currentCount + 1,
-
         },
       };
     case ADD_NEW_POSTS:
@@ -106,7 +101,6 @@ function PostReducer(state = initialState, action) {
           ...state.posts,
           list: [...action.posts, ...state.posts.list],
           total: state.posts.total + action.count,
-          currentCount: state.posts.currentCount + action.count,
           pendingPosts: {
             ...state.posts.pendingPosts,
             status: false,
@@ -144,7 +138,6 @@ function PostReducer(state = initialState, action) {
           ...state.posts,
           list: [...state.posts.pendingPosts.list, ...state.posts.list],
           total: state.posts.total + state.posts.pendingPosts.count,
-          currentCount: state.posts.currentCount + state.posts.pendingPosts.count,
           pendingPosts: {
             ...state.posts.pendingPosts,
             status: false,

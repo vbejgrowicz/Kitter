@@ -7,8 +7,13 @@ const router = express.Router();
 const fetchCount = 10;
 
 // GET USER POSTS
-router.get('/:userID/:postCount', (req, res) => {
-  Post.find({ 'author.id': req.params.userID }, { 'likes._id': 0 }, { sort: { date: -1 }, limit: fetchCount, skip: parseInt(req.params.postCount, 10) }, (err, userPosts) => {
+router.get('/:userID/:lastId', (req, res) => {
+  const findQuery = {};
+  findQuery['author.id'] = req.params.userID;
+  if (req.params.lastId !== 'first fetch') {
+    findQuery._id = { $lt: req.params.lastId };
+  }
+  Post.find(findQuery, { 'likes._id': 0 }, { sort: { date: -1 }, limit: fetchCount }, (err, userPosts) => {
     if (err) {
       res.status(400).send(err);
     } else {

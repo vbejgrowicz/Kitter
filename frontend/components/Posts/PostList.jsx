@@ -15,7 +15,7 @@ class PostList extends React.Component {
 
   componentWillMount() {
     const { id } = this.props.UserReducer;
-    this.props.getPosts(id, this.props.category);
+    this.props.getPosts(id, this.props.category, 'first fetch');
     this.checkForUpdates = setInterval(
       () => this.props.checkPosts(this.props.category, id),
       30000,
@@ -46,7 +46,8 @@ class PostList extends React.Component {
       posts.list.length &&
       !posts.isLoading
     ) {
-      this.props.getPosts(id, this.props.category, posts.currentCount + posts.pendingPosts.count);
+      const lastPostId = posts.list[posts.list.length - 1]._id;
+      this.props.getPosts(id, this.props.category, lastPostId);
     }
   }
 
@@ -94,8 +95,8 @@ function mapStateToProps({ UserReducer, PostReducer }) {
 
 const mapDispatchToProps = dispatch => (
   {
-    getPosts: (id, category, listLength) => {
-      dispatch(fetchPosts(id, category, listLength));
+    getPosts: (id, category, lastPostId) => {
+      dispatch(fetchPosts(id, category, lastPostId));
     },
     getPendingPosts: (userId) => {
       dispatch(addPendingPosts());
