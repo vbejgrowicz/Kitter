@@ -80,7 +80,7 @@ function PostReducer(state = initialState, action) {
         ...state,
         posts: {
           ...state.posts,
-          list: action.posts,
+          list: [...state.posts.list, ...action.posts],
           total: action.total,
           isLoading: false,
         },
