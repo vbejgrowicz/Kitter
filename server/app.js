@@ -17,6 +17,7 @@ const userPostRoutes = require('./routes/userPosts');
 const followingPostRoutes = require('./routes/followingPosts');
 const countRoutes = require('./routes/count');
 const followerRoutes = require('./routes/follows');
+const imageRoutes = require('./routes/image');
 
 mongoose.connect('mongodb://localhost/Kitter', { useMongoClient: true });
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,6 +38,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use('/api', indexRoutes);
+app.use('/api/image', imageRoutes);
 app.use('/api/user/posts', userPostRoutes);
 app.use('/api/following/posts', followingPostRoutes);
 app.use('/api/follows', followerRoutes);

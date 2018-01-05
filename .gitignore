@@ -6,3 +6,6 @@
 # Ignore all tempfiles.
 .DS_Store
 /node_modules
+
+# Ignore AWS server config
+/server/config
