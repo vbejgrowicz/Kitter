@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
+import { addProfileImage } from '../../utils/apiUtils';
+
 class NewUserImageForm extends React.Component {
   constructor(props) {
     super(props);
@@ -8,10 +10,21 @@ class NewUserImageForm extends React.Component {
       file: null,
     };
     this.onDrop = this.onDrop.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   onDrop(file) {
     this.setState({ file: file[0] });
   }
+
+  handleClick() {
+    const formData = new FormData();
+    formData.append('photo', this.state.file);
+    addProfileImage(formData);
+  }
+
   render() {
+    // console.log(this.state);
     return (
       <div id="user-image-modal">
         <div className="modal">
@@ -29,6 +42,7 @@ class NewUserImageForm extends React.Component {
             )
             }
           </Dropzone>
+          <button onClick={this.handleClick}>Upload</button>
         </div>
       </div>
     );
