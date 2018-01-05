@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import UserImage from '../ProfileComponents/UserImage';
 
 function HomepageUserInfo({ UserReducer }) {
   const { username, name, data } = UserReducer;
   return (
     <div id="homepage-user-data">
       <div className="content">
-        <div className="user-image" />
+        <UserImage />
         <Link className="account" to={`/${username}`}>
           <div className="name">{name}</div>
           <div className="username">@{username}</div>
