@@ -5,7 +5,7 @@
 
 #user-home-page {
   margin-top: 47px;
-  $break-width: 710px;
+  $break-width: 765px;
   min-width: 420px;
 
   .user-content {
@@ -19,6 +19,9 @@
       min-width: 400px;
       margin-right: 0;
       margin-bottom: 10px;
+      .account {
+        max-width: 100%;
+      }
     }
 
     #profile-feed {

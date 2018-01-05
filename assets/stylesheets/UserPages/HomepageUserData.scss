@@ -1,37 +1,44 @@
 #homepage-user-data {
   display: inline-block;
   margin-right: 10px;
-  width: 260px;
-  height: 180px;
+  width: 280px;
+  height: 200px;
   background-color: $secondary-color;
   position: relative;
   text-align: left;
   .content {
-    height: 100px;
-    margin-top: 80px;
+    height: 110px;
+    margin-top: 90px;
     background-color: $white;
 
     .user-image {
       position: absolute;
       top: 50px;
       left: 10px;
-      border: 5px solid $white;
-      height: 55px;
-      width: 55px;
-      border-radius: 35px;
+      border: 3px solid $white;
+      height: 72px;
+      width: 72px;
+      border-radius: 50px;
     }
     .account {
       position: absolute;
-      left: 75px;
-      margin-top: 5px;
+      left: 90px;
+      margin-top: 10px;
+      max-width: 185px;
       .name {
         font-size: 18px;
         font-weight: bold;
         color: $black;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
       }
       .username {
         font-size: 14px;
         color: #969696;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
       }
     }
     .user-data {
