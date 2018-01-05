@@ -5,6 +5,7 @@ import {
   REMOVE_ERROR,
   FOLLOW_USER,
   UNFOLLOW_USER,
+  ADD_USER_IMAGE,
 } from '../actions/types';
 
 const initialState = {
@@ -86,6 +87,14 @@ function AuthReducer(state = initialState, action) {
             ...state.user.following,
             list: state.user.following.list.filter(user => user.id !== action.user.id),
           },
+        },
+      };
+    case ADD_USER_IMAGE:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          image: action.image,
         },
       };
     default:

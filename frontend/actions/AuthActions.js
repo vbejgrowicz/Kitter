@@ -1,4 +1,4 @@
-import { checkUser, logIn, signUp, logOut, follow, unfollow, getFollowing } from '../utils/apiUtils';
+import { checkUser, logIn, signUp, logOut, follow, unfollow, getFollowing, addProfileImage } from '../utils/apiUtils';
 
 export function getUser() {
   return function getUserThunk(dispatch) {
@@ -72,6 +72,15 @@ export function unfollowUser(user) {
   return function unfollowUserThunk(dispatch) {
     unfollow(user).then(() => {
       dispatch({ type: 'UNFOLLOW_USER', user });
+    });
+  };
+}
+
+export function addUserImage(image, user) {
+  return function addUserImageThunk(dispatch) {
+    addProfileImage(image).then((response) => {
+      dispatch({ type: 'ADD_AUTH_USER_IMAGE', image: response.image });
+      dispatch({ type: 'SET_USER_IMAGE', image: response.image, user });
     });
   };
 }

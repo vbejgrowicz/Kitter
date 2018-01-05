@@ -6,6 +6,7 @@ import {
   GET_FOLLOWS,
   SET_FOLLOWS,
   UPDATE_FOLLOW_DATA,
+  SET_USER_IMAGE,
 } from '../actions/types';
 
 const initialState = {
@@ -25,6 +26,16 @@ const initialState = {
     },
   },
 };
+
+function addImageToUser(user, action) {
+  if (user.id !== action.user.id) {
+    return user;
+  }
+  return {
+    ...user,
+    image: action.image.id,
+  };
+}
 
 function UserReducer(state = initialState, action) {
   switch (action.type) {
@@ -102,6 +113,11 @@ function UserReducer(state = initialState, action) {
             following: action.followingCount,
           },
         },
+      };
+    case SET_USER_IMAGE:
+      return {
+        ...state,
+        image: addImageToUser(state, action),
       };
     default:
       return state;

@@ -29,7 +29,7 @@ class UserImage extends React.Component {
           <img className={user.image ? 'user' : 'default'} src={user.image ? (user.image) : (defaultImage)} alt="" />
         </div>
         {this.state.uploadImageModal && (
-          <NewUserImageForm onClose={this.handleClick} />
+          <NewUserImageForm onClose={this.handleClick} user={this.props.user} />
         )}
       </div>
     );
