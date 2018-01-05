@@ -1,5 +1,6 @@
 import React from 'react';
 import NewUserImageForm from './NewUserImageForm';
+import defaultImage from '../../../assets/images/cat-grey.png';
 
 class UserImage extends React.Component {
   constructor(props) {

@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import UserImage from '../ProfileComponents/UserImage';
 
-function HomepageUserInfo({ UserReducer }) {
-  const { username, name, data } = UserReducer;
+function HomepageUserInfo({ user }) {
+  const { username, name, data } = user;
   return (
     <div id="homepage-user-data">
       <div className="content">
-        <UserImage />
+        <UserImage canUpdate user={user} />
         <Link className="account" to={`/${username}`}>
           <div className="name">{name}</div>
           <div className="username">@{username}</div>
@@ -38,12 +37,7 @@ function HomepageUserInfo({ UserReducer }) {
 }
 
 HomepageUserInfo.propTypes = {
-  UserReducer: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
-
-function mapStateToProps({ UserReducer }) {
-  return { UserReducer };
-}
-
-export default connect(mapStateToProps, null)(HomepageUserInfo);
+export default HomepageUserInfo;

@@ -11,13 +11,14 @@ class Homepage extends React.Component {
   }
 
   render() {
-    const { id, isLoading } = this.props.UserReducer;
+    const { UserReducer } = this.props;
+    const { id, isLoading } = UserReducer;
     const authId = this.props.AuthReducer.user.id;
     return authId === id && !isLoading ? (
       <div id="user-home-page">
         <div className="user-content">
-          <HomepageUserInfo />
-          <HomepagePostFeed />
+          <HomepageUserInfo user={UserReducer} />
+          <HomepagePostFeed user={UserReducer} />
         </div>
       </div>
     ) : (

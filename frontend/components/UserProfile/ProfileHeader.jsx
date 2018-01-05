@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import FollowButton from './FollowButton';
+import UserImage from '../ProfileComponents/UserImage';
 
 function ProfileHeader({ user }) {
   return (
     <div id="profile-header">
-      <div className="user-image" />
+      <UserImage canUpdate user={user} />
       <div className="header-info">
         <div className="links">
           <NavLink className="posts data" exact to={`/${user.username}`}>

@@ -6,6 +6,7 @@ import { deletePost } from '../../actions/PostActions';
 import postedTime from '../../utils/postedTime';
 import PostOptions from './PostOptions';
 import PostLikeButton from './PostLikeButton';
+import UserImage from '../ProfileComponents/UserImage';
 
 class PostItem extends React.Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class PostItem extends React.Component {
     return (
       <li className="post-item">
         <Link className="user-link" to={`/${author.username}`}>
-          <div className="user-image" />
+          <UserImage user={author} />
         </Link>
         <div className="post-content">
           <Link className="user-link" to={`/${author.username}`}>

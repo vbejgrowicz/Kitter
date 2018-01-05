@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import UserImage from '../ProfileComponents/UserImage';
 import UserDropdown from './UserDropdown';
 import PostModal from './PostModal';
 
@@ -44,7 +47,9 @@ class NavBar extends React.Component {
               <div className="brand-icon" />
             </div>
             <div className="right">
-              <div className="user-image" onClick={() => this.handleClick('User')} />
+              <div onClick={() => this.handleClick('User')}>
+                <UserImage user={this.props.AuthReducer.user} />
+              </div>
               <button className="meow" onClick={() => this.handleClick('Meow')}>Meow</button>
             </div>
           </div>
@@ -60,4 +65,12 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+NavBar.propTypes = {
+  AuthReducer: PropTypes.object.isRequired,
+};
+
+function mapStateToProps({ AuthReducer }) {
+  return { AuthReducer };
+}
+
+export default connect(mapStateToProps, null)(NavBar);
