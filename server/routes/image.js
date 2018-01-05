@@ -5,6 +5,7 @@ const multer = require('multer');
 const multerS3 = require('multer-s3');
 const middleware = require('../middleware');
 const bucketName = require('../config');
+const User = require('../models/user');
 
 const router = express.Router();
 
@@ -18,19 +19,25 @@ const upload = multer({
     bucket: bucketName,
     acl: 'public-read',
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    metadata: function (req, file, cb) {
-      cb(null, {fieldName: file.fieldname});
+    metadata(req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
     },
-    key: function (req, file, cb) {
-      cb(null, Date.now().toString())
+    key(req, file, cb) {
+      cb(null, Date.now().toString());
     },
   }),
 });
 
 // ADD USER PROFILE IMAGE
 router.post('/profile', middleware.isLoggedin, upload.array('photo', 1), (req, res) => {
-  console.log(req.files);
-  res.send(`Successfully uploaded ${req.files.length} files!`);
+  const uploadedImage = req.files[0].location;
+  User.findByIdAndUpdate(req.user._id, { $set: { userImage: uploadedImage } }, (err) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.json({ userImage: uploadedImage });
+    }
+  });
 });
 
 module.exports = router;
