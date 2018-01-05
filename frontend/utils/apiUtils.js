@@ -39,6 +39,16 @@ export const findUser = username => (
     .then(resp => resp.json())
 );
 
+// Images
+export const addProfileImage = formData => (
+  fetch('/api/image/profile', {
+    method: 'POST',
+    credentials: 'same-origin',
+    body: formData,
+  })
+    .then(resp => resp.json())
+);
+
 // Follow
 export const getFollowers = userID => (
   fetch(`/api/follows/followers/${userID}`, {

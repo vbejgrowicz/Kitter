@@ -24,3 +24,11 @@ const upload = multer({
     },
   }),
 });
+
+// ADD USER PROFILE IMAGE
+router.post('/profile', middleware.isLoggedin, upload.array('photo', 1), (req, res) => {
+  console.log(req.files);
+  res.send(`Successfully uploaded ${req.files.length} files!`);
+});
+
+module.exports = router;
