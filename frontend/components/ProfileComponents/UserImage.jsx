@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import NewUserImageForm from './NewUserImageForm';
 import defaultImage from '../../../assets/images/cat-grey.png';
 
@@ -12,9 +14,11 @@ class UserImage extends React.Component {
   }
 
   handleClick() {
-    this.setState({
-      uploadImageModal: !this.state.uploadImageModal,
-    });
+    if (this.props.canUpdate && (this.props.user.id === this.props.AuthReducer.user.id)) {
+      this.setState({
+        uploadImageModal: !this.state.uploadImageModal,
+      });
+    }
   }
 
   render() {
@@ -31,4 +35,18 @@ class UserImage extends React.Component {
   }
 }
 
-export default UserImage;
+UserImage.defaultProps = {
+  canUpdate: false,
+};
+
+UserImage.propTypes = {
+  user: PropTypes.object.isRequired,
+  canUpdate: PropTypes.bool,
+  AuthReducer: PropTypes.object.isRequired,
+};
+
+function mapStateToProps({ AuthReducer }) {
+  return { AuthReducer };
+}
+
+export default connect(mapStateToProps, null)(UserImage);
