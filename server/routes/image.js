@@ -31,11 +31,11 @@ const upload = multer({
 // ADD USER PROFILE IMAGE
 router.post('/profile', middleware.isLoggedin, upload.array('photo', 1), (req, res) => {
   const uploadedImage = req.files[0].location;
-  User.findByIdAndUpdate(req.user._id, { $set: { userImage: uploadedImage } }, (err) => {
+  User.findByIdAndUpdate(req.user._id, { $set: { image: uploadedImage } }, (err) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      res.json({ userImage: uploadedImage });
+      res.json({ image: uploadedImage });
     }
   });
 });

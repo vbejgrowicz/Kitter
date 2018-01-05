@@ -40,6 +40,7 @@ router.post('/', middleware.isLoggedin, (req, res) => {
     id: req.user._id,
     username: req.user.username,
     name: req.user.name,
+    image: req.user.image,
   };
   const newPost = { text, author };
   Post.create(newPost, (err, createdPost) => {
@@ -68,6 +69,7 @@ router.put('/:postID/like', middleware.isLoggedin, (req, res) => {
     id: req.user._id,
     username: req.user.username,
     name: req.user.name,
+    image: req.user.image,
   };
   Post.findByIdAndUpdate(req.params.postID, { $push: { likes: user } }, (err) => {
     if (err) {
@@ -84,6 +86,7 @@ router.put('/:postID/unlike', middleware.isLoggedin, (req, res) => {
     id: req.user._id,
     username: req.user.username,
     name: req.user.name,
+    image: req.user.image,
   };
   Post.findByIdAndUpdate(req.params.postID, { $pull: { likes: user } }, (err) => {
     if (err) {

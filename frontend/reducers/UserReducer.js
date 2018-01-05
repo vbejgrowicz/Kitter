@@ -12,6 +12,7 @@ const initialState = {
   id: null,
   username: null,
   name: null,
+  image: null,
   isLoading: false,
   error: false,
   data: {
@@ -33,6 +34,7 @@ function UserReducer(state = initialState, action) {
         id: action.user.id,
         username: action.user.username,
         name: action.user.name,
+        image: action.user.image,
         error: false,
         isLoading: false,
         data: {

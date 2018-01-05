@@ -10,6 +10,7 @@ const postSchema = new mongoose.Schema({
     },
     username: String,
     name: String,
+    image: String,
   },
   date: {
     type: Date,

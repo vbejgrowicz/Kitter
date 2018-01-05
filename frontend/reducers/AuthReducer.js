@@ -12,6 +12,7 @@ const initialState = {
     id: null,
     username: null,
     name: null,
+    image: null,
     isLoading: true,
     following: {
       list: [],
@@ -33,6 +34,7 @@ function AuthReducer(state = initialState, action) {
           id: action.user.id,
           username: action.user.username,
           name: action.user.name,
+          image: action.user.image,
           isLoading: false,
           following: {
             ...state.user.following,
