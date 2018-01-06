@@ -66,4 +66,20 @@ button {
       cursor: not-allowed;
     }
   }
+
+  &.upload {
+    width: 80px;
+    background-color: #4AB3F4;
+    color: $white;
+    border: none;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
 }

@@ -28,6 +28,7 @@ class NewUserImageForm extends React.Component {
     return (
       <div id="user-image-modal">
         <div className="modal">
+          <div className="title">Add a Profile Photo</div>
           <Dropzone
             name="file"
             className="image-drop"
@@ -38,11 +39,12 @@ class NewUserImageForm extends React.Component {
             {this.state.file ? (
               <img src={this.state.file.preview} alt="" />
             ) : (
-              <p className="text">Drop a file here or select a file to upload</p>
+              <p className="text">Select a photo to upload or drag and drop it here</p>
             )
             }
           </Dropzone>
-          <button onClick={this.handleClick}>Upload</button>
+          <button className="cancel">Cancel</button>
+          <button className="upload" onClick={this.handleClick}>Upload</button>
         </div>
       </div>
     );

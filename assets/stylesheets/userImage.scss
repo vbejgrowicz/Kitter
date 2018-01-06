@@ -40,14 +40,23 @@
     background-color: $white;
     border-radius: 6px;
 
+    .title {
+      color: $black;
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
     .image-drop {
-      border: 2px solid $grey;
-      border-radius: 100px;
-      height: 200px;
-      width: 200px;
+      border: 2px dashed $grey;
+      border-radius: 120px;
+      height: 222px;
+      width: 222px;
       overflow: hidden;
       display: flex;
       align-items: center;
+      cursor: pointer;
+      margin: auto;
 
       img {
         width: inherit;
@@ -58,8 +67,12 @@
       .text {
         text-align: center;
         padding: 20px;
-        font-weight: bold;
       }
+    }
+    button {
+      margin-top: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
     }
   }
 }
