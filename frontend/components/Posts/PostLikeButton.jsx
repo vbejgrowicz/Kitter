@@ -6,7 +6,7 @@ import { updatePost } from '../../actions/PostActions';
 function PostLikeButton({ post, AuthReducer, updateLikes }) {
   const authUser = AuthReducer.user;
   const { likes } = post;
-  const isLiked = likes.find(user => user.id === authUser.id);
+  const isLiked = likes.find(user => user === authUser.id);
 
   return (
     <div className={isLiked ? 'unlike button' : 'like button'}>

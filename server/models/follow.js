@@ -2,20 +2,12 @@ const mongoose = require('mongoose');
 
 const followSchema = new mongoose.Schema({
   user: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-    username: String,
-    name: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   },
   following: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-    username: String,
-    name: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   },
 }, { versionKey: false });
 

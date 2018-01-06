@@ -9,11 +9,11 @@ const fetchCount = 10;
 // GET ALL HOMEPAGE POSTS (FOLLOWING AND USER)
 router.get('/:lastId', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
   const findQuery = {};
-  findQuery['author.id'] = { $in: res.following };
+  findQuery.author = { $in: res.following };
   if (req.params.lastId !== 'first fetch') {
     findQuery._id = { $lt: req.params.lastId };
   }
-  Post.find(findQuery, { 'likes._id': 0 }, { sort: { date: -1 }, limit: fetchCount }, (error, allPosts) => {
+  Post.find(findQuery, { 'likes._id': 0 }, { sort: { date: -1 }, limit: fetchCount }).populate('author').exec((error, allPosts) => {
     if (error) {
       res.status(400).send(error);
     } else {
@@ -24,7 +24,7 @@ router.get('/:lastId', middleware.isLoggedin, middleware.getFollowing, (req, res
 
 // GET NEW HOMEPAGE POSTS (FOLLOWING AND USER)
 router.get('/new/:numOfPosts', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
-  Post.find({ 'author.id': { $in: res.following } }, { 'likes._id': 0 }, { sort: { date: -1 }, limit: parseInt(req.params.numOfPosts, 10) }, (err, newPosts) => {
+  Post.find({ author: { $in: res.following } }, { 'likes._id': 0 }, { sort: { date: -1 }, limit: parseInt(req.params.numOfPosts, 10) }).populate('author').exec((err, newPosts) => {
     if (err) {
       res.status(400).send(err);
     } else {

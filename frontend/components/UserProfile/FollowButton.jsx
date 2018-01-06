@@ -6,7 +6,7 @@ import { followUser, unfollowUser } from '../../actions/AuthActions';
 function FollowButton({ user, AuthReducer, follow, unfollow }) {
   const authUser = AuthReducer.user;
   const { list } = authUser.following;
-  const isFollowing = list.find(follower => follower.id === user.id);
+  const isFollowing = list.find(follower => follower._id === user.id);
 
   const handleClick = () => (
     isFollowing ? (

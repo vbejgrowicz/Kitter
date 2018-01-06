@@ -33,7 +33,7 @@ function addImageToUser(user, action) {
   }
   return {
     ...user,
-    image: action.image.id,
+    image: action.image,
   };
 }
 

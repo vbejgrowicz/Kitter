@@ -6,7 +6,7 @@ const router = express.Router();
 
 // GET USER FOLLOWING
 router.get('/following/:userID', (req, res) => {
-  Follow.find({ 'user.id': req.params.userID }, { _id: 0, following: 1 }, (err, following) => {
+  Follow.find({ user: req.params.userID }, { _id: 0, following: 1 }).populate('following').exec((err, following) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -18,7 +18,7 @@ router.get('/following/:userID', (req, res) => {
 
 // GET USER FOLLOWERS
 router.get('/followers/:userID', (req, res) => {
-  Follow.find({ 'following.id': req.params.userID }, { _id: 0, user: 1 }, (err, followers) => {
+  Follow.find({ following: req.params.userID }, { _id: 0, user: 1 }).populate('user').exec((err, followers) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -30,23 +30,21 @@ router.get('/followers/:userID', (req, res) => {
 
 // CREATE NEW FOLLOWER
 router.post('/follow', middleware.isLoggedin, (req, res) => {
-  const { id, username, name } = req.body;
-  const user = {
-    id: req.user._id,
-    username: req.user.username,
-    name: req.user.name,
-  };
-  const following = {
-    id,
-    username,
-    name,
-  };
+  const { id } = req.body;
+  const user = req.user._id;
+  const following = id;
   const newFollow = { user, following };
   Follow.create(newFollow, (err, createdFollow) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      res.json({ follow: createdFollow });
+      Follow.findOne({ _id: createdFollow._id }, { _id: 0, following: 1 }).populate('following').exec((error, follow) => {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          res.json({ follow });
+        }
+      });
     }
   });
 });
@@ -54,7 +52,7 @@ router.post('/follow', middleware.isLoggedin, (req, res) => {
 // DELETE FOLLOWER
 router.delete('/unfollow/:followingID', middleware.isLoggedin, (req, res) => {
   const userID = req.user._id;
-  Follow.remove({ 'user.id': userID, 'following.id': req.params.followingID }, (err) => {
+  Follow.remove({ user: userID, following: req.params.followingID }, (err) => {
     if (err) {
       res.status(400).send(err);
     } else {
