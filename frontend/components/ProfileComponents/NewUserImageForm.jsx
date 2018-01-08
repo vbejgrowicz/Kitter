@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import { addUserImage } from '../../actions/AuthActions';
 
+function ignoreClose(event) {
+  event.stopPropagation();
+}
+
 class NewUserImageForm extends React.Component {
   constructor(props) {
     super(props);
@@ -26,8 +30,8 @@ class NewUserImageForm extends React.Component {
 
   render() {
     return (
-        <div className="modal">
       <div id="user-image-modal" onClick={this.props.onClose}>
+        <div className="modal" onClick={ignoreClose}>
           <div className="title">Add a Profile Photo</div>
           <Dropzone
             name="file"
