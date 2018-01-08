@@ -81,7 +81,7 @@ export function unfollowUser(user) {
 export function addUserImage(image, user) {
   return function addUserImageThunk(dispatch) {
     addProfileImage(image).then((response) => {
-      dispatch({ type: 'ADD_AUTH_USER_IMAGE', image: response.image });
+      dispatch({ type: 'SET_AUTH_USER_IMAGE', image: response.image });
       dispatch({ type: 'SET_USER_IMAGE', image: response.image, user });
     });
   };

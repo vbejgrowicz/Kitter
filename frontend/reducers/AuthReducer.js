@@ -5,7 +5,7 @@ import {
   REMOVE_ERROR,
   FOLLOW_USER,
   UNFOLLOW_USER,
-  ADD_AUTH_USER_IMAGE,
+  SET_AUTH_USER_IMAGE,
 } from '../actions/types';
 
 const initialState = {
@@ -89,7 +89,7 @@ function AuthReducer(state = initialState, action) {
           },
         },
       };
-    case ADD_AUTH_USER_IMAGE:
+    case SET_AUTH_USER_IMAGE:
       return {
         ...state,
         user: {
