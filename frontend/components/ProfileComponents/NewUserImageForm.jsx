@@ -26,8 +26,8 @@ class NewUserImageForm extends React.Component {
 
   render() {
     return (
-      <div id="user-image-modal">
         <div className="modal">
+      <div id="user-image-modal" onClick={this.props.onClose}>
           <div className="title">Add a Profile Photo</div>
           <Dropzone
             name="file"
@@ -43,7 +43,7 @@ class NewUserImageForm extends React.Component {
             )
             }
           </Dropzone>
-          <button className="cancel">Cancel</button>
+          <button className="cancel" onClick={this.props.onClose}>Cancel</button>
           <button className="upload" onClick={this.handleClick}>Upload</button>
         </div>
       </div>
@@ -54,6 +54,7 @@ class NewUserImageForm extends React.Component {
 NewUserImageForm.propTypes = {
   user: PropTypes.object.isRequired,
   uploadImage: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => (
