@@ -14,7 +14,7 @@ class UserImage extends React.Component {
   }
 
   handleClick() {
-    if (this.props.canUpdate && (this.props.user.id === this.props.AuthReducer.user.id)) {
+    if (this.props.canUpdate && (this.props.user._id === this.props.AuthReducer.user._id)) {
       this.setState({
         uploadImageModal: !this.state.uploadImageModal,
       });
