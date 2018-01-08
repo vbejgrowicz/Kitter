@@ -23,11 +23,11 @@ const checkPostAuthor = (req, res, next) => {
 
 const getFollowing = (req, res, next) => {
   const userID = req.user._id;
-  Follow.find({ 'user.id': userID }, { _id: 0, following: 1 }, (err, followers) => {
+  Follow.find({ user: userID }, { _id: 0, following: 1 }, (err, followers) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      const formattedFollowers = followers.map(follow => follow.following.id);
+      const formattedFollowers = followers.map(follow => follow.following);
       res.following = formattedFollowers.concat(userID);
       return next();
     }
