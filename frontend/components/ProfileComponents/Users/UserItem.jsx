@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import FollowButton from '../FollowButton';
+import UserImage from '../UserImage';
 
 function UserItem({ user }) {
   return (
     <li className="user-item">
       <div className="header">
         <Link to={`/${user.username}`}>
-          <div className="user-image" />
+          <UserImage user={user} />
         </Link>
         <FollowButton user={user} />
       </div>
