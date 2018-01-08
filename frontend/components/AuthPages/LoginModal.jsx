@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import UserForm from './UserForm';
+import GuestLoginButton from './GuestLoginButton';
 
 function LoginModal({ show, onClose }) {
   const ignoreClose = (event) => {
@@ -15,6 +16,7 @@ function LoginModal({ show, onClose }) {
         <div className="modal-form">
           <div>Have an Account?</div>
           <UserForm formType="Log in" />
+          <GuestLoginButton />
           <hr />
           <div>New to Kitter?</div>
           <button className="white-btn" onClick={onClose}>Sign up</button>

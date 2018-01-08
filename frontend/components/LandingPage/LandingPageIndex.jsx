@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LoginTile from '../AuthPages/LoginTile';
 import PostTile from './PostTile';
+import GuestLoginButton from '../AuthPages/GuestLoginButton';
 import { clearError } from '../../actions/AuthActions';
 
 const featuredPosts = [
@@ -44,6 +45,7 @@ class LandingPageIndex extends React.Component {
             <span>
               <Link to="/signup"><button className="btn">Sign up</button></Link>
               <Link to="/login"><button className="btn">Log in</button></Link>
+              <GuestLoginButton />
             </span>
           </div>
           <div className="page-title">What&apos;s happening?</div>
