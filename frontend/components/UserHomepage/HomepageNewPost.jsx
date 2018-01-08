@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NewPostForm from '../Posts/NewPostForm';
+import NewPostForm from '../ProfileComponents/Posts/NewPostForm';
 import UserImage from '../ProfileComponents/UserImage';
 
 function HomepageNewPost({ user }) {

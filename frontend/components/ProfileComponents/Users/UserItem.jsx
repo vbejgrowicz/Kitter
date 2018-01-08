@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import FollowButton from '../UserProfile/FollowButton';
+import FollowButton from '../FollowButton';
 
 function UserItem({ user }) {
   return (

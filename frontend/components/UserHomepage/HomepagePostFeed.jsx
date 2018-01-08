@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PostList from '../Posts/PostList';
+import PostList from '../ProfileComponents/Posts/PostList';
 import HomepageNewPost from './HomepageNewPost';
 
 function HomepagePostFeed({ user }) {

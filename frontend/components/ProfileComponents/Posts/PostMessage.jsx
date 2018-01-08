@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updateMessage } from '../../actions/PostActions';
+import { updateMessage } from '../../../actions/PostActions';
 
 class PostMessage extends React.Component {
   componentDidMount() {

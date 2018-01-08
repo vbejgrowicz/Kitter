@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPosts, addPendingPosts, checkPendingPosts } from '../../actions/PostActions';
-import { updateUserPostCount } from '../../actions/UserActions';
+import { fetchPosts, addPendingPosts, checkPendingPosts } from '../../../actions/PostActions';
+import { updateUserPostCount } from '../../../actions/UserActions';
 import PostItem from './PostItem';
 import PostMessage from './PostMessage';
 

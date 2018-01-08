@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import UserImage from '../ProfileComponents/UserImage';
+import UserImage from '../UserImage';
 import UserDropdown from './UserDropdown';
 import PostModal from './PostModal';
 

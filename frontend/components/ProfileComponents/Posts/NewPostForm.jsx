@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextareaAutosize from 'react-autosize-textarea';
-import { newPost } from '../../actions/PostActions';
+import { newPost } from '../../../actions/PostActions';
 
 
 class NewPostForm extends React.Component {

@@ -7,7 +7,7 @@ import LandingPage from './components/LandingPage/LandingPageIndex';
 import SignUpPage from './components/AuthPages/SignUpPage';
 import LoginPage from './components/AuthPages/LoginPage';
 import ProfilePage from './components/UserProfile/ProfilePage';
-import NavBar from './components/Header/NavBar';
+import NavBar from './components/ProfileComponents/Header/NavBar';
 import Homepage from './components/UserHomepage/Homepage';
 
 class Routes extends React.Component {

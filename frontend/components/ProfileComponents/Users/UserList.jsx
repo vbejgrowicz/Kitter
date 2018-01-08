@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getFollows } from '../../actions/UserActions';
+import { getFollows } from '../../../actions/UserActions';
 import UserItem from './UserItem';
 
 class UserList extends React.Component {

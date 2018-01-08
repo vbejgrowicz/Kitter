@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deletePost } from '../../actions/PostActions';
+import { deletePost } from '../../../actions/PostActions';
 import PostItem from './PostItem';
 
 class PostDeleteModal extends React.Component {

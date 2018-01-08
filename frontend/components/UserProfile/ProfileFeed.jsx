@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PostList from '../Posts/PostList';
-import UserList from '../Users/UserList';
+import PostList from '../ProfileComponents/Posts/PostList';
+import UserList from '../ProfileComponents/Users/UserList';
 
 function ProfileFeed({ category }) {
   return (
