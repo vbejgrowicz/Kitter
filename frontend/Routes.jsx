@@ -49,7 +49,7 @@ class Routes extends React.Component {
       <Router>
         {this.requireLoggedIn() ? (
           <div>
-            <NavBar />
+            <NavBar user={this.props.AuthReducer.user} />
             <UserRoutes />
           </div>
         ) : (

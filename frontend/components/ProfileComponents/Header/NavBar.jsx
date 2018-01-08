@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import UserImage from '../UserImage';
 import UserDropdown from './UserDropdown';
@@ -37,7 +36,7 @@ class NavBar extends React.Component {
         <div id="nav">
           <div className="link-container">
             <div className="left">
-              <NavLink activeClassName="active" exact to="/">
+              <NavLink exact to="/">
                 <div className="home">
                   <i className="fa fa-home" aria-hidden="true" />
                 </div>
@@ -48,7 +47,7 @@ class NavBar extends React.Component {
             </div>
             <div className="right">
               <div onClick={() => this.handleClick('User')}>
-                <UserImage user={this.props.AuthReducer.user} />
+                <UserImage user={this.props.user} />
               </div>
               <button className="meow" onClick={() => this.handleClick('Meow')}>Meow</button>
             </div>
@@ -66,11 +65,7 @@ class NavBar extends React.Component {
 }
 
 NavBar.propTypes = {
-  AuthReducer: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
-function mapStateToProps({ AuthReducer }) {
-  return { AuthReducer };
-}
-
-export default connect(mapStateToProps, null)(NavBar);
+export default NavBar;
