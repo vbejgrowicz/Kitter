@@ -37,7 +37,7 @@ class PostItem extends React.Component {
   }
 
   reqAuth(authorId) {
-    const currentUserId = this.props.AuthReducer.user.id;
+    const currentUserId = this.props.AuthReducer.user._id;
     if (currentUserId === authorId) {
       return true;
     }
@@ -63,7 +63,7 @@ class PostItem extends React.Component {
           </Link>
           <span className="time">&middot; {this.state.time ? this.state.time : dateString }</span>
           <div className="text">{text}</div>
-          {this.reqAuth(author.id) && (
+          {this.reqAuth(author._id) && (
             <PostOptions post={this.props.post} />
           )}
           <PostLikeButton post={this.props.post} />
