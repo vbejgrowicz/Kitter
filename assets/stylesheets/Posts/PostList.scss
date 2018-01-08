@@ -34,11 +34,19 @@
     }
 
     .button {
+      button {
+        background-color: transparent;
+      }
       &.unlike {
         color: #FB4571;
       }
       &.like {
         color: #616161;
+        button {
+          &:hover {
+            color: #FB4571;
+          }
+        }
       }
       .like-count {
         padding-left: 5px;
@@ -84,6 +92,7 @@
       color: $grey;
 
       .toggleModal {
+        background-color: transparent;
         font-size: 20px;
       }
     }
