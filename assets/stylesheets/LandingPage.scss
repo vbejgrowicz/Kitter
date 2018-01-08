@@ -23,17 +23,11 @@
       }
 
       button {
-        width: 75px;
+        min-width: 75px;
         background-color: transparent;
         color: $white;
         border: 1px solid $white;
         margin: 0 5px;
-        height: 30px;
-        border-radius: 100px;
-        font-size: 14px;
-        font-weight: bold;
-        cursor: pointer;
-        text-align: center;
       }
     }
 
@@ -123,15 +117,7 @@
           button {
             background-color: $white;
             color: $secondary-color;
-            font-weight: bold;
             width: 100%;
-            margin-top: 12px;
-            height: 30px;
-            border-radius: 100px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
           }
         }
       }

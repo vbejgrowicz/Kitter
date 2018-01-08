@@ -83,3 +83,36 @@ button {
     }
   }
 }
+
+#auth {
+  button {
+    width: auto;
+    min-width: 75px;
+    font-weight: bold;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin: 5px 0;
+  }
+  .blue-btn {
+    border: none;
+    background-color: $secondary-color;
+    color: $white;
+  }
+
+  .white-btn {
+    border: 1px solid $secondary-color;
+    background-color: $white;
+    color: $secondary-color;
+  }
+}
+
+#landingPage {
+  button {
+    border-radius: 100px;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
