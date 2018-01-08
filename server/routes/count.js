@@ -7,7 +7,7 @@ const router = express.Router();
 
 // GET ALL HOMEPAGE POST COUNT
 router.get('/posts', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
-  Post.count({ 'author.id': { $in: res.following } }).exec((err, count) => {
+  Post.count({ author: { $in: res.following } }).exec((err, count) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -18,7 +18,7 @@ router.get('/posts', middleware.isLoggedin, middleware.getFollowing, (req, res) 
 
 // GET USER POST COUNT
 router.get('/:userID/posts', (req, res) => {
-  Post.count({ 'author.id': req.params.userID }).exec((err, count) => {
+  Post.count({ author: req.params.userID }).exec((err, count) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -29,7 +29,7 @@ router.get('/:userID/posts', (req, res) => {
 
 // GET USER FOLLOWING COUNT
 router.get('/:userID/following', (req, res) => {
-  Follow.count({ 'user.id': req.params.userID }).exec((err, count) => {
+  Follow.count({ user: req.params.userID }).exec((err, count) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -40,7 +40,7 @@ router.get('/:userID/following', (req, res) => {
 
 // GET USER FOLLOWER COUNT
 router.get('/:userID/follower', (req, res) => {
-  Follow.count({ 'following.id': req.params.userID }).exec((err, count) => {
+  Follow.count({ following: req.params.userID }).exec((err, count) => {
     if (err) {
       res.status(400).send(err);
     } else {
