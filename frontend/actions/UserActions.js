@@ -38,7 +38,7 @@ export function getUser(username) {
     dispatch({ type: 'GET_USER_PROFILE' });
     findUser(username).then((response) => {
       const { user } = response;
-      if (user._id) {
+      if (user !== null) {
         dispatch(setUserData(user));
       } else {
         dispatch({ type: 'SET_USER_ERROR', error: true });
