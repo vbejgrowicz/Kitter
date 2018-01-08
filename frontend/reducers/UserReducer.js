@@ -10,7 +10,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  id: null,
+  _id: null,
   username: null,
   name: null,
   image: null,
@@ -28,13 +28,10 @@ const initialState = {
 };
 
 function addImageToUser(user, action) {
-  if (user.id !== action.user.id) {
-    return user;
+  if (user._id !== action.user._id) {
+    return null;
   }
-  return {
-    ...user,
-    image: action.image,
-  };
+  return action.image;
 }
 
 function UserReducer(state = initialState, action) {
@@ -42,7 +39,7 @@ function UserReducer(state = initialState, action) {
     case SET_USER_PROFILE:
       return {
         ...state,
-        id: action.user.id,
+        _id: action.user._id,
         username: action.user.username,
         name: action.user.name,
         image: action.user.image,

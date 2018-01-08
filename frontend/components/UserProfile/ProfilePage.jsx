@@ -11,7 +11,7 @@ class ProfilePage extends React.Component {
     if (this.props.UserReducer.username !== this.props.match.params.username) {
       this.props.fetchUser(this.props.match.params.username);
     } else {
-      this.props.updateCount(this.props.UserReducer.id);
+      this.props.updateCount(this.props.UserReducer._id);
     }
   }
 

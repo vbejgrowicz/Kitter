@@ -5,12 +5,12 @@ import {
   REMOVE_ERROR,
   FOLLOW_USER,
   UNFOLLOW_USER,
-  ADD_USER_IMAGE,
+  ADD_AUTH_USER_IMAGE,
 } from '../actions/types';
 
 const initialState = {
   user: {
-    id: null,
+    _id: null,
     username: null,
     name: null,
     image: null,
@@ -32,7 +32,7 @@ function AuthReducer(state = initialState, action) {
         ...state,
         user: {
           ...state.user,
-          id: action.user.id,
+          _id: action.user._id,
           username: action.user.username,
           name: action.user.name,
           image: action.user.image,
@@ -89,7 +89,7 @@ function AuthReducer(state = initialState, action) {
           },
         },
       };
-    case ADD_USER_IMAGE:
+    case ADD_AUTH_USER_IMAGE:
       return {
         ...state,
         user: {

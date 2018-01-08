@@ -7,13 +7,13 @@ import UserItem from './UserItem';
 class UserList extends React.Component {
   componentWillMount() {
     const { category, UserReducer } = this.props;
-    this.props.fetchUsers(category, UserReducer.id);
+    this.props.fetchUsers(category, UserReducer._id);
   }
 
   componentWillReceiveProps(nextProps) {
     const { category, UserReducer } = this.props;
     if (category !== nextProps.category) {
-      this.props.fetchUsers(nextProps.category, UserReducer.id);
+      this.props.fetchUsers(nextProps.category, UserReducer._id);
     }
   }
 
@@ -26,7 +26,7 @@ class UserList extends React.Component {
 
   render() {
     const { list, isLoading } = this.props.UserReducer.data.follows;
-    const users = list.map(item => <UserItem user={item} key={item.id} />);
+    const users = list.map(item => <UserItem user={item} key={item._id} />);
 
     return !isLoading && (
       <ul id="user-list">

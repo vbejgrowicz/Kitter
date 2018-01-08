@@ -3,9 +3,10 @@ import { checkUser, logIn, signUp, logOut, follow, unfollow, getFollowing, addPr
 export function getUser() {
   return function getUserThunk(dispatch) {
     checkUser().then((response) => {
-      if (response.id !== null) {
-        getFollowing(response.id).then((res) => {
-          dispatch({ type: 'SET_AUTH_USER', user: response, following: res.list });
+      const { user } = response;
+      if (user !== null) {
+        getFollowing(user._id).then((res) => {
+          dispatch({ type: 'SET_AUTH_USER', user, following: res.list });
         });
       } else {
         dispatch({ type: 'AUTH_FAIL' });
@@ -18,9 +19,10 @@ export function logInUser(username, password, redirectFailure) {
   return function logInUserThunk(dispatch) {
     const userData = { username, password };
     logIn(userData).then((response) => {
-      if (response.username) {
-        getFollowing(response.id).then((res) => {
-          dispatch({ type: 'SET_AUTH_USER', user: response, following: res.list });
+      const { user } = response;
+      if (user) {
+        getFollowing(user._id).then((res) => {
+          dispatch({ type: 'SET_AUTH_USER', user, following: res.list });
         });
       } else {
         redirectFailure();
@@ -34,10 +36,11 @@ export function signUpUser(name, username, password) {
   return function signUpUserThunk(dispatch) {
     const userData = { name, username, password };
     signUp(userData).then((response) => {
-      if (response.username) {
-        dispatch({ type: 'SET_AUTH_USER', user: response, following: [] });
+      const { user, message } = response;
+      if (user.username) {
+        dispatch({ type: 'SET_AUTH_USER', user, following: [] });
       } else {
-        dispatch({ type: 'SET_ERROR', page: '/signup', message: response.message });
+        dispatch({ type: 'SET_ERROR', page: '/signup', message });
       }
     });
   };
@@ -46,7 +49,8 @@ export function signUpUser(name, username, password) {
 export function logOutUser() {
   return function logOutUserThunk(dispatch) {
     logOut().then((response) => {
-      dispatch({ type: 'SET_AUTH_USER', user: response, following: [] });
+      const { user } = response;
+      dispatch({ type: 'SET_AUTH_USER', user, following: [] });
     });
   };
 }

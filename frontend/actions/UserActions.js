@@ -10,9 +10,9 @@ export function updateUserPostCount(id) {
 
 function setUserData(user) {
   return function setUserDataThunk(dispatch) {
-    getNumPosts(user.id).then((postRes) => {
-      getFollowerCount(user.id).then((followerRes) => {
-        getFollowingCount(user.id).then((followingRes) => {
+    getNumPosts(user._id).then((postRes) => {
+      getFollowerCount(user._id).then((followerRes) => {
+        getFollowingCount(user._id).then((followingRes) => {
           dispatch({
             type: 'SET_USER_PROFILE',
             user,
@@ -36,9 +36,10 @@ export function getAuthUser(user) {
 export function getUser(username) {
   return function getUserThunk(dispatch) {
     dispatch({ type: 'GET_USER_PROFILE' });
-    findUser(username).then((userRes) => {
-      if (userRes.id) {
-        dispatch(setUserData(userRes));
+    findUser(username).then((response) => {
+      const { user } = response;
+      if (user._id) {
+        dispatch(setUserData(user));
       } else {
         dispatch({ type: 'SET_USER_ERROR', error: true });
       }

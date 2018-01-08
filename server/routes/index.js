@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.get('/user', (req, res) => {
   if (req.isAuthenticated()) {
-    res.json({ username: req.user.username, id: req.user._id, name: req.user.name, image: req.user.image });
+    res.json({ user: req.user });
   } else {
-    res.json({ username: null, id: null, name: null });
+    res.json({ user: null });
   }
 });
 
@@ -19,7 +19,7 @@ router.get('/users/:username', (req, res) => {
     } else if (user === null) {
       res.json({ user });
     } else {
-      res.json({ username: user.username, id: user._id, name: user.name, image: user.image });
+      res.json({ user });
     }
   });
 });
@@ -27,12 +27,18 @@ router.get('/users/:username', (req, res) => {
 // SIGN UP ROUTE
 router.post('/signup', (req, res) => {
   const newUser = new User({ username: req.body.username, name: req.body.name });
-  User.register(newUser, req.body.password, (err, user) => {
+  User.register(newUser, req.body.password, (err) => {
     if (err) {
       res.status(400).send(err);
     } else {
       passport.authenticate('local')(req, res, () => {
-        res.json({ username: user.username, id: user._id, name: user.name, image: user.image });
+        const userData = {
+          _id: req.user._id,
+          username: req.user.username,
+          name: req.user.name,
+          image: req.user.image,
+        };
+        res.json({ user: userData });
       });
     }
   });
@@ -41,14 +47,26 @@ router.post('/signup', (req, res) => {
 // LOGIN ROUTE
 router.post('/login', (req, res) => {
   passport.authenticate('local')(req, res, () => {
-    res.json({ username: req.user.username, id: req.user._id, name: req.user.name, image: req.user.image  });
+    const userData = {
+      _id: req.user._id,
+      username: req.user.username,
+      name: req.user.name,
+      image: req.user.image,
+    };
+    res.json({ user: userData });
   });
 });
 
 // LOGOUT ROUTE
 router.get('/logout', (req, res) => {
   req.logout();
-  res.json({ username: null, id: null, name: null, image: null });
+  const userData = {
+    _id: null,
+    username: null,
+    name: null,
+    image: null,
+  };
+  res.json({ user: userData });
 });
 
 module.exports = router;

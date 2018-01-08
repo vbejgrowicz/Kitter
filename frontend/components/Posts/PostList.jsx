@@ -14,10 +14,10 @@ class PostList extends React.Component {
   }
 
   componentWillMount() {
-    const { id } = this.props.UserReducer;
-    this.props.getPosts(id, this.props.category, 'first fetch');
+    const { _id } = this.props.UserReducer;
+    this.props.getPosts(_id, this.props.category, 'first fetch');
     this.checkForUpdates = setInterval(
-      () => this.props.checkPosts(this.props.category, id),
+      () => this.props.checkPosts(this.props.category, _id),
       30000,
     );
     window.addEventListener('scroll', this.onScroll);
@@ -39,7 +39,7 @@ class PostList extends React.Component {
   }
 
   onScroll() {
-    const { id } = this.props.UserReducer;
+    const { _id } = this.props.UserReducer;
     const { posts } = this.props.PostReducer;
     if (
       (window.innerHeight + window.scrollY) >= (document.body.offsetHeight + 47) &&
@@ -47,13 +47,13 @@ class PostList extends React.Component {
       !posts.isLoading
     ) {
       const lastPostId = posts.list[posts.list.length - 1]._id;
-      this.props.getPosts(id, this.props.category, lastPostId);
+      this.props.getPosts(_id, this.props.category, lastPostId);
     }
   }
 
   handleNewPosts() {
-    const { id } = this.props.UserReducer;
-    this.props.getPendingPosts(id);
+    const { _id } = this.props.UserReducer;
+    this.props.getPendingPosts(_id);
   }
 
   render() {
