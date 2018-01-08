@@ -1,6 +1,5 @@
 
 .user-image {
-  background-color: #C9C8C8;
   height: 32px;
   width: 32px;
   border-radius: 20px;
@@ -8,13 +7,18 @@
   margin-right: 15px;
   overflow: hidden;
 
-  img {
-    &.default {
+  &.default {
+    background-color: #C9C8C8;
+    img {
       max-width: 70%;
       max-height: 70%;
       margin: auto;
     }
-    &.user {
+  }
+
+  &.user {
+    background-color: $white;
+    img {
       width: inherit;
       height: inherit;
       object-fit: cover;
