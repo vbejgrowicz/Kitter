@@ -12,9 +12,9 @@ class Homepage extends React.Component {
 
   render() {
     const { UserReducer } = this.props;
-    const { id, isLoading } = UserReducer;
-    const authId = this.props.AuthReducer.user.id;
-    return authId === id && !isLoading ? (
+    const { _id, isLoading } = UserReducer;
+    const authId = this.props.AuthReducer.user._id;
+    return authId === _id && !isLoading ? (
       <div id="user-home-page">
         <div className="user-content">
           <HomepageUserInfo user={UserReducer} />
