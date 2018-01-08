@@ -30,9 +30,8 @@ router.get('/followers/:userID', (req, res) => {
 
 // CREATE NEW FOLLOWER
 router.post('/follow', middleware.isLoggedin, (req, res) => {
-  const { id } = req.body;
   const user = req.user._id;
-  const following = id;
+  const following = req.body._id;
   const newFollow = { user, following };
   Follow.create(newFollow, (err, createdFollow) => {
     if (err) {

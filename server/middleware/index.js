@@ -13,7 +13,7 @@ const checkPostAuthor = (req, res, next) => {
     Post.findById(req.params.postID, (err, foundPost) => {
       if (err) {
         return res.sendStatus(400);
-      } else if (foundPost.author.id.equals(req.user._id)) {
+      } else if (foundPost.author.equals(req.user._id)) {
         return next();
       }
       return res.sendStatus(400);

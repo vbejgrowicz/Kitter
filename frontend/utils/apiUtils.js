@@ -82,7 +82,7 @@ export const follow = user => (
 );
 
 export const unfollow = user => (
-  fetch(`/api/follows/unfollow/${user.id}`, {
+  fetch(`/api/follows/unfollow/${user._id}`, {
     method: 'DELETE',
     credentials: 'same-origin',
   })

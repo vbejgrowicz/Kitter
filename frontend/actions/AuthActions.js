@@ -65,8 +65,6 @@ export function followUser(user) {
       if (response.follow) {
         const followedUser = response.follow.following;
         dispatch({ type: 'FOLLOW_USER', user: followedUser });
-      } else {
-        // Handle Req Log In
       }
     });
   };

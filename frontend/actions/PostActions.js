@@ -68,11 +68,11 @@ export const updateMessage = (status, text) => (
 
 export function newPost(post, category, user, currentPostCount) {
   return function newPostThunk(dispatch) {
-    dispatch(resolvePendingPosts(category, user.id, currentPostCount)).then(() => {
+    dispatch(resolvePendingPosts(category, user._id, currentPostCount)).then(() => {
       addPost(post).then((response) => {
         if (category === 'All') {
           dispatch({ type: 'ADD_POST', post: response.post });
-          dispatch(updateUserPostCount(user.id));
+          dispatch(updateUserPostCount(user._id));
         } else {
           dispatch(updateMessage(true, 'Your Meow was sent'));
         }
@@ -86,7 +86,7 @@ export function deletePost(post) {
     const postID = post._id;
     removePost(postID).then(() => {
       dispatch({ type: 'REMOVE_POST', id: postID });
-      dispatch(updateUserPostCount(post.author.id));
+      dispatch(updateUserPostCount(post.author._id));
       dispatch(updateMessage(true, 'Your Meow has been deleted'));
     });
   };
