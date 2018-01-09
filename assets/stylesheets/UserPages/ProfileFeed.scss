@@ -8,6 +8,26 @@
     background-color: $white;
   }
 
+  .list-end {
+    background-color: $white;
+    color: #5D5D5D;
+    text-align: center;
+    height: 60px;
+    font-size: 14px;
+
+    img {
+      height: 20px;
+      padding-top: 20px;
+    }
+
+    &.empty {
+      height: 85px;
+      div {
+        padding-top: 5px;
+      }
+    }
+  }
+
   .new-post-notification {
     background-color: #F2F6FA;
     border-top: 1px solid #E3E3E3;
@@ -26,6 +46,8 @@
     display: flex;
     padding: 15px;
     background-color: #E6F5FF;
+    border-bottom: 1px solid #E3E3E3;
+
     .user-image {
       margin-top: 4px;
     }
