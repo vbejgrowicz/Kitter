@@ -6,6 +6,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const session = require('express-session');
 const User = require('./models/user');
+const seedDB = require('./seedData');
 
 const app = express();
 
@@ -23,6 +24,7 @@ mongoose.connect('mongodb://localhost/Kitter', { useMongoClient: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
+seedDB();
 
 // PASSPORT CONFIG
 app.use(session({
