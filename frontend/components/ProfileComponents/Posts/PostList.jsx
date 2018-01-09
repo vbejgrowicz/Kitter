@@ -5,12 +5,14 @@ import { fetchPosts, addPendingPosts, checkPendingPosts } from '../../../actions
 import { updateUserPostCount } from '../../../actions/UserActions';
 import PostItem from './PostItem';
 import PostMessage from './PostMessage';
-
+import PostListNotification from './PostListNotification';
+import PostListEnd from './PostListEnd';
 
 class PostList extends React.Component {
   constructor(props) {
     super(props);
     this.onScroll = this.onScroll.bind(this);
+    this.handleNewPosts = this.handleNewPosts.bind(this);
   }
 
   componentWillMount() {
@@ -62,19 +64,18 @@ class PostList extends React.Component {
     const { status, count } = pendingPosts;
     const postItems = list.map(post => <PostItem post={post} key={post._id} />);
 
-    return !posts.isLoading && (
+    return posts.total !== null && (
       <div>
         {message.status && (
           <PostMessage text={message.text} />
         )}
-        {status ? (
-          <div className="new-post-notification" onClick={() => this.handleNewPosts()}>See {count} new Meow</div>
-        ) : (
-          null
+        {status && (
+          <PostListNotification handleNewPosts={this.handleNewPosts} count={count} />
         )}
         <ul id="post-list">
           {postItems}
         </ul>
+        <PostListEnd listLength={list.length} />
       </div>
     );
   }
