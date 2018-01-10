@@ -48,8 +48,8 @@ class PostList extends React.Component {
       posts.list.length &&
       !posts.isLoading
     ) {
-      const lastPostId = posts.list[posts.list.length - 1]._id;
-      this.props.getPosts(_id, this.props.category, lastPostId);
+      const lastPostDate = posts.list[posts.list.length - 1].date;
+      this.props.getPosts(_id, this.props.category, lastPostDate);
     }
   }
 
@@ -96,8 +96,8 @@ function mapStateToProps({ UserReducer, PostReducer }) {
 
 const mapDispatchToProps = dispatch => (
   {
-    getPosts: (id, category, lastPostId) => {
-      dispatch(fetchPosts(id, category, lastPostId));
+    getPosts: (id, category, lastPostDate) => {
+      dispatch(fetchPosts(id, category, lastPostDate));
     },
     getPendingPosts: (userId) => {
       dispatch(addPendingPosts());

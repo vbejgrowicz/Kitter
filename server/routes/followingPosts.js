@@ -7,11 +7,11 @@ const router = express.Router();
 const fetchCount = 10;
 
 // GET ALL HOMEPAGE POSTS (FOLLOWING AND USER)
-router.get('/:lastId', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
+router.get('/:lastDate', middleware.isLoggedin, middleware.getFollowing, (req, res) => {
   const findQuery = {};
   findQuery.author = { $in: res.following };
-  if (req.params.lastId !== 'first fetch') {
-    findQuery._id = { $lt: req.params.lastId };
+  if (req.params.lastDate !== 'first fetch') {
+    findQuery.date = { $lt: req.params.lastDate };
   }
   Post.find(findQuery, { 'likes._id': 0 }, { sort: { date: -1 }, limit: fetchCount }).populate('author').exec((error, allPosts) => {
     if (error) {
