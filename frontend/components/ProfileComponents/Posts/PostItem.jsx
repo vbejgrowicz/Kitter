@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Linkify from 'linkifyjs/react';
+import * as linkify from 'linkifyjs';
+import mention from 'linkifyjs/plugins/mention';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deletePost } from '../../../actions/PostActions';
@@ -7,6 +10,8 @@ import postedTime from '../../../utils/postedTime';
 import PostOptions from './PostOptions';
 import PostLikeButton from './PostLikeButton';
 import UserImage from '../UserImage';
+
+mention(linkify);
 
 class PostItem extends React.Component {
   constructor(props) {
@@ -62,7 +67,9 @@ class PostItem extends React.Component {
             <span className="username">@{author.username}</span>
           </Link>
           <span className="time">&middot; {this.state.time ? this.state.time : dateString }</span>
-          <div className="text">{text}</div>
+          <div className="text">
+            <Linkify>{text}</Linkify>
+          </div>
           {this.reqAuth(author._id) && (
             <PostOptions post={this.props.post} />
           )}
