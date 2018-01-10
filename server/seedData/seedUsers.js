@@ -5,11 +5,11 @@ const userData = [
     name: 'Guest Account',
     username: 'Guest',
     password: 'Password',
-    image: 'https://images.unsplash.com/photo-1505481354248-2ba5d3b9338e?auto=format&fit=crop&w=934&q=80',
+    image: null,
   },
   {
     name: 'Mr. Smalz',
-    username: 'MrSmalz',
+    username: 'TheRealBadKitty',
     password: 'Password',
     image: 'https://s3.amazonaws.com/kitter-profile-images/1515448640969',
   },

@@ -4,10 +4,10 @@ const Follow = require('../models/follow');
 const followData = [
   {
     user: 'Guest',
-    list: ['MrSmalz', 'CatFacts'],
+    list: ['TheRealBadKitty', 'CatFacts'],
   },
   {
-    user: 'MrSmalz',
+    user: 'TheRealBadKitty',
     list: ['CatFacts'],
   },
   {
