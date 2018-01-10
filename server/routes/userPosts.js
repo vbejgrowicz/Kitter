@@ -68,11 +68,11 @@ router.delete('/:postID', middleware.checkPostAuthor, (req, res) => {
 router.put('/:postID/like', middleware.isLoggedin, (req, res) => {
   const user = req.user._id;
   Post.findById(req.params.postID, (err, post) => {
-    post.likes.push(user);
-    post.save();
     if (err) {
       res.status(400).send(err);
     } else {
+      post.likes.push(user);
+      post.save();
       res.json({ user });
     }
   });
@@ -82,11 +82,11 @@ router.put('/:postID/like', middleware.isLoggedin, (req, res) => {
 router.put('/:postID/unlike', middleware.isLoggedin, (req, res) => {
   const user = req.user._id;
   Post.findById(req.params.postID, (err, post) => {
-    post.likes.pull(user);
-    post.save();
     if (err) {
       res.status(400).send(err);
     } else {
+      post.likes.pull(user);
+      post.save();
       res.json({ user });
     }
   });

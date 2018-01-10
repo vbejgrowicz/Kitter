@@ -9,9 +9,15 @@ const seedPosts = () => {
         const { text, date } = postItem;
         const author = mainUser._id;
         const newPost = { text, date, author };
-        Post.create(newPost, (error) => {
+        Post.create(newPost, (error, createdPost) => {
           if (error) {
             console.log(error);
+          } else {
+            User.find({ username: { $in: postItem.likes } }).exec().then((foundUsers) => {
+              const users = foundUsers.map(user => user._id);
+              createdPost.likes.push(...users);
+              createdPost.save();
+            });
           }
         });
       });

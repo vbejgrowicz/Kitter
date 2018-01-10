@@ -9,13 +9,16 @@ const data = [
     posts: [
       {
         text: 'Hello Kitter!!',
-        date: new Date(2017, 10, 30),
+        date: new Date(2017, 11, 30),
+        likes: [],
       },
     ],
     follows: [
       'TheRealBadKitty',
-      'CatFacts',
       'GrumpyCat',
+      'CatFacts',
+      'JonTheSnowLeopard',
+      'LeoTheLion',
     ],
   },
   {
@@ -27,47 +30,59 @@ const data = [
       {
         text: "Just setting up my Kitter, can't wait to connect with all my friends around the world!",
         date: new Date(2017, 11, 1),
+        likes: ['CatFacts', 'JonTheSnowLeopard', 'LeoTheLion'],
       },
       {
         text: 'I live with my humans in New York City',
         date: new Date(2017, 11, 1, 1),
+        likes: [],
       },
       {
         text: "It's snowing today! I like to chase the snow through the windows...but I'm tired now so I'll just take a nap.",
         date: new Date(2017, 11, 9),
+        likes: [],
       },
       {
         text: "It's Christmas! I got a new feather, a lazer pointer, and soooo many treats! Can I have the treats now!!",
         date: new Date(2017, 11, 25),
+        likes: [],
       },
       {
         text: 'I got to have a whole can of TUNA for dinner! Ah, I love TUNA!',
         date: new Date(2017, 11, 25, 17),
+        likes: [],
       },
       {
         text: 'Happy New Year!!!!! \nNew Year, Same Bad Kitty... ;)',
         date: new Date(2018, 0, 1),
+        likes: [],
       },
       {
         text: "It's so cold out...I'm just going to go sleep under the blankets all day....zzzzzzz",
         date: new Date(2018, 0, 1),
+        likes: [],
       },
       {
         text: "Okay, so It's 3 am and I am so hungry but my humans won't wake up and I have no food... \nWhat should I do...",
         date: new Date(2018, 0, 4, 3),
+        likes: [],
       },
       {
         text: "I've tried poking at them, meowing at them, and biting them but they won't get up to feed me!",
         date: new Date(2018, 0, 4, 3, 4),
+        likes: [],
       },
       {
         text: "Alright they finally fed me, so I guess I'll be okay but I still think they should have fed me when I asked...",
         date: new Date(2018, 0, 5),
+        likes: [],
       },
     ],
     follows: [
       'GrumpyCat',
       'CatFacts',
+      'JonTheSnowLeopard',
+      'LeoTheLion',
     ],
   },
   {
@@ -79,6 +94,7 @@ const data = [
       {
         text: 'Hey! Follow us for all your latest Cat Facts.',
         date: new Date(2018, 0, 1),
+        likes: ['TheRealBadKitty', 'JonTheSnowLeopard', 'LeoTheLion'],
       },
     ],
     follows: [
@@ -95,78 +111,97 @@ const data = [
       {
         text: 'Love is in the air? Get out the gas mask.',
         date: new Date(2017, 1, 14),
+        likes: [],
       },
       {
         text: 'If I had a dollar for every time I thought of you, I would be broke.',
         date: new Date(2017, 6, 1),
+        likes: [],
       },
       {
         text: 'The worst thing after waking up? Everything until I go to bed.',
         date: new Date(2017, 7, 10),
+        likes: [],
       },
       {
         text: 'I had fun once, it was horrible.',
         date: new Date(2017, 8, 16),
+        likes: [],
       },
       {
         text: 'They stole my poop, again.',
         date: new Date(2017, 9, 12),
+        likes: [],
       },
       {
         text: 'You had the red dot...this whole time.',
         date: new Date(2017, 10, 27),
+        likes: [],
       },
       {
         text: 'I like onions, they make people cry',
         date: new Date(2017, 10, 28),
+        likes: [],
       },
       {
         text: "Zombies eat brains...Don't worry most of you have nothing to worry about",
         date: new Date(2017, 10, 29),
+        likes: [],
       },
       {
         text: 'I woke up today and decided to give it my all or nothing...I chose nothing...',
         date: new Date(2017, 11, 9, 1),
+        likes: [],
       },
       {
         text: 'So many reasons to be grumpy, so little time',
         date: new Date(2017, 11, 25),
+        likes: [],
       },
       {
         text: "Why socialize when there's perfectly good Wifi and food at home.",
         date: new Date(2017, 11, 25, 2),
+        likes: [],
       },
       {
         text: "Happy New Year...Whoop Dee Freakin' Do...One year closer to death.",
         date: new Date(2018, 0, 1, 1),
+        likes: [],
       },
       {
         text: "If I have said or done anything to hurt you, I don't care",
         date: new Date(2018, 0, 2),
+        likes: [],
       },
       {
         text: 'I purred once, it was awful',
         date: new Date(2018, 0, 3),
+        likes: [],
       },
       {
         text: "Your face uses more muscles to frown then to smile...what can I say I'm addicted to fitness.",
         date: new Date(2018, 0, 4),
+        likes: [],
       },
       {
         text: "Why don't you slip into something more comfortable, like a coma.",
         date: new Date(2018, 0, 5),
+        likes: [],
       },
       {
         text: 'The worst part of my Monday, is hearing you complain about yours.',
-        date: new Date(2018, 0, 7),
+        date: new Date(2018, 0, 8),
+        likes: [],
       },
       {
         text: 'I wrapped myself in anger, with a dash of hate, and at the bottom of it all is an icy center of pure terror...',
-        date: new Date(2018, 0, 8),
+        date: new Date(2018, 0, 9),
+        likes: [],
       },
       {
         text: '...Go ahead, tickle me one. more. time.',
-        date: new Date(2018, 0, 8, 1),
+        date: new Date(2018, 0, 9, 1),
+        likes: [],
       },
     ],
     follows: [],
@@ -178,8 +213,9 @@ const data = [
     image: 'https://cdn.pixabay.com/photo/2017/01/11/19/44/snow-leopard-1972724_1280.jpg',
     posts: [
       {
-        text: 'Hello Kitter!!',
+        text: 'Hello!!',
         date: new Date(2017, 10, 30),
+        likes: [],
       },
     ],
     follows: [],
