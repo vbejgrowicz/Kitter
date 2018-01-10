@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const seedUsers = require('./seedUsers');
 const seedFollows = require('./seedFollows');
+const seedPosts = require('./seedPosts');
 
 const seedUserBasedData = () => {
   seedFollows();
-  // TO DO: Seed Posts
+  seedPosts();
 };
 
 const seedDB = () => {
