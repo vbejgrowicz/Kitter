@@ -83,6 +83,16 @@
       padding-left: 5px;
     }
 
+    .text {
+      a {
+        color: $secondary-color;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
     #post-options {
       position: absolute;
       top: 0;
