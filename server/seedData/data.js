@@ -16,7 +16,7 @@ const data = [
     follows: [
       'TheRealBadKitty',
       'GrumpyCat',
-      'CatFacts',
+      'allThingsCats',
       'BigCats',
       'JonTheSnowLeopard',
       'LeoTheLion',
@@ -32,7 +32,7 @@ const data = [
       {
         text: "Just setting up my Kitter, can't wait to connect with all my friends around the world!",
         date: new Date(2017, 11, 1),
-        likes: ['CatFacts', 'JonTheSnowLeopard', 'LeoTheLion'],
+        likes: ['allThingsCats', 'JonTheSnowLeopard', 'LeoTheLion', 'Guest'],
       },
       {
         text: 'I live with my humans in New York City',
@@ -42,7 +42,7 @@ const data = [
       {
         text: "It's snowing today! I like to chase the snow through the windows...but I'm tired now so I'll just take a nap.",
         date: new Date(2017, 11, 9),
-        likes: [],
+        likes: ['Guest', 'JonTheSnowLeopard'],
       },
       {
         text: "It's Christmas! I got a new feather, a lazer pointer, and soooo many treats! Can I have the treats now!!",
@@ -62,12 +62,12 @@ const data = [
       {
         text: "It's so cold out...I'm just going to go sleep under the blankets all day....zzzzzzz",
         date: new Date(2018, 0, 1),
-        likes: [],
+        likes: ['allThingsCats'],
       },
       {
         text: "Okay, so It's 3 am and I am so hungry but my humans won't wake up and I have no food... \nWhat should I do...",
         date: new Date(2018, 0, 4, 3),
-        likes: [],
+        likes: ['LeoTheLion'],
       },
       {
         text: "I've tried poking at them, meowing at them, and biting them but they won't get up to feed me!",
@@ -77,11 +77,11 @@ const data = [
       {
         text: "Alright they finally fed me, so I guess I'll be okay but I still think they should have fed me when I asked...",
         date: new Date(2018, 0, 5),
-        likes: [],
+        likes: ['LeoTheLion'],
       },
     ],
     follows: [
-      'CatFacts',
+      'allThingsCats',
       'JonTheSnowLeopard',
       'LeoTheLion',
       'TheRealTonyTheTiger',
@@ -89,9 +89,9 @@ const data = [
   },
   {
     name: 'Cat Facts',
-    username: 'CatFacts',
+    username: 'allThingsCats',
     password: 'Password',
-    image: 'https://images.unsplash.com/photo-1506755855567-92ff770e8d00?auto=format&fit=crop&w=934&q=80',
+    image: 'https://images.unsplash.com/photo-1472491235688-bdc81a63246e?auto=format&fit=crop&w=2250&q=80',
     posts: [
       {
         text: 'Hey! Follow me for all your daily Cat Facts.',
@@ -100,105 +100,103 @@ const data = [
       },
       {
         text: "A cat's field of vision does not cover the area right under its nose.",
-        date: new Date(2017, 11, 2),
-        likes: [],
-      },
-      {
-        text: 'Maine Coons are the most massive breed of house cats. They can weigh up to around 24 pounds.',
         date: new Date(2017, 11, 3),
         likes: [],
       },
       {
-        text: 'Landing on all fours is something typical to cats thanks to the help of their eyes and special balance organs in their inner ear...',
-        date: new Date(2017, 11, 4, 12, 1),
-        likes: [],
-      },
-      {
-        text: '...These tools help them straighten themselves in the air and land upright on the ground.',
-        date: new Date(2017, 11, 4, 12, 2),
-        likes: [],
-      },
-      {
-        text: 'Cats who eat too much tuna can become addicted, which can actually cause a Vitamin E deficiency.',
+        text: 'Maine Coons are the most massive breed of house cats. They can weigh up to around 24 pounds.',
         date: new Date(2017, 11, 5),
         likes: [],
       },
       {
-        text: 'Despite appearing like a wild cat, the Ocicat does not have an ounce of wild blood.',
-        date: new Date(2017, 11, 6),
+        text: 'Landing on all fours is something typical to cats thanks to the help of their eyes and special balance organs in their inner ear...',
+        date: new Date(2017, 11, 6, 12, 1),
         likes: [],
       },
       {
-        text: 'Most kittens are born with blue eyes, which then turn color with age.',
-        date: new Date(2017, 11, 7),
+        text: '...These tools help them straighten themselves in the air and land upright on the ground.',
+        date: new Date(2017, 11, 6, 12, 2),
         likes: [],
       },
       {
-        text: "Outdoor cats' lifespan averages at about 3 to 5 years; indoor cats have lives that last 16 years or more.",
+        text: 'Cats who eat too much tuna can become addicted, which can actually cause a Vitamin E deficiency.',
         date: new Date(2017, 11, 8),
         likes: [],
       },
       {
-        text: "A third of cats' time spent awake is usually spent cleaning themselves.",
-        date: new Date(2017, 11, 9),
-        likes: [],
-      },
-      {
-        text: 'Cats can pick up on your tone of voice, so sweet-talking to your cat has more of an impact than you think.',
+        text: 'Despite appearing like a wild cat, the Ocicat does not have an ounce of wild blood.',
         date: new Date(2017, 11, 10),
         likes: [],
       },
       {
-        text: 'Cats show affection and mark their territory by rubbing on people. Glands on their face, tail and paws release a scent to make its mark.',
-        date: new Date(2017, 11, 11),
-        likes: [],
-      },
-      {
-        text: "Cats have the cognitive ability to sense a human's feelings and overall mood.",
+        text: 'Most kittens are born with blue eyes, which then turn color with age.',
         date: new Date(2017, 11, 12),
-        likes: [],
+        likes: ['Guest'],
       },
       {
-        text: 'Cats CAN be lefties and righties, just like us. More than forty percent of them are, leaving some ambidextrous.',
-        date: new Date(2017, 11, 13),
-        likes: [],
-      },
-      {
-        text: 'A fingerprint is to a human as a nose is to a cat.',
+        text: "Outdoor cats' lifespan averages at about 3 to 5 years; indoor cats have lives that last 16 years or more.",
         date: new Date(2017, 11, 14),
         likes: [],
       },
       {
-        text: 'Cats sleep 16 hours of any given day.',
-        date: new Date(2017, 11, 15),
-        likes: ['TheRealBadKitty', 'TheRealTonyTheTiger', 'GrumpyCat'],
-      },
-      {
-        text: 'Unlike most other cats, the Turkish Van breed has a water-resistant coat and enjoys being in water.',
+        text: "A third of cats' time spent awake is usually spent cleaning themselves.",
         date: new Date(2017, 11, 16),
-        likes: [],
+        likes: ['TheRealBadKitty'],
       },
       {
-        text: 'Some cats can survive falls from as high up as 65 feet or more.',
-        date: new Date(2017, 11, 17),
-        likes: [],
-      },
-      {
-        text: 'A cat can reach up to five times its own height per jump.',
+        text: 'Cats can pick up on your tone of voice, so sweet-talking to your cat has more of an impact than you think.',
         date: new Date(2017, 11, 18),
         likes: [],
       },
       {
-        text: 'Cats are unable to detect sweetness in anything they taste.',
-        date: new Date(2017, 11, 19),
+        text: 'Cats show affection and mark their territory by rubbing on people. Glands on their face, tail and paws release a scent to make its mark.',
+        date: new Date(2017, 11, 20),
         likes: [],
+      },
+      {
+        text: "Cats have the cognitive ability to sense a human's feelings and overall mood.",
+        date: new Date(2017, 11, 22),
+        likes: [],
+      },
+      {
+        text: 'Cats CAN be lefties and righties, just like us. More than forty percent of them are, leaving some ambidextrous.',
+        date: new Date(2017, 11, 24),
+        likes: ['TheRealTonyTheTiger'],
+      },
+      {
+        text: 'A fingerprint is to a human as a nose is to a cat.',
+        date: new Date(2017, 11, 28),
+        likes: ['TheRealBadKitty'],
+      },
+      {
+        text: 'Cats are unable to detect sweetness in anything they taste.',
+        date: new Date(2018, 0, 2),
+        likes: [],
+      },
+      {
+        text: 'Unlike most other cats, the Turkish Van breed has a water-resistant coat and enjoys being in water.',
+        date: new Date(2018, 0, 4),
+        likes: [],
+      },
+      {
+        text: 'Some cats can survive falls from as high up as 65 feet or more.',
+        date: new Date(2018, 0, 6),
+        likes: [],
+      },
+      {
+        text: 'A cat can reach up to five times its own height per jump.',
+        date: new Date(2018, 0, 8),
+        likes: ['TheRealBadKitty'],
+      },
+      {
+        text: 'Cats sleep 16 hours of any given day.',
+        date: new Date(2018, 0, 9, 19),
+        likes: ['TheRealBadKitty', 'TheRealTonyTheTiger', 'GrumpyCat'],
       },
     ],
     follows: [
       'TheRealBadKitty',
-      'LeoTheLion',
-      'TheRealTonyTheTiger',
-      'JonTheSnowLeopard',
+      'BigCats',
     ],
   },
   {
@@ -218,8 +216,13 @@ const data = [
         likes: [],
       },
       {
-        text: 'The four big cats consist of the Tiger, Lion, Jaguar, and Leopard. They are the only wild cats that have the ability to roar, but they cannot purr like most other cats.',
+        text: 'The four big cats consist of the Tiger, Lion, Jaguar, and Leopard...',
         date: new Date(2017, 11, 2, 1),
+        likes: [],
+      },
+      {
+        text: '...They are the only wild cats that have the ability to roar, but they cannot purr like most other cats.',
+        date: new Date(2017, 11, 2, 1, 1),
         likes: ['LeoTheLion', 'TheRealTonyTheTiger'],
       },
       {
@@ -235,26 +238,45 @@ const data = [
       {
         text: 'The larynx of a Snow Leopard creates more of a combination hiss/snarl sound without the bass tone of a real roar.',
         date: new Date(2017, 11, 10),
-        likes: [],
+        likes: ['JonTheSnowLeopard'],
       },
       {
         text: 'The Tiger is the largest of the big cats weighing up to 325kg.',
-        date: new Date(2017, 11, 15),
+        date: new Date(2017, 11, 18),
+        likes: [],
+      },
+      {
+        text: 'Tigers used to roam across most of Asia, but now they’re restricted to just 7% of their original range, in isolated forests and grasslands across 13 countries.',
+        date: new Date(2017, 11, 22),
+        likes: [],
+      },
+      {
+        text: 'There are only around 3,900 tigers in the wild. With the support of Tiger Protectors around the world, they are beginning to make a comeback.',
+        date: new Date(2017, 11, 24),
+        likes: ['TheRealTonyTheTiger', 'TheRealBadKitty'],
+      },
+      {
+        text: 'Wild tiger numbers have dropped by more than 95% since the beggining of the 20th century...',
+        date: new Date(2017, 11, 26, 7),
+        likes: [],
+      },
+      {
+        text: '..Now for the first time in conservation history their numbers are on the increase. \nPlease continue to support the endagered Tigers!',
+        date: new Date(2017, 11, 26, 7, 1),
         likes: [],
       },
       {
         text: 'The Lion is the second largest of the big cats weighing up to 225kg.',
-        date: new Date(2017, 11, 20),
+        date: new Date(2018, 0, 1),
         likes: [],
       },
       {
         text: 'The Snow Leopard is the smallest of the big cats weighing up to 55kg.',
-        date: new Date(2017, 11, 25),
+        date: new Date(2018, 0, 6),
         likes: [],
       },
     ],
     follows: [
-      'TheRealBadKitty',
       'LeoTheLion',
       'TheRealTonyTheTiger',
       'JonTheSnowLeopard',
@@ -289,12 +311,12 @@ const data = [
       {
         text: 'They stole my poop, again.',
         date: new Date(2017, 11, 8),
-        likes: [],
+        likes: ['TheRealBadKitty'],
       },
       {
         text: 'You had the red dot...this whole time.',
         date: new Date(2017, 11, 9),
-        likes: [],
+        likes: ['Guest', 'TheRealBadKitty'],
       },
       {
         text: 'I like onions, they make people cry',
@@ -302,14 +324,34 @@ const data = [
         likes: [],
       },
       {
-        text: "Zombies eat brains...Don't worry most of you have nothing to worry about",
+        text: "Why don't you slip into something more comfortable, like a coma.",
+        date: new Date(2017, 11, 12),
+        likes: [],
+      },
+      {
+        text: 'The worst part of my Monday, is hearing you complain about yours.',
         date: new Date(2017, 11, 15),
+        likes: [],
+      },
+      {
+        text: 'I wrapped myself in anger, with a dash of hate, and at the bottom of it all is an icy center of pure terror...',
+        date: new Date(2017, 11, 17),
+        likes: [],
+      },
+      {
+        text: '...Go ahead, tickle me one. more. time.',
+        date: new Date(2017, 11, 17, 1),
+        likes: [],
+      },
+      {
+        text: "Zombies eat brains...Don't worry most of you have nothing to worry about",
+        date: new Date(2017, 11, 18),
         likes: [],
       },
       {
         text: 'I woke up today and decided to give it my all or nothing...I chose nothing...',
         date: new Date(2017, 11, 20, 1),
-        likes: [],
+        likes: ['TheRealBadKitty', 'Guest'],
       },
       {
         text: 'So many reasons to be grumpy, so little time',
@@ -319,11 +361,11 @@ const data = [
       {
         text: "Why socialize when there's perfectly good Wifi and food at home.",
         date: new Date(2017, 11, 27, 2),
-        likes: [],
+        likes: ['JonTheSnowLeopard'],
       },
       {
         text: "If I have said or done anything to hurt you, I don't care",
-        date: new Date(2018, 11, 30),
+        date: new Date(2017, 11, 30),
         likes: [],
       },
       {
@@ -339,27 +381,7 @@ const data = [
       {
         text: "Your face uses more muscles to frown then to smile...what can I say I'm addicted to fitness.",
         date: new Date(2018, 0, 4),
-        likes: [],
-      },
-      {
-        text: "Why don't you slip into something more comfortable, like a coma.",
-        date: new Date(2018, 0, 6),
-        likes: [],
-      },
-      {
-        text: 'The worst part of my Monday, is hearing you complain about yours.',
-        date: new Date(2018, 0, 8),
-        likes: [],
-      },
-      {
-        text: 'I wrapped myself in anger, with a dash of hate, and at the bottom of it all is an icy center of pure terror...',
-        date: new Date(2018, 0, 9),
-        likes: [],
-      },
-      {
-        text: '...Go ahead, tickle me one. more. time.',
-        date: new Date(2018, 0, 9, 1),
-        likes: [],
+        likes: ['LeoTheLion'],
       },
     ],
     follows: [],
@@ -377,7 +399,7 @@ const data = [
       },
     ],
     follows: [
-      'CatFacts',
+      'allThingsCats',
       'BigCats',
     ],
   },
@@ -388,19 +410,78 @@ const data = [
     image: 'https://images.unsplash.com/photo-1508967120282-691df21da41e?auto=format&fit=crop&w=1001&q=80',
     posts: [],
     follows: [
-      'CatFacts',
+      'allThingsCats',
       'BigCats',
+      'JonTheSnowLeopard',
+      'TheRealTonyTheTiger',
     ],
   },
   {
     name: 'Tony Tiger',
     username: 'TheRealTonyTheTiger',
     password: 'Password',
-    image: 'https://images.unsplash.com/photo-1488793207478-ff0892419e30?auto=format&fit=crop&w=933&q=80',
-    posts: [],
+    image: 'https://vignette.wikia.nocookie.net/parody/images/e/e2/Tony-the-tiger-sq.png/revision/latest/scale-to-width-down/480?cb=20170413111705',
+    posts: [
+      {
+        text: 'Hello! I just joined Kitter!',
+        date: new Date(2018, 0, 1),
+        likes: ['TheRealBadKitty'],
+      },
+      {
+        text: "It's a GRRR-EAT start, our numbers are increasing but we need your help to make sure that tigers can thrive again!",
+        date: new Date(2018, 0, 1, 1),
+        likes: [],
+      },
+      {
+        text: 'Just over a century ago, there were as many as 100,000 of us living in Asia.',
+        date: new Date(2018, 0, 1),
+        likes: [],
+      },
+      {
+        text: 'There are only around 3,900 of us left in the wild. With the support of Tiger Protectors around the world, we are beginning to make a comeback!',
+        date: new Date(2018, 0, 2),
+        likes: ['Guest', 'TheRealBadKitty', 'LeoTheLion', 'JonTheSnowLeopard', 'allThingsCats', 'BigCats'],
+      },
+      {
+        text: 'Our catastrophic population decline is driven by a range of threats, including poaching for the illegal wildlife trade, ...',
+        date: new Date(2018, 0, 4, 12, 1),
+        likes: [],
+      },
+      {
+        text: '...overhunting of prey species by local people, habitat loss and fragmentation, and human-tiger conflict.',
+        date: new Date(2018, 0, 4, 12, 2),
+        likes: [],
+      },
+      {
+        text: 'Ahhh, what a GRRR-EAT time for a nap!!',
+        date: new Date(2018, 0, 6),
+        likes: ['LeoTheLion', 'TheRealBadKitty'],
+      },
+      {
+        text: 'Thank you all for your support, please continue to support us!',
+        date: new Date(2018, 0, 8),
+        likes: ['TheRealBadKitty', 'LeoTheLion', 'JonTheSnowLeopard'],
+      },
+      {
+        text: 'As top predators, we help to keep the environment healthy...',
+        date: new Date(2018, 0, 9, 12, 1),
+        likes: [],
+      },
+      {
+        text: '...Without enough predators to prey on the animals, the herbivores can overgraze and damage the land, disrupting the balance of the local environment.',
+        date: new Date(2018, 0, 9, 12, 2),
+        likes: ['LeoTheLion'],
+      },
+      {
+        text: 'Become a Tiger Protector Today! \n https://support.wwf.org.uk/protect-a-tiger!',
+        date: new Date(2018, 0, 10),
+        likes: ['LeoTheLion', 'TheRealBadKitty', 'Guest'],
+      },
+    ],
     follows: [
-      'CatFacts',
+      'allThingsCats',
       'BigCats',
+      'LeoTheLion',
     ],
   },
 ];
