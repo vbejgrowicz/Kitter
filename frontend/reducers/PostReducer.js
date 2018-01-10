@@ -49,7 +49,7 @@ function removeLikeFromPost(array, action) {
     }
     return {
       ...item,
-      likes: item.likes.filter(like => like.id !== action.user.id),
+      likes: item.likes.filter(likeUser => likeUser !== action.user),
     };
   });
 }

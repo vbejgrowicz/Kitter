@@ -67,7 +67,9 @@ router.delete('/:postID', middleware.checkPostAuthor, (req, res) => {
 // ADD LIKE
 router.put('/:postID/like', middleware.isLoggedin, (req, res) => {
   const user = req.user._id;
-  Post.findByIdAndUpdate(req.params.postID, { $push: { likes: user } }, (err) => {
+  Post.findById(req.params.postID, (err, post) => {
+    post.likes.push(user);
+    post.save();
     if (err) {
       res.status(400).send(err);
     } else {
@@ -79,7 +81,9 @@ router.put('/:postID/like', middleware.isLoggedin, (req, res) => {
 // REMOVE LIKE
 router.put('/:postID/unlike', middleware.isLoggedin, (req, res) => {
   const user = req.user._id;
-  Post.findByIdAndUpdate(req.params.postID, { $pull: { likes: user } }, (err) => {
+  Post.findById(req.params.postID, (err, post) => {
+    post.likes.pull(user);
+    post.save();
     if (err) {
       res.status(400).send(err);
     } else {
