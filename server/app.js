@@ -24,7 +24,7 @@ const countRoutes = require('./routes/count');
 const followerRoutes = require('./routes/follows');
 const imageRoutes = require('./routes/image');
 
-const url = process.env.DATABASEURL || 'mongodb://localhost/Kitter';
+const url = process.env.DATABASE_URL || 'mongodb://localhost/Kitter';
 
 mongoose.connect(url, { useMongoClient: true });
 app.use(bodyParser.urlencoded({ extended: true }));
