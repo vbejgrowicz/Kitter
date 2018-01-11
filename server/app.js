@@ -29,6 +29,16 @@ const url = process.env.DATABASEURL || 'mongodb://localhost/Kitter';
 mongoose.connect(url, { useMongoClient: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+if (process.env.NODE_ENV !== 'production') {
+  const webpackMiddleware = require('webpack-dev-middleware'); // eslint-disable-line global-require
+  const webpack = require('webpack'); // eslint-disable-line global-require
+  const webpackConfig = require('../webpack.config.js'); // eslint-disable-line global-require
+  app.use(webpackMiddleware(webpack(webpackConfig)));
+} else {
+  app.use(express.static(path.resolve(__dirname, '..', 'build')));
+}
+
 seedDB();
 
 // PASSPORT CONFIG
@@ -51,15 +61,9 @@ app.use('/api/following/posts', followingPostRoutes);
 app.use('/api/follows', followerRoutes);
 app.use('/api/count', countRoutes);
 
-if (process.env.NODE_ENV !== 'production') {
-  const webpackMiddleware = require('webpack-dev-middleware'); // eslint-disable-line global-require
-  const webpack = require('webpack'); // eslint-disable-line global-require
-  const webpackConfig = require('../webpack.config.js'); // eslint-disable-line global-require
-  app.use(webpackMiddleware(webpack(webpackConfig)));
-} else {
-  app.use(express.static(path.resolve(__dirname, '..', 'build')));
+if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build/index.html'));
+    res.sendFile(path.resolve(__dirname, '..', 'build/index.html'));
   });
 }
 
