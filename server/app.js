@@ -8,6 +8,10 @@ const session = require('express-session');
 const User = require('./models/user');
 const seedDB = require('./seedData');
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config(); // eslint-disable-line global-require
+}
+
 const app = express();
 
 mongoose.Promise = global.Promise;
