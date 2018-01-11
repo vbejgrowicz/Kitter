@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const session = require('express-session');
-const User = require('./models/user');
-const seedDB = require('./seedData');
+const User = require('./server/models/user');
+const seedDB = require('./server/seedData');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config(); // eslint-disable-line global-require
@@ -17,12 +17,12 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 // Require Routes
-const indexRoutes = require('./routes/index');
-const userPostRoutes = require('./routes/userPosts');
-const followingPostRoutes = require('./routes/followingPosts');
-const countRoutes = require('./routes/count');
-const followerRoutes = require('./routes/follows');
-const imageRoutes = require('./routes/image');
+const indexRoutes = require('./server/routes/index');
+const userPostRoutes = require('./server/routes/userPosts');
+const followingPostRoutes = require('./server/routes/followingPosts');
+const countRoutes = require('./server/routes/count');
+const followerRoutes = require('./server/routes/follows');
+const imageRoutes = require('./server/routes/image');
 
 const url = process.env.DATABASEURL || 'mongodb://localhost/Kitter';
 
@@ -54,10 +54,10 @@ app.use('/api/count', countRoutes);
 if (process.env.NODE_ENV !== 'production') {
   const webpackMiddleware = require('webpack-dev-middleware'); // eslint-disable-line global-require
   const webpack = require('webpack'); // eslint-disable-line global-require
-  const webpackConfig = require('../webpack.config.js'); // eslint-disable-line global-require
+  const webpackConfig = require('./webpack.config.js'); // eslint-disable-line global-require
   app.use(webpackMiddleware(webpack(webpackConfig)));
 } else {
-  app.use(express.static(path.resolve(__dirname, '..', 'build')));
+  app.use(express.static('build'));
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build/index.html'));
   });
