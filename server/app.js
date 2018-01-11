@@ -29,7 +29,7 @@ const url = process.env.DATABASEURL || 'mongodb://localhost/Kitter';
 mongoose.connect(url, { useMongoClient: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-seedDB();
+// seedDB();
 
 // PASSPORT CONFIG
 app.use(session({
