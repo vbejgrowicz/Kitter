@@ -25,7 +25,6 @@ const url = process.env.DATABASEURL || 'mongodb://localhost/Kitter';
 mongoose.connect(url, { useMongoClient: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
 seedDB();
 
 // PASSPORT CONFIG
@@ -48,12 +47,18 @@ app.use('/api/following/posts', followingPostRoutes);
 app.use('/api/follows', followerRoutes);
 app.use('/api/count', countRoutes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-});
+if (process.env.NODE_ENV !== 'production') {
+  const webpackMiddleware = require('webpack-dev-middleware'); // eslint-disable-line global-require
+  const webpack = require('webpack'); // eslint-disable-line global-require
+  const webpackConfig = require('../webpack.config.js'); // eslint-disable-line global-require
+  app.use(webpackMiddleware(webpack(webpackConfig)));
+} else {
+  app.use(express.static(path.resolve(__dirname, '..', 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'build/index.html'));
+  });
+}
 
-const PORT = process.env.PORT || 9000;
+const port = process.env.PORT || 9000;
 
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-});
+app.listen(port, () => console.log(`App listening on port ${port}!`));
