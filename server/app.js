@@ -57,7 +57,7 @@ if (process.env.NODE_ENV !== 'production') {
   const webpackConfig = require('../webpack.config.js'); // eslint-disable-line global-require
   app.use(webpackMiddleware(webpack(webpackConfig)));
 } else {
-  app.use(express.static('build'));
+  app.use(express.static(path.resolve(__dirname, '..', 'build')));
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build/index.html'));
   });
