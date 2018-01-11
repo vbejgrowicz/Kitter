@@ -11,9 +11,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
 // FOR DEV ONLY
-store.subscribe(() => {
-  console.log('store updated', store.getState());
-});
+// store.subscribe(() => {
+//   console.log('store updated', store.getState());
+// });
 
 ReactDOM.render(
   <Provider store={store}>
