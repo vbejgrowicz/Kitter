@@ -29,7 +29,7 @@ const url = process.env.DATABASEURL || 'mongodb://localhost/Kitter';
 mongoose.connect(url, { useMongoClient: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// seedDB();
+seedDB();
 
 // PASSPORT CONFIG
 app.use(session({
@@ -57,9 +57,9 @@ if (process.env.NODE_ENV !== 'production') {
   const webpackConfig = require('../webpack.config.js'); // eslint-disable-line global-require
   app.use(webpackMiddleware(webpack(webpackConfig)));
 } else {
-  app.use(express.static(path.resolve(__dirname, '..', 'build')));
+  app.use(express.static('build'));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'build/index.html'));
+    res.sendFile(path.join(__dirname, 'build/index.html'));
   });
 }
 

@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-// const likeSchema = require('./like');
-
 
 const postSchema = new mongoose.Schema({
   text: String,
