@@ -20,7 +20,9 @@ const countRoutes = require('./routes/count');
 const followerRoutes = require('./routes/follows');
 const imageRoutes = require('./routes/image');
 
-mongoose.connect('mongodb://localhost/Kitter', { useMongoClient: true });
+const url = process.env.DATABASEURL || 'mongodb://localhost/Kitter';
+
+mongoose.connect(url, { useMongoClient: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
