@@ -1,4 +1,5 @@
 #landingPage {
+  $small-width: 355px;
   .header {
     background-color: $secondary-color;
     background-image: $logo-light-blue;
@@ -6,10 +7,11 @@
     background-position-x: 55vw;
     background-size: 512px;
     color: $white;
-    height: 210px;
+    height: auto;
+    min-height: 175px;
+    padding: 10px;
 
     div {
-      padding: 10px;
       display: flex;
       justify-content: space-between;
 
@@ -22,11 +24,11 @@
       }
 
       button {
-        min-width: 75px;
+        min-width: 70px;
         background-color: transparent;
         color: $white;
         border: 1px solid $white;
-        margin: 0 5px;
+        margin: 5px;
       }
     }
 
@@ -34,6 +36,24 @@
       font-size: 48px;
       font-weight: bold;
       justify-content: center;
+    }
+
+    @media (max-width: $small-width) {
+      .brand-icon {
+        height: 30px;
+        width: 30px;
+      }
+      div {
+        button {
+          font-size: 12px;
+          min-width: 55px;
+        }
+      }
+
+
+      .page-title {
+        font-size: 38px;
+      }
     }
   }
 
@@ -117,6 +137,7 @@
             background-color: $white;
             color: $secondary-color;
             width: 100%;
+            margin-top: 10px;
           }
         }
       }
