@@ -59,6 +59,13 @@ class UserForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         {this.props.formType === 'Sign up' ? (
           <div>
+            <input
+              type="text"
+              placeholder="Full Name"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
             <p className="error">{this.state.errors.name ? (
               <span>
                 <i className="fa fa-times" aria-hidden="true" />
@@ -68,18 +75,18 @@ class UserForm extends React.Component {
                 null
               )}
             </p>
-            <input
-              type="text"
-              placeholder="Full Name"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
           </div>
         ) : (
           null
         )}
         <div>
+          <input
+            type="text"
+            placeholder="Username"
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
           <p className="error">{this.state.errors.username ? (
             <span>
               <i className="fa fa-times" aria-hidden="true" />
@@ -89,15 +96,15 @@ class UserForm extends React.Component {
               null
             )}
           </p>
-          <input
-            type="text"
-            placeholder="Username"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
         </div>
         <div>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
           <p className="error">{this.state.errors.password ? (
             <span>
               <i className="fa fa-times" aria-hidden="true" />
@@ -107,13 +114,6 @@ class UserForm extends React.Component {
               null
             )}
           </p>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
         </div>
         <button className="blue-btn">{this.props.formType}</button>
       </form>

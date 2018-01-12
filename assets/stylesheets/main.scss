@@ -21,6 +21,11 @@ html, body, div, span, p, a, i, ul, li button, link, hr {
 body {
   background-color: $primary-color;
   color: $secondary-color;
+
+  #auth {
+    background-color: $white;
+    height: 100vh;
+  }
 }
 
 #full-screen {
