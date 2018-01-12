@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const VENDOR_LIBS = ['react', 'react-dom', 'react-redux', 'react-router-dom', 'redux', 'react-textarea-autosize'];
+const VENDOR_LIBS = ['react', 'react-dom', 'react-redux', 'react-router-dom', 'redux', 'react-textarea-autosize', 'react-dropzone', 'redux-thunk'];
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].[contenthash].css',
