@@ -37,8 +37,9 @@
       font-weight: bold;
       justify-content: center;
     }
-
-    @media (max-width: $small-width) {
+  }
+  @media (max-width: $small-width) {
+    .header {
       .brand-icon {
         height: 30px;
         width: 30px;
@@ -49,7 +50,6 @@
           min-width: 55px;
         }
       }
-
 
       .page-title {
         font-size: 38px;
