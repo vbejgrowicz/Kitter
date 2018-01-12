@@ -6,7 +6,6 @@
 #user-home-page {
   margin-top: 47px;
   $break-width: 765px;
-  min-width: 420px;
 
   .user-content {
     padding-top: 10px;
@@ -16,7 +15,7 @@
   @media (max-width: $break-width) {
     #homepage-user-data {
       width: 100%;
-      min-width: 400px;
+      min-width: auto;
       margin-right: 0;
       margin-bottom: 10px;
       .account {
@@ -26,7 +25,7 @@
 
     #profile-feed {
       width: 100%;
-      min-width: 400px;
+      min-width: auto;
     }
   }
 }
@@ -34,8 +33,8 @@
 #user-profile-page {
   margin-top: 47px;
   $break-width: 710px;
+  $small-width: 520px;
   text-align: center;
-  min-width: 520px;
 
   .user-content {
     padding-top: 10px;
@@ -55,14 +54,42 @@
     }
     #profile-user-data {
       width: 100%;
-      min-width: 400px;
       margin-right: 0;
       margin-bottom: 10px;
     }
 
     #profile-feed {
       width: 100%;
-      min-width: 400px;
+    }
+  }
+
+  @media (max-width: $small-width) {
+    #profile-header {
+      height: 140px;
+      width: 100%;
+      min-width: auto;
+
+      .user-image {
+        height: 80px;
+        width: 80px;
+        left: 5px;
+      }
+      .links {
+        margin-left: 100px;
+        a {
+          width: 60px;
+        }
+        .follow-button-container {
+          right: 5px;
+          button {
+            width: 80px
+          }
+        }
+      }
+    }
+    #profile-feed {
+      width: 100%;
+      min-width: auto;
     }
   }
 }

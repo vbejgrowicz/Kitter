@@ -11,14 +11,16 @@
     position: relative;
     margin: auto;
     top: 20%;
-    width: 520px;
+    max-width: 520px;
+    width: 90%;
     background-color: $white;
     border-radius: 6px;
     overflow: hidden;
 
     .title {
+      width: 90%;
       font-size: 18px;
-      padding: 12px;
+      padding-top: 12px;
       color: black;
       text-align: center;
       font-weight: bold;

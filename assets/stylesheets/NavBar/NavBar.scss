@@ -8,7 +8,6 @@
   z-index: 2;
   top: 0;
   width: 100%;
-  min-width: 500px;
   box-shadow: 0 1px 2px -2px #494949;
   border-bottom: 1px solid rgba(0,0,0,0.25);
 
@@ -16,6 +15,11 @@
     display: flex;
     width: auto;
     margin: 0 40px;
+    $small-width: 520px;
+
+    @media (max-width: $small-width) {
+      margin: 0 10px;
+    }
   }
 
   .left, .center, .right {
