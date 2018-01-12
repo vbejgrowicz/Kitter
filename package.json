@@ -11,7 +11,7 @@
     "clean": "rimraf build",
     "build": "npm run clean && webpack",
     "start": "node server/app.js",
-    "heroku-prebuild": "npm install --only=dev && npm run clean && webpack -p"
+    "heroku-prebuild": "npm install && npm run clean && webpack -p"
   },
   "author": "Vivian Bejgrowicz",
   "license": "ISC",
