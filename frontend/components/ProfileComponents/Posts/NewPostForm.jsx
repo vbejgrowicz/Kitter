@@ -45,11 +45,13 @@ class NewPostForm extends React.Component {
   }
 
   handleFocus() {
-    this.setState({ focus: true });
+    if (!this.props.initialFocus && !this.state.focus) {
+      this.setState({ focus: true });
+    }
   }
 
   handleBlur() {
-    if (this.state.post === '') {
+    if (this.state.post === '' && !this.props.initialFocus) {
       this.setState({ focus: false });
     }
   }
@@ -66,12 +68,12 @@ class NewPostForm extends React.Component {
           maxLength="140"
           placeholder="What's happening?"
           onChange={this.handleInput}
-          onFocus={this.props.initialFocus ? null : this.handleFocus}
-          onBlur={this.props.initialFocus ? null : this.handleBlur}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
         />
         <button
           className={focus}
-          disabled={!this.state.post}
+          disabled={!this.state.post.trim()}
           onClick={this.handleSubmit}
         >
           Meow
