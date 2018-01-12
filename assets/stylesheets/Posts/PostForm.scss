@@ -11,12 +11,13 @@
     font-size: 14px;
     margin-bottom: 6px;
     transition: 0.5s;
+    overflow-y: auto;
 
     &:focus {
       border: 2px solid #99DAFD;
     }
     &.open {
-      min-height: 80px;
+      min-height: 90px;
     }
     &.closed {
       min-height: 40px;

@@ -58,12 +58,14 @@ class NewPostForm extends React.Component {
 
   render() {
     const modalClass = this.state.focus ? 'open meow' : 'closed meow';
+    const rows = modalClass === 'open meow' ? 4 : 1;
     return (
       <div id="post-form">
         <Textarea
           value={this.state.post}
           className={modalClass}
-          maxRows={10}
+          minRows={rows}
+          maxRows={15}
           maxLength="140"
           placeholder="What's happening?"
           onChange={this.handleInput}
