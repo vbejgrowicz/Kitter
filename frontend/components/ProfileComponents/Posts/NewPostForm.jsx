@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import TextareaAutosize from 'react-autosize-textarea';
+import Textarea from 'react-textarea-autosize';
 import { newPost } from '../../../actions/PostActions';
 
 
@@ -56,15 +56,14 @@ class NewPostForm extends React.Component {
     }
   }
 
-
   render() {
-    const focus = this.state.focus ? 'open meow' : 'closed meow';
+    const modalClass = this.state.focus ? 'open meow' : 'closed meow';
     return (
       <div id="post-form">
-        <TextareaAutosize
+        <Textarea
           value={this.state.post}
-          className={focus}
-          maxRows={14}
+          className={modalClass}
+          maxRows={10}
           maxLength="140"
           placeholder="What's happening?"
           onChange={this.handleInput}
@@ -72,7 +71,7 @@ class NewPostForm extends React.Component {
           onBlur={this.handleBlur}
         />
         <button
-          className={focus}
+          className={modalClass}
           disabled={!this.state.post.trim()}
           onClick={this.handleSubmit}
         >
