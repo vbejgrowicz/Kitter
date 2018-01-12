@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf build",
     "build": "npm run clean && webpack",
-    "build:prod": "npm run clean && webpack -p",
+    "heroku-postbuild": "npm run clean && webpack -p",
     "start": "node server/app.js"
   },
   "author": "Vivian Bejgrowicz",
