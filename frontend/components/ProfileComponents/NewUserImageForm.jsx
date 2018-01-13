@@ -16,10 +16,15 @@ class NewUserImageForm extends React.Component {
     };
     this.onDrop = this.onDrop.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.onDragLeave = this.onDragLeave.bind(this);
   }
 
   onDrop(file) {
     this.setState({ file: file[0] });
+  }
+
+  onDragLeave() {
+    this.setState({ file: null });
   }
 
   handleClick() {
@@ -39,6 +44,7 @@ class NewUserImageForm extends React.Component {
             accept="image/jpeg, image/png"
             multiple={false}
             onDrop={this.onDrop}
+            onDragLeave={this.onDragLeave}
           >
             {this.state.file ? (
               <img src={this.state.file.preview} alt="" />
@@ -48,7 +54,13 @@ class NewUserImageForm extends React.Component {
             }
           </Dropzone>
           <button className="cancel" onClick={this.props.onClose}>Cancel</button>
-          <button className="upload" onClick={this.handleClick}>Upload</button>
+          <button
+            className="upload"
+            onClick={this.handleClick}
+            disabled={!this.state.file}
+          >
+            Upload
+          </button>
         </div>
       </div>
     );
