@@ -93,7 +93,7 @@ const data = [
     name: 'Cat Facts',
     username: 'allThingsCats',
     password: 'Password',
-    image: 'https://images.unsplash.com/photo-1472491235688-bdc81a63246e?auto=format&fit=crop&w=2250&q=80',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1515800228981',
     posts: [
       {
         text: 'Hey! Follow me for all your daily Cat Facts.',
@@ -205,7 +205,7 @@ const data = [
     name: 'Big Cat Facts',
     username: 'BigCats',
     password: 'Password',
-    image: 'http://gotouchdown.com/wp-content/uploads/2017/05/BIG-CATS-Collage-Predators-Animals-Wilderness-Big-Cats-2062772.jpg',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1515801637797',
     posts: [
       {
         text: 'Hey! Follow me to learn all about Big Cats.',
@@ -288,7 +288,7 @@ const data = [
     name: 'Tardar Sauce',
     username: 'GrumpyCat',
     password: 'Password',
-    image: 'http://i0.kym-cdn.com/photos/images/newsfeed/000/406/346/fd3.jpg',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1515801648374',
     posts: [
       {
         text: 'Love is in the air? Get out the gas mask.',
@@ -392,7 +392,7 @@ const data = [
     name: 'Jon Snow',
     username: 'JonTheSnowLeopard',
     password: 'Password',
-    image: 'https://cdn.pixabay.com/photo/2017/01/11/19/44/snow-leopard-1972724_1280.jpg',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1515801642922',
     posts: [
       {
         text: 'Hello!!',
@@ -409,7 +409,7 @@ const data = [
     name: 'Leonardo Lion',
     username: 'LeoTheLion',
     password: 'Password',
-    image: 'https://images.unsplash.com/photo-1508967120282-691df21da41e?auto=format&fit=crop&w=1001&q=80',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1515801656421',
     posts: [
       {
         text: 'Please help protect my friends! https://goo.gl/knrEMd',
@@ -458,7 +458,7 @@ const data = [
     name: 'Tony Tiger',
     username: 'TheRealTonyTheTiger',
     password: 'Password',
-    image: 'https://vignette.wikia.nocookie.net/parody/images/e/e2/Tony-the-tiger-sq.png/revision/latest/scale-to-width-down/480?cb=20170413111705',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1515801661238',
     posts: [
       {
         text: 'Hello! I just joined Kitter!',
