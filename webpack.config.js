@@ -54,6 +54,7 @@ module.exports = {
       title: 'Kitter',
       filename: 'index.html',
       template: './public/index.html',
+      favicon: './assets/images/cat-blue.png',
     }),
   ],
   resolve: {
