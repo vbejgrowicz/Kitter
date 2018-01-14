@@ -8,17 +8,18 @@ Kitter allows users to:
 
 - [X] Sign up for an account
 - [X] Log in and log out of their accounts
-- [X] Create posts
-- [X] Delete posts
-- [ ] Follow and unfollow users
-- [X] View user profiles
-- [ ] View timeline of posts of all followed users
+- [X] Create and Delete posts
+- [X] Follow and unfollow users
+- [X] View user profiles with their posts
+- [X] View timeline of all followed users posts
+- [X] Display followed/following user list
+- [X] Add User Image
 
 ## Implementation Timeline
 
 ### Phase 1: Landing Page
 
-**Objective:** Complete basic landing page 
+**Objective:** Complete basic landing page
 
 - [X] Create landing page with post previews
 - [X] Set up generic seed data for what's happening posts
@@ -67,27 +68,39 @@ Kitter allows users to:
 
 **Objective:** Posts can be created
 
-- [X] Create `Post` model 
+- [X] Create `Post` model
 - [X] Create Post API for index, create, show, destroy
 - [X] Create Redux Post Store
 - [X] Create all Post actions
 - [X] Create the associated functions within the reducer to handle the created actions
 - [X] Create React components PostList, PostItem, PostNewForm
-- [ ] Set up Post seed data
 
 ### Phase 7: Follower setup
 
 **Objective:** Users can be followed and unfollowed
 
-- [ ] Create Follower API for create and destroy
-- [ ] Create Redux Follower Store
-- [ ] Create Follower actions
-- [ ] Create the associated functions to handle the created actions
-- [ ] Create React components FollowerIndex, FollowerIndexItem
+- [X] Create `Follower` model
+- [X] Create Follower API for create and destroy
+- [X] Create Follower actions
+- [X] Create the associated functions to handle the created actions
+- [X] Create React components UserList, UserItem
+- [X] Create routes to show list of users followed or following
 
-### Phase 8: Final Touches and Testing
+### Phase 8: User Image setup
+
+**Objective:** Users can add profile image
+
+- [X] Add image to `User` model
+- [X] Create image API route for create
+- [X] Create add image action
+- [X] Create the associated functions to handle the created actions
+- [X] Create React components UserImage, NewUserImageForm
+
+### Phase 9: Final Touches and Testing
 
 **Objective:** Application has a clean professional look and operates smoothly.
 
-- [ ] Add CSS styling to clean up visually
-- [ ] Obtain feedback from other users
+- [X] Add remaining CSS styling to clean up visually
+- [X] Add media query to provide mobile responsive look
+- [X] Add seed data to provide a list of posts on guest login
+- [X] Obtain feedback from other users
