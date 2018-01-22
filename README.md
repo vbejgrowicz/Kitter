@@ -5,22 +5,35 @@
 Connect with Friends on [Kitter](http://kitter.club/)
 
 #### Landing Page
-<img src="/docs/screenshots/LandingPage.png" width="600">
+<table><tr><td margin="0" padding="0">
+  <img src="/docs/screenshots/LandingPage.png" width="600">
+</td></tr></table
 
 #### Sign Up Page
-<img src="/docs/screenshots/Sign-up.png" width="600">
+<table><tr><td margin="0" padding="0">
+  <img src="/docs/screenshots/Sign-up.png" width="600">
+</td></tr></table>
 
 #### Log In Page
-<img src="/docs/screenshots/Log-In.png" width="600">
+<table><tr><td margin="0" padding="0">
+  <img src="/docs/screenshots/Log-In.png" width="600">
+</td></tr></table>
+
 
 #### User Homepage
-<img src="/docs/screenshots/HomePage.png" width="600">
+<table><tr><td margin="0" padding="0">
+  <img src="/docs/screenshots/HomePage.png" width="600">
+</td></tr></table>
 
 #### User Profile
-<img src="/docs/screenshots/ProfilePage.png" width="600">
+<table><tr><td margin="0" padding="0">
+  <img src="/docs/screenshots/ProfilePage.png" width="600">
+</td></tr></table>
 
 #### User Profile - Following
-<img src="/docs/screenshots/ProfilePage-Following.png" width="600">
+<table><tr><td margin="0" padding="0">
+  <img src="/docs/screenshots/ProfilePage-Following.png" width="600">
+</td></tr></table>
 
 ## Features
  * Sign-Up and Log-In with Username
@@ -30,8 +43,6 @@ Connect with Friends on [Kitter](http://kitter.club/)
  * View Homepage with Followed Users Posts 
  * View User Profile with Users Posts
  * View list of followed & following Users on User Profile
-
-## Technical Details
 
 ## Todo
   - [ ] Add top user posts to landing page
