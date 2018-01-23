@@ -40,6 +40,8 @@ export function fetchPosts(id, category, lastPostDate) {
   return function fetchPostsThunk(dispatch) {
     if (lastPostDate === 'first fetch') {
       dispatch({ type: 'GET_POSTS', category });
+    } else if (lastPostDate === undefined) {
+      dispatch({ type: 'GET_POSTS', category: 'Featured' });
     } else {
       dispatch({ type: 'LOAD_POSTS' });
     }
