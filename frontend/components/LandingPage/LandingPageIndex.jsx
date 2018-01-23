@@ -6,24 +6,25 @@ import LoginTile from '../AuthPages/LoginTile';
 import PostTile from './PostTile';
 import GuestLoginButton from '../AuthPages/GuestLoginButton';
 import { clearError } from '../../actions/AuthActions';
+import { fetchPosts } from '../../actions/PostActions';
 
-const featuredPosts = [
-  {
-    text: 'A cat can jump even 7 times as high as it is tall.',
-    image: 'https://images.unsplash.com/photo-1475518112798-86ae358241eb?auto=format&fit=crop&w=1950&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
-    author: 'Cat-Facts',
-  },
-  {
-    text: 'It is estimated that cats can make over 60 different sounds.',
-    image: 'https://images.unsplash.com/photo-1471874276752-65e2d717604a?auto=format&fit=crop&w=1950&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
-    author: 'Cat-Facts',
-  },
-  {
-    text: 'Should I knock over the christmas tree or nap all day?',
-    image: 'https://images.unsplash.com/photo-1498336179775-9836baef8fdf?auto=format&fit=crop&w=1950&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
-    author: 'Bad-Kitty',
-  },
-];
+// const featuredPosts = [
+//   {
+//     text: 'A cat can jump even 7 times as high as it is tall.',
+//     image: 'https://images.unsplash.com/photo-1475518112798-86ae358241eb?auto=format&fit=crop&w=1950&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+//     author: 'Cat-Facts',
+//   },
+//   {
+//     text: 'It is estimated that cats can make over 60 different sounds.',
+//     image: 'https://images.unsplash.com/photo-1471874276752-65e2d717604a?auto=format&fit=crop&w=1950&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+//     author: 'Cat-Facts',
+//   },
+//   {
+//     text: 'Should I knock over the christmas tree or nap all day?',
+//     image: 'https://images.unsplash.com/photo-1498336179775-9836baef8fdf?auto=format&fit=crop&w=1950&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+//     author: 'Bad-Kitty',
+//   },
+// ];
 
 class LandingPageIndex extends React.Component {
   componentDidMount() {
@@ -34,9 +35,11 @@ class LandingPageIndex extends React.Component {
         this.props.updateError();
       }
     }
+    this.props.getPosts();
   }
 
   render() {
+    const { list } = this.props.PostReducer.posts;
     return (
       <div id="landingPage">
         <div className="header">
@@ -54,7 +57,7 @@ class LandingPageIndex extends React.Component {
           <div className="container">
             <div className="title">Featured Posts</div>
             <div className="tiles">
-              {featuredPosts.map(post => <PostTile key={post.text} post={post} />)}
+              {list.map(post => <PostTile key={post._id} post={post} />)}
               <LoginTile />
             </div>
           </div>
@@ -73,17 +76,22 @@ LandingPageIndex.contextTypes = {
 
 LandingPageIndex.propTypes = {
   updateError: PropTypes.func.isRequired,
+  getPosts: PropTypes.func.isRequired,
   AuthReducer: PropTypes.object.isRequired,
+  PostReducer: PropTypes.object.isRequired,
 };
 
-function mapStateToProps({ AuthReducer }) {
-  return { AuthReducer };
+function mapStateToProps({ AuthReducer, PostReducer }) {
+  return { AuthReducer, PostReducer };
 }
 
 const mapDispatchToProps = dispatch => (
   {
     updateError: () => {
       dispatch(clearError());
+    },
+    getPosts: () => {
+      dispatch(fetchPosts());
     },
   }
 );

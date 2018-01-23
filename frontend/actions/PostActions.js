@@ -1,4 +1,5 @@
 import {
+  getFeaturedPosts,
   getHomepagePosts,
   getUserPosts,
   addPost,
@@ -15,8 +16,10 @@ import { updateUserPostCount } from './UserActions';
 function getPosts(category, userId, lastPostDate) {
   if (category === 'All') {
     return getHomepagePosts(lastPostDate);
+  } else if (category === 'User') {
+    return getUserPosts(userId, lastPostDate);
   }
-  return getUserPosts(userId, lastPostDate);
+  return getFeaturedPosts();
 }
 
 function getPostCount(category, userId) {
@@ -40,10 +43,15 @@ export function fetchPosts(id, category, lastPostDate) {
     } else {
       dispatch({ type: 'LOAD_POSTS' });
     }
-    return getPosts(category, id, lastPostDate).then(response => (
-      getPostCount(category, id).then((res) => {
-        dispatch({ type: 'SET_POSTS', posts: response.posts, total: res.count });
-      })
+    if (id !== undefined) {
+      return getPosts(category, id, lastPostDate).then(response => (
+        getPostCount(category, id).then((res) => {
+          dispatch({ type: 'SET_POSTS', posts: response.posts, total: res.count });
+        })
+      ));
+    }
+    return getPosts().then(response => (
+      dispatch({ type: 'SET_POSTS', posts: response.posts, total: response.posts.length })
     ));
   };
 }

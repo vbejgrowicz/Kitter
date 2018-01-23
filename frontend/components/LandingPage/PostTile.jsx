@@ -6,9 +6,9 @@ function PostTile({ post }) {
     <div className="tile">
       <div className="post-data">
         <div className="post">{post.text}</div>
-        <div className="author">{post.author}</div>
+        <div className="author">@{post.author.username}</div>
       </div>
-      <div className="image" style={{ backgroundImage: `url(${post.image})` }} />
+      <div className="image" style={{ backgroundImage: `url(${post.author.image})` }} />
     </div>
   );
 }
