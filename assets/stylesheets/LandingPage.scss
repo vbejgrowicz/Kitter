@@ -83,14 +83,23 @@
           border-radius: 5px;
           margin: 5px;
           overflow: hidden;
+          // box-shadow: 0px 0px 5px 1px #AAB8C2;
+          border: 1px solid #C7C7C7;
 
           .post-data {
             padding: 10px;
+            border-bottom: 1px solid #C7C7C7;
 
             .post {
               color: black;
               font-weight: bold;
               font-size: 14px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              display: -webkit-box;
+              margin-bottom: 5px;
             }
 
             .author {
@@ -114,6 +123,7 @@
           padding: 60px 20px;
           font-size: 21px;
           font-weight: bold;
+          border-color: $secondary-color;
 
           input {
             line-height: 20px;

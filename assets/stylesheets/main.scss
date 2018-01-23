@@ -21,16 +21,9 @@ html, body, div, span, p, a, i, ul, li button, link, hr {
 body {
   background-color: $primary-color;
   color: $secondary-color;
-  $mobile-width: 600px;
 
-  @media (max-width: $mobile-width) {
-    #auth {
-      height: 100%;
-    }
-  }
   #auth {
     background-color: $white;
-    height: 100vh;
   }
 }
 
