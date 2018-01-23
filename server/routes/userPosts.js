@@ -6,6 +6,28 @@ const router = express.Router();
 
 const fetchCount = 10;
 
+// GET TOP POSTS
+router.get('/', (req, res) => {
+  Post.aggregate([
+    {
+      $project: {
+        like_count: { $size: '$likes' },
+      },
+    },
+    { $sort: { like_count: -1 } },
+    { $limit: 3 },
+  ], (err, topPosts) => {
+    Post.find({ _id: { $in: topPosts } }).populate('author').exec((error, posts) => {
+      if (error) {
+        res.status(400).send(error);
+      } else {
+        res.json({ posts });
+      }
+    });
+  });
+});
+
+
 // GET USER POSTS
 router.get('/:userID/:lastDate', (req, res) => {
   const findQuery = {};

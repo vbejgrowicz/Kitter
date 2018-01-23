@@ -89,6 +89,11 @@ export const unfollow = user => (
 );
 
 // User Post Routes
+export const getFeaturedPosts = () => (
+  fetch('/api/user/posts', { method: 'GET', credentials: 'same-origin' })
+    .then(resp => resp.json())
+);
+
 export const getUserPosts = (id, lastPostDate) => (
   fetch(`/api/user/posts/${id}/${lastPostDate}`, { method: 'GET', credentials: 'same-origin' })
     .then(resp => resp.json())
