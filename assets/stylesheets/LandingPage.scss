@@ -83,7 +83,6 @@
           border-radius: 5px;
           margin: 5px;
           overflow: hidden;
-          // box-shadow: 0px 0px 5px 1px #AAB8C2;
           border: 1px solid #C7C7C7;
 
           .post-data {
@@ -100,10 +99,16 @@
               -webkit-box-orient: vertical;
               display: -webkit-box;
               margin-bottom: 5px;
+              a {
+                color: $secondary-color;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
             }
 
             .author {
-              font-size: 12px;
+              font-size: 13px;
               color: #66757F;
             }
           }
