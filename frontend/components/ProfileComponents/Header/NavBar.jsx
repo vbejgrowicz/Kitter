@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import UserImage from '../UserImage';
 import UserDropdown from './UserDropdown';
 import PostModal from './PostModal';
@@ -31,7 +31,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    return (
+    return this.props.user._id !== null ? (
       <div>
         <div id="nav">
           <div className="link-container">
@@ -59,6 +59,20 @@ class NavBar extends React.Component {
         {this.state.Meow && (
           <PostModal onClose={() => this.handleClick('Meow')} ignoreClose={ignoreClose} />
         )}
+      </div>
+    ) : (
+      <div id="nav">
+        <div className="link-container">
+          <div className="left">
+            <NavLink to="/">
+              <div className="brand-icon" />
+            </NavLink>
+          </div>
+          <div className="center" />
+          <div className="right">
+            <Link to="/login"><button className="login-btn">Log in</button></Link>
+          </div>
+        </div>
       </div>
     );
   }
