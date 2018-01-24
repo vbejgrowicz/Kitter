@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     { $sort: { like_count: -1 } },
     { $limit: 3 },
   ], (err, topPosts) => {
-    Post.find({ _id: { $in: topPosts } }).populate('author').exec((error, posts) => {
+    Post.find({ _id: { $in: topPosts } }, { 'likes._id': 0 }, { sort: { date: -1 } }).populate('author').exec((error, posts) => {
       if (error) {
         res.status(400).send(error);
       } else {
