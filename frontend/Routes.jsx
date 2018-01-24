@@ -24,12 +24,19 @@ class Routes extends React.Component {
   }
 
   render() {
+    const ProfileRoutes = () => (
+      <div>
+        <NavBar user={this.props.AuthReducer.user} />
+        <Route exact path="/" component={Homepage} />
+        <Route path="/:username" component={ProfilePage} />
+      </div>
+    );
+
     const UserRoutes = () => (
       <Switch>
         <Redirect from="/signup" to="/" />
         <Redirect from="/login" to="/" />
-        <Route exact path="/" component={Homepage} />
-        <Route path="/:username" component={ProfilePage} />
+        <ProfileRoutes />
       </Switch>
     );
 
@@ -38,7 +45,7 @@ class Routes extends React.Component {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/signup" component={SignUpPage} />
-        <Redirect from="/:username" to="/login" />
+        <ProfileRoutes />
       </Switch>
     );
 
@@ -48,10 +55,7 @@ class Routes extends React.Component {
     ) : (
       <Router>
         {this.requireLoggedIn() ? (
-          <div>
-            <NavBar user={this.props.AuthReducer.user} />
-            <UserRoutes />
-          </div>
+          <UserRoutes />
         ) : (
           <NoUserRoutes />
         )}
