@@ -119,6 +119,13 @@
             background-position-x: center;
             background-size: cover;
             background-repeat: no-repeat;
+
+            &.default {
+              background-color: #C9C8C8;
+              background-image: $logo-grey;
+              background-size: 70%;
+              background-position: center;
+            }
           }
           &.with-cursor {
             cursor: pointer;

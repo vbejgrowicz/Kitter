@@ -13,13 +13,14 @@ function PostTile({ post }, contextTypes) {
   const linkProps = {
     onClick: event => event.stopPropagation(),
   };
+  const imageClass = post.author.image ? ('image') : ('default image');
   return (
     <div className="tile with-cursor" onClick={redirect}>
       <div className="post-data">
         <Linkify className="post" options={{ attributes: linkProps }}>{post.text}</Linkify>
         <div className="author">@{post.author.username}</div>
       </div>
-      <div className="image" style={{ backgroundImage: `url(${post.author.image})` }} />
+      <div className={imageClass} style={post.author.image && { backgroundImage: `url(${post.author.image})` }} />
     </div>
   );
 }
