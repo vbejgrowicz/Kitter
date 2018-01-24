@@ -15,6 +15,7 @@
     display: flex;
     width: auto;
     margin: 0 40px;
+    height: 47px;
     $small-width: 520px;
 
     @media (max-width: $small-width) {
@@ -30,6 +31,15 @@
       vertical-align: middle;
       line-height: 47px;
     }
+  }
+
+  .brand-icon {
+    height: 20px;
+    width: 20px;
+    margin-top: 13px;
+    background-image: $logo-blue;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .left {
@@ -52,13 +62,9 @@
 
   .center {
     text-align: center;
+
     .brand-icon {
-      height: 20px;
-      width: 20px;
       margin: 13px auto;
-      background-image: $logo-blue;
-      background-repeat: no-repeat;
-      background-size: cover;
     }
   }
 
@@ -70,6 +76,9 @@
 
     .user-image {
       cursor: pointer;
+    }
+    a {
+      margin: auto 0;
     }
   }
 }

@@ -67,6 +67,18 @@ button {
     }
   }
 
+  &.login-btn {
+    width: 70px;
+    height: 32px;
+    background-color: #4AB3F4;
+    color: $white;
+    border: none;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+
   &.upload {
     width: 80px;
     background-color: #4AB3F4;
