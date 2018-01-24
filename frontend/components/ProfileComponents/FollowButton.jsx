@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { followUser, unfollowUser } from '../../actions/AuthActions';
 
-function FollowButton({ user, AuthReducer, follow, unfollow }) {
+function FollowButton({ user, AuthReducer, follow, unfollow }, contextTypes) {
   const authUser = AuthReducer.user;
   const { list } = authUser.following;
   const isFollowing = list.find(follower => follower._id === user._id);
 
-  const handleClick = () => (
-    isFollowing ? (
-      unfollow(user)
-    ) : (
-      follow(user)
-    )
-  );
+  const handleClick = () => {
+    if (authUser._id === null) {
+      contextTypes.router.history.push('/login');
+    } else if (isFollowing) {
+      unfollow(user);
+    } else {
+      follow(user);
+    }
+  };
 
   return authUser._id !== user._id && (
     <div className="follow-button-container">
@@ -27,6 +29,10 @@ function FollowButton({ user, AuthReducer, follow, unfollow }) {
     </div>
   );
 }
+
+FollowButton.contextTypes = {
+  router: PropTypes.object.isRequired,
+};
 
 FollowButton.propTypes = {
   user: PropTypes.object.isRequired,
