@@ -120,6 +120,9 @@
             background-size: cover;
             background-repeat: no-repeat;
           }
+          &.with-cursor {
+            cursor: pointer;
+          }
         }
 
         .login {
