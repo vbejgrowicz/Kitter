@@ -1,6 +1,7 @@
 import {
   SET_AUTH_USER,
   AUTH_FAIL,
+  SET_LOGGING_OUT,
   SET_ERROR,
   REMOVE_ERROR,
   FOLLOW_USER,
@@ -49,6 +50,14 @@ function AuthReducer(state = initialState, action) {
         user: {
           ...state.user,
           isLoading: false,
+        },
+      };
+    case SET_LOGGING_OUT:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          isLoading: true,
         },
       };
     case SET_ERROR:

@@ -46,10 +46,12 @@ export function signUpUser(name, username, password) {
   };
 }
 
-export function logOutUser() {
+export function logOutUser(route) {
   return function logOutUserThunk(dispatch) {
     logOut().then((response) => {
       const { user } = response;
+      dispatch({ type: 'SET_LOGGING_OUT', isLoading: true });
+      route();
       dispatch({ type: 'SET_AUTH_USER', user, following: [] });
     });
   };

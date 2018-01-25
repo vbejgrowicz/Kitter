@@ -7,6 +7,7 @@ export const AUTH_FAIL = 'AUTH_FAIL';
 export const FOLLOW_USER = 'FOLLOW_USER';
 export const UNFOLLOW_USER = 'UNFOLLOW_USER';
 export const SET_AUTH_USER_IMAGE = 'SET_AUTH_USER_IMAGE';
+export const SET_LOGGING_OUT = 'SET_LOGGING_OUT';
 
 
 // User Post Actions

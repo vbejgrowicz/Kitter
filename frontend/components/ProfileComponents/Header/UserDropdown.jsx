@@ -6,8 +6,11 @@ import { logOutUser } from '../../../actions/AuthActions';
 
 function UserDropdown({
   onClose, ignoreClose, AuthReducer, updateUser,
-}) {
+}, contextTypes) {
   const { username, name } = AuthReducer.user;
+  const routeHome = () => {
+    contextTypes.router.history.push('/');
+  };
   return (
     <div id="user-dropdown" onClick={onClose}>
       <div id="dropdown" onClick={ignoreClose}>
@@ -27,14 +30,18 @@ function UserDropdown({
             </Link>
           </li>
           <hr />
-          <li className="logout link" onClick={updateUser}>
-            <div>Log Out</div>
+          <li className="logout link" onClick={() => updateUser(routeHome)}>
+            <div >Log Out</div>
           </li>
         </ul>
       </div>
     </div>
   );
 }
+
+UserDropdown.contextTypes = {
+  router: PropTypes.object.isRequired,
+};
 
 UserDropdown.propTypes = {
   onClose: PropTypes.func.isRequired,
@@ -50,8 +57,8 @@ function mapStateToProps({ AuthReducer }) {
 
 const mapDispatchToProps = dispatch => (
   {
-    updateUser: () => {
-      dispatch(logOutUser());
+    updateUser: (route) => {
+      dispatch(logOutUser(route));
     },
   }
 );
