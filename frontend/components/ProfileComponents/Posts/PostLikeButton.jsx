@@ -3,14 +3,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updatePost } from '../../../actions/PostActions';
 
-function PostLikeButton({ post, AuthReducer, updateLikes }) {
+function PostLikeButton({ post, AuthReducer, updateLikes }, contextTypes) {
   const authUser = AuthReducer.user;
   const { likes } = post;
   const isLiked = likes.find(user => user === authUser._id);
 
+  const handleClick = () => {
+    if (authUser._id === null) {
+      contextTypes.router.history.push('/login');
+    } else {
+      updateLikes(isLiked, post);
+    }
+  };
+
   return (
     <div className={isLiked ? 'unlike button' : 'like button'}>
-      <button onClick={() => updateLikes(isLiked, post)}>
+      <button onClick={handleClick}>
         {isLiked ?
           <i className="fa fa-heart" aria-hidden="true" />
         :
@@ -21,6 +29,10 @@ function PostLikeButton({ post, AuthReducer, updateLikes }) {
     </div>
   );
 }
+
+PostLikeButton.contextTypes = {
+  router: PropTypes.object.isRequired,
+};
 
 PostLikeButton.propTypes = {
   post: PropTypes.object.isRequired,
