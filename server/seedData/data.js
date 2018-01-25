@@ -23,6 +23,9 @@ const data = [
       'TheRealTonyTheTiger',
       'BigFluff2',
       'MittensKittens',
+      'SylvesterTheCat',
+      'theOnlyOne',
+      'futureKing',
     ],
   },
   {
@@ -92,6 +95,9 @@ const data = [
       'JonTheSnowLeopard',
       'LeoTheLion',
       'TheRealTonyTheTiger',
+      'SylvesterTheCat',
+      'futureKing',
+      'theOnlyOne',
     ],
   },
   {
@@ -408,6 +414,7 @@ const data = [
     follows: [
       'allThingsCats',
       'BigCats',
+      'SylvesterTheCat',
     ],
   },
   {
@@ -457,6 +464,7 @@ const data = [
       'BigCats',
       'JonTheSnowLeopard',
       'TheRealTonyTheTiger',
+      'futureKing',
     ],
   },
   {
@@ -467,13 +475,28 @@ const data = [
     posts: [
       {
         text: 'Hello! I just joined Kitter!',
-        date: new Date(2018, 0, 1, 1, 2),
+        date: new Date(2017, 11, 20, 1, 2),
         likes: ['TheRealBadKitty'],
+      },
+      {
+        text: 'Thank you all for your support, please continue to support us! Adopt a Tiger Today! https://goo.gl/e9bDFV',
+        date: new Date(2017, 11, 24, 3, 8),
+        likes: ['TheRealBadKitty', 'LeoTheLion', 'JonTheSnowLeopard'],
+      },
+      {
+        text: 'As top predators, we help to keep the environment healthy...',
+        date: new Date(2017, 11, 27, 12, 1),
+        likes: [],
+      },
+      {
+        text: '...Without enough predators to prey on the animals, the herbivores can overgraze and damage the land, disrupting the balance of the local environment.',
+        date: new Date(2017, 11, 27, 12, 2),
+        likes: ['LeoTheLion'],
       },
       {
         text: 'Please help protect my friends! https://goo.gl/e9bDFV',
         date: new Date(2018, 0, 1, 1, 8),
-        likes: ['LeoTheLion', 'TheRealBadKitty', 'Guest', 'BigCats', 'allThingsCats', 'BigFluff2'],
+        likes: ['LeoTheLion', 'TheRealBadKitty', 'Guest', 'BigCats'],
       },
       {
         text: "It's a GRRR-EAT start, our numbers are increasing but we need your help to make sure that tigers can thrive again!",
@@ -506,21 +529,6 @@ const data = [
         likes: ['LeoTheLion', 'TheRealBadKitty'],
       },
       {
-        text: 'Thank you all for your support, please continue to support us! Adopt a Tiger Today! https://goo.gl/e9bDFV',
-        date: new Date(2018, 0, 8, 3, 8),
-        likes: ['TheRealBadKitty', 'LeoTheLion', 'JonTheSnowLeopard'],
-      },
-      {
-        text: 'As top predators, we help to keep the environment healthy...',
-        date: new Date(2018, 0, 9, 12, 1),
-        likes: [],
-      },
-      {
-        text: '...Without enough predators to prey on the animals, the herbivores can overgraze and damage the land, disrupting the balance of the local environment.',
-        date: new Date(2018, 0, 9, 12, 2),
-        likes: ['LeoTheLion'],
-      },
-      {
         text: 'Adopt a Tiger today! https://goo.gl/e9bDFV',
         date: new Date(2018, 0, 10, 0),
         likes: ['LeoTheLion', 'TheRealBadKitty', 'Guest'],
@@ -530,6 +538,7 @@ const data = [
       'allThingsCats',
       'BigCats',
       'LeoTheLion',
+      'theOnlyOne',
     ],
   },
   {
@@ -566,6 +575,140 @@ const data = [
       'allThingsCats',
       'TheRealBadKitty',
       'BigFluff2',
+    ],
+  },
+  {
+    name: 'Sylvester',
+    username: 'SylvesterTheCat',
+    password: 'Password',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1516896185221',
+    posts: [
+      {
+        text: "One thing I've learned while chasing the bird...Avoid the dog!",
+        date: new Date(2018, 0, 4, 12, 1),
+        likes: ['Guest', 'TheRealBadKitty'],
+      },
+      {
+        text: 'Suffering succotash!',
+        date: new Date(2018, 0, 7, 12, 1),
+        likes: ['BigFluff2', 'MittensKittens'],
+      },
+      {
+        text: "Where there's cheese, there's bound to be mouses.",
+        date: new Date(2018, 0, 9, 12, 1),
+        likes: ['allThingsCats'],
+      },
+      {
+        text: 'Being a cat is easy if you remember these thsimple rulesth - cat chases bird, cat catches bird, cat eats bird.',
+        date: new Date(2018, 0, 11, 12, 1),
+        likes: ['LeoTheLion'],
+      },
+    ],
+    follows: [
+      'LeoTheLion',
+      'futureKing',
+      'theOnlyOne',
+    ],
+  },
+  {
+    name: 'Tigger',
+    username: 'theOnlyOne',
+    password: 'Password',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1516897494808',
+    posts: [
+      {
+        text: "Hello, Kitter! I'm Tigger. T-I-double-guh-er. That spells Tigger.",
+        date: new Date(2018, 0, 1, 12, 1),
+        likes: ['TheRealBadKitty', 'Guest'],
+      },
+      {
+        text: 'The wonderful thing about tiggers, Is tiggers are wonderful things...',
+        date: new Date(2018, 0, 3, 12, 1),
+        likes: [],
+      },
+      {
+        text: '...Their tops are made out of rubber, Their bottoms are made out of springs...',
+        date: new Date(2018, 0, 3, 12, 2),
+        likes: ['BigFluff2', 'MittensKittens'],
+      },
+      {
+        text: '...They’re bouncy, trouncy, flouncy, pouncy, fun, fun, fun, fun, fun...',
+        date: new Date(2018, 0, 3, 12, 3),
+        likes: ['allThingsCats'],
+      },
+      {
+        text: "...But the most wonderful thing about tiggers is I'm the only one!...",
+        date: new Date(2018, 0, 3, 12, 4),
+        likes: ['LeoTheLion', 'JonTheSnowLeopard'],
+      },
+      {
+        text: "...I'mmmmmmmmmmmmm the only one! Grr.",
+        date: new Date(2018, 0, 3, 12, 5),
+        likes: ['LeoTheLion', 'JonTheSnowLeopard'],
+      },
+      {
+        text: "Tiggers don't jump, they bounce!",
+        date: new Date(2018, 0, 6, 12, 4),
+        likes: ['Guest'],
+      },
+      {
+        text: "Well, I gotta go for now. I've got a lot of bouncing to do! Hoo-hoo-hoo! T-T-F-N: ta-ta for now!",
+        date: new Date(2018, 0, 15, 12, 4),
+        likes: [],
+      },
+    ],
+    follows: [
+      'SylvesterTheCat',
+      'MittensKittens',
+      'TheRealBadKitty',
+      'TheRealTonyTheTiger',
+      'BigFluff2',
+      'futureKing',
+      'Guest',
+    ],
+  },
+  {
+    name: 'Simba',
+    username: 'futureKing',
+    password: 'Password',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1516898882634',
+    posts: [
+      {
+        text: "I'm gonna be King of Pride Rock. https://goo.gl/d7dDy9",
+        date: new Date(2018, 0, 2, 12, 1),
+        likes: ['TheRealBadKitty', 'Guest', 'LeoTheLion', 'JonTheSnowLeopard', 'theOnlyOne', 'TheRealTonyTheTiger'],
+      },
+      {
+        text: "My dad just showed me the kingdom and I'm gonna rule it all!",
+        date: new Date(2018, 0, 4, 12, 7),
+        likes: [],
+      },
+      {
+        text: 'Danger? Hah! I walk on the wild side. I laugh in the face of danger. Ha ha ha ha!',
+        date: new Date(2018, 0, 5, 12, 2),
+        likes: [],
+      },
+      {
+        text: "I'm so hungry I could eat a whole zebra",
+        date: new Date(2018, 0, 8, 12, 3),
+        likes: ['allThingsCats', 'TheRealBadKitty'],
+      },
+      {
+        text: 'No one saying do this, No one saying be there, No one saying stop that, No one saying see here...',
+        date: new Date(2018, 0, 10, 12, 4),
+        likes: [],
+      },
+      {
+        text: '...Free to run around all day, Free to do it all my way!',
+        date: new Date(2018, 0, 10, 12, 5),
+        likes: ['SylvesterTheCat', 'theOnlyOne', 'Guest'],
+      },
+    ],
+    follows: [
+      'SylvesterTheCat',
+      'TheRealBadKitty',
+      'theOnlyOne',
+      'Guest',
     ],
   },
 ];
