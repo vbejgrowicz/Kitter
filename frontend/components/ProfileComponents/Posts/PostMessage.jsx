@@ -9,12 +9,13 @@ class PostMessage extends React.Component {
       () => this.closeMessage(),
       3000,
     );
-    setTimeout(() => this.message.classList.add('open'), 0);
+    this.messageOpen = setTimeout(() => this.message.classList.add('open'), 0);
   }
 
   componentWillUnmount() {
     clearInterval(this.messageTimeout);
     clearInterval(this.removeMessageTimeout);
+    clearTimeout(this.messageOpen);
   }
 
   closeMessage() {
