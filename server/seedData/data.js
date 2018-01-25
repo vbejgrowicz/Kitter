@@ -10,7 +10,7 @@ const data = [
       {
         text: 'Hello Kitter!!',
         date: new Date(2017, 11, 30, 2),
-        likes: [],
+        likes: ['MittensKittens', 'BigFluff2'],
       },
     ],
     follows: [
@@ -62,9 +62,9 @@ const data = [
         likes: [],
       },
       {
-        text: "It's so cold out...I'm just going to go sleep under the blankets all day....zzzzzzz",
+        text: "It's so cold out...I'm just going to go sleep under the blankets all day ....zzzzzzz",
         date: new Date(2018, 0, 1, 8, 3),
-        likes: ['allThingsCats'],
+        likes: ['allThingsCats', 'BigFluff2', 'MittensKittens'],
       },
       {
         text: "Okay, so It's 3 am and I am so hungry but my humans won't wake up and I have no food... \nWhat should I do...",
@@ -80,6 +80,11 @@ const data = [
         text: "Alright they finally fed me, so I guess I'll be okay but I still think they should have fed me when I asked...",
         date: new Date(2018, 0, 5, 4),
         likes: ['LeoTheLion'],
+      },
+      {
+        text: 'Kitter is a great place to connect with @BigFluff2 and @MittensKittens!',
+        date: new Date(2018, 0, 20, 4),
+        likes: ['Guest', 'MittensKittens', 'BigFluff2', 'LeoTheLion', 'TheRealTonyTheTiger', 'allThingsCats'],
       },
     ],
     follows: [
@@ -193,7 +198,7 @@ const data = [
       {
         text: 'Cats sleep 16 hours of any given day.',
         date: new Date(2018, 0, 10, 2),
-        likes: ['TheRealBadKitty', 'TheRealTonyTheTiger', 'GrumpyCat'],
+        likes: ['TheRealBadKitty', 'TheRealTonyTheTiger', 'GrumpyCat', 'BigFluff2', 'MittensKittens', 'BigCats'],
       },
     ],
     follows: [
@@ -424,7 +429,7 @@ const data = [
       {
         text: 'Please help my friends, Adopt a Lion today! https://goo.gl/knrEMd',
         date: new Date(2018, 0, 2, 4),
-        likes: ['Guest', 'TheRealBadKitty', 'TheRealTonyTheTiger', 'JonTheSnowLeopard', 'allThingsCats', 'BigCats'],
+        likes: ['Guest', 'BigFluff2', 'TheRealBadKitty', 'allThingsCats', 'BigCats'],
       },
       {
         text: 'Though lions still exist in 27 African countries and one Asian country, only seven countries are known to each contain more than 1,000 lions.',
@@ -444,7 +449,7 @@ const data = [
       {
         text: 'Just over a century ago, there were more than 200,000 wild lions living in Africa. Today, there are only about 20,000 of us.',
         date: new Date(2018, 0, 10, 11, 9),
-        likes: ['Guest'],
+        likes: ['BigCats'],
       },
     ],
     follows: [
@@ -468,7 +473,7 @@ const data = [
       {
         text: 'Please help protect my friends! https://goo.gl/e9bDFV',
         date: new Date(2018, 0, 1, 1, 8),
-        likes: ['LeoTheLion', 'TheRealBadKitty', 'Guest'],
+        likes: ['LeoTheLion', 'TheRealBadKitty', 'Guest', 'BigCats', 'allThingsCats', 'BigFluff2'],
       },
       {
         text: "It's a GRRR-EAT start, our numbers are increasing but we need your help to make sure that tigers can thrive again!",
@@ -483,7 +488,7 @@ const data = [
       {
         text: 'At least 3,890 of us remain in the wild, but much more work is needed to protect our species that’s still vulnerable to extinction.',
         date: new Date(2018, 0, 2, 2, 1),
-        likes: ['Guest', 'TheRealBadKitty', 'LeoTheLion', 'JonTheSnowLeopard', 'allThingsCats', 'BigCats'],
+        likes: ['Guest', 'TheRealBadKitty'],
       },
       {
         text: 'Our catastrophic population decline is driven by a range of threats, including poaching for the illegal wildlife trade, ...',
@@ -536,7 +541,7 @@ const data = [
       {
         text: 'Hello! @TheRealBadKitty told me about Kitter!',
         date: new Date(2017, 10, 30, 12, 1),
-        likes: ['TheRealBadKitty'],
+        likes: ['TheRealBadKitty', 'allThingsCats', 'Guest'],
       },
     ],
     follows: [
