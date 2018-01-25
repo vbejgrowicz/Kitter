@@ -46,9 +46,10 @@ Connect with Friends on [Kitter](http://kitter.club/)
  * View list of followed & following Users on User Profile
 
 ## Todo
-  - [ ] Add top user posts to landing page
+  - [X] Add top user posts to landing page
   - [ ] Add a search to find users
   - [ ] Add hashtags and show trending topics
+  - [ ] Add retweet functionality
 
 ## Documentation
 [Minimum Viable Product](./docs/README.md)
