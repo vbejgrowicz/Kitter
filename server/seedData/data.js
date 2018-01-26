@@ -26,6 +26,10 @@ const data = [
       'SylvesterTheCat',
       'theOnlyOne',
       'futureKing',
+      'Garfield',
+      'Tom',
+      'GaryTheSnail',
+      'TheCatInTheHat',
     ],
   },
   {
@@ -98,6 +102,7 @@ const data = [
       'SylvesterTheCat',
       'futureKing',
       'theOnlyOne',
+      'Tom',
     ],
   },
   {
@@ -210,6 +215,8 @@ const data = [
     follows: [
       'TheRealBadKitty',
       'BigCats',
+      'BigFluff2',
+      'MittensKittens',
     ],
   },
   {
@@ -397,7 +404,7 @@ const data = [
         likes: ['LeoTheLion'],
       },
     ],
-    follows: [],
+    follows: ['Garfield'],
   },
   {
     name: 'Jon Snow',
@@ -410,11 +417,27 @@ const data = [
         date: new Date(2017, 10, 30, 12, 1),
         likes: [],
       },
+      {
+        text: 'Please help protect my friends! https://goo.gl/Vs16i4',
+        date: new Date(2017, 11, 20, 12, 1),
+        likes: ['LeoTheLion', 'TheRealTonyTheTiger'],
+      },
+      {
+        text: 'Winter is Coming.',
+        date: new Date(2017, 11, 30, 12, 1),
+        likes: ['TheRealBadKitty', 'Guest'],
+      },
+      {
+        text: 'The night is dark and full of terrors.',
+        date: new Date(2018, 0, 10, 12, 1),
+        likes: ['Tom'],
+      },
     ],
     follows: [
       'allThingsCats',
       'BigCats',
       'SylvesterTheCat',
+      'Garfield',
     ],
   },
   {
@@ -539,6 +562,8 @@ const data = [
       'BigCats',
       'LeoTheLion',
       'theOnlyOne',
+      'Tom',
+      'futureKing',
     ],
   },
   {
@@ -557,6 +582,8 @@ const data = [
       'TheRealBadKitty',
       'allThingsCats',
       'MittensKittens',
+      'GaryTheSnail',
+      'theOnlyOne',
     ],
   },
   {
@@ -575,6 +602,8 @@ const data = [
       'allThingsCats',
       'TheRealBadKitty',
       'BigFluff2',
+      'SylvesterTheCat',
+      'Tom',
     ],
   },
   {
@@ -619,7 +648,7 @@ const data = [
       {
         text: "Hello, Kitter! I'm Tigger. T-I-double-guh-er. That spells Tigger.",
         date: new Date(2018, 0, 1, 12, 1),
-        likes: ['TheRealBadKitty', 'Guest'],
+        likes: ['TheRealBadKitty', 'Guest', 'Tom'],
       },
       {
         text: 'The wonderful thing about tiggers, Is tiggers are wonderful things...',
@@ -664,7 +693,6 @@ const data = [
       'TheRealTonyTheTiger',
       'BigFluff2',
       'futureKing',
-      'Guest',
     ],
   },
   {
@@ -686,7 +714,7 @@ const data = [
       {
         text: 'Danger? Hah! I walk on the wild side. I laugh in the face of danger. Ha ha ha ha!',
         date: new Date(2018, 0, 5, 12, 2),
-        likes: [],
+        likes: ['Tom'],
       },
       {
         text: "I'm so hungry I could eat a whole zebra",
@@ -706,9 +734,125 @@ const data = [
     ],
     follows: [
       'SylvesterTheCat',
-      'TheRealBadKitty',
       'theOnlyOne',
-      'Guest',
+      'Tom',
+    ],
+  },
+  {
+    name: 'Tom Cat',
+    username: 'Tom',
+    password: 'Password',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1517000917413',
+    posts: [],
+    follows: [
+      'SylvesterTheCat',
+      'theOnlyOne',
+    ],
+  },
+  {
+    name: 'Gary',
+    username: 'GaryTheSnail',
+    password: 'Password',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1517003179172',
+    posts: [
+      {
+        text: 'Meow!',
+        date: new Date(2018, 0, 10, 11, 10),
+        likes: ['Tom', 'TheCatInTheHat'],
+      },
+    ],
+    follows: [
+      'LeoTheLion',
+      'JonTheSnowLeopard',
+      'futureKing',
+    ],
+  },
+  {
+    name: 'Cat',
+    username: 'TheCatInTheHat',
+    password: 'Password',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1516997151917',
+    posts: [
+      {
+        text: "I'm The Cat in the Hat, there's no doubt about that.",
+        date: new Date(2017, 11, 2, 12, 1),
+        likes: [],
+      },
+      {
+        text: 'Too wet to go out and too cold to play ball. So we sat in the house. We did nothing at all.',
+        date: new Date(2017, 12, 2, 12, 1),
+        likes: ['GrumpyCat'],
+      },
+      {
+        text: 'Look at me! Look at me! Look at me NOW! It is fun to have fun. But you have to know how.',
+        date: new Date(2018, 0, 2, 12, 1),
+        likes: ['Tom'],
+      },
+      {
+        text: 'I know it is wet and the sun is not sunny, but we can have lots of good fun that is funny.',
+        date: new Date(2018, 0, 8, 12, 1),
+        likes: ['theOnlyOne', 'SylvesterTheCat'],
+      },
+    ],
+    follows: [
+      'Garfield',
+      'theOnlyOne',
+      'SylvesterTheCat',
+      'GaryTheSnail',
+    ],
+  },
+  {
+    name: 'Garfield',
+    username: 'Garfield',
+    password: 'Password',
+    image: 'https://s3.amazonaws.com/kitter-profile-images/1516995469218',
+    posts: [
+      {
+        text: 'I hate Mondays....',
+        date: new Date(2017, 11, 11, 12, 1),
+        likes: [],
+      },
+      {
+        text: 'Supermarkets are like a giant United Nations of food, you have coffee from Brazil...',
+        date: new Date(2017, 11, 13, 12, 1),
+        likes: ['BigCats', 'BigFluff2'],
+      },
+      {
+        text: '...cheese from France, beef from Australia... And lasagna from Heaven!',
+        date: new Date(2017, 11, 13, 12, 2),
+        likes: [],
+      },
+      {
+        text: 'If I ignore the world maybe it will go away...Except for the lasagna.',
+        date: new Date(2017, 11, 17, 12, 1),
+        likes: ['GrumpyCat'],
+      },
+      {
+        text: 'Feed me.',
+        date: new Date(2017, 11, 20, 12, 1),
+        likes: ['TheRealBadKitty', 'TheRealTonyTheTiger'],
+      },
+      {
+        text: 'Another mind-numbing, run-of-the-mill Monday...',
+        date: new Date(2017, 11, 25, 12, 1),
+        likes: ['GrumpyCat'],
+      },
+      {
+        text: 'I love lasagna!',
+        date: new Date(2018, 0, 4, 12, 1),
+        likes: ['Guest'],
+      },
+      {
+        text: 'Another Monday...',
+        date: new Date(2018, 0, 8, 12, 1),
+        likes: [],
+      },
+    ],
+    follows: [
+      'SylvesterTheCat',
+      'GrumpyCat',
+      'TheCatInTheHat',
+      'theOnlyOne',
     ],
   },
 ];
