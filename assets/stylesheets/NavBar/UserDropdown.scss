@@ -5,19 +5,10 @@
   width: 100vw;
   height: 100vh;
 
-  #dropdown {
-    position: absolute;
+  .dropdown {
     top: 50px;
     right: 125px;
     width: 200px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: $white;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-    box-sizing: border-box;
-    z-index: 1;
-    color: #14171A;
-    font-size: 14px;
 
     li {
       div {
@@ -37,12 +28,6 @@
           padding-right: 5px;
       }
     }
-    .link {
-      &:hover {
-        background-color: $secondary-color;
-        color: white;
-      }
-    }
 
     :after {
       bottom: 100%;
@@ -56,14 +41,6 @@
       border-bottom-color: $white;
       border-width: 10px;
       margin-left: -10px;
-    }
-
-    hr {
-      border: 0;
-      height: 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      margin: 5px 0;
     }
   }
 }

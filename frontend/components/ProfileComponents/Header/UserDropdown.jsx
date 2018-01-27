@@ -13,7 +13,7 @@ function UserDropdown({
   };
   return (
     <div id="user-dropdown" onClick={onClose}>
-      <div id="dropdown" onClick={ignoreClose}>
+      <div className="dropdown" onClick={ignoreClose}>
         <ul>
           <li className="user-info" >
             <Link to={`/${username}`} onClick={onClose}>
