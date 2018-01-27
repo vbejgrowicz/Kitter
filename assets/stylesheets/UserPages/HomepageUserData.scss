@@ -20,6 +20,35 @@
       width: 72px;
       border-radius: 50px;
     }
+    #full-screen {
+      z-index: 2;
+    }
+    .dropdown {
+      z-index: 3;
+      position: absolute;
+      top: 120px;
+      left: 10px;
+
+      li {
+        padding: 5px 15px;
+      }
+
+      :after {
+        bottom: 100%;
+        left: 20%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: $white;
+        border-width: 10px;
+        margin-left: -10px;
+      }
+
+    }
+
     .account {
       position: absolute;
       left: 90px;

@@ -48,6 +48,10 @@
         height: 140px;
         width: 140px;
       }
+      .dropdown {
+        top: 185px;
+        left: 25px;
+      }
       .links {
         margin-left: 170px;
       }
@@ -73,6 +77,15 @@
         height: 80px;
         width: 80px;
         left: 10px;
+      }
+      .dropdown {
+        top: 140px;
+        left: 15px;
+
+        :after {
+          left: 30%;
+
+        }
       }
       .links {
         margin-left: 100px;

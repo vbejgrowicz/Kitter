@@ -15,6 +15,34 @@
     width: 210px;
   }
 
+  #full-screen {
+    z-index: 2;
+  }
+  .dropdown {
+    z-index: 3;
+    position: absolute;
+    top: 245px;
+    left: 60px;
+
+    li {
+      padding: 5px 15px;
+    }
+
+    :after {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: $white;
+      border-width: 10px;
+      margin-left: -10px;
+    }
+  }
+
   .header-info {
     background-color: $white;
     position: absolute;
