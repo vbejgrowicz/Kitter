@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import FollowButton from '../ProfileComponents/FollowButton';
-import UserImage from '../ProfileComponents/UserImage';
+import UserImage from '../ProfileComponents/Image/UserImage';
 
 function ProfileHeader({ user }) {
   return (

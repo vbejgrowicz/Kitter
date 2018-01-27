@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
-import { addUserImage } from '../../actions/AuthActions';
+import { addUserImage } from '../../../actions/AuthActions';
 
 function ignoreClose(event) {
   event.stopPropagation();

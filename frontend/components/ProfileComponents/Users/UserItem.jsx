@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import FollowButton from '../FollowButton';
-import UserImage from '../UserImage';
+import UserImage from '../Image/UserImage';
 
 function UserItem({ user }) {
   return (

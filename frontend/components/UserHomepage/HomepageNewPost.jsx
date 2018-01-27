@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NewPostForm from '../ProfileComponents/Posts/NewPostForm';
-import UserImage from '../ProfileComponents/UserImage';
+import UserImage from '../ProfileComponents/Image/UserImage';
 
 function HomepageNewPost({ user }) {
   return (

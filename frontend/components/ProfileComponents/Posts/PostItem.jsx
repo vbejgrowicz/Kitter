@@ -9,7 +9,7 @@ import { deletePost } from '../../../actions/PostActions';
 import postedTime from '../../../utils/postedTime';
 import PostOptions from './PostOptions';
 import PostLikeButton from './PostLikeButton';
-import UserImage from '../UserImage';
+import UserImage from '../Image/UserImage';
 
 mention(linkify);
 

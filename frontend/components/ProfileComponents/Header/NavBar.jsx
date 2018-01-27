@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, Link } from 'react-router-dom';
-import UserImage from '../UserImage';
+import UserImage from '../Image/UserImage';
 import UserDropdown from './UserDropdown';
 import PostModal from './PostModal';
 

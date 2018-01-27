@@ -1,35 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import UserImageDropdown from './UserImageDropdown';
 import NewUserImageForm from './NewUserImageForm';
-import defaultImage from '../../../assets/images/cat-grey.png';
+import defaultImage from '../../../../assets/images/cat-grey.png';
 
 class UserImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uploadImageModal: false,
+      imageModal: false,
+      dropdown: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  handleClick(selected) {
     if (this.props.canUpdate && (this.props.user._id === this.props.AuthReducer.user._id)) {
+      if (!this.state[selected]) {
+        this.setState({
+          imageModal: false,
+          dropdown: false,
+        });
+      }
       this.setState({
-        uploadImageModal: !this.state.uploadImageModal,
+        [selected]: !this.state[selected],
       });
     }
   }
 
+
   render() {
     const { user } = this.props;
     return (
-      <div>
-        <div className={user.image ? 'user-image user' : 'user-image default'} onClick={this.handleClick}>
+      <div className="image-container">
+        <div className={user.image ? 'user-image user' : 'user-image default'} onClick={() => this.handleClick('dropdown')}>
           <img src={user.image ? (user.image) : (defaultImage)} alt="" />
         </div>
-        {this.state.uploadImageModal && (
-          <NewUserImageForm onClose={this.handleClick} user={this.props.user} />
+        {this.state.dropdown && (
+          <UserImageDropdown onClose={() => this.handleClick('dropdown')} user={this.props.user} clickEvent={() => this.handleClick('imageModal')} />
+        )}
+        {this.state.imageModal && (
+          <NewUserImageForm onClose={() => this.handleClick('imageModal')} user={this.props.user} />
         )}
       </div>
     );
