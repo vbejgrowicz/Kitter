@@ -6,7 +6,7 @@ import LoginTile from '../AuthPages/LoginTile';
 import PostTile from './PostTile';
 import GuestLoginButton from '../AuthPages/GuestLoginButton';
 import { clearError } from '../../actions/AuthActions';
-import { fetchPosts } from '../../actions/PostActions';
+import { fetchPosts, emptyPostList } from '../../actions/PostActions';
 
 class LandingPageIndex extends React.Component {
   componentDidMount() {
@@ -16,8 +16,13 @@ class LandingPageIndex extends React.Component {
       if (currentPage !== errorPage) {
         this.props.updateError();
       }
+    } else {
+      this.props.getPosts();
     }
-    this.props.getPosts();
+  }
+
+  componentWillUnmount() {
+    this.props.removePostList();
   }
 
   render() {
@@ -59,6 +64,7 @@ LandingPageIndex.contextTypes = {
 LandingPageIndex.propTypes = {
   updateError: PropTypes.func.isRequired,
   getPosts: PropTypes.func.isRequired,
+  removePostList: PropTypes.func.isRequired,
   AuthReducer: PropTypes.object.isRequired,
   PostReducer: PropTypes.object.isRequired,
 };
@@ -74,6 +80,9 @@ const mapDispatchToProps = dispatch => (
     },
     getPosts: () => {
       dispatch(fetchPosts());
+    },
+    removePostList: () => {
+      dispatch(emptyPostList());
     },
   }
 );
