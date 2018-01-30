@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
-import { addUserImage } from '../../../actions/AuthActions';
+import { updateUserImage } from '../../../actions/AuthActions';
 
 function ignoreClose(event) {
   event.stopPropagation();
@@ -30,7 +30,7 @@ class NewUserImageForm extends React.Component {
   handleClick() {
     const formData = new FormData();
     formData.append('photo', this.state.file);
-    this.props.uploadImage(formData, this.props.user);
+    this.props.uploadImage(this.props.user, formData);
   }
 
   render() {
@@ -75,8 +75,8 @@ NewUserImageForm.propTypes = {
 
 const mapDispatchToProps = dispatch => (
   {
-    uploadImage: (imageData, user) => {
-      dispatch(addUserImage(imageData, user));
+    uploadImage: (user, imageData) => {
+      dispatch(updateUserImage(user, imageData));
     },
   }
 );
