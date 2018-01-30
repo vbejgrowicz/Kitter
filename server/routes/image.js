@@ -30,13 +30,24 @@ const upload = multer({
 });
 
 // ADD USER PROFILE IMAGE
-router.post('/profile', middleware.isLoggedin, upload.array('photo', 1), (req, res) => {
+router.put('/profile', middleware.isLoggedin, upload.array('photo', 1), (req, res) => {
   const uploadedImage = req.files[0].location;
   User.findByIdAndUpdate(req.user._id, { $set: { image: uploadedImage } }, (err) => {
     if (err) {
       res.status(400).send(err);
     } else {
       res.json({ image: uploadedImage });
+    }
+  });
+});
+
+// REMOVE USER PROFILE IMAGE
+router.put('/remove', middleware.isLoggedin, (req, res) => {
+  User.findByIdAndUpdate(req.user._id, { $set: { image: null } }, (err) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.json({ image: null });
     }
   });
 });

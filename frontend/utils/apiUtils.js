@@ -42,9 +42,17 @@ export const findUser = username => (
 // Images
 export const addProfileImage = formData => (
   fetch('/api/image/profile', {
-    method: 'POST',
+    method: 'PUT',
     credentials: 'same-origin',
     body: formData,
+  })
+    .then(resp => resp.json())
+);
+
+export const removeProfileImage = () => (
+  fetch('/api/image/remove', {
+    method: 'PUT',
+    credentials: 'same-origin',
   })
     .then(resp => resp.json())
 );
