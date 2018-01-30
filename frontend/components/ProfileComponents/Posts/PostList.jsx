@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPosts, addPendingPosts, checkPendingPosts } from '../../../actions/PostActions';
+import { fetchPosts, addPendingPosts, checkPendingPosts, emptyPostList } from '../../../actions/PostActions';
 import { updateUserPostCount } from '../../../actions/UserActions';
 import PostItem from './PostItem';
 import PostMessage from './PostMessage';
@@ -26,16 +26,14 @@ class PostList extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (
-      (this.props.PostReducer.posts.total === nextProps.PostReducer.posts.total) &&
-      (nextProps.PostReducer.posts.isLoading)
-    ) {
+    if (nextProps.PostReducer.posts.isLoading) {
       return false;
     }
     return true;
   }
 
   componentWillUnmount() {
+    this.props.removePostList();
     clearInterval(this.checkForUpdates);
     window.removeEventListener('scroll', this.onScroll);
   }
@@ -85,6 +83,7 @@ PostList.propTypes = {
   category: PropTypes.string.isRequired,
   getPosts: PropTypes.func.isRequired,
   getPendingPosts: PropTypes.func.isRequired,
+  removePostList: PropTypes.func.isRequired,
   checkPosts: PropTypes.func.isRequired,
   UserReducer: PropTypes.object.isRequired,
   PostReducer: PropTypes.object.isRequired,
@@ -98,6 +97,9 @@ const mapDispatchToProps = dispatch => (
   {
     getPosts: (id, category, lastPostDate) => {
       dispatch(fetchPosts(id, category, lastPostDate));
+    },
+    removePostList: () => {
+      dispatch(emptyPostList());
     },
     getPendingPosts: (userId) => {
       dispatch(addPendingPosts());

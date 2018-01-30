@@ -10,6 +10,7 @@ import {
   UPDATE_POST_MESSAGE,
   LIKE_POST,
   UNLIKE_POST,
+  REMOVE_POST_LIST,
 } from '../actions/types';
 
 const initialState = {
@@ -169,6 +170,15 @@ function PostReducer(state = initialState, action) {
         posts: {
           ...state.posts,
           list: removeLikeFromPost(state.posts.list, action),
+        },
+      };
+    case REMOVE_POST_LIST:
+      return {
+        ...state,
+        posts: {
+          ...state.posts,
+          list: [],
+          total: null,
         },
       };
     default:

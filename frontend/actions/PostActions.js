@@ -120,6 +120,10 @@ export const addPendingPosts = () => (
   { type: 'ADD_PENDING_POSTS' }
 );
 
+export const emptyPostList = () => (
+  { type: 'REMOVE_POST_LIST' }
+);
+
 export function updatePost(isLiked, post) {
   return function updatePostThunk(dispatch) {
     const postID = post._id;

@@ -22,6 +22,7 @@ export const ADD_PENDING_POSTS = 'ADD_PENDING_POSTS';
 export const UPDATE_POST_MESSAGE = 'UPDATE_POST_MESSAGE';
 export const LIKE_POST = 'LIKE_POST';
 export const UNLIKE_POST = 'UNLIKE_POST';
+export const REMOVE_POST_LIST = 'REMOVE_POST_LIST';
 
 // Displayed User Actions
 export const GET_USER_PROFILE = 'GET_USER_PROFILE';
