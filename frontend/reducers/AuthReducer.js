@@ -43,6 +43,10 @@ function AuthReducer(state = initialState, action) {
             list: action.following,
           },
         },
+        error: {
+          message: null,
+          page: null,
+        },
       };
     case AUTH_FAIL:
       return {
