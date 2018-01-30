@@ -1,4 +1,4 @@
-#post-delete-modal {
+#delete-modal {
   top: 0;
   left: 0;
   z-index: 2;
@@ -20,7 +20,7 @@
     .title {
       width: 90%;
       font-size: 18px;
-      padding-top: 12px;
+      padding: 12px;
       color: black;
       text-align: center;
       font-weight: bold;
@@ -37,9 +37,8 @@
       cursor: pointer;
     }
 
-    .post-container {
+    .container {
       box-sizing: border-box;
-      text-align: right;
 
       .post-item {
         padding: 15px;

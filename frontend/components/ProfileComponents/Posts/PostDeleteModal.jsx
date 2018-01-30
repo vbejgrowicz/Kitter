@@ -17,11 +17,11 @@ class PostDeleteModal extends React.Component {
       removePost,
     } = this.props;
     return (
-      <div id="post-delete-modal" role="presentation" onClick={onClose}>
+      <div id="delete-modal" role="presentation" onClick={onClose}>
         <div id="modal" role="presentation" onClick={ignoreClose}>
           <div className="title">Are you sure you want to delete this Meow?</div>
           <div className="close" onClick={onClose}>&times;</div>
-          <ul className="post-container">
+          <ul className="container">
             <PostItem post={post} />
           </ul>
           <div className="buttons-container">
