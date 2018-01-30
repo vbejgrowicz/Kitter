@@ -25,8 +25,9 @@ export function logInUser(username, password, redirectFailure) {
           dispatch({ type: 'SET_AUTH_USER', user, following: res.list });
         });
       } else {
+        const message = 'The username and password you entered did not match our records. Please double-check and try again.';
         redirectFailure();
-        dispatch({ type: 'SET_ERROR', page: '/login', message: response });
+        dispatch({ type: 'SET_ERROR', page: '/login', message });
       }
     });
   };
@@ -37,7 +38,7 @@ export function signUpUser(name, username, password) {
     const userData = { name, username, password };
     signUp(userData).then((response) => {
       const { user, message } = response;
-      if (user.username) {
+      if (user) {
         dispatch({ type: 'SET_AUTH_USER', user, following: [] });
       } else {
         dispatch({ type: 'SET_ERROR', page: '/signup', message });

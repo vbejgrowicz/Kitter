@@ -55,7 +55,7 @@ router.delete('/unfollow/:followingID', middleware.isLoggedin, (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      res.sendStatus(200);
+      res.json({ userID });
     }
   });
 });
