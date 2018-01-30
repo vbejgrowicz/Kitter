@@ -22,12 +22,19 @@ class UserImageDropdown extends React.Component {
       this.props.onClose();
     }
   }
+
   render() {
     return (
       <div>
         <div className="dropdown" ref={(c) => { this.dropdown = c; }}>
-          <li className="link" onClick={this.props.clickEvent}>Add a Profile Photo</li>
+          <li className="link" onClick={() => this.props.clickEvent('uploadImage')}>Add a Profile Photo</li>
           <hr />
+          {this.props.hasImage && (
+            <div>
+              <li className="link" onClick={() => this.props.clickEvent('removeImage')}>Remove Profile Photo</li>
+              <hr />
+            </div>
+          )}
           <li className="link" onClick={this.props.onClose}>Cancel</li>
         </div>
         <div id="full-screen" onClick={this.props.onClose} />
@@ -37,6 +44,7 @@ class UserImageDropdown extends React.Component {
 }
 
 UserImageDropdown.propTypes = {
+  hasImage: PropTypes.bool.isRequired,
   clickEvent: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 };

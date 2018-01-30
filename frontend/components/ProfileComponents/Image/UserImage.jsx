@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UserImageDropdown from './UserImageDropdown';
 import NewUserImageForm from './NewUserImageForm';
+import ImageDeleteModal from './ImageDeleteModal';
 import defaultImage from '../../../../assets/images/cat-grey.png';
 
 class UserImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageModal: false,
+      uploadImage: false,
+      removeImage: false,
       dropdown: false,
     };
     this.handleClick = this.handleClick.bind(this);
@@ -19,7 +21,8 @@ class UserImage extends React.Component {
     if (this.props.canUpdate && (this.props.user._id === this.props.AuthReducer.user._id)) {
       if (!this.state[selected]) {
         this.setState({
-          imageModal: false,
+          uploadImage: false,
+          removeImage: false,
           dropdown: false,
         });
       }
@@ -32,16 +35,20 @@ class UserImage extends React.Component {
 
   render() {
     const { user } = this.props;
+    const hasImage = user.image !== null;
     return (
       <div className="image-container">
         <div className={user.image ? 'user-image user' : 'user-image default'} onClick={() => this.handleClick('dropdown')}>
           <img src={user.image ? (user.image) : (defaultImage)} alt="" />
         </div>
         {this.state.dropdown && (
-          <UserImageDropdown onClose={() => this.handleClick('dropdown')} user={this.props.user} clickEvent={() => this.handleClick('imageModal')} />
+          <UserImageDropdown onClose={() => this.handleClick('dropdown')} hasImage={hasImage} clickEvent={this.handleClick} />
         )}
-        {this.state.imageModal && (
-          <NewUserImageForm onClose={() => this.handleClick('imageModal')} user={this.props.user} />
+        {this.state.uploadImage && (
+          <NewUserImageForm onClose={() => this.handleClick('uploadImage')} user={this.props.user} />
+        )}
+        {this.state.removeImage && (
+          <ImageDeleteModal onClose={() => this.handleClick('removeImage')} user={this.props.user} />
         )}
       </div>
     );
