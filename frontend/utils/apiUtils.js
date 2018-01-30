@@ -1,8 +1,12 @@
+const getInit = {
+  method: 'GET',
+  credentials: 'same-origin',
+};
+
+const get = route => fetch(route, getInit).then(resp => resp.json());
+
 // User
-export const checkUser = () => (
-  fetch('/api/user', { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const checkUser = () => get('/api/user');
 
 export const signUp = newUser => (
   fetch('/api/signup', {
@@ -29,15 +33,9 @@ export const logIn = user => (
     })
 );
 
-export const logOut = () => (
-  fetch('/api/logout', { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const logOut = () => get('/api/logout');
 
-export const findUser = username => (
-  fetch(`/api/users/${username}`, { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const findUser = username => get(`/api/users/${username}`);
 
 // Images
 export const addProfileImage = formData => (
@@ -58,21 +56,9 @@ export const removeProfileImage = () => (
 );
 
 // Follow
-export const getFollowers = userID => (
-  fetch(`/api/follows/followers/${userID}`, {
-    method: 'GET',
-    credentials: 'same-origin',
-  })
-    .then(resp => resp.json())
-);
+export const getFollowers = userID => get(`/api/follows/followers/${userID}`);
 
-export const getFollowing = userID => (
-  fetch(`/api/follows/following/${userID}`, {
-    method: 'GET',
-    credentials: 'same-origin',
-  })
-    .then(resp => resp.json())
-);
+export const getFollowing = userID => get(`/api/follows/following/${userID}`);
 
 export const follow = user => (
   fetch('api/follows/follow', {
@@ -97,20 +83,11 @@ export const unfollow = user => (
 );
 
 // User Post Routes
-export const getFeaturedPosts = () => (
-  fetch('/api/user/posts', { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const getFeaturedPosts = () => get('api/user/posts');
 
-export const getUserPosts = (id, lastPostDate) => (
-  fetch(`/api/user/posts/${id}/${lastPostDate}`, { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const getUserPosts = (id, lastPostDate) => get(`/api/user/posts/${id}/${lastPostDate}`);
 
-export const getNewUserPosts = (id, numOfPosts) => (
-  fetch(`/api/user/posts/new/${id}/${numOfPosts}`, { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const getNewUserPosts = (id, numOfPosts) => get(`/api/user/posts/new/${id}/${numOfPosts}`);
 
 export const addPost = post => (
   fetch('/api/user/posts', {
@@ -140,34 +117,15 @@ export const unlikePost = id => (
 );
 
 // Homepage Post Routes
-export const getHomepagePosts = lastPostDate => (
-  fetch(`/api/following/posts/${lastPostDate}`, { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const getHomepagePosts = lastPostDate => get(`/api/following/posts/${lastPostDate}`);
 
-export const getNewHomepagePosts = numOfPosts => (
-  fetch(`/api/following/posts/new/${numOfPosts}`, { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const getNewHomepagePosts = numOfPosts => get(`/api/following/posts/new/${numOfPosts}`);
 
 // Counts
-export const getNumPosts = id => (
-  fetch(`/api/count/${id}/posts`, { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const getNumPosts = id => get(`/api/count/${id}/posts`);
 
-export const getFollowingCount = id => (
-  fetch(`/api/count/${id}/following`, { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const getTotalNumPosts = () => get('/api/count/posts');
 
-export const getFollowerCount = id => (
-  fetch(`/api/count/${id}/follower`, { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const getFollowingCount = id => get(`/api/count/${id}/following`);
 
-// Counts
-export const getTotalNumPosts = () => (
-  fetch('/api/count/posts', { method: 'GET', credentials: 'same-origin' })
-    .then(resp => resp.json())
-);
+export const getFollowerCount = id => get(`/api/count/${id}/follower`);
