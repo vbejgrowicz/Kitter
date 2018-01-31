@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getUser, updateFollowCount } from '../../actions/UserActions';
+import { getUser, updateCount } from '../../actions/UserActions';
 import ProfileHeader from './ProfileHeader';
 import ProfileRoutes from './ProfileRoutes';
 import ProfileUserInfo from './ProfileUserInfo';
@@ -18,6 +18,8 @@ class ProfilePage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.username !== nextProps.match.params.username) {
       this.props.fetchUser(nextProps.match.params.username);
+    } else if (this.props.match.params !== nextProps.match.params) {
+      this.props.updateCount(this.props.UserReducer._id);
     }
   }
 
@@ -64,7 +66,7 @@ const mapDispatchToProps = dispatch => (
       dispatch(getUser(username));
     },
     updateCount: (id) => {
-      dispatch(updateFollowCount(id));
+      dispatch(updateCount(id));
     },
   }
 );

@@ -76,3 +76,10 @@ export function updateFollowCount(id) {
     });
   };
 }
+
+export function updateCount(id) {
+  return function updateCountThunk(dispatch) {
+    dispatch(updateFollowCount(id));
+    dispatch(updateUserPostCount(id));
+  };
+}
