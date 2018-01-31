@@ -12,6 +12,11 @@ const data = [
         date: new Date(2017, 11, 30, 2),
         likes: ['MittensKittens', 'BigFluff2'],
       },
+      {
+        text: 'I love connecting with all of my favorite cats on Kitter!!',
+        date: new Date(2018, 0, 10, 8),
+        likes: ['theOnlyOne'],
+      },
     ],
     follows: [
       'TheRealBadKitty',
@@ -577,6 +582,11 @@ const data = [
         date: new Date(2017, 10, 30, 12, 1),
         likes: ['TheRealBadKitty', 'allThingsCats', 'Guest'],
       },
+      {
+        text: 'Is it the weekend yet? I have some things to catch up on, like knocking my humans belongings off ledges.',
+        date: new Date(2017, 11, 20, 12, 1),
+        likes: ['TheRealBadKitty'],
+      },
     ],
     follows: [
       'TheRealBadKitty',
@@ -596,6 +606,16 @@ const data = [
         text: 'Hello Kitties, my big brother @BigFluff2 told me about Kitter!!!',
         date: new Date(2017, 10, 30, 12, 1),
         likes: ['BigFluff2'],
+      },
+      {
+        text: 'I take all my humans hair ties while she is sleeping and hide them.',
+        date: new Date(2017, 11, 29, 12, 1),
+        likes: [],
+      },
+      {
+        text: 'Today I napped and then got bored so I jumped on @BigFluff2 while he was sleeping. Meow meow.',
+        date: new Date(2018, 0, 10, 13, 1),
+        likes: ['theOnlyOne'],
       },
     ],
     follows: [
