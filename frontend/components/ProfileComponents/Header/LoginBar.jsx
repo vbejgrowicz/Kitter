@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import Search from './HeaderComponents/Search';
 
 function LoginBar() {
   return (
@@ -12,6 +13,7 @@ function LoginBar() {
         </div>
         <div className="center" />
         <div className="right">
+          <Search />
           <Link to="/login"><button className="login-btn">Log in</button></Link>
         </div>
       </div>

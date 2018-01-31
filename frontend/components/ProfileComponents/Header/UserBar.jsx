@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import Search from './HeaderComponents/Search';
 import UserButton from './HeaderComponents/UserButton';
 import PostButton from './HeaderComponents/PostButton';
 
@@ -23,6 +24,7 @@ function UserBar({ user }) {
             <div className="brand-icon" />
           </div>
           <div className="right">
+            <Search />
             <UserButton user={user} ignoreClose={ignoreClose} />
             <PostButton ignoreClose={ignoreClose} />
           </div>
