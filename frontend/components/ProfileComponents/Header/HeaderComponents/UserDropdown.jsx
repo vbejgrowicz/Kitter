@@ -12,7 +12,7 @@ function UserDropdown({
     contextTypes.router.history.push('/');
   };
   return (
-    <div id="user-dropdown" onClick={onClose}>
+    <div id="user-dropdown">
       <div className="dropdown" onClick={ignoreClose}>
         <ul>
           <li className="user-info" >
@@ -35,6 +35,7 @@ function UserDropdown({
           </li>
         </ul>
       </div>
+      <div id="full-screen" onClick={onClose} />
     </div>
   );
 }
