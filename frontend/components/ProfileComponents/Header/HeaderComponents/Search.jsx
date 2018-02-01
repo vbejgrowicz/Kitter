@@ -1,22 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import findAllUsers from '../../../../actions/SearchActions';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: '',
-    };
     this.handleInput = this.handleInput.bind(this);
   }
 
   handleInput(e) {
-    this.setState({
-      value: e.target.value,
-    });
+    const input = e.target.value;
+    this.props.updateSearch(input);
   }
 
   render() {
-    console.log(this.state.value);
     return (
       <div className="search-bar">
         <input type="search" onChange={this.handleInput} placeholder="Search Kitter" />
@@ -25,4 +23,16 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+Search.propTypes = {
+  updateSearch: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => (
+  {
+    updateSearch: (input) => {
+      dispatch(findAllUsers(input));
+    },
+  }
+);
+
+export default connect(null, mapDispatchToProps)(Search);
