@@ -9,7 +9,6 @@ export const UNFOLLOW_USER = 'UNFOLLOW_USER';
 export const SET_AUTH_USER_IMAGE = 'SET_AUTH_USER_IMAGE';
 export const SET_LOGGING_OUT = 'SET_LOGGING_OUT';
 
-
 // User Post Actions
 export const GET_POSTS = 'GET_POSTS';
 export const LOAD_POSTS = 'LOAD_POSTS';
@@ -33,3 +32,6 @@ export const SET_FOLLOWS = 'SET_FOLLOWS';
 export const GET_FOLLOWS = 'GET_FOLLOWS';
 export const UPDATE_FOLLOW_DATA = 'UPDATE_FOLLOW_DATA';
 export const SET_USER_IMAGE = 'SET_USER_IMAGE';
+
+// Search Actions
+export const UPDATE_SEARCH = 'UPDATE_SEARCH';
