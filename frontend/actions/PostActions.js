@@ -111,10 +111,10 @@ export function newPost(post, category, user, currentPostCount) {
 export function deletePost(post) {
   return function deletePostThunk(dispatch) {
     const postID = post._id;
-    removePost(postID).then(() => {
+    removePost(postID).then((response) => {
       dispatch({ type: 'REMOVE_POST', id: postID });
       dispatch(updateUserPostCount(post.author._id));
-      dispatch(updateMessage(true, 'Your Meow has been deleted'));
+      dispatch(updateMessage(true, response.message));
     });
   };
 }

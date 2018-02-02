@@ -13,6 +13,8 @@ const checkPostAuthor = (req, res, next) => {
     Post.findById(req.params.postID, (err, foundPost) => {
       if (err) {
         return res.sendStatus(400);
+      } else if (foundPost === null) {
+        return res.json({ message: 'This Meow has already been deleted' });
       } else if (foundPost.author.equals(req.user._id)) {
         return next();
       }
