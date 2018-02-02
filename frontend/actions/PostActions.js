@@ -36,6 +36,32 @@ function getNewPosts(category, userId, count) {
   return getNewUserPosts(userId, count);
 }
 
+function setPostList(id, category, lastPostDate) {
+  return function setPostListThunk(dispatch) {
+    const isFirst = lastPostDate === 'first fetch' || lastPostDate === undefined;
+    if (id !== undefined) {
+      return getPosts(category, id, lastPostDate).then(response => (
+        getPostCount(category, id).then((res) => {
+          dispatch({
+            type: 'SET_POSTS',
+            posts: response.posts,
+            total: res.count,
+            isFirst,
+          });
+        })
+      ));
+    }
+    return getPosts().then(response => (
+      dispatch({
+        type: 'SET_POSTS',
+        posts: response.posts,
+        total: response.posts.length,
+        isFirst,
+      })
+    ));
+  };
+}
+
 export function fetchPosts(id, category, lastPostDate) {
   return function fetchPostsThunk(dispatch) {
     if (lastPostDate === 'first fetch') {
@@ -45,16 +71,7 @@ export function fetchPosts(id, category, lastPostDate) {
     } else {
       dispatch({ type: 'LOAD_POSTS' });
     }
-    if (id !== undefined) {
-      return getPosts(category, id, lastPostDate).then(response => (
-        getPostCount(category, id).then((res) => {
-          dispatch({ type: 'SET_POSTS', posts: response.posts, total: res.count });
-        })
-      ));
-    }
-    return getPosts().then(response => (
-      dispatch({ type: 'SET_POSTS', posts: response.posts, total: response.posts.length })
-    ));
+    dispatch(setPostList(id, category, lastPostDate));
   };
 }
 

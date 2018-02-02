@@ -55,6 +55,13 @@ function removeLikeFromPost(array, action) {
   });
 }
 
+function setTotal(currentTotal, newTotal, isFirst) {
+  if (!isFirst) {
+    return currentTotal;
+  }
+  return newTotal;
+}
+
 function PostReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POSTS:
@@ -82,7 +89,7 @@ function PostReducer(state = initialState, action) {
         posts: {
           ...state.posts,
           list: [...state.posts.list, ...action.posts],
-          total: action.total,
+          total: setTotal(state.posts.total, action.total, action.isFirst),
           isLoading: false,
         },
       };
