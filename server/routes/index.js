@@ -26,7 +26,9 @@ router.get('/users/:username', (req, res) => {
 router.post('/signup', (req, res) => {
   const newUser = new User({ username: req.body.username, name: req.body.name });
   User.register(newUser, req.body.password, (err) => {
-    if (err) {
+    if (err.errors) {
+      res.json(err.errors.name);
+    } else if (err) {
       res.json(err);
     } else {
       passport.authenticate('local')(req, res, () => {
