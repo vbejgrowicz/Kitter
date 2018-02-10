@@ -26,21 +26,21 @@ router.get('/users/:username', (req, res) => {
 router.post('/signup', (req, res) => {
   const newUser = new User({ username: req.body.username, name: req.body.name });
   User.register(newUser, req.body.password, (err) => {
-    if (err.errors) {
-      res.json(err.errors.name);
-    } else if (err) {
-      res.json(err);
-    } else {
-      passport.authenticate('local')(req, res, () => {
-        const userData = {
-          _id: req.user._id,
-          username: req.user.username,
-          name: req.user.name,
-          image: req.user.image,
-        };
-        res.json({ user: userData });
-      });
+    if (err) {
+      if (err.errors && err.errors.name) {
+        return res.json(err.errors.name);
+      }
+      return res.json(err);
     }
+    return passport.authenticate('local')(req, res, () => {
+      const userData = {
+        _id: req.user._id,
+        username: req.user.username,
+        name: req.user.name,
+        image: req.user.image,
+      };
+      return res.json({ user: userData });
+    });
   });
 });
 
