@@ -25,7 +25,7 @@ class UserForm extends React.Component {
     return {
       name: name.length === 0,
       username: username.length === 0,
-      password: password.length <= 6,
+      password: password.length < 6,
     };
   }
 

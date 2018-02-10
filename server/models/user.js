@@ -11,6 +11,16 @@ const UserSchema = new mongoose.Schema({
   image: String,
 }, { versionKey: false });
 
-UserSchema.plugin(passportLocalMongoose);
+const options = {
+  passwordValidator(password, cb) {
+    if (password.length >= 6) {
+      cb();
+    } else {
+      cb({ message: 'Password must be at least 6 characters.' });
+    }
+  },
+};
+
+UserSchema.plugin(passportLocalMongoose, options);
 
 module.exports = mongoose.model('User', UserSchema);
