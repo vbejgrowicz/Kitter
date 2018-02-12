@@ -65,13 +65,7 @@ router.post('/login', (req, res) => {
 // LOGOUT ROUTE
 router.get('/logout', (req, res) => {
   req.logout();
-  const userData = {
-    _id: null,
-    username: null,
-    name: null,
-    image: null,
-  };
-  res.json({ user: userData });
+  res.json({ message: 'User was successfully logged out.' });
 });
 
 module.exports = router;

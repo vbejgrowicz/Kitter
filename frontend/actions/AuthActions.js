@@ -9,7 +9,7 @@ export function getUser() {
           dispatch({ type: 'SET_AUTH_USER', user, following: res.list });
         });
       } else {
-        dispatch({ type: 'AUTH_FAIL' });
+        dispatch({ type: 'SET_AUTH_DEFAULT' });
       }
     });
   };
@@ -48,11 +48,10 @@ export function signUpUser(name, username, password) {
 
 export function logOutUser(route) {
   return function logOutUserThunk(dispatch) {
-    logOut().then((response) => {
-      const { user } = response;
+    logOut().then(() => {
       dispatch({ type: 'SET_LOGGING_OUT', isLoading: true });
       route();
-      dispatch({ type: 'SET_AUTH_USER', user, following: [] });
+      dispatch({ type: 'SET_AUTH_DEFAULT' });
     });
   };
 }
