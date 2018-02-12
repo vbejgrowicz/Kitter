@@ -46,15 +46,20 @@ router.post('/signup', (req, res) => {
 
 // LOGIN ROUTE
 router.post('/login', (req, res) => {
-  passport.authenticate('local')(req, res, () => {
-    const userData = {
-      _id: req.user._id,
-      username: req.user.username,
-      name: req.user.name,
-      image: req.user.image,
-    };
-    res.json({ user: userData });
-  });
+  passport.authenticate('local', (err, user) => {
+    if (!user) {
+      return res.json({ message: 'The username and password you entered did not match our records. Please double-check and try again.' });
+    }
+    return req.login(user, () => {
+      const userData = {
+        _id: user._id,
+        username: user.username,
+        name: user.name,
+        image: user.image,
+      };
+      return res.json({ user: userData });
+    });
+  })(req, res);
 });
 
 // LOGOUT ROUTE

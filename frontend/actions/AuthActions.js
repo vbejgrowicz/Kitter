@@ -19,13 +19,12 @@ export function logInUser(username, password, redirectFailure) {
   return function logInUserThunk(dispatch) {
     const userData = { username, password };
     logIn(userData).then((response) => {
-      const { user } = response;
+      const { user, message } = response;
       if (user) {
         getFollowing(user._id).then((res) => {
           dispatch({ type: 'SET_AUTH_USER', user, following: res.list });
         });
       } else {
-        const message = 'The username and password you entered did not match our records. Please double-check and try again.';
         redirectFailure();
         dispatch({ type: 'SET_ERROR', page: '/login', message });
       }
