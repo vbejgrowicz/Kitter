@@ -4,7 +4,7 @@ export function getUser() {
   return function getUserThunk(dispatch) {
     checkUser().then((response) => {
       const { user } = response;
-      if (user !== null) {
+      if (user) {
         getFollowing(user._id).then((res) => {
           dispatch({ type: 'SET_AUTH_USER', user, following: res.list });
         });
