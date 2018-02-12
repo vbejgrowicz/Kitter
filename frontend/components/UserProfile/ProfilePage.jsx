@@ -25,13 +25,12 @@ class ProfilePage extends React.Component {
 
   render() {
     const { username, isLoading, error } = this.props.UserReducer;
-    const { params } = this.props.match;
-    if (isLoading || (username !== this.props.match.params.username && !error)) {
+    if (isLoading || (!username && !error)) {
       return (
         null
       );
     }
-    return username === params.username ? (
+    return !error ? (
       <div id="user-profile-page">
         <ProfileHeader user={this.props.UserReducer} />
         <div className="user-content">

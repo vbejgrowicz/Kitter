@@ -8,14 +8,14 @@ router.get('/user', (req, res) => {
   if (req.isAuthenticated()) {
     res.json({ user: req.user });
   } else {
-    res.json({ user: null });
+    res.json({ message: 'User not Authenticated!' });
   }
 });
 
 router.get('/users/:username', (req, res) => {
-  User.findOne({ username: req.params.username }, (err, user) => {
-    if (err) {
-      res.status(400).send(err);
+  User.findOne({ username: { $regex: req.params.username, $options: 'i' } }, (err, user) => {
+    if (!user) {
+      res.json({ message: 'Not Found' });
     } else {
       res.json({ user });
     }
