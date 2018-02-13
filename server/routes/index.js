@@ -24,7 +24,7 @@ router.get('/users/:username', (req, res) => {
 
 // SIGN UP ROUTE
 router.post('/signup', (req, res) => {
-  const newUser = new User({ username: req.body.username, name: req.body.name });
+  const newUser = new User({ userID: req.body.username, username: req.body.username, name: req.body.name });
   User.register(newUser, req.body.password, (err) => {
     if (err) {
       if (err.errors && err.errors.name) {

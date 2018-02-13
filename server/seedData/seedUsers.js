@@ -4,7 +4,7 @@ const data = require('./data');
 const seedUsers = (addUserBasedData) => {
   let usersAdded = 0;
   data.forEach((seed) => {
-    const newUser = new User({ username: seed.username, name: seed.name, image: seed.image });
+    const newUser = new User({ userID: seed.username, username: seed.username, name: seed.name, image: seed.image });
     User.register(newUser, seed.password, (err) => {
       if (err) {
         console.log(err);
