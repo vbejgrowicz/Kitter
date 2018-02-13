@@ -14,7 +14,7 @@ router.get('/user', (req, res) => {
 });
 
 router.get('/users/:username', (req, res) => {
-  User.findOne({ username: { $regex: req.params.username, $options: 'i' } }, (err, user) => {
+  User.findOne({ userID: req.params.username.toLowerCase() }, (err, user) => {
     if (!user) {
       res.json({ message: 'Not Found' });
     } else {
