@@ -28,8 +28,12 @@ router.post('/signup', (req, res) => {
   const newUser = new User({ userID: req.body.username, username: req.body.username, name: req.body.name });
   User.register(newUser, req.body.password, (err) => {
     if (err) {
-      if (err.errors && err.errors.name) {
-        return res.json(err.errors.name);
+      if (err.errors) {
+        if (err.errors.name) {
+          return res.json(err.errors.name);
+        } else if (err.errors.userID) {
+          return res.json(err.errors.userID);
+        }
       }
       return res.json(err);
     }
