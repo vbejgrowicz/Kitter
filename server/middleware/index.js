@@ -37,4 +37,9 @@ const getFollowing = (req, res, next) => {
   });
 };
 
-module.exports = { isLoggedin, checkPostAuthor, getFollowing };
+const usernameFormatting = (req, res, next) => {
+  req.body.username = req.body.username.toLowerCase().trim();
+  return next();
+};
+
+module.exports = { isLoggedin, checkPostAuthor, getFollowing, usernameFormatting };

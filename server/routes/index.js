@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const User = require('../models/user');
+const middleware = require('../middleware');
 
 const router = express.Router();
 
@@ -32,20 +33,22 @@ router.post('/signup', (req, res) => {
       }
       return res.json(err);
     }
-    return passport.authenticate('local')(req, res, () => {
-      const userData = {
-        _id: req.user._id,
-        username: req.user.username,
-        name: req.user.name,
-        image: req.user.image,
-      };
-      return res.json({ user: userData });
+    return middleware.usernameFormatting(req, res, () => {
+      passport.authenticate('local')(req, res, () => {
+        const userData = {
+          _id: req.user._id,
+          username: req.user.username,
+          name: req.user.name,
+          image: req.user.image,
+        };
+        return res.json({ user: userData });
+      });
     });
   });
 });
 
 // LOGIN ROUTE
-router.post('/login', (req, res) => {
+router.post('/login', middleware.usernameFormatting, (req, res) => {
   passport.authenticate('local', (err, user) => {
     if (!user) {
       return res.json({ message: 'The username and password you entered did not match our records. Please double-check and try again.' });
