@@ -42,7 +42,7 @@ class PostList extends React.Component {
     const { _id } = this.props.UserReducer;
     const { posts } = this.props.PostReducer;
     if (
-      (window.innerHeight + window.scrollY) >= (document.body.offsetHeight + 47) &&
+      (window.innerHeight + window.scrollY) >= document.body.offsetHeight &&
       posts.list.length &&
       !posts.isLoading
     ) {
