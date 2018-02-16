@@ -314,11 +314,6 @@ const data = [
     image: 'https://s3.amazonaws.com/kitter-profile-images/1515801648374',
     posts: [
       {
-        text: 'Love is in the air? Get out the gas mask.',
-        date: new Date(2017, 11, 1, 3, 8),
-        likes: [],
-      },
-      {
         text: 'If I had a dollar for every time I thought of you, I would be broke.',
         date: new Date(2017, 11, 4, 6, 5, 1),
         likes: [],
@@ -407,6 +402,11 @@ const data = [
         text: "Your face uses more muscles to frown then to smile...what can I say I'm addicted to fitness.",
         date: new Date(2018, 0, 4, 1, 9),
         likes: ['LeoTheLion'],
+      },
+      {
+        text: 'Love is in the air? Get out the gas mask.',
+        date: new Date(2018, 1, 14, 3, 8),
+        likes: [],
       },
     ],
     follows: ['Garfield'],
@@ -750,6 +750,11 @@ const data = [
         text: '...Free to run around all day, Free to do it all my way!',
         date: new Date(2018, 0, 10, 12, 5),
         likes: ['SylvesterTheCat', 'theOnlyOne', 'Guest'],
+      },
+      {
+        text: 'Hakuna Matata! It means no worries for the rest of your days!',
+        date: new Date(2018, 1, 15, 12, 5),
+        likes: ['theOnlyOne', 'Guest', 'TheRealBadKitty'],
       },
     ],
     follows: [
