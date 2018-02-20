@@ -1,5 +1,7 @@
 @import "PostModal";
 @import "UserDropdown";
+@import "SearchResults";
+
 #nav {
   height: $header-height;
   color: $secondary-color;
@@ -85,7 +87,7 @@
       cursor: pointer;
       margin: 0 15px;
     }
-    
+
     .login-btn {
       margin-left: 10px;
     }
