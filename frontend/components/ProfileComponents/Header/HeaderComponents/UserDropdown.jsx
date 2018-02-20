@@ -51,7 +51,6 @@ UserDropdown.propTypes = {
   AuthReducer: PropTypes.object.isRequired,
 };
 
-
 function mapStateToProps({ AuthReducer }) {
   return { AuthReducer };
 }

@@ -2,11 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import findAllUsers from '../../../../actions/SearchActions';
+import SearchResults from './SearchResults';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      Search: false,
+    };
     this.handleInput = this.handleInput.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   handleInput(e) {
@@ -14,10 +19,25 @@ class Search extends React.Component {
     this.props.updateSearch(input);
   }
 
+  handleFocus() {
+    this.setState({
+      Search: !this.state.Search,
+    });
+  }
+
   render() {
     return (
       <div className="search-bar">
-        <input type="search" onChange={this.handleInput} placeholder="Search Kitter" />
+        <input
+          type="search"
+          onChange={this.handleInput}
+          onFocus={this.handleFocus}
+          onBlur={this.handleFocus}
+          placeholder="Search Kitter"
+        />
+        {this.state.Search && (
+          <SearchResults />
+        )}
       </div>
     );
   }
