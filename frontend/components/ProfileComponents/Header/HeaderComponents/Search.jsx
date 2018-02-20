@@ -12,7 +12,7 @@ class Search extends React.Component {
       input: '',
     };
     this.handleInput = this.handleInput.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
+    this.clearInput = this.clearInput.bind(this);
   }
 
   handleInput(e) {
@@ -27,6 +27,11 @@ class Search extends React.Component {
     }
   }
 
+  clearInput() {
+    const input = '';
+    this.handleFocus(false);
+    this.props.updateSearch(input);
+    this.setState({ input });
   }
 
   render() {
@@ -40,6 +45,9 @@ class Search extends React.Component {
           value={this.state.input}
           placeholder="Search Kitter"
         />
+        {this.state.input && (
+          <button className="clear-btn" onClick={this.clearInput}>&times;</button>
+        )}
         {this.state.Search && (
           <SearchResults onClose={() => this.handleFocus(false)} onSelect={this.clearInput} />
         )}
