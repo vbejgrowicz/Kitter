@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import UserImage from '../../Image/UserImage';
 
 function SearchResults({ SearchReducer, onClose, onSelect }) {
   function itemResult(user) {
     return (
       <li key={user._id}>
         <Link to={`/${user.username}`} onClick={onSelect}>
+          <UserImage user={user} />
           <span className="name">{user.name}</span>
+          <span className="username">@{user.username}</span>
         </Link>
       </li>
     );
