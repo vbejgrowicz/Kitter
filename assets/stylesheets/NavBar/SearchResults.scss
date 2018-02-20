@@ -2,34 +2,14 @@
   position: relative;
 
   .dropdown {
-    max-width: 250px;
     width: 100%;
     right: 0px;
     top: 5px;
     z-index: 2;
 
-    li {
-      div {
-        padding: 10px;
-      }
-      .user {
-        font-size: 18px;
-        font-weight: bold;
-
-        .username {
-          padding-top: 3px;
-          font-size: 14px;
-          color: #66757F;
-        }
-      }
-     i {
-        padding-right: 5px;
-      }
-    }
-
     :after {
       bottom: 100%;
-      left: 15%;
+      left: 10%;
       border: solid transparent;
       content: " ";
       height: 0;
@@ -40,5 +20,29 @@
       border-width: 10px;
       margin-left: -10px;
     }
+
+    li {
+      padding: 5px;
+
+      a {
+        display: flex;
+        span {
+          margin: auto 0;
+          padding-right: 7px;
+
+          &.username {
+            color: $grey;
+          }
+
+          &.name {
+            font-weight: bold;
+            color: $black;
+
+          }
+        }
+      }
+
+    }
+
   }
 }
