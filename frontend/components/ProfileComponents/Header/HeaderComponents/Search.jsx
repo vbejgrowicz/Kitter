@@ -9,6 +9,7 @@ class Search extends React.Component {
     super(props);
     this.state = {
       Search: false,
+      input: '',
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
@@ -16,27 +17,31 @@ class Search extends React.Component {
 
   handleInput(e) {
     const input = e.target.value;
+    this.setState({ input });
     this.props.updateSearch(input);
   }
 
-  handleFocus() {
-    this.setState({
-      Search: !this.state.Search,
-    });
+  handleFocus(focus) {
+    if (this.state.Search !== focus) {
+      this.setState({ Search: focus });
+    }
+  }
+
   }
 
   render() {
     return (
       <div className="search-bar">
         <input
-          type="search"
+          id="searchbar"
+          type="text"
           onChange={this.handleInput}
-          onFocus={this.handleFocus}
-          onBlur={this.handleFocus}
+          onFocus={() => this.handleFocus(true)}
+          value={this.state.input}
           placeholder="Search Kitter"
         />
         {this.state.Search && (
-          <SearchResults />
+          <SearchResults onClose={() => this.handleFocus(false)} onSelect={this.clearInput} />
         )}
       </div>
     );
