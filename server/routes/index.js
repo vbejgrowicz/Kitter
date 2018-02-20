@@ -26,8 +26,10 @@ router.get('/users/:username', (req, res) => {
 
 // FIND USER BY STRING
 router.get('/users/search/:string', (req, res) => {
-  const usernameQuery = { $regex: req.params.string, $options: 'i' };
-  const nameQuery = { $regex: req.params.string, $options: 'i' };
+  const string = req.params.string.replace(/&#46;/g, '.');
+  const regexString = string.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+  const usernameQuery = { $regex: regexString, $options: 'i' };
+  const nameQuery = { $regex: regexString, $options: 'i' };
   User.find({ $or: [{ username: usernameQuery }, { name: nameQuery }] }, (err, users) => {
     if (err) {
       res.status(400).send(err);
