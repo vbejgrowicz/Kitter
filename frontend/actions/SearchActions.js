@@ -1,16 +1,16 @@
-import { searchUsersFor } from '../utils/apiUtils';
+import { searchFor } from '../utils/apiUtils';
 
-function findAllUsers(string) {
-  return function findAllUsersThunk(dispatch) {
+function searchAll(string) {
+  return function searchAllThunk(dispatch) {
     if (string.trim() !== '') {
-      const encodedString = encodeURIComponent(string.replace(/\./g, '&#46;'));
-      searchUsersFor(encodedString).then((response) => {
-        dispatch({ type: 'UPDATE_SEARCH', results: response.users, value: string });
+      searchFor(string).then((response) => {
+        const { results } = response;
+        dispatch({ type: 'UPDATE_SEARCH', results, keyword: string });
       });
     } else {
-      dispatch({ type: 'UPDATE_SEARCH', results: [], value: string });
+      dispatch({ type: 'UPDATE_SEARCH', results: [], keyword: string });
     }
   };
 }
 
-module.exports = findAllUsers;
+module.exports = searchAll;

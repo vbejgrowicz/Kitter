@@ -1,7 +1,7 @@
 import { UPDATE_SEARCH } from '../actions/types';
 
 const initialState = {
-  value: null,
+  keyword: null,
   results: [],
 };
 
@@ -10,7 +10,7 @@ function SearchReducer(state = initialState, action) {
     case UPDATE_SEARCH:
       return {
         ...state,
-        value: action.value,
+        keyword: action.keyword,
         results: action.results,
       };
     default:

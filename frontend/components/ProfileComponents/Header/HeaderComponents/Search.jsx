@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import findAllUsers from '../../../../actions/SearchActions';
+import searchAll from '../../../../actions/SearchActions';
 import SearchResults from './SearchResults';
 
 class Search extends React.Component {
@@ -63,7 +63,7 @@ Search.propTypes = {
 const mapDispatchToProps = dispatch => (
   {
     updateSearch: (input) => {
-      dispatch(findAllUsers(input));
+      dispatch(searchAll(input));
     },
   }
 );
