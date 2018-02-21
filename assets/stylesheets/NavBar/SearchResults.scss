@@ -28,16 +28,21 @@
         display: flex;
         span {
           margin: auto 0;
-          padding-right: 7px;
 
           &.username {
             color: $grey;
+            padding-right: 7px;
+
           }
 
           &.name {
             font-weight: bold;
             color: $black;
-
+            padding-right: 7px;
+          }
+          &.match {
+            color: $secondary-color;
+            font-weight: bold;
           }
         }
       }
