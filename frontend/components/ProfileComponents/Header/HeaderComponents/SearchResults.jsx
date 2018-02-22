@@ -25,7 +25,7 @@ function SearchResults({ SearchReducer, onClose, onSelect }) {
     );
   }
   const { results } = SearchReducer;
-  const resultList = results.map(result => itemResult(result));
+  const resultList = results.slice(0, 7).map(result => itemResult(result));
   return results.length > 0 && (
     <div id="search-results">
       <div className="dropdown">
