@@ -22,10 +22,10 @@
     }
 
     li {
-      padding: 5px;
-
       a {
         display: flex;
+        padding: 5px;
+
         span {
           margin: auto 0;
 
@@ -45,10 +45,8 @@
             font-weight: bold;
           }
         }
-      }
-      &:hover {
-        background-color: #E6F5FF;
-        a {
+        &:hover {
+          background-color: #E6F5FF;
           span {
             &.name {
               text-decoration: underline;
