@@ -15,6 +15,12 @@ class Search extends React.Component {
     this.clearInput = this.clearInput.bind(this);
   }
 
+  componentWillUnmount() {
+    if (this.props.SearchReducer.keyword) {
+      this.props.updateSearch('');
+    }
+  }
+
   handleInput(e) {
     const input = e.target.value;
     this.setState({ input });
@@ -58,7 +64,12 @@ class Search extends React.Component {
 
 Search.propTypes = {
   updateSearch: PropTypes.func.isRequired,
+  SearchReducer: PropTypes.object.isRequired,
 };
+
+function mapStateToProps({ SearchReducer }) {
+  return { SearchReducer };
+}
 
 const mapDispatchToProps = dispatch => (
   {
@@ -68,4 +79,4 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
-export default connect(null, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
