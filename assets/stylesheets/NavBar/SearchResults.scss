@@ -1,0 +1,53 @@
+#search-results {
+  position: relative;
+
+  .dropdown {
+    width: max-content;
+    left: 0px;
+    top: 5px;
+    z-index: 2;
+
+    :after {
+      bottom: 100%;
+      left: 10%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: $white;
+      border-width: 10px;
+      margin-left: -10px;
+    }
+
+    li {
+      padding: 5px;
+
+      a {
+        display: flex;
+        span {
+          margin: auto 0;
+
+          &.username {
+            color: $grey;
+            padding-right: 7px;
+
+          }
+
+          &.name {
+            font-weight: bold;
+            color: $black;
+            padding-right: 7px;
+          }
+          &.match {
+            color: $secondary-color;
+            font-weight: bold;
+          }
+        }
+      }
+
+    }
+
+  }
+}

@@ -1,19 +1,11 @@
 #user-dropdown {
-  top: 0;
-  position: fixed;
-  z-index: 2;
-  width: 100vw;
-  height: 100vh;
-  $small-width: 520px;
-
-  @media (max-width: $small-width) {
-    right: -35px;
-  }
+  position: relative;
 
   .dropdown {
-    top: 50px;
-    right: 125px;
-    width: 200px;
+    right: 10px;
+    width: max-content;
+    min-width: 160px;
+    z-index: 2;
 
     li {
       div {
@@ -30,7 +22,7 @@
         }
       }
      i {
-          padding-right: 5px;
+        padding-right: 5px;
       }
     }
 

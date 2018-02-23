@@ -35,6 +35,9 @@ export const logOut = () => getRoute('/api/logout');
 
 export const findUser = username => getRoute(`/api/users/${username}`);
 
+// Search
+export const searchFor = string => getRoute(`/api/search?keyword=${string}`);
+
 // Images
 export const addProfileImage = formData => putRoute('/api/image/profile', formData);
 

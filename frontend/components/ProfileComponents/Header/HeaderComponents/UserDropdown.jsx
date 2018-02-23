@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logOutUser } from '../../../actions/AuthActions';
+import { logOutUser } from '../../../../actions/AuthActions';
 
 function UserDropdown({
   onClose, ignoreClose, AuthReducer, updateUser,
@@ -12,7 +12,7 @@ function UserDropdown({
     contextTypes.router.history.push('/');
   };
   return (
-    <div id="user-dropdown" onClick={onClose}>
+    <div id="user-dropdown">
       <div className="dropdown" onClick={ignoreClose}>
         <ul>
           <li className="user-info" >
@@ -35,6 +35,7 @@ function UserDropdown({
           </li>
         </ul>
       </div>
+      <div id="full-screen" onClick={onClose} />
     </div>
   );
 }
@@ -49,7 +50,6 @@ UserDropdown.propTypes = {
   updateUser: PropTypes.func.isRequired,
   AuthReducer: PropTypes.object.isRequired,
 };
-
 
 function mapStateToProps({ AuthReducer }) {
   return { AuthReducer };

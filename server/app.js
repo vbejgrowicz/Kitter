@@ -18,6 +18,7 @@ mongoose.Promise = global.Promise;
 
 // Require Routes
 const indexRoutes = require('./routes/index');
+const searchRoutes = require('./routes/search');
 const userPostRoutes = require('./routes/userPosts');
 const followingPostRoutes = require('./routes/followingPosts');
 const countRoutes = require('./routes/count');
@@ -55,6 +56,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use('/api', indexRoutes);
+app.use('/api/search', searchRoutes);
 app.use('/api/image', imageRoutes);
 app.use('/api/user/posts', userPostRoutes);
 app.use('/api/following/posts', followingPostRoutes);
