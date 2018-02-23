@@ -46,7 +46,16 @@
           }
         }
       }
-
+      &:hover {
+        background-color: #E6F5FF;
+        a {
+          span {
+            &.name {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
 
   }
