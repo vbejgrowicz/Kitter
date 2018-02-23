@@ -19,20 +19,17 @@
     width: auto;
     margin: 0 40px;
     height: 47px;
-  }
-
-  @media (max-width: $small-width) {
-    .link-container {
+    @media (max-width: $small-width) {
       margin: 0 10px;
-    }
-    .left {
-      width: auto;
-    }
-    .center {
-      visibility: hidden;
-    }
-    .right {
-      width: auto;
+      .left {
+        width: 50px;
+      }
+      .center {
+        visibility: hidden;
+      }
+      .right {
+        width: auto;
+      }
     }
   }
 
@@ -94,9 +91,8 @@
     .search-bar {
       display: block;
       width: 100%;
+      max-width: 350px;
       position: relative;
-      max-width: 330px;
-      min-width: 200px;
       padding-right: 15px;
 
       input {
