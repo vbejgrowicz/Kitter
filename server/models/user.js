@@ -1,6 +1,22 @@
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 
+const userValidators = [
+  {
+    validator(v) {
+      const usernameRegex = /^[a-zA-Z0-9_]+$/;
+      return v.match(usernameRegex);
+    },
+    message: "Username can only have letters, numbers and '_'",
+  }, {
+    validator(v) {
+      const invalid = ['signup', 'login', 'search'];
+      return !invalid.includes(v);
+    },
+    message: "Username '{VALUE}' is unavailable",
+  },
+];
+
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -10,13 +26,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     trim: true,
     lowercase: true,
-    validate: {
-      validator(v) {
-        const usernameRegex = /^[a-zA-Z0-9_]+$/;
-        return v.match(usernameRegex);
-      },
-      message: "Username can only have letters, numbers and '_'!",
-    },
+    validate: userValidators,
   },
   name: {
     type: String,
