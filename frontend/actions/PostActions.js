@@ -1,12 +1,10 @@
 import {
   getFeaturedPosts,
-  getHomepagePosts,
   getUserPosts,
   addPost,
   removePost,
   getNumPosts,
   getTotalNumPosts,
-  getNewHomepagePosts,
   getNewUserPosts,
   likePost,
   unlikePost,
@@ -15,9 +13,9 @@ import { updateUserPostCount } from './UserActions';
 
 function getPosts(category, userId, lastPostDate) {
   if (category === 'All') {
-    return getHomepagePosts(lastPostDate);
+    return getUserPosts('all', userId, lastPostDate);
   } else if (category === 'User') {
-    return getUserPosts(userId, lastPostDate);
+    return getUserPosts('user', userId, lastPostDate);
   }
   return getFeaturedPosts();
 }
@@ -31,9 +29,9 @@ function getPostCount(category, userId) {
 
 function getNewPosts(category, userId, count) {
   if (category === 'All') {
-    return getNewHomepagePosts(count);
+    return getNewUserPosts('all', userId, count);
   }
-  return getNewUserPosts(userId, count);
+  return getNewUserPosts('user', userId, count);
 }
 
 function setPostList(id, category, lastPostDate) {

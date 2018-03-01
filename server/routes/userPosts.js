@@ -4,57 +4,6 @@ const middleware = require('../middleware');
 
 const router = express.Router();
 
-const fetchCount = 10;
-
-// GET TOP POSTS
-router.get('/', (req, res) => {
-  Post.aggregate([
-    {
-      $project: {
-        like_count: { $size: '$likes' },
-      },
-    },
-    { $sort: { like_count: -1 } },
-    { $limit: 3 },
-  ], (err, topPosts) => {
-    Post.find({ _id: { $in: topPosts } }, { 'likes._id': 0 }, { sort: { date: -1 } }).populate('author').exec((error, posts) => {
-      if (error) {
-        res.status(400).send(error);
-      } else {
-        res.json({ posts });
-      }
-    });
-  });
-});
-
-
-// GET USER POSTS
-router.get('/:userID/:lastDate', (req, res) => {
-  const findQuery = {};
-  findQuery.author = req.params.userID;
-  if (req.params.lastDate !== 'first fetch') {
-    findQuery.date = { $lt: req.params.lastDate };
-  }
-  Post.find(findQuery, { 'likes._id': 0 }, { sort: { date: -1 }, limit: fetchCount }).populate('author').exec((err, userPosts) => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.json({ posts: userPosts });
-    }
-  });
-});
-
-// GET NEW USER POSTS
-router.get('/new/:userID/:numOfPosts', (req, res) => {
-  Post.find({ author: req.params.userID }, { 'likes._id': 0 }, { sort: { date: -1 }, limit: parseInt(req.params.numOfPosts, 10) }).populate('author').exec((err, newPosts) => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.json({ newPosts });
-    }
-  });
-});
-
 // CREATE NEW POST
 router.post('/', middleware.isLoggedin, (req, res) => {
   const { text } = req.body;

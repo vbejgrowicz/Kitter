@@ -20,8 +20,9 @@ mongoose.Promise = global.Promise;
 const sessionRoutes = require('./routes/session');
 const userRoutes = require('./routes/users');
 const searchRoutes = require('./routes/search');
-const userPostRoutes = require('./routes/userPosts');
-const followingPostRoutes = require('./routes/followingPosts');
+const postRoutes = require('./routes/posts');
+const userPostRoutes = require('./routes/usersPosts');
+// const userPostRoutes = require('./routes/userPosts');
 const countRoutes = require('./routes/count');
 const followerRoutes = require('./routes/follows');
 const imageRoutes = require('./routes/image');
@@ -59,9 +60,11 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/api/session', sessionRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/search', searchRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/users/:id/posts', userPostRoutes);
+
 app.use('/api/image', imageRoutes);
-app.use('/api/user/posts', userPostRoutes);
-app.use('/api/following/posts', followingPostRoutes);
+// app.use('/api/user/posts', userPostRoutes);
 app.use('/api/follows', followerRoutes);
 app.use('/api/count', countRoutes);
 

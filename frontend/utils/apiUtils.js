@@ -39,6 +39,14 @@ export const findUser = username => getRoute(`/api/users?username=${username}`);
 // Search
 export const searchFor = string => getRoute(`/api/search?keyword=${string}`);
 
+// Posts
+export const getFeaturedPosts = () => getRoute('api/posts?type=featured');
+
+// User Posts
+export const getUserPosts = (type, id, lastPostDate) => getRoute(`/api/users/${id}/posts?type=${type}&date=${lastPostDate}`);
+
+export const getNewUserPosts = (type, id, numOfPosts) => getRoute(`/api/users/${id}/posts?type=${type}limit=${numOfPosts}`);
+
 // Images
 export const addProfileImage = formData => putRoute('/api/image/profile', formData);
 
@@ -54,11 +62,6 @@ export const follow = user => postRoute('api/follows/follow', JSON.stringify(use
 export const unfollow = user => deleteRoute(`api/follows/unfollow/${user._id}`);
 
 // User Post Routes
-export const getFeaturedPosts = () => getRoute('api/user/posts');
-
-export const getUserPosts = (id, lastPostDate) => getRoute(`/api/user/posts/${id}/${lastPostDate}`);
-
-export const getNewUserPosts = (id, numOfPosts) => getRoute(`/api/user/posts/new/${id}/${numOfPosts}`);
 
 export const addPost = text => postRoute('api/user/posts', JSON.stringify({ text }), jsonHeaders);
 
@@ -67,11 +70,6 @@ export const removePost = id => deleteRoute(`api/user/posts/${id}`);
 export const likePost = id => putRoute(`/api/user/posts/${id}/like`);
 
 export const unlikePost = id => putRoute(`/api/user/posts/${id}/unlike`);
-
-// Homepage Post Routes
-export const getHomepagePosts = lastPostDate => getRoute(`/api/following/posts/${lastPostDate}`);
-
-export const getNewHomepagePosts = numOfPosts => getRoute(`/api/following/posts/new/${numOfPosts}`);
 
 // Counts
 export const getNumPosts = id => getRoute(`/api/count/${id}/posts`);
