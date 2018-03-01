@@ -1,8 +1,8 @@
-import { checkUser, logIn, signUp, logOut, follow, unfollow, getFollowing, addProfileImage, removeProfileImage } from '../utils/apiUtils';
+import { getSessionUser, logIn, signUp, logOut, follow, unfollow, getFollowing, addProfileImage, removeProfileImage } from '../utils/apiUtils';
 
 export function getUser() {
   return function getUserThunk(dispatch) {
-    checkUser().then((response) => {
+    getSessionUser().then((response) => {
       const { user } = response;
       if (user) {
         getFollowing(user._id).then((res) => {

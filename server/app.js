@@ -17,7 +17,8 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 // Require Routes
-const indexRoutes = require('./routes/index');
+const sessionRoutes = require('./routes/session');
+const userRoutes = require('./routes/users');
 const searchRoutes = require('./routes/search');
 const userPostRoutes = require('./routes/userPosts');
 const followingPostRoutes = require('./routes/followingPosts');
@@ -55,7 +56,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use('/api', indexRoutes);
+app.use('/api/session', sessionRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/image', imageRoutes);
 app.use('/api/user/posts', userPostRoutes);

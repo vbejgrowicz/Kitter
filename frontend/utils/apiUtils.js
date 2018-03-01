@@ -24,16 +24,17 @@ const putRoute = (route, body, headers) => fetch(route, init('PUT', body, header
 
 const deleteRoute = (route, body, headers) => fetch(route, init('DELETE', body, headers)).then(resp => resp.json());
 
+// Session
+export const getSessionUser = () => getRoute('/api/session');
+
+export const logIn = user => postRoute('/api/session', JSON.stringify(user), jsonHeaders);
+
+export const logOut = () => deleteRoute('/api/session');
+
 // User
-export const checkUser = () => getRoute('/api/user');
+export const signUp = newUser => postRoute('/api/users', JSON.stringify(newUser), jsonHeaders);
 
-export const signUp = newUser => postRoute('/api/signup', JSON.stringify(newUser), jsonHeaders);
-
-export const logIn = user => postRoute('/api/login', JSON.stringify(user), jsonHeaders);
-
-export const logOut = () => getRoute('/api/logout');
-
-export const findUser = username => getRoute(`/api/users/${username}`);
+export const findUser = username => getRoute(`/api/users?username=${username}`);
 
 // Search
 export const searchFor = string => getRoute(`/api/search?keyword=${string}`);
