@@ -47,6 +47,8 @@ export const fetchPosts = (type, id, lastPostDate) => getRoute(`/api/users/${id}
 
 export const fetchNewPosts = (type, id, numOfPosts) => getRoute(`/api/users/${id}/posts?type=${type}limit=${numOfPosts}`);
 
+export const getNumPosts = (type, id) => getRoute(`/api/users/${id}/posts?type=${type}&count=true`);
+
 export const addPost = (id, text) => postRoute(`api/users/${id}/posts`, JSON.stringify({ text }), jsonHeaders);
 
 export const removePost = (id, postId) => deleteRoute(`api/users/${id}/posts/${postId}`);
@@ -71,10 +73,6 @@ export const likePost = id => putRoute(`/api/user/posts/${id}/like`);
 export const unlikePost = id => putRoute(`/api/user/posts/${id}/unlike`);
 
 // Counts
-export const getNumPosts = id => getRoute(`/api/count/${id}/posts`);
-
-export const getTotalNumPosts = () => getRoute('/api/count/posts');
-
 export const getFollowingCount = id => getRoute(`/api/count/${id}/following`);
 
 export const getFollowerCount = id => getRoute(`/api/count/${id}/follower`);

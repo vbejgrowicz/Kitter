@@ -2,7 +2,7 @@ import { findUser, getNumPosts, getFollowerCount, getFollowingCount, getFollower
 
 export function updateUserPostCount(id) {
   return function updateUserPostCountThunk(dispatch) {
-    return getNumPosts(id).then((response) => {
+    return getNumPosts('user', id).then((response) => {
       dispatch({ type: 'SET_POST_COUNT', count: response.count });
     });
   };
@@ -10,7 +10,7 @@ export function updateUserPostCount(id) {
 
 function setUserData(user) {
   return function setUserDataThunk(dispatch) {
-    getNumPosts(user._id).then((postRes) => {
+    getNumPosts('user', user._id).then((postRes) => {
       getFollowerCount(user._id).then((followerRes) => {
         getFollowingCount(user._id).then((followingRes) => {
           dispatch({

@@ -4,8 +4,6 @@ import {
   addPost,
   removePost,
   getNumPosts,
-  getTotalNumPosts,
-  getNewUserPosts,
   fetchNewPosts,
   likePost,
   unlikePost,
@@ -16,12 +14,6 @@ function getPosts(category, userId, lastPostDate) {
   if (category) {
     return fetchPosts(category, userId, lastPostDate);
   }
-function getPostCount(category, userId) {
-  if (category === 'All') {
-    return getTotalNumPosts();
-  }
-  return getNumPosts(userId);
-}
   return fetchFeaturedPosts();
 }
 
@@ -30,7 +22,7 @@ function setPostList(id, category, lastPostDate) {
     const isFirst = lastPostDate === 'first fetch' || lastPostDate === undefined;
     if (id !== undefined) {
       return getPosts(category, id, lastPostDate).then(response => (
-        getPostCount(category, id).then((res) => {
+        getNumPosts(category, id).then((res) => {
           dispatch({
             type: 'SET_POSTS',
             posts: response.posts,
@@ -66,7 +58,7 @@ export function fetchPosts(id, category, lastPostDate) {
 
 function resolvePendingPosts(category, userId, currentPostCount) {
   return function resolvePendingPostsThunk(dispatch) {
-    return getPostCount(category, userId).then((response) => {
+    return getNumPosts(category, userId).then((response) => {
       const newPostCount = response.count - currentPostCount;
       if (newPostCount > 0) {
         return fetchNewPosts(category, userId, newPostCount).then((res) => {
@@ -99,10 +91,10 @@ export function newPost(post, category, user, currentPostCount) {
 
 export function deletePost(post) {
   return function deletePostThunk(dispatch) {
-    const postID = post._id;
-    removePost(postID).then((response) => {
-      dispatch({ type: 'REMOVE_POST', id: postID });
-      dispatch(updateUserPostCount(post.author._id));
+    const { _id, author } = post;
+    removePost(author._id, _id).then((response) => {
+      dispatch({ type: 'REMOVE_POST', id: _id });
+      dispatch(updateUserPostCount(author._id));
       dispatch(updateMessage(true, response.message));
     });
   };
@@ -111,7 +103,7 @@ export function deletePost(post) {
 export function checkPendingPosts(category, userId) {
   return function checkPendingPostsThunk(dispatch, getState) {
     const { total } = getState().PostReducer.posts;
-    getPostCount(category, userId).then((response) => {
+    getNumPosts(category, userId).then((response) => {
       const newPostCount = response.count - total;
       if (newPostCount > 0) {
         fetchNewPosts(category, userId, newPostCount).then((res) => {
