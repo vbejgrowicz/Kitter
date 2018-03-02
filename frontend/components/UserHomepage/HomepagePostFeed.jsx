@@ -7,7 +7,7 @@ function HomepagePostFeed({ user }) {
   return (
     <div id="profile-feed">
       <HomepageNewPost user={user} />
-      <PostList category="All" />
+      <PostList category="feed" />
     </div>
   );
 }

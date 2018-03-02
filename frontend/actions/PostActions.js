@@ -1,37 +1,28 @@
 import {
-  getFeaturedPosts,
-  getUserPosts,
+  fetchFeaturedPosts,
+  fetchPosts,
   addPost,
   removePost,
   getNumPosts,
   getTotalNumPosts,
   getNewUserPosts,
+  fetchNewPosts,
   likePost,
   unlikePost,
 } from '../utils/apiUtils';
 import { updateUserPostCount } from './UserActions';
 
 function getPosts(category, userId, lastPostDate) {
-  if (category === 'All') {
-    return getUserPosts('all', userId, lastPostDate);
-  } else if (category === 'User') {
-    return getUserPosts('user', userId, lastPostDate);
+  if (category) {
+    return fetchPosts(category, userId, lastPostDate);
   }
-  return getFeaturedPosts();
-}
-
 function getPostCount(category, userId) {
   if (category === 'All') {
     return getTotalNumPosts();
   }
   return getNumPosts(userId);
 }
-
-function getNewPosts(category, userId, count) {
-  if (category === 'All') {
-    return getNewUserPosts('all', userId, count);
-  }
-  return getNewUserPosts('user', userId, count);
+  return fetchFeaturedPosts();
 }
 
 function setPostList(id, category, lastPostDate) {
@@ -65,7 +56,7 @@ export function fetchPosts(id, category, lastPostDate) {
     if (lastPostDate === 'first fetch') {
       dispatch({ type: 'GET_POSTS', category });
     } else if (lastPostDate === undefined) {
-      dispatch({ type: 'GET_POSTS', category: 'Featured' });
+      dispatch({ type: 'GET_POSTS', category: 'featured' });
     } else {
       dispatch({ type: 'LOAD_POSTS' });
     }
@@ -78,7 +69,7 @@ function resolvePendingPosts(category, userId, currentPostCount) {
     return getPostCount(category, userId).then((response) => {
       const newPostCount = response.count - currentPostCount;
       if (newPostCount > 0) {
-        return getNewPosts(category, userId, newPostCount).then((res) => {
+        return fetchNewPosts(category, userId, newPostCount).then((res) => {
           dispatch({ type: 'ADD_NEW_POSTS', count: newPostCount, posts: res.newPosts });
         });
       }
@@ -94,8 +85,8 @@ export const updateMessage = (status, text) => (
 export function newPost(post, category, user, currentPostCount) {
   return function newPostThunk(dispatch) {
     dispatch(resolvePendingPosts(category, user._id, currentPostCount)).then(() => {
-      addPost(post).then((response) => {
-        if (category === 'All') {
+      addPost(user._id, post).then((response) => {
+        if (category === 'feed') {
           dispatch({ type: 'ADD_POST', post: response.post });
           dispatch(updateUserPostCount(user._id));
         } else {
@@ -123,7 +114,7 @@ export function checkPendingPosts(category, userId) {
     getPostCount(category, userId).then((response) => {
       const newPostCount = response.count - total;
       if (newPostCount > 0) {
-        getNewPosts(category, userId, newPostCount).then((res) => {
+        fetchNewPosts(category, userId, newPostCount).then((res) => {
           dispatch({ type: 'SET_PENDING_POSTS', count: newPostCount, posts: res.newPosts });
         });
       }

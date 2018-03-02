@@ -8,7 +8,7 @@ function ProfileFeed({ category }) {
     <div id="profile-feed">
       {category === 'posts' ? (
         <div>
-          <PostList category="User" />
+          <PostList category="user" />
         </div>
       ) : (
         <UserList category={category} />
