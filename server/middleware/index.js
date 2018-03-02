@@ -24,17 +24,25 @@ const checkPostAuthor = (req, res, next) => {
 };
 
 const getFollowing = (req, res, next) => {
-  const userID = req.user._id;
-  Follow.find({ user: userID }, { _id: 0, following: 1 }, (err, followers) => {
-    if (err) {
-      res.status(400).send(err);
+  if (req.query.type === 'feed') {
+    if (req.user._id) {
+      const userID = req.user._id;
+      Follow.find({ user: userID }, { _id: 0, following: 1 }, (err, followers) => {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          const formattedFollowers = followers.map(follow => follow.following);
+          res.following = formattedFollowers.concat(userID);
+          return next();
+        }
+        return res.sendStatus(400);
+      });
     } else {
-      const formattedFollowers = followers.map(follow => follow.following);
-      res.following = formattedFollowers.concat(userID);
-      return next();
+      res.sendStatus(400);
     }
-    return res.sendStatus(400);
-  });
+  } else {
+    next();
+  }
 };
 
 const usernameFormatting = (req, res, next) => {

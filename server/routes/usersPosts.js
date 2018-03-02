@@ -4,18 +4,15 @@ const middleware = require('../middleware');
 
 const router = express.Router({ mergeParams: true });
 
-router.get('/', (req, res) => {
+router.get('/', middleware.getFollowing, (req, res) => {
   const findQuery = {};
   const count = parseInt(req.query.limit, 10) || 10;
   if (req.query.date !== 'first fetch') {
     findQuery.date = { $lt: req.query.date };
   }
-  if (req.query.type === 'all') {
-    middleware.getFollowing(req, res, () => {
-      findQuery.author = { $in: res.following };
+  findQuery.author = req.query.type === 'feed' ? { $in: res.following } : req.params.id;
     });
   } else {
-    findQuery.author = req.params.id;
   }
   Post.find(findQuery, { 'likes._id': 0 }, { sort: { date: -1 }, limit: count }).populate('author').exec((err, posts) => {
 router.post('/', middleware.isLoggedin, (req, res) => {
