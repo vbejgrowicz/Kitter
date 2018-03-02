@@ -47,6 +47,10 @@ export const getUserPosts = (type, id, lastPostDate) => getRoute(`/api/users/${i
 
 export const getNewUserPosts = (type, id, numOfPosts) => getRoute(`/api/users/${id}/posts?type=${type}limit=${numOfPosts}`);
 
+export const addPost = (id, text) => postRoute(`api/users/${id}/posts`, JSON.stringify({ text }), jsonHeaders);
+
+export const removePost = (id, postId) => deleteRoute(`api/users/${id}/posts/${postId}`);
+
 // Images
 export const addProfileImage = formData => putRoute('/api/image/profile', formData);
 
@@ -62,11 +66,6 @@ export const follow = user => postRoute('api/follows/follow', JSON.stringify(use
 export const unfollow = user => deleteRoute(`api/follows/unfollow/${user._id}`);
 
 // User Post Routes
-
-export const addPost = text => postRoute('api/user/posts', JSON.stringify({ text }), jsonHeaders);
-
-export const removePost = id => deleteRoute(`api/user/posts/${id}`);
-
 export const likePost = id => putRoute(`/api/user/posts/${id}/like`);
 
 export const unlikePost = id => putRoute(`/api/user/posts/${id}/unlike`);
