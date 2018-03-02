@@ -40,12 +40,12 @@ export const findUser = username => getRoute(`/api/users?username=${username}`);
 export const searchFor = string => getRoute(`/api/search?keyword=${string}`);
 
 // Posts
-export const fetchFeaturedPosts = () => getRoute('api/posts?type=featured');
+export const getFeaturedPosts = () => getRoute('api/posts?type=featured');
 
 // User Posts
-export const fetchPosts = (type, id, lastPostDate) => getRoute(`/api/users/${id}/posts?type=${type}&date=${lastPostDate}`);
+export const getUserPosts = (type, id, lastPostDate) => getRoute(`/api/users/${id}/posts?type=${type}&date=${lastPostDate}`);
 
-export const fetchNewPosts = (type, id, numOfPosts) => getRoute(`/api/users/${id}/posts?type=${type}limit=${numOfPosts}`);
+export const getNewUserPosts = (type, id, numOfPosts) => getRoute(`/api/users/${id}/posts?type=${type}limit=${numOfPosts}`);
 
 export const getNumPosts = (type, id) => getRoute(`/api/users/${id}/posts?type=${type}&count=true`);
 

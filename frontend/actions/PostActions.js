@@ -1,10 +1,10 @@
 import {
-  fetchFeaturedPosts,
-  fetchPosts,
+  getFeaturedPosts,
+  getUserPosts,
   addPost,
   removePost,
   getNumPosts,
-  fetchNewPosts,
+  getNewUserPosts,
   likePost,
   unlikePost,
 } from '../utils/apiUtils';
@@ -12,9 +12,9 @@ import { updateUserPostCount } from './UserActions';
 
 function getPosts(category, userId, lastPostDate) {
   if (category) {
-    return fetchPosts(category, userId, lastPostDate);
+    return getUserPosts(category, userId, lastPostDate);
   }
-  return fetchFeaturedPosts();
+  return getFeaturedPosts();
 }
 
 function setPostList(id, category, lastPostDate) {
@@ -61,7 +61,7 @@ function resolvePendingPosts(category, userId, currentPostCount) {
     return getNumPosts(category, userId).then((response) => {
       const newPostCount = response.count - currentPostCount;
       if (newPostCount > 0) {
-        return fetchNewPosts(category, userId, newPostCount).then((res) => {
+        return getNewUserPosts(category, userId, newPostCount).then((res) => {
           dispatch({ type: 'ADD_NEW_POSTS', count: newPostCount, posts: res.newPosts });
         });
       }
@@ -106,7 +106,7 @@ export function checkPendingPosts(category, userId) {
     getNumPosts(category, userId).then((response) => {
       const newPostCount = response.count - total;
       if (newPostCount > 0) {
-        fetchNewPosts(category, userId, newPostCount).then((res) => {
+        getNewUserPosts(category, userId, newPostCount).then((res) => {
           dispatch({ type: 'SET_PENDING_POSTS', count: newPostCount, posts: res.newPosts });
         });
       }
