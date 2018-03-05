@@ -8,8 +8,7 @@ import {
   ADD_PENDING_POSTS,
   ADD_NEW_POSTS,
   UPDATE_POST_MESSAGE,
-  LIKE_POST,
-  UNLIKE_POST,
+  UPDATE_LIKES,
   REMOVE_POST_LIST,
 } from '../actions/types';
 
@@ -31,26 +30,14 @@ const initialState = {
   },
 };
 
-function addLikeToPost(array, action) {
+function updateLikes(array, action) {
   return array.map((item) => {
     if (item._id !== action.post._id) {
       return item;
     }
     return {
       ...item,
-      likes: [action.user, ...item.likes],
-    };
-  });
-}
-
-function removeLikeFromPost(array, action) {
-  return array.map((item) => {
-    if (item._id !== action.post._id) {
-      return item;
-    }
-    return {
-      ...item,
-      likes: item.likes.filter(likeUser => likeUser !== action.user),
+      likes: action.post.likes,
     };
   });
 }
@@ -163,20 +150,12 @@ function PostReducer(state = initialState, action) {
           text: action.text,
         },
       };
-    case LIKE_POST:
+    case UPDATE_LIKES:
       return {
         ...state,
         posts: {
           ...state.posts,
-          list: addLikeToPost(state.posts.list, action),
-        },
-      };
-    case UNLIKE_POST:
-      return {
-        ...state,
-        posts: {
-          ...state.posts,
-          list: removeLikeFromPost(state.posts.list, action),
+          list: updateLikes(state.posts.list, action),
         },
       };
     case REMOVE_POST_LIST:

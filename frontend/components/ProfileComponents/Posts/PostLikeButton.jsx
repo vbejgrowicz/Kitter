@@ -12,7 +12,8 @@ function PostLikeButton({ post, AuthReducer, updateLikes }, contextTypes) {
     if (authUser._id === null) {
       contextTypes.router.history.push('/login');
     } else {
-      updateLikes(isLiked, post);
+      const action = isLiked ? 'unlike' : 'like';
+      updateLikes(action, authUser._id, post._id);
     }
   };
 
@@ -46,8 +47,8 @@ function mapStateToProps({ AuthReducer }) {
 
 const mapDispatchToProps = dispatch => (
   {
-    updateLikes: (isLiked, post) => {
-      dispatch(updatePost(isLiked, post));
+    updateLikes: (action, id, postId) => {
+      dispatch(updatePost(action, id, postId));
     },
   }
 );

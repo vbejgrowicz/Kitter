@@ -53,6 +53,8 @@ export const addPost = (id, text) => postRoute(`api/users/${id}/posts`, JSON.str
 
 export const removePost = (id, postId) => deleteRoute(`api/users/${id}/posts/${postId}`);
 
+export const updateLikes = (id, postId, action) => putRoute(`/api/posts/${postId}/likes/?user=${id}&action=${action}`);
+
 // Images
 export const addProfileImage = formData => putRoute('/api/image/profile', formData);
 
@@ -66,11 +68,6 @@ export const getFollowing = userID => getRoute(`/api/follows/following/${userID}
 export const follow = user => postRoute('api/follows/follow', JSON.stringify(user), jsonHeaders);
 
 export const unfollow = user => deleteRoute(`api/follows/unfollow/${user._id}`);
-
-// User Post Routes
-export const likePost = id => putRoute(`/api/user/posts/${id}/like`);
-
-export const unlikePost = id => putRoute(`/api/user/posts/${id}/unlike`);
 
 // Counts
 export const getFollowingCount = id => getRoute(`/api/count/${id}/following`);

@@ -5,8 +5,7 @@ import {
   removePost,
   getNumPosts,
   getNewUserPosts,
-  likePost,
-  unlikePost,
+  updateLikes,
 } from '../utils/apiUtils';
 import { updateUserPostCount } from './UserActions';
 
@@ -122,17 +121,10 @@ export const emptyPostList = () => (
   { type: 'REMOVE_POST_LIST' }
 );
 
-export function updatePost(isLiked, post) {
+export function updatePost(action, id, postId) {
   return function updatePostThunk(dispatch) {
-    const postID = post._id;
-    if (isLiked) {
-      unlikePost(postID).then((res) => {
-        dispatch({ type: 'UNLIKE_POST', post, user: res.user });
-      });
-    } else {
-      likePost(postID).then((res) => {
-        dispatch({ type: 'LIKE_POST', post, user: res.user });
-      });
-    }
+    updateLikes(id, postId, action).then((res) => {
+      dispatch({ type: 'UPDATE_LIKES', post: res.post });
+    });
   };
 }
