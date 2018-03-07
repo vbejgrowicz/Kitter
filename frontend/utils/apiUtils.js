@@ -58,16 +58,16 @@ export const addProfileImage = formData => putRoute('/api/image/profile', formDa
 
 export const removeProfileImage = () => putRoute('/api/image/remove');
 
-// Follow
-export const getFollowers = userID => getRoute(`/api/follows/followers/${userID}`);
+// User Follows
+export const getUserFollows = (id, action) => getRoute(`/api/users/${id}/follows?action=${action}`);
 
-export const getFollowing = userID => getRoute(`/api/follows/following/${userID}`);
+export const getNumFollows = (id, action) => getRoute(`/api/users/${id}/follows?action=${action}&count=true`);
 
 export const follow = user => postRoute('api/follows/follow', JSON.stringify(user), jsonHeaders);
 
 export const unfollow = user => deleteRoute(`api/follows/unfollow/${user._id}`);
 
-// Counts
-export const getFollowingCount = id => getRoute(`/api/count/${id}/following`);
-
-export const getFollowerCount = id => getRoute(`/api/count/${id}/follower`);
+// // Counts
+// export const getFollowingCount = id => getRoute(`/api/count/${id}/following`);
+//
+// export const getFollowerCount = id => getRoute(`/api/count/${id}/follower`);

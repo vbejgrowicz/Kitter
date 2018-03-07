@@ -1,11 +1,11 @@
-import { getSessionUser, logIn, signUp, logOut, follow, unfollow, getFollowing, addProfileImage, removeProfileImage } from '../utils/apiUtils';
+import { getSessionUser, logIn, signUp, logOut, follow, unfollow, addProfileImage, removeProfileImage, getUserFollows } from '../utils/apiUtils';
 
 export function getUser() {
   return function getUserThunk(dispatch) {
     getSessionUser().then((response) => {
       const { user } = response;
       if (user) {
-        getFollowing(user._id).then((res) => {
+        getUserFollows(user._id, 'following').then((res) => {
           dispatch({ type: 'SET_AUTH_USER', user, following: res.list });
         });
       } else {
@@ -21,7 +21,7 @@ export function logInUser(username, password, redirectFailure) {
     logIn(userData).then((response) => {
       const { user, message } = response;
       if (user) {
-        getFollowing(user._id).then((res) => {
+        getUserFollows(user._id, 'following').then((res) => {
           dispatch({ type: 'SET_AUTH_USER', user, following: res.list });
         });
       } else {

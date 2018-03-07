@@ -4,30 +4,6 @@ const middleware = require('../middleware');
 
 const router = express.Router();
 
-// GET USER FOLLOWING
-router.get('/following/:userID', (req, res) => {
-  Follow.find({ user: req.params.userID }, { _id: 0, following: 1 }).populate('following').exec((err, following) => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      const formattedFollowing = following.map(follow => follow.following);
-      res.json({ list: formattedFollowing });
-    }
-  });
-});
-
-// GET USER FOLLOWERS
-router.get('/followers/:userID', (req, res) => {
-  Follow.find({ following: req.params.userID }, { _id: 0, user: 1 }).populate('user').exec((err, followers) => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      const formattedFollowers = followers.map(follow => follow.user);
-      res.json({ list: formattedFollowers });
-    }
-  });
-});
-
 // CREATE NEW FOLLOWER
 router.post('/follow', middleware.isLoggedin, (req, res) => {
   const user = req.user._id;

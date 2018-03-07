@@ -1,4 +1,4 @@
-import { findUser, getNumPosts, getFollowerCount, getFollowingCount, getFollowers, getFollowing } from '../utils/apiUtils';
+import { findUser, getNumPosts, getUserFollows, getNumFollows } from '../utils/apiUtils';
 
 export function updateUserPostCount(id) {
   return function updateUserPostCountThunk(dispatch) {
@@ -11,8 +11,9 @@ export function updateUserPostCount(id) {
 function setUserData(user) {
   return function setUserDataThunk(dispatch) {
     getNumPosts('user', user._id).then((postRes) => {
-      getFollowerCount(user._id).then((followerRes) => {
-        getFollowingCount(user._id).then((followingRes) => {
+      getNumFollows(user._id, 'followers').then((followerRes) => {
+        getNumFollows(user._id, 'following').then((followingRes) => {
+          debugger;
           dispatch({
             type: 'SET_USER_PROFILE',
             user,
@@ -47,17 +48,11 @@ export function getUser(username) {
   };
 }
 
-function getUserList(category, id) {
-  if (category === 'followers') {
-    return getFollowers(id);
-  }
-  return getFollowing(id);
-}
 
 export function getFollows(category, id) {
   return function getFollowsThunk(dispatch) {
     dispatch({ type: 'GET_FOLLOWS' });
-    getUserList(category, id).then((response) => {
+    getUserFollows(id, category).then((response) => {
       dispatch({ type: 'SET_FOLLOWS', followList: response.list });
     });
   };
@@ -65,8 +60,8 @@ export function getFollows(category, id) {
 
 export function updateFollowCount(id) {
   return function updateFollowCountThunk(dispatch) {
-    return getFollowerCount(id).then((followerRes) => {
-      getFollowingCount(id).then((followingRes) => {
+    return getNumFollows(id, 'followers').then((followerRes) => {
+      getNumFollows(id, 'following').then((followingRes) => {
         dispatch({
           type: 'UPDATE_FOLLOW_DATA',
           followerCount: followerRes.count,

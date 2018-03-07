@@ -22,8 +22,7 @@ const userRoutes = require('./routes/users');
 const searchRoutes = require('./routes/search');
 const postRoutes = require('./routes/posts');
 const userPostRoutes = require('./routes/userPosts');
-const countRoutes = require('./routes/count');
-const followerRoutes = require('./routes/follows');
+const userFollowRoutes = require('./routes/userFollows');
 const imageRoutes = require('./routes/image');
 
 const url = process.env.DATABASE_URL || 'mongodb://localhost/Kitter';
@@ -61,10 +60,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/users/:id/posts', userPostRoutes);
-
+app.use('/api/users/:id/follows', userFollowRoutes);
 app.use('/api/image', imageRoutes);
-app.use('/api/follows', followerRoutes);
-app.use('/api/count', countRoutes);
 
 // if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
