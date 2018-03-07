@@ -51,7 +51,7 @@ export const addPost = (id, text) => postRoute(`api/users/${id}/posts`, JSON.str
 
 export const removePost = (id, postId) => deleteRoute(`api/users/${id}/posts/${postId}`);
 
-export const updateLikes = (id, postId, action) => putRoute(`/api/posts/${postId}/likes/?user=${id}&action=${action}`);
+export const updateLikes = (id, postId, action) => putRoute(`/api/posts/${postId}/likes?user=${id}&action=${action}`);
 
 // Images
 export const addProfileImage = formData => putRoute('/api/image/profile', formData);
