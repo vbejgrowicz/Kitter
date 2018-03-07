@@ -13,7 +13,6 @@ function setUserData(user) {
     getNumPosts('user', user._id).then((postRes) => {
       getNumFollows(user._id, 'followers').then((followerRes) => {
         getNumFollows(user._id, 'following').then((followingRes) => {
-          debugger;
           dispatch({
             type: 'SET_USER_PROFILE',
             user,
