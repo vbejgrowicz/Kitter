@@ -1,6 +1,4 @@
-const jsonHeaders = {
-  'Content-Type': 'application/json',
-};
+const jsonHeaders = { 'Content-Type': 'application/json' };
 
 const init = (method, body, headers) => (
   {

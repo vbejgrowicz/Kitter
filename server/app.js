@@ -21,8 +21,7 @@ const sessionRoutes = require('./routes/session');
 const userRoutes = require('./routes/users');
 const searchRoutes = require('./routes/search');
 const postRoutes = require('./routes/posts');
-const userPostRoutes = require('./routes/usersPosts');
-// const userPostRoutes = require('./routes/userPosts');
+const userPostRoutes = require('./routes/userPosts');
 const countRoutes = require('./routes/count');
 const followerRoutes = require('./routes/follows');
 const imageRoutes = require('./routes/image');
@@ -64,7 +63,6 @@ app.use('/api/posts', postRoutes);
 app.use('/api/users/:id/posts', userPostRoutes);
 
 app.use('/api/image', imageRoutes);
-// app.use('/api/user/posts', userPostRoutes);
 app.use('/api/follows', followerRoutes);
 app.use('/api/count', countRoutes);
 
