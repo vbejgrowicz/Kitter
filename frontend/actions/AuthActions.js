@@ -60,9 +60,9 @@ export const clearError = () => (
   { type: 'REMOVE_ERROR' }
 );
 
-export function followUser(user) {
+export function followUser(id, userId) {
   return function followUserThunk(dispatch) {
-    follow(user).then((response) => {
+    follow(id, userId).then((response) => {
       if (response.follow) {
         const followedUser = response.follow.following;
         dispatch({ type: 'FOLLOW_USER', user: followedUser });
@@ -71,10 +71,10 @@ export function followUser(user) {
   };
 }
 
-export function unfollowUser(user) {
+export function unfollowUser(id, userId) {
   return function unfollowUserThunk(dispatch) {
-    unfollow(user).then(() => {
-      dispatch({ type: 'UNFOLLOW_USER', user });
+    unfollow(id, userId).then(() => {
+      dispatch({ type: 'UNFOLLOW_USER', userId });
     });
   };
 }

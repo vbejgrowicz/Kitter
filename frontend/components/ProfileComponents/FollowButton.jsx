@@ -12,9 +12,9 @@ function FollowButton({ user, AuthReducer, follow, unfollow }, contextTypes) {
     if (authUser._id === null) {
       contextTypes.router.history.push('/login');
     } else if (isFollowing) {
-      unfollow(user);
+      unfollow(authUser._id, user._id);
     } else {
-      follow(user);
+      follow(authUser._id, user._id);
     }
   };
 
@@ -47,11 +47,11 @@ function mapStateToProps({ AuthReducer }) {
 
 const mapDispatchToProps = dispatch => (
   {
-    follow: (user) => {
-      dispatch(followUser(user));
+    follow: (authId, userId) => {
+      dispatch(followUser(authId, userId));
     },
-    unfollow: (user) => {
-      dispatch(unfollowUser(user));
+    unfollow: (authId, userId) => {
+      dispatch(unfollowUser(authId, userId));
     },
   }
 );

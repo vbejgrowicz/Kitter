@@ -106,7 +106,7 @@ function AuthReducer(state = initialState, action) {
           ...state.user,
           following: {
             ...state.user.following,
-            list: state.user.following.list.filter(user => user._id !== action.user._id),
+            list: state.user.following.list.filter(user => user._id !== action.userId),
           },
         },
       };

@@ -1,5 +1,6 @@
 const express = require('express');
 const Follow = require('../models/follow');
+const middleware = require('../middleware');
 
 const router = express.Router({ mergeParams: true });
 
@@ -29,6 +30,34 @@ router.get('/', (req, res) => {
       }
     });
   }
+});
+
+router.post('/', middleware.isLoggedin, (req, res) => {
+  const newFollow = { user: req.params.id, following: req.body.following };
+  Follow.create(newFollow, (err, createdFollow) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      Follow.findOne({ _id: createdFollow._id }, { _id: 0, following: 1 }).populate('following').exec((error, follow) => {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          res.json({ follow });
+        }
+      });
+    }
+  });
+});
+
+router.delete('/:followingID', middleware.isLoggedin, (req, res) => {
+  const user = req.params.id;
+  Follow.remove({ user, following: req.params.followingID }, (err) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.json({ user });
+    }
+  });
 });
 
 module.exports = router;

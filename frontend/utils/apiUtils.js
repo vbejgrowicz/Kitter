@@ -63,11 +63,6 @@ export const getUserFollows = (id, action) => getRoute(`/api/users/${id}/follows
 
 export const getNumFollows = (id, action) => getRoute(`/api/users/${id}/follows?action=${action}&count=true`);
 
-export const follow = user => postRoute('api/follows/follow', JSON.stringify(user), jsonHeaders);
+export const follow = (id, user) => postRoute(`api/users/${id}/follows/`, JSON.stringify({ following: user }), jsonHeaders);
 
-export const unfollow = user => deleteRoute(`api/follows/unfollow/${user._id}`);
-
-// // Counts
-// export const getFollowingCount = id => getRoute(`/api/count/${id}/following`);
-//
-// export const getFollowerCount = id => getRoute(`/api/count/${id}/follower`);
+export const unfollow = (id, user) => deleteRoute(`api/users/${id}/follows/${user}`);
